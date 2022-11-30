@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/drawable/btn_default.xml" value="0.177" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/drawable/ellipse_1.xml" value="0.177" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/drawable/ellipse_2.xml" value="0.177" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/drawable/ic_eye.xml" value="0.177" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/drawable/ic_lock.xml" value="0.177" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/drawable/ic_person.xml" value="0.177" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/drawable/rectangle_3.xml" value="0.177" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/drawable/rectangle_4.xml" value="0.177" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/layout/activity_sign_in.xml" value="0.25" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/app/src/main/res/drawable/background_login.xml" value="0.177" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/app/src/main/res/drawable/cycle_red.xml" value="0.177" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/app/src/main/res/drawable/icon_baseline_arrow.xml" value="0.177" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/app/src/main/res/drawable/icon_chat.xml" value="0.177" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/app/src/main/res/drawable/icon_customer.xml" value="0.177" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/app/src/main/res/drawable/icon_discount.xml" value="0.177" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/app/src/main/res/drawable/icon_effectiveness.xml" value="0.177" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/app/src/main/res/drawable/icon_my_product.xml" value="0.177" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/app/src/main/res/drawable/icon_notify.xml" value="0.177" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/app/src/main/res/drawable/icon_revenue.xml" value="0.177" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/app/src/main/res/drawable/icon_voucher.xml" value="0.177" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/app/src/main/res/drawable/line.xml" value="0.177" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/app/src/main/res/drawable/rectangle_header.xml" value="0.177" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/app/src/main/res/layout/activity_dashboard.xml" value="0.25" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/app/src/main/res/layout/activity_sign_in.xml" value="0.25" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
