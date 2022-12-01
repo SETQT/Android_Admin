@@ -39,7 +39,7 @@
             android:layout_height="24dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="320dp"
+            android:layout_marginLeft="280dp"
             android:layout_marginTop="34dp"
             android:background="@drawable/icon_notify" />
 
@@ -49,9 +49,20 @@
             android:layout_height="19.96dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="355dp"
+            android:layout_marginLeft="320dp"
             android:layout_marginTop="35.92dp"
             android:background="@drawable/icon_chat"
+            android:backgroundTint="#FFFFFF" />
+
+        <View
+            android:id="@+id/icon_logout"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="365dp"
+            android:layout_marginTop="35.92dp"
+            android:background="@drawable/icon_logout"
             android:backgroundTint="#FFFFFF" />
 
         <RelativeLayout
@@ -59,7 +70,7 @@
             android:layout_height="17.57dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="368.91dp"
+            android:layout_marginLeft="335dp"
             android:layout_marginTop="28dp">
 
             <View

@@ -8,4 +8,5 @@ public class Constants {
     public static final String KEY_ADMIN_ID = "adminID";
     public static final String KEY_IMAGE = "image";
     public static final String KEY_PREFERENCE_NAME = "g8ShopAdminPreference";
+    public static final String KEY_FCM_TOKEN = "fcmToken";
 }

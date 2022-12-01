@@ -4,9 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/admin_list_chat"
-    android:background="@drawable/login"
+    android:background="@drawable/background_login"
     android:clipToOutline="true"
-    tools:context=".activity_admin_list_chat">
+    tools:context=".activities.activity_admin_list_chat">
 
     <RelativeLayout
         android:id="@+id/rectangle_header_admin_list_chat"
