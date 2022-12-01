@@ -37,6 +37,9 @@ public class DashboardActivity extends AppCompatActivity {
     // hàm lắng nghe các sự kiện trong layout
     private void setListeners() {
         binding.iconLogout.setOnClickListener(view -> signOut());
+        binding.iconChat.setOnClickListener(view ->{
+            startActivity(new Intent(getApplicationContext(), activity_admin_list_chat.class));
+        });
     }
 
     // Hàm show các thông báo
@@ -55,7 +58,7 @@ public class DashboardActivity extends AppCompatActivity {
                         preferenceManager.getString(Constants.KEY_ADMIN_ID)
                 );
         documentReference.update(Constants.KEY_FCM_TOKEN, token)
-                .addOnSuccessListener(unused -> showToast("Token updated"))
+                //.addOnSuccessListener(unused -> showToast("Token updated"))
                 .addOnFailureListener(e->showToast("Unable to update token"));
     }
 

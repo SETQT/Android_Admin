@@ -1,6 +1,9 @@
 package com.example.g8shopadmin.adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,43 +11,106 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.g8shopadmin.R;
 import com.example.g8shopadmin.activities.MyChatAdmin;
+import com.example.g8shopadmin.databinding.CustomListViewAdminChatBinding;
+import com.example.g8shopadmin.models.User;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
-public class ListItemChatAdminAdapter extends ArrayAdapter<MyChatAdmin> {
-    ArrayList<MyChatAdmin> chat = new ArrayList<MyChatAdmin>();
+public class ListItemChatAdminAdapter extends RecyclerView.Adapter<ListItemChatAdminAdapter.UserViewHolder> {
 
+    private final List<User> users;
 
-    public ListItemChatAdminAdapter(Context context, int resource, ArrayList<MyChatAdmin> objects) {
-        super(context, resource, objects);
-        this.chat = objects;
+    public ListItemChatAdminAdapter(List<User> users) {
+        this.users = users;
     }
 
+
+    @NonNull
+    @Override
+    public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+        CustomListViewAdminChatBinding customListViewAdminChatBinding = CustomListViewAdminChatBinding.inflate(
+                LayoutInflater.from(parent.getContext()),
+                parent,
+                false
+        );
+        return new UserViewHolder(customListViewAdminChatBinding);
+    }
 
     @Override
-    public int getCount() {
-        // TODO Auto-generated method stub
-        return super.getCount();
+    public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
+        holder.setUserData(users.get(position));
+
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        // TODO Auto-generated method stub
-        View v = convertView;
-        LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        v = inflater.inflate(R.layout.custom_list_view_admin_chat, null);
-
-        TextView username = (TextView) v.findViewById(R.id.name_user_admin_list_chat);
-        TextView last_message = (TextView) v.findViewById(R.id.last_messange_admin_list_chat);
-        TextView last_time = (TextView) v.findViewById(R.id.last_time_admin_list_chat);
-        ImageView img = (ImageView) v.findViewById(R.id.custom_picture_admin_list_chat) ;
-
-        username.setText(chat.get(position).getUserName());
-        last_message.setText(chat.get(position).getLast_message());
-        last_time.setText(chat.get(position).getLast_time());
-        img.setImageResource(chat.get(position).getImage());
-        return v;
+    public int getItemCount() {
+        return users.size();
     }
+
+    class UserViewHolder extends RecyclerView.ViewHolder {
+
+        CustomListViewAdminChatBinding binding;
+
+        UserViewHolder(CustomListViewAdminChatBinding customListViewAdminChatBinding) {
+            super(customListViewAdminChatBinding.getRoot());
+            binding = customListViewAdminChatBinding;
+        }
+
+        void setUserData(User user) {
+            binding.textName.setText(user.fullName);
+            binding.textLastMessage.setText(user.phone);
+            setUserImage(user.image,binding);
+            //binding.imageProfile.setImageBitmap(getUserImage(user.image));
+        }
+    }
+
+    private void setUserImage(String name, CustomListViewAdminChatBinding binding) {
+        //name += "avatar";
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageRef = storage.getReference();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        CollectionReference usersRef = db.collection("users");
+        StorageReference islandRef = storageRef.child("ProfileUser/" + name);
+        try {
+            File localFile = File.createTempFile("tempfile", ".jpg");
+            //final Bitmap[] bitmap = new Bitmap[1];
+            islandRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                    //bitmap[0] = BitmapFactory.decodeFile(localFile.getAbsolutePath());
+                    Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
+                    binding.imageProfile.setImageBitmap(bitmap);
+                }
+
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    Log.d("down", "onFailure: ");
+                }
+            });
+            //return bitmap[0];
+
+        } catch (IOException e) {
+            Log.e("error", "downloadFile error ");
+            //return null;
+        }
+    }
+
+
 }

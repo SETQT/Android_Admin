@@ -1,37 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/admin_list_chat"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
     android:background="@drawable/background_login"
-    android:clipToOutline="true"
     tools:context=".activities.activity_admin_list_chat">
 
     <RelativeLayout
-        android:id="@+id/rectangle_header_admin_list_chat"
+        android:id="@+id/headerChat"
         android:layout_width="411dp"
         android:layout_height="105dp"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="-24dp"
-        android:background="@drawable/rectangle_payment"
-        >
+        android:background="@drawable/background_chat_content_top"
+        tools:ignore="MissingConstraints">
 
-    <TextView
-        android:id="@+id/text_chat_admin_list_chat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="181dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="53dp"
-        android:text="Chat"
-        android:textSize="20sp"
-        android:textColor="#FFFFFF"
-        android:gravity="top"
-        android:textStyle="bold"
-        />
+        <TextView
+            android:id="@+id/text_chat_admin_list_chat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="181dp"
+            android:layout_marginTop="53dp"
+            android:gravity="top"
+            android:text="Chat"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
         <View
             android:id="@+id/ic_back_admin_list_chat"
             android:layout_width="21dp"
@@ -42,43 +40,174 @@
             android:layout_marginTop="58dp"
             android:background="@drawable/ic_back_payment" />
     </RelativeLayout>
-    <View
-        android:id="@+id/dashboard_frame_search"
-        android:layout_width="361dp"
-        android:layout_height="48dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="115dp"
-        android:background="@drawable/dashboard_rectangle_search" />
 
-    <EditText
-        android:id="@+id/dashboard_id_search"
-        android:layout_width="284dp"
-        android:layout_height="48dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="75dp"
-        android:layout_marginTop="115dp"
-        android:gravity="left"
-        android:hint="Tìm kiếm"
-        android:textColor="#C6C6C6"
-        android:textSize="16sp" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
 
-    <View
-        android:id="@+id/icon_search"
-        android:layout_width="26dp"
-        android:layout_height="26dp"
-        android:layout_marginLeft="38dp"
-        android:layout_marginTop="127dp"
-        android:gravity="center"
-        android:background="@drawable/icon_search" />
+        <View
+            android:id="@+id/dashboard_frame_search"
+            android:layout_width="361dp"
+            android:layout_height="48dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="115dp"
+            android:background="@drawable/dashboard_rectangle_search"
+            tools:ignore="MissingConstraints" />
 
-    <ListView
-        android:id="@+id/listview_admin_list_chat"
+        <EditText
+            android:id="@+id/dashboard_id_search"
+            android:layout_width="284dp"
+            android:layout_height="48dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="75dp"
+            android:layout_marginTop="115dp"
+            android:gravity="left"
+            android:hint="Tìm kiếm"
+            android:textColor="#C6C6C6"
+            android:textSize="16sp"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:id="@+id/icon_search"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginLeft="38dp"
+            android:layout_marginTop="127dp"
+            android:background="@drawable/icon_search"
+            android:gravity="center"
+            tools:ignore="MissingConstraints" />
+
+
+    </RelativeLayout>
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="190dp"
-        />
-</RelativeLayout>
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="175dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/usersRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:overScrollMode="never"
+            android:padding="@dimen/_20sdp"
+            android:visibility="gone"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_gravity="center"
+            android:theme="@style/primaryColor"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textErrorMessage"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/_24sdp"
+            android:layout_marginEnd="@dimen/_24sdp"
+            android:textColor="@color/red"
+            android:textSize="@dimen/_12sdp"
+            android:visibility="gone"/>
+
+    </FrameLayout>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--    xmlns:tools="http://schemas.android.com/tools"-->
+    <!--    android:layout_width="match_parent"-->
+    <!--    android:layout_height="wrap_content"-->
+    <!--    android:id="@+id/admin_list_chat"-->
+    <!--    android:background="@drawable/background_login"-->
+    <!--    android:clipToOutline="true"-->
+    <!--    tools:context=".activities.activity_admin_list_chat">-->
+
+    <!--    <RelativeLayout-->
+    <!--        android:id="@+id/rectangle_header_admin_list_chat"-->
+    <!--        android:layout_width="411dp"-->
+    <!--        android:layout_height="105dp"-->
+    <!--        android:layout_alignParentLeft="true"-->
+    <!--        android:layout_alignParentTop="true"-->
+    <!--        android:layout_marginTop="-24dp"-->
+    <!--        android:background="@drawable/rectangle_payment"-->
+    <!--        >-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/text_chat_admin_list_chat"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_alignParentLeft="true"-->
+    <!--        android:layout_marginLeft="181dp"-->
+    <!--        android:layout_alignParentTop="true"-->
+    <!--        android:layout_marginTop="53dp"-->
+    <!--        android:text="Chat"-->
+    <!--        android:textSize="20sp"-->
+    <!--        android:textColor="#FFFFFF"-->
+    <!--        android:gravity="top"-->
+    <!--        android:textStyle="bold"-->
+    <!--        />-->
+    <!--        <View-->
+    <!--            android:id="@+id/ic_back_admin_list_chat"-->
+    <!--            android:layout_width="21dp"-->
+    <!--            android:layout_height="25dp"-->
+    <!--            android:layout_alignParentLeft="true"-->
+    <!--            android:layout_alignParentTop="true"-->
+    <!--            android:layout_marginLeft="16dp"-->
+    <!--            android:layout_marginTop="58dp"-->
+    <!--            android:background="@drawable/ic_back_payment" />-->
+    <!--    </RelativeLayout>-->
+    <!--    <View-->
+    <!--        android:id="@+id/dashboard_frame_search"-->
+    <!--        android:layout_width="361dp"-->
+    <!--        android:layout_height="48dp"-->
+    <!--        android:layout_alignParentLeft="true"-->
+    <!--        android:layout_alignParentTop="true"-->
+    <!--        android:layout_marginLeft="25dp"-->
+    <!--        android:layout_marginTop="115dp"-->
+    <!--        android:background="@drawable/dashboard_rectangle_search" />-->
+
+    <!--    <EditText-->
+    <!--        android:id="@+id/dashboard_id_search"-->
+    <!--        android:layout_width="284dp"-->
+    <!--        android:layout_height="48dp"-->
+    <!--        android:layout_alignParentLeft="true"-->
+    <!--        android:layout_alignParentTop="true"-->
+    <!--        android:layout_marginLeft="75dp"-->
+    <!--        android:layout_marginTop="115dp"-->
+    <!--        android:gravity="left"-->
+    <!--        android:hint="Tìm kiếm"-->
+    <!--        android:textColor="#C6C6C6"-->
+    <!--        android:textSize="16sp" />-->
+
+    <!--    <View-->
+    <!--        android:id="@+id/icon_search"-->
+    <!--        android:layout_width="26dp"-->
+    <!--        android:layout_height="26dp"-->
+    <!--        android:layout_marginLeft="38dp"-->
+    <!--        android:layout_marginTop="127dp"-->
+    <!--        android:gravity="center"-->
+    <!--        android:background="@drawable/icon_search" />-->
+
+    <!--    <ListView-->
+    <!--        android:id="@+id/listview_admin_list_chat"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:layout_alignParentStart="true"-->
+    <!--        android:layout_marginTop="190dp"-->
+    <!--        />-->
+    <!--</RelativeLayout>-->

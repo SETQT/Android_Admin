@@ -2,37 +2,84 @@ package com.example.g8shopadmin.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.ListView;
+import android.util.Log;
+import android.view.View;
 
-import com.example.g8shopadmin.activities.MyChatAdmin;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.g8shopadmin.R;
 import com.example.g8shopadmin.adapters.ListItemChatAdminAdapter;
+import com.example.g8shopadmin.databinding.ActivityAdminListChatBinding;
+import com.example.g8shopadmin.models.User;
+import com.example.g8shopadmin.utilities.Constants;
+import com.example.g8shopadmin.utilities.PreferenceManager;
+import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class activity_admin_list_chat extends Activity {
+public class activity_admin_list_chat extends AppCompatActivity {
 
-    ListView listChat;
-    ArrayList<MyChatAdmin> ListChatArray =new ArrayList<MyChatAdmin>();
+    private ActivityAdminListChatBinding binding;
+    private PreferenceManager preferenceManager;
 
-    String[] username = {"3T Mãi đỉnh", "3T Mãi đỉnh", "3T Mãi đỉnh", "3T Mãi đỉnh", "3T Mãi đỉnh", "3T Mãi đỉnh"};
-    String[] last_message = {"Trầm văn thất","em yêu anh đi","mình chia tay đi","mai anh chở em đi học nhé","mình chia tay đi","mình chia tay đi" };
-    String[] last_time = {"13:01","13:02","13:03","13:04","13:05","13:06" };
-
-    Integer[] image = {R.drawable.avatar_profile, R.drawable.avatar_profile, R.drawable.avatar_profile, R.drawable.avatar_profile,R.drawable.avatar_profile,R.drawable.avatar_profile  };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_list_chat);
+        binding = ActivityAdminListChatBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        preferenceManager = new PreferenceManager(getApplicationContext());
+        setListeners();
+        getUsers();
+    }
 
+    private void setListeners(){
+        binding.icBackAdminListChat.setOnClickListener(view -> onBackPressed());
+    }
 
-        listChat = (ListView) findViewById(R.id.listview_admin_list_chat);
+    private void getUsers() {
+        loading(true);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("users")
+                .get()
+                .addOnCompleteListener(task -> {
+                    loading(false);
+                    if (task.isSuccessful() && task.getResult() != null) {
+                        List<User> users = new ArrayList<>();
+                        for (QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()) {
+                            User user = new User();
+                            user.fullName = queryDocumentSnapshot.getString("fullname");
+                            user.email = queryDocumentSnapshot.getString("email");
+                            user.image = queryDocumentSnapshot.getString("image");
+                            user.token = queryDocumentSnapshot.getString(Constants.KEY_FCM_TOKEN);
+                            user.phone = queryDocumentSnapshot.getString("phone");
+                            users.add(user);
+                        }
+                        if (users.size() > 0) {
+                            ListItemChatAdminAdapter listItemChatAdminAdapter = new ListItemChatAdminAdapter(users);
+                            binding.usersRecyclerView.setAdapter(listItemChatAdminAdapter);
+                            binding.usersRecyclerView.setVisibility(View.VISIBLE);
+                        } else {
+                            showErrorMessage();
+                        }
+                    } else {
+                        showErrorMessage();
+                    }
+                });
+    }
 
-        for (int i=0;i<6;i++){
-            ListChatArray.add(new MyChatAdmin(i, username[i],last_message[i],last_time[i],image[i]));
+    private void showErrorMessage() {
+        binding.textErrorMessage.setText(String.format("%s", " Không có user nào"));
+        binding.textErrorMessage.setVisibility(View.VISIBLE);
+    }
+
+    private void loading(Boolean isLoading) {
+        if (isLoading) {
+            binding.progressBar.setVisibility(View.VISIBLE);
+        } else {
+            binding.progressBar.setVisibility(View.INVISIBLE);
         }
-        ListItemChatAdminAdapter myAdapter = new ListItemChatAdminAdapter(this,R.layout.custom_list_view_admin_chat, ListChatArray);
-        listChat.setAdapter(myAdapter);
-
     }
 }
