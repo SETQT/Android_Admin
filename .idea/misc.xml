@@ -3,16 +3,27 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/drawable/background_chat_content_top.xml" value="0.203" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/drawable/background_chat_input.xml" value="0.203" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/drawable/background_received_message.xml" value="0.203" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/drawable/background_sent_message.xml" value="0.203" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/drawable/btn_default.xml" value="0.177" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/drawable/ellipse_1.xml" value="0.177" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/drawable/ellipse_2.xml" value="0.177" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/drawable/ic_eye.xml" value="0.177" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/drawable/ic_lock.xml" value="0.177" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/drawable/ic_person.xml" value="0.177" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/drawable/icon_back_chat.xml" value="0.203" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/drawable/icon_send_chat.xml" value="0.203" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/drawable/icon_upload_img_chat.xml" value="0.203" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/drawable/input_box_chat.xml" value="0.203" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/drawable/rectangle_3.xml" value="0.177" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/drawable/rectangle_4.xml" value="0.177" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/layout/activity_chat.xml" value="0.1" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/layout/activity_dashboard.xml" value="0.25" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/layout/activity_sign_in.xml" value="0.25" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/layout/item_container_received_message.xml" value="0.25" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/layout/item_container_sent_message.xml" value="0.25" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/app/src/main/res/drawable/background_login.xml" value="0.177" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/app/src/main/res/drawable/cycle_red.xml" value="0.177" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/app/src/main/res/drawable/icon_baseline_arrow.xml" value="0.177" />
