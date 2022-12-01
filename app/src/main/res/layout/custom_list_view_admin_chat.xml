@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/rectangle_custom_admin_list_chat"
+        android:layout_width="411dp"
+        android:layout_height="83dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/rectangle_custom_admin_list_chat"
+        >
+        <ImageView
+            android:id="@+id/custom_picture_admin_list_chat"
+            android:layout_width="63dp"
+            android:layout_height="65dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="9dp" />
+        <TextView
+            android:id="@+id/name_user_admin_list_chat"
+            android:layout_width="98dp"
+            android:layout_height="24dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="108dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="13dp"
+            android:text="3T Mãi Đỉnh"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:gravity="top"
+            />
+        <TextView
+            android:id="@+id/last_messange_admin_list_chat"
+            android:layout_width="220dp"
+            android:layout_height="18dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="108dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="42dp"
+            android:text="Thủ khoa Trần"
+            android:textSize="12sp"
+            android:textColor="#AEAEAE"
+            android:gravity="top"
+            />
+        <TextView
+            android:id="@+id/last_time_admin_list_chat"
+            android:layout_width="wrap_content"
+            android:layout_height="18dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="24dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="16dp"
+            android:text="13:00"
+            android:textSize="12sp"
+            android:textColor="#AEAEAE"
+            android:gravity="top"
+            />
+    </RelativeLayout>
+</RelativeLayout>
