@@ -1,8 +1,10 @@
-package com.example.g8shopadmin;
+package com.example.g8shopadmin.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.g8shopadmin.R;
 
 public class MainActivity extends AppCompatActivity {
 
