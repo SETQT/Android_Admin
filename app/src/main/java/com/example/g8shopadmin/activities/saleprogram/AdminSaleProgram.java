@@ -1,4 +1,4 @@
-package com.example.g8shopadmin.saleprogram;
+package com.example.g8shopadmin.activities.saleprogram;
 
 public class AdminSaleProgram {
     private Integer image;

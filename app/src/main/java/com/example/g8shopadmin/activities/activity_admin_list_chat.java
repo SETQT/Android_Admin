@@ -4,8 +4,9 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ListView;
 
-import com.example.doan.ListItemChatAdminAdapter;
-import com.example.doan.MyChatAdmin;
+import com.example.g8shopadmin.activities.MyChatAdmin;
+import com.example.g8shopadmin.R;
+import com.example.g8shopadmin.adapters.ListItemChatAdminAdapter;
 
 import java.util.ArrayList;
 

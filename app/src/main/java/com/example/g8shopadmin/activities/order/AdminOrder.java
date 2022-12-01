@@ -1,4 +1,4 @@
-package com.example.g8shopadmin.order;
+package com.example.g8shopadmin.activities.order;
 
 public class AdminOrder {
     private int id;

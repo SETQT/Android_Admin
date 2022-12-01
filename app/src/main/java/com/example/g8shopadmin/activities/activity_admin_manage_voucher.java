@@ -9,8 +9,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.g8shopadmin.MainCallbacks;
 import com.example.g8shopadmin.R;
-import com.example.g8shopadmin.managevoucher.AdminManageVoucherFragmentFirst;
-import com.example.g8shopadmin.managevoucher.AdminManageVoucherFragmentSecond;
+import com.example.g8shopadmin.activities.managevoucher.AdminManageVoucherFragmentFirst;
+import com.example.g8shopadmin.activities.managevoucher.AdminManageVoucherFragmentSecond;
 
 public class activity_admin_manage_voucher extends FragmentActivity implements MainCallbacks {
     // khai báo biến UI

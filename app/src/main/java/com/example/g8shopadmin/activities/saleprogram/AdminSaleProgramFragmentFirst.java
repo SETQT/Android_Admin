@@ -1,4 +1,4 @@
-package com.example.g8shopadmin.saleprogram;
+package com.example.g8shopadmin.activities.saleprogram;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

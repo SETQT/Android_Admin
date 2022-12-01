@@ -1,4 +1,4 @@
-package com.example.g8shopadmin.activities;
+package com.example.g8shopadmin.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,7 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.doan.MyChatAdmin;
+import com.example.g8shopadmin.R;
+import com.example.g8shopadmin.activities.MyChatAdmin;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.example.g8shopadmin.managevoucher;
+package com.example.g8shopadmin.activities.managevoucher;
 
 public class AdminManageVoucher {
     private Integer image;

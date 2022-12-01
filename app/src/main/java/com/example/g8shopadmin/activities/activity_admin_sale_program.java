@@ -9,8 +9,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.g8shopadmin.MainCallbacks;
 import com.example.g8shopadmin.R;
-import com.example.g8shopadmin.saleprogram.AdminSaleProgramFragmentFirst;
-import com.example.g8shopadmin.saleprogram.AdminSaleProgramFragmentSecond;
+import com.example.g8shopadmin.activities.saleprogram.AdminSaleProgramFragmentFirst;
+import com.example.g8shopadmin.activities.saleprogram.AdminSaleProgramFragmentSecond;
 
 public class activity_admin_sale_program extends FragmentActivity implements MainCallbacks {
     // khai báo biến UI

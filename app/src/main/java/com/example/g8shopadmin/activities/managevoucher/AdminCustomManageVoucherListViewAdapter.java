@@ -1,4 +1,4 @@
-package com.example.g8shopadmin.managevoucher;
+package com.example.g8shopadmin.activities.managevoucher;
 
 import android.content.Context;
 import android.view.LayoutInflater;
