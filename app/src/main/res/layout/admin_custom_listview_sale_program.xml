@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <View
+        android:id="@+id/rectangle_1"
+        android:layout_width="381dp"
+        android:layout_height="140dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/custom_bg_listview" />
+
+    <ImageView
+        android:id="@+id/logo_sale"
+        android:layout_width="67dp"
+        android:layout_height="67dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/mono1" />
+
+    <TextView
+        android:id="@+id/admin_custom_listview_sale_program_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="15dp"
+        android:gravity="top"
+        android:text="Giảm giá bất ngờ"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/admin_custom_listview_sale_program_time"
+        android:layout_width="wrap_content"
+        android:layout_height="21dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="40dp"
+        android:gravity="top"
+        android:text="17-11-2022 11:30 - 18-11-2022 12:30"
+        android:textSize="12sp" />
+
+
+    <View
+        android:id="@+id/line_12"
+        android:layout_width="361dp"
+        android:layout_height="1dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="95dp"
+        android:background="@drawable/strikethrough" />
+
+    <Button
+        android:id="@+id/admin_custom_listview_sale_program_btn_01"
+        android:layout_width="88dp"
+        android:layout_height="27dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="106dp"
+        android:background="@drawable/custom_listview_my_products_button"
+        android:text="Sửa"
+        android:textAllCaps="false"
+        android:textColor="#AEAEAE"
+        android:textSize="10sp" />
+
+    <Button
+        android:id="@+id/admin_custom_listview_sale_program_button_xoa"
+        android:layout_width="88dp"
+        android:layout_height="27dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="106dp"
+        android:layout_marginRight="60dp"
+        android:background="@drawable/custom_listview_my_products_button"
+        android:text="Xóa"
+        android:textAllCaps="false"
+        android:textColor="#F92626"
+        android:textSize="10sp" />
+
+</RelativeLayout>

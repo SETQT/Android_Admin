@@ -39,6 +39,11 @@
             android:exported="true"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".activities.MainActivity" />
+	<activity android:name=".activities.activity_admin_my_products"></activity>
+        <activity android:name=".activities.activity_admin_order"></activity>
+        <activity android:name=".activities.activity_admin_manage_voucher"></activity>
+        <activity android:name=".activities.activity_admin_sale_program"></activity>
+
 
         <service
             android:name=".firebase.MessagingService"

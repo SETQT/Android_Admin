@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <View
+        android:id="@+id/rectangle_1"
+        android:layout_width="361dp"
+        android:layout_height="170dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/custom_bg_listview" />
+
+    <ImageView
+        android:id="@+id/admin_custom_listview_my_products_picture"
+        android:layout_width="58dp"
+        android:layout_height="59dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/mono1" />
+
+    <TextView
+        android:id="@+id/admin_custom_listview_my_products_name"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="15dp"
+        android:gravity="top"
+        android:text="Áo khoác mono cực chất lượng 🔥🔥🔥"
+        android:textColor="#000000"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/admin_custom_listview_my_products_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="21dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="44dp"
+        android:gravity="top"
+        android:text="đ100.000"
+        android:textColor="#F9A826"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/text_kho_hang"
+        android:layout_width="wrap_content"
+        android:layout_height="12dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="95dp"
+        android:gravity="top"
+        android:text="Kho hàng: 10"
+        android:textColor="#000000"
+        android:textSize="8sp" />
+
+    <TextView
+        android:id="@+id/text_da_ban"
+        android:layout_width="wrap_content"
+        android:layout_height="12dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="220dp"
+        android:layout_marginTop="95dp"
+        android:gravity="top"
+        android:text="Đã bán: 10"
+        android:textColor="#000000"
+        android:textSize="8sp" />
+
+    <TextView
+        android:id="@+id/text_thich"
+        android:layout_width="wrap_content"
+        android:layout_height="12dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="111dp"
+        android:gravity="top"
+        android:text="Thích: 10"
+        android:textColor="#000000"
+        android:textSize="8sp" />
+
+    <TextView
+        android:id="@+id/text_luot_xem"
+        android:layout_width="wrap_content"
+        android:layout_height="12dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="220dp"
+        android:layout_marginTop="111dp"
+        android:gravity="top"
+        android:text="Lượt xem: 10"
+        android:textColor="#000000"
+        android:textSize="8sp" />
+
+    <View
+        android:id="@+id/line_12"
+        android:layout_width="341dp"
+        android:layout_height="1dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="130dp"
+        android:background="@drawable/strikethrough" />
+
+    <Button
+        android:id="@+id/admin_custom_listview_my_products_button_an"
+        android:layout_width="88dp"
+        android:layout_height="27dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="139dp"
+        android:background="@drawable/custom_listview_my_products_button"
+        android:text="Sửa"
+        android:textAllCaps="false"
+        android:textColor="#AEAEAE"
+        android:textSize="10sp" />
+
+
+    <Button
+        android:id="@+id/admin_custom_listview_my_products_button_xoa"
+        android:layout_width="88dp"
+        android:layout_height="27dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="245dp"
+        android:layout_marginTop="139dp"
+        android:background="@drawable/custom_listview_my_products_button"
+        android:text="Xóa"
+        android:textAllCaps="false"
+        android:textColor="#F92626"
+        android:textSize="10sp" />
+
+</RelativeLayout>

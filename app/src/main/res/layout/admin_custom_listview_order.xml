@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    >
+
+    <View
+        android:id="@+id/admin_order_custom_frame_bg"
+        android:layout_width="381dp"
+        android:layout_height="230dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/myorder_custom_frame_bg" />
+
+    <ImageView
+        android:id="@+id/admin_order_avatar_customer"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/avatar_profile" />
+
+    <TextView
+        android:id="@+id/admin_order_name_customer"
+        android:layout_width="wrap_content"
+        android:layout_height="12dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="19dp"
+        android:gravity="top"
+        android:text="duongminhhieu"
+        android:textColor="#AEAEAE"
+        android:textSize="8sp" />
+
+    <TextView
+        android:id="@+id/admin_order_option"
+        android:layout_width="wrap_content"
+        android:layout_height="21dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="13dp"
+        android:layout_marginRight="50dp"
+        android:gravity="center"
+        android:text="Chờ lấy hàng"
+        android:textColor="#F9A826"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/admin_order_picture_product"
+        android:layout_width="53dp"
+        android:layout_height="54dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/mono1"
+        />
+
+    <TextView
+        android:id="@+id/admin_order_name_product"
+        android:layout_width="168dp"
+        android:layout_height="28dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="98dp"
+        android:layout_marginTop="47dp"
+        android:gravity="top"
+        android:text="Áo khoác Mono cực chất lượng 🔥🔥🔥"
+        android:textColor="#000000"
+        android:textSize="10sp" />
+
+    <TextView
+        android:id="@+id/admin_order_size_product"
+        android:layout_width="wrap_content"
+        android:layout_height="12dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="98dp"
+        android:layout_marginTop="80dp"
+        android:gravity="top"
+        android:text="Size M, Đen"
+        android:textColor="#AEAEAE"
+        android:textSize="8sp" />
+
+    <TextView
+        android:id="@+id/admin_order_count_product"
+        android:layout_width="wrap_content"
+        android:layout_height="15dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="64dp"
+        android:layout_marginRight="40dp"
+        android:gravity="top"
+        android:text="Số lượng: 1"
+        android:textColor="#AEAEAE"
+        android:textSize="10sp" />
+
+    <TextView
+        android:id="@+id/admin_order_old_cost_product"
+        android:layout_width="wrap_content"
+        android:layout_height="15dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="230dp"
+        android:layout_marginTop="90dp"
+        android:foreground="@drawable/strikethrough"
+        android:gravity="top"
+        android:text="đ500.000"
+        android:textColor="#AEAEAE"
+        android:textSize="10sp" />
+
+    <TextView
+        android:id="@+id/admin_order_new_cost_product"
+        android:layout_width="wrap_content"
+        android:layout_height="18dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="88dp"
+        android:layout_marginRight="40dp"
+        android:gravity="top"
+        android:text="đ100.000"
+        android:textColor="#F9A826"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/admin_order_text_total"
+        android:layout_width="wrap_content"
+        android:layout_height="15dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="220dp"
+        android:layout_marginTop="120dp"
+        android:gravity="top"
+        android:text="Thành tiền: "
+        android:textColor="#000000"
+        android:textSize="10sp" />
+
+    <TextView
+        android:id="@+id/admin_order_total_product"
+        android:layout_width="wrap_content"
+        android:layout_height="18dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="118dp"
+        android:layout_marginRight="40dp"
+        android:gravity="top"
+        android:text="đ100.000"
+        android:textColor="#F9A826"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/admin_order_button_option"
+        android:layout_width="110dp"
+        android:layout_height="28dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="154dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/custom_order_bg_button"
+        android:text="Chuẩn bị hàng"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp" />
+
+    <View
+        android:id="@+id/line_2"
+        android:layout_width="341dp"
+        android:layout_height="1dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="190dp"
+        android:background="@drawable/strikethrough" />
+
+
+    <TextView
+        android:id="@+id/admin_order_title_ma_don_hang"
+        android:layout_width="wrap_content"
+        android:layout_height="18dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="201dp"
+        android:gravity="top"
+        android:text="Mã đơn hàng:"
+        android:textColor="#AEAEAE"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/admin_order_ma_don_hang"
+        android:layout_width="wrap_content"
+        android:layout_height="18dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="201dp"
+        android:layout_marginRight="40dp"
+        android:gravity="top"
+        android:text="#EZKDJDHDLSLS"
+        android:textColor="#000000"
+        android:textSize="13sp" />
+
+
+</RelativeLayout>
