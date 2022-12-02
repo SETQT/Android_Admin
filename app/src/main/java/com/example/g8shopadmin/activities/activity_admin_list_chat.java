@@ -1,6 +1,7 @@
 package com.example.g8shopadmin.activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.g8shopadmin.R;
 import com.example.g8shopadmin.adapters.ListItemChatAdminAdapter;
 import com.example.g8shopadmin.databinding.ActivityAdminListChatBinding;
+import com.example.g8shopadmin.listeners.UserListener;
 import com.example.g8shopadmin.models.User;
 import com.example.g8shopadmin.utilities.Constants;
 import com.example.g8shopadmin.utilities.PreferenceManager;
@@ -20,7 +22,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class activity_admin_list_chat extends AppCompatActivity {
+public class activity_admin_list_chat extends AppCompatActivity implements UserListener {
 
     private ActivityAdminListChatBinding binding;
     private PreferenceManager preferenceManager;
@@ -55,10 +57,11 @@ public class activity_admin_list_chat extends AppCompatActivity {
                             user.image = queryDocumentSnapshot.getString("image");
                             user.token = queryDocumentSnapshot.getString(Constants.KEY_FCM_TOKEN);
                             user.phone = queryDocumentSnapshot.getString("phone");
+                            user.id = queryDocumentSnapshot.getId();
                             users.add(user);
                         }
                         if (users.size() > 0) {
-                            ListItemChatAdminAdapter listItemChatAdminAdapter = new ListItemChatAdminAdapter(users);
+                            ListItemChatAdminAdapter listItemChatAdminAdapter = new ListItemChatAdminAdapter(users, this);
                             binding.usersRecyclerView.setAdapter(listItemChatAdminAdapter);
                             binding.usersRecyclerView.setVisibility(View.VISIBLE);
                         } else {
@@ -81,5 +84,13 @@ public class activity_admin_list_chat extends AppCompatActivity {
         } else {
             binding.progressBar.setVisibility(View.INVISIBLE);
         }
+    }
+
+    @Override
+    public void onUserClicked(User user){
+        Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
+        intent.putExtra(Constants.KEY_USER, user);
+        startActivity(intent);
+        finish();
     }
 }

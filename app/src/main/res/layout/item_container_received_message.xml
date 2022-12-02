@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_8sdp"
     android:padding="4sp">
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -24,7 +25,11 @@
         android:layout_marginStart="4sp"
         android:layout_marginLeft="4sp"
         android:background="@drawable/background_received_message"
-        android:padding="12sp"
+        android:paddingStart="@dimen/_12sdp"
+        android:paddingTop="@dimen/_8sdp"
+        android:paddingEnd="@dimen/_12sdp"
+        android:paddingBottom="@dimen/_8sdp"
+        app:layout_constraintWidth_max="wrap"
         android:textColor="#000000"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/imageProfile"
@@ -37,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4sp"
         android:textColor="#AEAEAE"
-        android:textSize="10sp"
+        android:textSize="@dimen/_8ssp"
         app:layout_constraintBottom_toBottomOf="@id/textMessage"
         app:layout_constraintStart_toStartOf="@id/textMessage" />
 

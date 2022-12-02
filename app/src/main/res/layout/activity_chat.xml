@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <View
-            android:id="@+id/group_56"
+            android:id="@+id/iconBack"
             android:layout_width="22dp"
             android:layout_height="21dp"
             android:layout_alignParentLeft="true"
@@ -82,6 +82,7 @@
         android:orientation="vertical"
         android:overScrollMode="never"
         android:padding="20sp"
+        app:stackFromEnd="true"
         android:visibility="gone"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@+id/inputGroup"
@@ -111,6 +112,7 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <View
+            android:id="@+id/layoutSend"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_alignParentRight="true"
@@ -122,8 +124,7 @@
             android:id="@+id/inputMessage"
             android:layout_width="281dp"
             android:layout_height="45dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
+            android:layout_centerInParent="true"
             android:background="@drawable/input_box_chat"
             android:hint="Nhập tin nhắn của bạn ..."
             android:imeOptions="actionDone"

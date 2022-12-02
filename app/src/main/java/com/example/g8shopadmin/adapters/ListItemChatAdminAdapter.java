@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.g8shopadmin.R;
 import com.example.g8shopadmin.activities.MyChatAdmin;
 import com.example.g8shopadmin.databinding.CustomListViewAdminChatBinding;
+import com.example.g8shopadmin.listeners.UserListener;
 import com.example.g8shopadmin.models.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -34,9 +35,12 @@ import java.util.List;
 public class ListItemChatAdminAdapter extends RecyclerView.Adapter<ListItemChatAdminAdapter.UserViewHolder> {
 
     private final List<User> users;
+    private final UserListener userListener;
 
-    public ListItemChatAdminAdapter(List<User> users) {
+    public ListItemChatAdminAdapter(List<User> users, UserListener userListener)
+    {
         this.users = users;
+        this.userListener = userListener;
     }
 
 
@@ -77,6 +81,7 @@ public class ListItemChatAdminAdapter extends RecyclerView.Adapter<ListItemChatA
             binding.textLastMessage.setText(user.phone);
             setUserImage(user.image,binding);
             //binding.imageProfile.setImageBitmap(getUserImage(user.image));
+            binding.getRoot().setOnClickListener(v -> userListener.onUserClicked(user));
         }
     }
 
