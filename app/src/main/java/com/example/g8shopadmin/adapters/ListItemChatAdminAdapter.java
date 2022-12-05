@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.g8shopadmin.R;
 import com.example.g8shopadmin.activities.MyChatAdmin;
+import com.example.g8shopadmin.databinding.ActivityChatBinding;
 import com.example.g8shopadmin.databinding.CustomListViewAdminChatBinding;
 import com.example.g8shopadmin.listeners.UserListener;
 import com.example.g8shopadmin.models.User;
@@ -26,6 +27,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.io.IOException;
@@ -36,11 +38,13 @@ public class ListItemChatAdminAdapter extends RecyclerView.Adapter<ListItemChatA
 
     private final List<User> users;
     private final UserListener userListener;
+    private final Context context;
 
-    public ListItemChatAdminAdapter(List<User> users, UserListener userListener)
+    public ListItemChatAdminAdapter(List<User> users, UserListener userListener, Context context)
     {
         this.users = users;
         this.userListener = userListener;
+        this.context = context;
     }
 
 
@@ -79,9 +83,18 @@ public class ListItemChatAdminAdapter extends RecyclerView.Adapter<ListItemChatA
         void setUserData(User user) {
             binding.textName.setText(user.fullName);
             binding.textLastMessage.setText(user.phone);
-            setUserImage(user.image,binding);
+            //setUserImage(user.image,binding);
             //binding.imageProfile.setImageBitmap(getUserImage(user.image));
+            loadImage(user.image, binding);
             binding.getRoot().setOnClickListener(v -> userListener.onUserClicked(user));
+        }
+    }
+
+    private void loadImage(String image, CustomListViewAdminChatBinding binding) {
+        try {
+            Picasso.with(context).load(image).into(binding.imageProfile);
+        } catch (Exception error) {
+            Log.e("ERROR", "activity_profile loadImage: ", error);
         }
     }
 

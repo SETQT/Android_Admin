@@ -61,7 +61,7 @@ public class activity_admin_list_chat extends AppCompatActivity implements UserL
                             users.add(user);
                         }
                         if (users.size() > 0) {
-                            ListItemChatAdminAdapter listItemChatAdminAdapter = new ListItemChatAdminAdapter(users, this);
+                            ListItemChatAdminAdapter listItemChatAdminAdapter = new ListItemChatAdminAdapter(users, this, getApplicationContext());
                             binding.usersRecyclerView.setAdapter(listItemChatAdminAdapter);
                             binding.usersRecyclerView.setVisibility(View.VISIBLE);
                         } else {

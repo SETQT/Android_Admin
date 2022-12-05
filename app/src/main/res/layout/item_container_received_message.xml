@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/_8sdp"
@@ -16,7 +17,8 @@
         android:src="@drawable/mono1"
         app:civ_border_color="#AEAEAE"
         app:civ_border_width="0.75dp"
-        app:layout_constraintBottom_toBottomOf="@id/textMessage" />
+        app:layout_constraintBottom_toBottomOf="@id/textMessage"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textMessage"
@@ -43,7 +45,7 @@
         android:layout_marginTop="4sp"
         android:textColor="#AEAEAE"
         android:textSize="@dimen/_8ssp"
-        app:layout_constraintBottom_toBottomOf="@id/textMessage"
-        app:layout_constraintStart_toStartOf="@id/textMessage" />
+        app:layout_constraintStart_toStartOf="@id/textMessage"
+        app:layout_constraintTop_toBottomOf="@id/textMessage"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

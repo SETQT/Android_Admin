@@ -13,6 +13,7 @@ import com.example.g8shopadmin.R;
 import com.example.g8shopadmin.adapters.ChatAdapter;
 import com.example.g8shopadmin.databinding.ActivityChatBinding;
 import com.example.g8shopadmin.databinding.CustomListViewAdminChatBinding;
+import com.example.g8shopadmin.databinding.ItemContainerReceivedMessageBinding;
 import com.example.g8shopadmin.models.ChatMessage;
 import com.example.g8shopadmin.models.User;
 import com.example.g8shopadmin.utilities.Constants;
@@ -28,6 +29,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.io.IOException;
@@ -57,6 +59,7 @@ public class ChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityChatBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
         setListeners();
         loadReceiverDetails();
         init();
@@ -66,6 +69,10 @@ public class ChatActivity extends AppCompatActivity {
     private void init() {
         preferenceManager = new PreferenceManager(getApplicationContext());
         chatMessages = new ArrayList<>();
+//        Log.d("MES", "init: message: " +chatMessages);
+//        Log.d("MES", "init: img: " +receiverUser.image);
+//        Log.d("MES", "init: id user: " +preferenceManager.getString(Constants.KEY_USER_ID));
+
         chatAdapter = new ChatAdapter(
                 chatMessages,
                 receiverUser.image,
@@ -129,7 +136,8 @@ public class ChatActivity extends AppCompatActivity {
     private void loadReceiverDetails() {
         receiverUser = (User) getIntent().getSerializableExtra(Constants.KEY_USER);
         binding.nameUserChat.setText(receiverUser.fullName);
-        setUserImage(receiverUser.image, binding);
+        //setUserImage(receiverUser.image, binding);
+        loadImage(receiverUser.image, binding);
     }
 
     private void setListeners() {
@@ -141,37 +149,13 @@ public class ChatActivity extends AppCompatActivity {
         return new SimpleDateFormat("dd/MM/yyyy - hh:mm a", Locale.getDefault()).format(date);
     }
 
-
-    private void setUserImage(String name, ActivityChatBinding binding) {
-        //name += "avatar";
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference storageRef = storage.getReference();
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        CollectionReference usersRef = db.collection("users");
-        StorageReference islandRef = storageRef.child("ProfileUser/" + name);
+    private void loadImage(String image, ActivityChatBinding binding) {
         try {
-            File localFile = File.createTempFile("tempfile", ".jpg");
-            //final Bitmap[] bitmap = new Bitmap[1];
-            islandRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                    //bitmap[0] = BitmapFactory.decodeFile(localFile.getAbsolutePath());
-                    Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
-                    binding.chatProfileAvatar.setImageBitmap(bitmap);
-                }
-
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception exception) {
-                    Log.d("down", "onFailure: ");
-                }
-            });
-            //return bitmap[0];
-
-        } catch (IOException e) {
-            Log.e("error", "downloadFile error ");
-            //return null;
+            Picasso.with(getApplicationContext()).load(image).into(binding.chatProfileAvatar);
+        } catch (Exception error) {
+            Log.e("ERROR", "activity_profile loadImage: ", error);
         }
     }
+
 
 }

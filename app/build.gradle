@@ -41,6 +41,10 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
 
+// picasso
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+
+
     // Scalable Size unit ( support for different screen sizes)
     implementation 'com.intuit.sdp:sdp-android:1.1.0'
     implementation 'com.intuit.ssp:ssp-android:1.1.0'

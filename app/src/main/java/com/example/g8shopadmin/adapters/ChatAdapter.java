@@ -20,6 +20,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.io.IOException;
@@ -110,40 +111,18 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             binding.textMessage.setText(chatMessage.message);
             binding.textDateTime.setText(chatMessage.dateTime);
             //binding.imageProfile.setImageBitmap(receiverProfileImage);
-            setUserImage(receiverProfileImage, binding);
+            //setUserImage(receiverProfileImage, binding);
+            loadImage(receiverProfileImage, binding);
         }
 
-        private void setUserImage(String name, ItemContainerReceivedMessageBinding binding) {
-            //name += "avatar";
-            FirebaseStorage storage = FirebaseStorage.getInstance();
-            StorageReference storageRef = storage.getReference();
-            FirebaseFirestore db = FirebaseFirestore.getInstance();
-            CollectionReference usersRef = db.collection("users");
-            StorageReference islandRef = storageRef.child("ProfileUser/" + name);
+        private void loadImage(String image, ItemContainerReceivedMessageBinding binding) {
             try {
-                File localFile = File.createTempFile("tempfile", ".jpg");
-                //final Bitmap[] bitmap = new Bitmap[1];
-                islandRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                        //bitmap[0] = BitmapFactory.decodeFile(localFile.getAbsolutePath());
-                        Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
-                        binding.imageProfile.setImageBitmap(bitmap);
-                    }
-
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception exception) {
-                        Log.d("down", "onFailure: ");
-                    }
-                });
-                //return bitmap[0];
-
-            } catch (IOException e) {
-                Log.e("error", "downloadFile error ");
-                //return null;
+                Picasso.with(itemView.getContext()).load(image).into(binding.imageProfile);
+            } catch (Exception error) {
+                Log.e("ERROR", "activity_profile loadImage: ", error);
             }
         }
+
 
 
     }
