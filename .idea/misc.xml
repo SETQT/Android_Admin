@@ -20,12 +20,13 @@
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/drawable/icon_send_chat.xml" value="0.203" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/drawable/icon_upload_img_chat.xml" value="0.203" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/drawable/input_box_chat.xml" value="0.203" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/drawable/line.xml" value="0.136" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/drawable/rectangle_3.xml" value="0.177" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/drawable/rectangle_4.xml" value="0.177" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/drawable/rectangle_payment.xml" value="0.136" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/layout/activity_admin_list_chat.xml" value="0.176" />
-        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/layout/activity_chat.xml" value="0.1" />
-        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/layout/activity_dashboard.xml" value="0.3473227206946454" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/layout/activity_chat.xml" value="0.2" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/layout/activity_dashboard.xml" value="0.264" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/layout/activity_sign_in.xml" value="0.25" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/layout/admin_custom_manage_voucher_fragment_first.xml" value="0.25" />

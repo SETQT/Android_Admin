@@ -9,25 +9,21 @@
     <!--    Tiêu đề  -->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="81dp">
 
         <View
             android:id="@+id/record_rectangle_header_profile"
             android:layout_width="wrap_content"
-            android:layout_height="81dp"
+            android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:background="@drawable/rectangle_header" />
 
         <TextView
             android:id="@+id/admin"
-            android:layout_width="68dp"
-            android:layout_height="30dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="171dp"
-            android:layout_marginTop="29dp"
-            android:gravity="top"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
             android:text="Admin"
             android:textColor="#ffffff"
             android:textSize="20sp"
@@ -95,29 +91,33 @@
     <!--Đơn hàng -->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="120dp"
+        android:layout_marginTop="96dp">
 
         <View
-            android:layout_width="411dp"
-            android:layout_height="119dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="96dp"
             android:background="#ffffff" />
-
+        <!--Thanh kẻ ngăn cách-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5px"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="42dp"
+            android:background="@drawable/line" />
         <!--Đơn hàng và lịch sử -->
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="40dp">
 
             <TextView
+                android:id="@+id/donHang"
                 android:layout_width="75dp"
                 android:layout_height="23dp"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
                 android:layout_marginLeft="25dp"
-                android:layout_marginTop="107dp"
-                android:gravity="top"
+                android:layout_marginTop="@dimen/_8sdp"
                 android:lineHeight="22sp"
                 android:text="Đơn hàng"
                 android:textColor="#000000"
@@ -125,18 +125,18 @@
                 android:textStyle="bold" />
             <!--  Lịch sử đơn hàng-->
             <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="@dimen/_125sdp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true">
 
                 <TextView
                     android:id="@+id/infoOrder"
-                    android:layout_width="102dp"
-                    android:layout_height="18dp"
-                    android:layout_alignParentLeft="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_alignParentTop="true"
-                    android:layout_marginLeft="263dp"
-                    android:layout_marginTop="110dp"
-                    android:gravity="top"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:gravity="center"
                     android:lineHeight="18sp"
                     android:text="Lịch sử đơn hàng"
                     android:textColor="#AEAEAE"
@@ -146,21 +146,14 @@
                     android:id="@+id/baseline_arrow_profile"
                     android:layout_width="7dp"
                     android:layout_height="12dp"
-                    android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
-                    android:layout_marginLeft="377dp"
-                    android:layout_marginTop="113dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="20dp"
                     android:background="@drawable/icon_baseline_arrow" />
             </RelativeLayout>
 
-            <!--Thanh kẻ ngăn cách-->
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5px"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="140dp"
-                android:background="@drawable/line" />
+
         </RelativeLayout>
         <!-- Thông tin  -->
         <!--Sản phẩm của tôi -->
@@ -170,7 +163,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="25dp"
-            android:layout_marginTop="159dp">
+            android:layout_marginTop="62dp">
             <!-- Chờ xác nhận -->
             <RelativeLayout
                 android:id="@+id/admin_wait_confirm"
@@ -297,19 +290,30 @@
     <!-- Các tiện ích -->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="200dp"
+        android:layout_marginTop="235dp">
 
         <View
-            android:layout_width="411dp"
-            android:layout_height="196dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="230dp"
             android:background="#ffffff" />
+
+
+        <!--Thanh kẻ ngăn cách-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5px"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="44dp"
+            android:background="@drawable/line" />
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="200dp">
+
 
             <!-- Tiêu đề -->
             <RelativeLayout
@@ -321,30 +325,23 @@
                     android:layout_height="23dp"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
+                    android:layout_centerVertical="true"
                     android:layout_marginLeft="25dp"
-                    android:layout_marginTop="241dp"
-                    android:gravity="top"
+                    android:layout_marginTop="10dp"
                     android:lineHeight="22sp"
                     android:text="Các tiện ích"
                     android:textColor="#000000"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
-                <!--Thanh kẻ ngăn cách-->
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5px"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="274dp"
-                    android:background="@drawable/line" />
-
             </RelativeLayout>
 
             <!-- Các tiện ích -->
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="160dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="42dp">
 
                 <!-- Sản phẩm của tôi-->
                 <RelativeLayout
@@ -352,7 +349,7 @@
                     android:layout_width="87dp"
                     android:layout_height="47dp"
                     android:layout_marginLeft="26dp"
-                    android:layout_marginTop="288dp">
+                    android:layout_marginTop="14dp">
 
                     <View
                         android:id="@+id/iconProductAdmin"
@@ -381,7 +378,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginLeft="171dp"
-                    android:layout_marginTop="288dp">
+                    android:layout_marginTop="14dp">
 
                     <View
                         android:id="@+id/iconRevenueAdmin"
@@ -410,7 +407,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginLeft="292dp"
-                    android:layout_marginTop="288dp">
+                    android:layout_marginTop="14dp">
 
                     <View
                         android:id="@+id/iconEffectivenessAdmin"
@@ -439,7 +436,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginLeft="39dp"
-                    android:layout_marginTop="361dp">
+                    android:layout_marginTop="87dp">
 
                     <View
                         android:id="@+id/iconVoucherAdmin"
@@ -468,7 +465,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginLeft="163dp"
-                    android:layout_marginTop="363dp">
+                    android:layout_marginTop="87dp">
 
                     <View
                         android:id="@+id/iconDiscountAdmin"
@@ -497,7 +494,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginLeft="304dp"
-                    android:layout_marginTop="363dp">
+                    android:layout_marginTop="87dp">
 
                     <View
                         android:id="@+id/iconListCustomers"
