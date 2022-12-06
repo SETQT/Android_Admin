@@ -1,15 +1,12 @@
 package com.example.g8shopadmin.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Adapter;
 
-import com.example.g8shopadmin.R;
+
 import com.example.g8shopadmin.adapters.RecentConversationsAdapter;
-import com.example.g8shopadmin.databinding.ActivityDashboardBinding;
 import com.example.g8shopadmin.databinding.ActivityDashboardChatBinding;
 import com.example.g8shopadmin.listeners.ConversionListener;
 import com.example.g8shopadmin.models.ChatMessage;
@@ -21,12 +18,12 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.net.ConnectException;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class activity_dashboard_chat extends AppCompatActivity implements ConversionListener {
+public class activity_dashboard_chat extends activity_base implements ConversionListener {
 
     private ActivityDashboardChatBinding binding;
     private PreferenceManager preferenceManager;

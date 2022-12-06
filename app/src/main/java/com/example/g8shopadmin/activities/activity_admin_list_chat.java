@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
+
 
 import com.example.g8shopadmin.adapters.ListItemChatAdminAdapter;
 import com.example.g8shopadmin.databinding.ActivityAdminListChatBinding;
@@ -18,7 +18,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class activity_admin_list_chat extends AppCompatActivity implements UserListener {
+public class activity_admin_list_chat extends activity_base implements UserListener {
 
     private ActivityAdminListChatBinding binding;
     private PreferenceManager preferenceManager;

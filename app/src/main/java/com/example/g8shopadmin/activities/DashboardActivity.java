@@ -18,7 +18,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.HashMap;
 
-public class DashboardActivity extends AppCompatActivity {
+public class DashboardActivity extends activity_base {
 
     private ActivityDashboardBinding binding;
     private PreferenceManager preferenceManager;
