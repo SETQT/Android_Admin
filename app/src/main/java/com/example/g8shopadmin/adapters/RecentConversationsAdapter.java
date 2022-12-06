@@ -20,7 +20,7 @@ import java.util.List;
 public class RecentConversationsAdapter extends RecyclerView.Adapter<RecentConversationsAdapter.ConversionViewHolder> {
 
     private final List<ChatMessage> chatMessages;
-    private  final ConversionListener conversionListener;
+    private final ConversionListener conversionListener;
     private final Context context;
 
     public RecentConversationsAdapter(List<ChatMessage> chatMessages, ConversionListener conversionListener, Context context) {
@@ -63,11 +63,11 @@ public class RecentConversationsAdapter extends RecyclerView.Adapter<RecentConve
             loadImage(chatMessage.conversionImage, binding);
             binding.textName.setText(chatMessage.conversionName);
             binding.textRecentMessage.setText(chatMessage.message);
-            binding.getRoot().setOnClickListener(v ->{
+            binding.getRoot().setOnClickListener(v -> {
                 UserChat user = new UserChat();
                 user.id = chatMessage.conversionId;
-                user.fullName =  chatMessage.conversionName;
-                user.image = chatMessage    .conversionImage;
+                user.fullName = chatMessage.conversionName;
+                user.image = chatMessage.conversionImage;
                 conversionListener.onConversionClicked(user);
             });
         }

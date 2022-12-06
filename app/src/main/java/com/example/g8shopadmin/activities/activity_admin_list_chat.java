@@ -48,7 +48,7 @@ public class activity_admin_list_chat extends AppCompatActivity implements UserL
                         List<UserChat> users = new ArrayList<>();
                         for (QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()) {
                             UserChat user = new UserChat();
-                            user.fullName = queryDocumentSnapshot.getString("fullname");
+                            user.fullName = queryDocumentSnapshot.getString("fullname") != null ? queryDocumentSnapshot.getString("fullname") : queryDocumentSnapshot.getString("username");
                             user.email = queryDocumentSnapshot.getString("email");
                             user.image = queryDocumentSnapshot.getString("image");
                             user.token = queryDocumentSnapshot.getString(Constants.KEY_FCM_TOKEN);
