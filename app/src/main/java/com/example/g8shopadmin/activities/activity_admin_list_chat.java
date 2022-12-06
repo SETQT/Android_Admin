@@ -1,21 +1,17 @@
 package com.example.g8shopadmin.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.g8shopadmin.R;
 import com.example.g8shopadmin.adapters.ListItemChatAdminAdapter;
 import com.example.g8shopadmin.databinding.ActivityAdminListChatBinding;
 import com.example.g8shopadmin.listeners.UserListener;
-import com.example.g8shopadmin.models.User;
+import com.example.g8shopadmin.models.UserChat;
 import com.example.g8shopadmin.utilities.Constants;
 import com.example.g8shopadmin.utilities.PreferenceManager;
-import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
@@ -49,9 +45,9 @@ public class activity_admin_list_chat extends AppCompatActivity implements UserL
                 .addOnCompleteListener(task -> {
                     loading(false);
                     if (task.isSuccessful() && task.getResult() != null) {
-                        List<User> users = new ArrayList<>();
+                        List<UserChat> users = new ArrayList<>();
                         for (QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()) {
-                            User user = new User();
+                            UserChat user = new UserChat();
                             user.fullName = queryDocumentSnapshot.getString("fullname");
                             user.email = queryDocumentSnapshot.getString("email");
                             user.image = queryDocumentSnapshot.getString("image");
@@ -87,7 +83,7 @@ public class activity_admin_list_chat extends AppCompatActivity implements UserL
     }
 
     @Override
-    public void onUserClicked(User user){
+    public void onUserClicked(UserChat user){
         Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
         intent.putExtra(Constants.KEY_USER, user);
         startActivity(intent);

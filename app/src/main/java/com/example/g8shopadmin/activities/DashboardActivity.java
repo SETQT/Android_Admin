@@ -38,7 +38,7 @@ public class DashboardActivity extends AppCompatActivity {
     private void setListeners() {
         binding.iconLogout.setOnClickListener(view -> signOut());
         binding.iconChat.setOnClickListener(view ->{
-            startActivity(new Intent(getApplicationContext(), activity_admin_list_chat.class));
+            startActivity(new Intent(getApplicationContext(), activity_dashboard_chat.class));
         });
     }
 

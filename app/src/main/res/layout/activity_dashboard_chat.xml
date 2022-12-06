@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:background="@drawable/background_login"
+    tools:context=".activities.activity_admin_list_chat">
+
+    <RelativeLayout
+        android:id="@+id/headerChat"
+        android:layout_width="411dp"
+        android:layout_height="105dp"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/background_chat_content_top"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/text_chat_admin_list_chat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="181dp"
+            android:layout_marginTop="53dp"
+            android:gravity="top"
+            android:text="Chat"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/back"
+            android:layout_width="21dp"
+            android:layout_height="25dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="58dp"
+            android:background="@drawable/ic_back_payment" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
+
+        <View
+            android:id="@+id/dashboard_frame_search"
+            android:layout_width="361dp"
+            android:layout_height="48dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="115dp"
+            android:background="@drawable/dashboard_rectangle_search"
+            tools:ignore="MissingConstraints" />
+
+        <EditText
+            android:id="@+id/dashboard_id_search"
+            android:layout_width="284dp"
+            android:layout_height="48dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="75dp"
+            android:layout_marginTop="115dp"
+            android:gravity="left"
+            android:hint="Tìm kiếm"
+            android:textColor="#C6C6C6"
+            android:textSize="16sp"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:id="@+id/icon_search"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginLeft="38dp"
+            android:layout_marginTop="127dp"
+            android:background="@drawable/icon_search"
+            android:gravity="center"
+            tools:ignore="MissingConstraints" />
+
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="175dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/conversationsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:overScrollMode="never"
+            android:padding="@dimen/_20sdp"
+            android:visibility="gone"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_gravity="center"
+            android:theme="@style/primaryColor"/>
+
+    </FrameLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabNewChat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="24dp"
+        android:contentDescription="Chat App"
+        android:src="@drawable/icon_add"
+        android:backgroundTint="@color/primary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:tint="@color/white"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

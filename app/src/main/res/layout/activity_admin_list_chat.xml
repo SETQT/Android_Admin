@@ -10,7 +10,7 @@
 
     <RelativeLayout
         android:id="@+id/headerChat"
-        android:layout_width="411dp"
+        android:layout_width="match_parent"
         android:layout_height="105dp"
         android:layout_alignParentLeft="true"
         android:background="@drawable/background_chat_content_top"
@@ -20,12 +20,10 @@
             android:id="@+id/text_chat_admin_list_chat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="181dp"
-            android:layout_marginTop="53dp"
-            android:gravity="top"
-            android:text="Chat"
+            android:layout_marginTop="@dimen/_42sdp"
+            android:text="Danh sách khách hàng"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:textStyle="bold" />
