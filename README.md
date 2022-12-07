@@ -2,6 +2,7 @@
 
 # Android_Admin
 Subject project of mobile software development group 8 - HCMUS.
+<br/>
 Lecturer: Doc. Trương Toàn Thịnh
 
 Team member:
