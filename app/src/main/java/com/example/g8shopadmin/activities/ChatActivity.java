@@ -125,7 +125,11 @@ public class ChatActivity extends activity_base {
         message.put(Constants.KEY_TIMESTAMP, new Date());
         db.collection(Constants.KEY_COLLECTION_CHAT).add(message);
         if(conversionId != null){
-            updateConversion(binding.inputMessage.getText().toString());
+            updateConversion(binding.inputMessage.getText().toString(),
+                    preferenceManager.getString(Constants.KEY_ADMIN_NAME),
+                    preferenceManager.getString(Constants.KEY_IMAGE),
+                    receiverUser.fullName,
+                    receiverUser.image);
         } else {
             HashMap<String, Object> conversion = new HashMap<>();
             conversion.put(Constants.KEY_SENDER_ID, preferenceManager.getString(Constants.KEY_ADMIN_ID));
@@ -197,7 +201,7 @@ public class ChatActivity extends activity_base {
                     } catch (JSONException e){
                         e.printStackTrace();
                     }
-                    showToast("Notification sent successfully");
+                    //showToast("Notification sent successfully");
                 } else{
                     showToast("Error: "+ response.code());
                 }
@@ -225,6 +229,12 @@ public class ChatActivity extends activity_base {
                     isReceiverAvailable = availability == 1;
                 }
                 receiverUser.token = value.getString(Constants.KEY_FCM_TOKEN);
+                if(receiverUser.image == null){
+                    receiverUser.image = value.getString(Constants.KEY_IMAGE);
+                    loadReceiverDetails();
+                    chatAdapter.setReceiverProfileImage(receiverUser.image);
+                    chatAdapter.notifyItemRangeChanged(0, chatMessages.size());
+                }
             }
             if(isReceiverAvailable){
                 binding.textAvailability.setVisibility(View.VISIBLE);
@@ -257,10 +267,14 @@ public class ChatActivity extends activity_base {
                 .addOnSuccessListener(documentReference -> conversionId = documentReference.getId());
     }
 
-    private void updateConversion(String message){
+    private void updateConversion(String message, String senderName, String senderImage, String receiverName, String receiverImage){
         DocumentReference documentReference =
                 db.collection(Constants.KEY_COLLECTION_CONVERSATIONS).document(conversionId);
         documentReference.update(
+                Constants.KEY_SENDER_NAME, senderName,
+                Constants.KEY_SENDER_IMAGE, senderImage,
+                Constants.KEY_RECEIVER_NAME, receiverName,
+                Constants.KEY_RECEIVER_IMAGE, receiverImage,
                 Constants.KEY_LAST_MESSAGE, message,
                 Constants.KEY_TIMESTAMP, new Date()
         );
@@ -268,7 +282,9 @@ public class ChatActivity extends activity_base {
 
     private void loadImage(String image, ActivityChatBinding binding) {
         try {
-            Picasso.with(getApplicationContext()).load(image).into(binding.chatProfileAvatar);
+            if(image != null){
+                Picasso.with(getApplicationContext()).load(image).into(binding.chatProfileAvatar);
+            }
         } catch (Exception error) {
             Log.e("ERROR", "activity_profile loadImage: ", error);
         }
