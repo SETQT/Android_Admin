@@ -126,8 +126,10 @@ public class ChatActivity extends activity_base {
         db.collection(Constants.KEY_COLLECTION_CHAT).add(message);
         if(conversionId != null){
             updateConversion(binding.inputMessage.getText().toString(),
+                    preferenceManager.getString(Constants.KEY_ADMIN_ID),
                     preferenceManager.getString(Constants.KEY_ADMIN_NAME),
                     preferenceManager.getString(Constants.KEY_IMAGE),
+                    receiverUser.id,
                     receiverUser.fullName,
                     receiverUser.image);
         } else {
@@ -267,12 +269,14 @@ public class ChatActivity extends activity_base {
                 .addOnSuccessListener(documentReference -> conversionId = documentReference.getId());
     }
 
-    private void updateConversion(String message, String senderName, String senderImage, String receiverName, String receiverImage){
+    private void updateConversion(String message,String senderId, String senderName, String senderImage,String receiverId, String receiverName, String receiverImage){
         DocumentReference documentReference =
                 db.collection(Constants.KEY_COLLECTION_CONVERSATIONS).document(conversionId);
         documentReference.update(
+                Constants.KEY_SENDER_ID, senderId,
                 Constants.KEY_SENDER_NAME, senderName,
                 Constants.KEY_SENDER_IMAGE, senderImage,
+                Constants.KEY_RECEIVER_ID, receiverId,
                 Constants.KEY_RECEIVER_NAME, receiverName,
                 Constants.KEY_RECEIVER_IMAGE, receiverImage,
                 Constants.KEY_LAST_MESSAGE, message,
