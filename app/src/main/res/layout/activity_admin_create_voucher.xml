@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/admin_create_voucher"
+    android:background="@drawable/login"
+    android:clipToOutline="true"
+    tools:context=".activity_admin_create_voucher">
+
+    <RelativeLayout
+        android:id="@+id/rectangle_header_admin_create_voucher"
+        android:layout_width="411dp"
+        android:layout_height="105dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="-24dp"
+        android:background="@drawable/rectangle_payment"
+        >
+        <TextView
+            android:id="@+id/text_admin_create_voucher"
+            android:layout_width="170dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="121dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="53dp"
+            android:text="Tạo voucher mới"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:gravity="top"
+            android:textStyle="bold"
+            />
+        <View
+            android:id="@+id/ic_back_admin_create_voucher"
+            android:layout_width="21dp"
+            android:layout_height="25dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="58dp"
+            android:background="@drawable/ic_back_payment"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rectangle_type_voucher"
+        android:layout_width="411dp"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="110dp"
+        android:background="@drawable/rectangle_setup_voucher">
+
+        <TextView
+            android:id="@+id/text_admin_name_promotions"
+            android:layout_width="wrap_content"
+            android:layout_height="18dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="8dp"
+            android:gravity="top"
+            android:text="Loại voucher"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <Spinner
+
+            android:id="@+id/spiner_create_voucher"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/edit_text_admin_create_voucher" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rectangle_setup_voucher"
+        android:layout_width="411dp"
+        android:layout_height="155dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="180dp"
+        android:background="@drawable/rectangle_setup_voucher">
+
+        <TextView
+            android:id="@+id/text_setup_code_admin_create_voucher"
+            android:layout_width="132dp"
+            android:layout_height="18dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="11dp"
+            android:gravity="top"
+            android:text="Thiết lập mã giảm giá"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/line1_admin_create_voucher"
+            android:layout_width="411dp"
+            android:layout_height="0.5dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="38dp"
+            android:background="@drawable/line_profile" />
+
+        <TextView
+            android:id="@+id/text_reduction_rate_admin_create_voucher"
+            android:layout_width="60dp"
+            android:layout_height="18dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="49dp"
+            android:gravity="top"
+            android:text="Mức giảm"
+            android:textColor="#AEAEAE"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/value_reduction_rate_admin_create_voucher"
+            android:layout_width="87dp"
+            android:layout_height="23dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="305dp"
+            android:layout_marginTop="47dp"
+            android:background="@drawable/edit_text_admin_create_voucher"
+            android:hint="0đ"
+            android:textSize="14sp" />
+
+        <View
+            android:id="@+id/line2_admin_create_voucher"
+            android:layout_width="411dp"
+            android:layout_height="0.5dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="76dp"
+            android:background="@drawable/line_profile" />
+
+        <TextView
+            android:id="@+id/text_min_order_admin_create_voucher"
+            android:layout_width="75dp"
+            android:layout_height="18dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="87dp"
+            android:gravity="top"
+            android:text="Đơn tối thiểu"
+            android:textColor="#AEAEAE"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/value_min_order_admin_create_voucher"
+            android:layout_width="87dp"
+            android:layout_height="23dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="305dp"
+            android:layout_marginTop="84dp"
+            android:background="@drawable/edit_text_admin_create_voucher"
+            android:hint="0đ"
+            android:textSize="14sp" />
+
+        <View
+            android:id="@+id/line3_admin_create_voucher"
+            android:layout_width="411dp"
+            android:layout_height="0.5dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="113dp"
+            android:background="@drawable/line_profile" />
+
+        <TextView
+            android:id="@+id/text_number_code_admin_create_voucher"
+            android:layout_width="75dp"
+            android:layout_height="18dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="125dp"
+            android:gravity="top"
+            android:text="Số lượng mã"
+            android:textColor="#AEAEAE"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/value_number_code_admin_create_voucher"
+            android:layout_width="87dp"
+            android:layout_height="23dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="305dp"
+            android:layout_marginTop="123dp"
+            android:background="@drawable/edit_text_admin_create_voucher"
+            android:hint="0"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rectangle_setup_time_admin_create_voucher"
+        android:layout_width="411dp"
+        android:layout_height="114dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="345dp"
+        android:background="@drawable/rectangle_setup_time_admin_create_voucher">
+
+        <TextView
+            android:id="@+id/text_setup_time_admin_create_voucher"
+            android:layout_width="109dp"
+            android:layout_height="18dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="11dp"
+            android:gravity="top"
+            android:text="Thiết lập thời gian"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/line4_admin_create_voucher"
+            android:layout_width="411dp"
+            android:layout_height="0.5dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="38dp"
+            android:background="@drawable/line_profile" />
+
+        <RelativeLayout
+            android:id="@+id/rectangle_time_start_admin_create_voucher"
+            android:layout_width="411dp"
+            android:layout_height="38dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="39dp"
+            android:background="@drawable/rectangle_setup_time_admin_create_voucher">
+
+            <TextView
+                android:id="@+id/text_time_start_admin_create_voucher"
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="11dp"
+                android:gravity="top"
+                android:text="Thời gian bắt đầu"
+                android:textColor="#AEAEAE"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/time_start_admin_create_voucher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="11dp"
+                android:layout_marginRight="12dp"
+                android:background="@null"
+                android:inputType="none"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/line5_admin_create_voucher"
+            android:layout_width="411dp"
+            android:layout_height="0.5dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="76dp"
+            android:background="@drawable/line_profile" />
+
+        <RelativeLayout
+            android:id="@+id/rectangle_time_end_admin_create_voucher"
+            android:layout_width="411dp"
+            android:layout_height="38dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="77dp"
+            android:background="@drawable/rectangle_setup_time_admin_create_voucher">
+
+            <TextView
+                android:id="@+id/text_time_end_admin_create_voucher"
+                android:layout_width="107dp"
+                android:layout_height="18dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="11dp"
+                android:text="Thời gian kết thúc"
+                android:textColor="#AEAEAE"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/time_end_admin_create_voucher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="11dp"
+                android:layout_marginRight="12dp"
+                android:background="@null"
+                android:inputType="none"
+                android:textSize="12sp" />
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rectangle_mark_down_create_voucher"
+        android:layout_width="411dp"
+        android:layout_height="43dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="470dp"
+        android:background="@drawable/rectangle_setup_time_admin_create_voucher"
+        >
+
+        <TextView
+            android:id="@+id/text_code_mark_down_create_voucher"
+            android:layout_width="76dp"
+            android:layout_height="18dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="14dp"
+            android:gravity="top"
+            android:text="Mã giảm giá"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:textSize="12sp" />
+        <View
+            android:id="@+id/rectangle_code_mark_down_create_voucher"
+            android:layout_width="87dp"
+            android:layout_height="23dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="312dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rectangle_code_mark_down"
+            />
+        <TextView
+            android:id="@+id/code_mark_down_create_voucher"
+            android:layout_width="44dp"
+            android:layout_height="16dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="334dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="13dp"
+            android:text="ABCDE"
+            android:textSize="12sp"
+            android:textColor="#AEAEAE"
+            android:gravity="top"
+            />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/footer_admin_create_voucher"
+        android:layout_width="411dp"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/footer_change_password"
+        android:elevation="4dp"
+        >
+        <Button
+            android:id="@+id/btn_admin_create_voucher"
+            android:layout_width="361dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginBottom="9dp"
+            android:background="@drawable/record_btn_save_profile"
+            android:gravity="center"
+            android:text="Xác nhận"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

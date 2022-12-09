@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/admin_create_product"
+    android:background="@drawable/login"
+    android:clipToOutline="true"
+    tools:context=".activity_admin_create_product">
+
+    <RelativeLayout
+        android:id="@+id/rectangle_header_admin_create_product"
+        android:layout_width="411dp"
+        android:layout_height="105dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="-24dp"
+        android:background="@drawable/rectangle_payment">
+
+        <TextView
+            android:id="@+id/text_admin_create_product"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="124dp"
+            android:layout_marginTop="53dp"
+            android:gravity="top"
+            android:text="Tạo sản phẩm"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/ic_back_admin_create_promotions"
+            android:layout_width="21dp"
+            android:layout_height="25dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="58dp"
+            android:background="@drawable/ic_back_payment" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rectangle_add_image_create_product"
+        android:layout_width="411dp"
+        android:layout_height="104dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="81dp"
+        android:background="@drawable/rectangle_setup_time_admin_create_voucher" >
+
+        <RelativeLayout
+            android:id="@+id/button_add_image_create_product"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="26dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/button_add_product_create_promotions">
+
+            <TextView
+                android:id="@+id/text_add_image_create_promotions"
+                android:layout_width="49dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="32dp"
+                android:gravity="center_horizontal|top"
+                android:text="Thêm ảnh"
+                android:textColor="#F9A826"
+                android:textSize="10sp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/list_image_create_product"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="129dp"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView_product_create_product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scrollbars="horizontal" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rectangle_name_product_admin_create_product"
+        android:layout_width="411dp"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/rectangle_setup_time_admin_create_voucher"
+        >
+        <TextView
+            android:id="@+id/text_name_product_admin_create_product"
+            android:layout_width="wrap_content"
+            android:layout_height="15dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="25dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="8dp"
+            android:text="Tên sản phẩm"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:gravity="top"
+            />
+        <EditText
+            android:id="@+id/value_name_product_admin_create_product"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="25dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="30dp"
+            android:hint="Nhập tên sản phẩm"
+            android:textSize="11sp"
+            android:textColorHint="#AEAEAE"
+            android:background="@null"
+            android:textColor="#000000"
+            android:gravity="top"
+            />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rectangle_describe_product_admin_create_product"
+        android:layout_width="411dp"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="275dp"
+        android:background="@drawable/rectangle_setup_time_admin_create_voucher"
+        >
+        <TextView
+            android:id="@+id/text_describe_product_admin_create_product"
+            android:layout_width="wrap_content"
+            android:layout_height="15dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="25dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="8dp"
+            android:text="Mô tả sản phẩm"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:gravity="top"
+            />
+        <EditText
+            android:id="@+id/value_describe_product_admin_create_product"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="30dp"
+            android:hint="Nhập mô tả sản phẩm"
+            android:textColorHint="#AEAEAE"
+            android:textSize="11sp"
+            android:background="@null"
+            android:textColor="#000000"
+            android:gravity="top"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rectangle_type_product_admin_create_product"
+        android:layout_width="411dp"
+        android:layout_height="38dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="350dp"
+        android:background="@drawable/rectangle_setup_time_admin_create_voucher">
+
+        <TextView
+            android:id="@+id/text_type_product"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="11dp"
+            android:gravity="top"
+            android:text="Loại hàng"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/value_type_product_admin_create_product"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="250dp"
+            android:layout_marginTop="11dp"
+            android:background="@null"
+            android:gravity="top"
+            android:hint="Nhập loại hàng của sản phẩm"
+            android:textColor="#000000"
+            android:textColorHint="#AEAEAE"
+            android:textSize="11sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rectangle_color_product_admin_create_product"
+        android:layout_width="411dp"
+        android:layout_height="38dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="389dp"
+        android:background="@drawable/rectangle_setup_time_admin_create_voucher"
+        >
+        <TextView
+            android:id="@+id/text_color_product"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="25dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="11dp"
+            android:text="Màu sắc"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:gravity="top"
+            />
+
+        <EditText
+            android:id="@+id/value_color_product_admin_create_product"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="250dp"
+            android:layout_marginTop="11dp"
+            android:hint="Nhập màu sắc của sản phẩm"
+            android:textColorHint="#AEAEAE"
+            android:textSize="11sp"
+            android:background="@null"
+            android:textColor="#000000"
+            android:gravity="top"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rectangle_size_product_admin_create_product"
+        android:layout_width="411dp"
+        android:layout_height="38dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="428dp"
+        android:background="@drawable/rectangle_setup_time_admin_create_voucher"
+        >
+        <TextView
+            android:id="@+id/text_size_product"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="25dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="11dp"
+            android:text="Kích cỡ"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:gravity="top"
+            />
+
+        <EditText
+            android:id="@+id/value_size_product_admin_create_product"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="250dp"
+            android:layout_marginTop="11dp"
+            android:hint="Nhập kích cỡ của sản phẩm"
+            android:textColorHint="#AEAEAE"
+            android:textSize="11sp"
+            android:background="@null"
+            android:textColor="#000000"
+            android:gravity="top"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rectangle_price_product_admin_create_product"
+        android:layout_width="411dp"
+        android:layout_height="38dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="467dp"
+        android:background="@drawable/rectangle_setup_time_admin_create_voucher">
+
+        <TextView
+            android:id="@+id/text_price_product"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="11dp"
+            android:gravity="top"
+            android:text="Giá"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/value_price_product_admin_create_product"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="250dp"
+            android:layout_marginTop="11dp"
+            android:background="@null"
+            android:gravity="top"
+            android:hint="Nhập giá của sản phẩm"
+            android:textColor="#000000"
+            android:textColorHint="#AEAEAE"
+            android:textSize="11sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rectangle_quantity_product_admin_create_product"
+        android:layout_width="411dp"
+        android:layout_height="38dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="506dp"
+        android:background="@drawable/rectangle_setup_time_admin_create_voucher">
+
+        <TextView
+            android:id="@+id/text_quantity_product"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="11dp"
+            android:gravity="top"
+            android:text="Số lượng"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/value_quantity_product_admin_create_product"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="250dp"
+            android:layout_marginTop="11dp"
+            android:background="@null"
+            android:gravity="top"
+            android:hint="Nhập số lượng sản phẩm"
+            android:textColor="#000000"
+            android:textColorHint="#AEAEAE"
+            android:textSize="11sp" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/footer_admin_create_product"
+        android:layout_width="411dp"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/footer_change_password"
+        android:elevation="4dp">
+
+        <Button
+            android:id="@+id/btn_admin_create_product"
+            android:layout_width="361dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginBottom="9dp"
+            android:background="@drawable/record_btn_save_profile"
+            android:gravity="center"
+            android:text="Hiển thị"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+</RelativeLayout>

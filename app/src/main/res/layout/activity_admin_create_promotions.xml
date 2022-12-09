@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/admin_create_promotions"
+    android:background="@drawable/login"
+    android:clipToOutline="true"
+    tools:context=".activity_admin_create_voucher">
+
+    <RelativeLayout
+        android:id="@+id/rectangle_header_admin_create_promotions"
+        android:layout_width="411dp"
+        android:layout_height="105dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="-24dp"
+        android:background="@drawable/rectangle_payment"
+        >
+        <TextView
+            android:id="@+id/text_admin_create_promotions"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="71dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="53dp"
+            android:text="Tạo chương trình khuyến mãi"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:gravity="top"
+            android:textStyle="bold"
+            />
+        <View
+            android:id="@+id/ic_back_admin_create_promotions"
+            android:layout_width="21dp"
+            android:layout_height="25dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="58dp"
+            android:background="@drawable/ic_back_payment"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rectangle_admin_name_promotions"
+        android:layout_width="411dp"
+        android:layout_height="70dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/rectangle_setup_time_admin_create_voucher">
+
+        <TextView
+            android:id="@+id/text_admin_name_promotions"
+            android:layout_width="wrap_content"
+            android:layout_height="18dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="8dp"
+            android:gravity="top"
+            android:text="Tên chương trình"
+
+            android:textColor="#000000"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/admin_name_promotions"
+            android:layout_width="350dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="30dp"
+            android:background="@null"
+            android:hint="Nhập tên chương trình"
+            android:textColor="#C6C6C6"
+            android:textSize="12sp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rectangle_setup_discount_promotions"
+        android:layout_width="411dp"
+        android:layout_height="70dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="180dp"
+        android:background="@drawable/rectangle_setup_time_admin_create_voucher">
+
+        <TextView
+            android:id="@+id/text_admin_setup_discount_promotions"
+            android:layout_width="wrap_content"
+            android:layout_height="18dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="8dp"
+            android:gravity="top"
+            android:text="Thiết lập giảm giá"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+        <View
+            android:id="@+id/line1_admin_create_promotions"
+            android:layout_width="411dp"
+            android:layout_height="0.5dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="33dp"
+            android:background="@drawable/line_profile" />
+
+        <TextView
+            android:id="@+id/text_level_discountm_create_promotions"
+            android:layout_width="60dp"
+            android:layout_height="18dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="25dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="42dp"
+            android:text="Mức giảm"
+            android:textSize="12sp"
+            android:textColor="#AEAEAE"
+            android:gravity="top"
+            />
+        <EditText
+            android:id="@+id/value_level_discount_admin_create_voucher"
+            android:layout_width="87dp"
+            android:layout_height="23dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="305dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/edit_text_admin_create_voucher"
+            android:hint="%"
+            android:gravity="right"
+            android:paddingRight="5dp"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rectangle_setup_time_admin_create_promotions"
+        android:layout_width="411dp"
+        android:layout_height="114dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="262dp"
+        android:background="@drawable/rectangle_setup_time_admin_create_voucher">
+
+        <TextView
+            android:id="@+id/text_setup_time_admin_create_promotions"
+            android:layout_width="109dp"
+            android:layout_height="18dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="11dp"
+            android:gravity="top"
+            android:text="Thiết lập thời gian"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/line2_admin_create_promotions"
+            android:layout_width="411dp"
+            android:layout_height="0.5dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="38dp"
+            android:background="@drawable/line_profile" />
+
+        <RelativeLayout
+            android:id="@+id/rectangle_time_start_admin_create_promotions"
+            android:layout_width="411dp"
+            android:layout_height="38dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="39dp"
+            android:background="@drawable/rectangle_setup_time_admin_create_voucher">
+
+            <TextView
+                android:id="@+id/text_time_start_admin_create_promotions"
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="11dp"
+                android:gravity="top"
+                android:text="Thời gian bắt đầu"
+                android:textColor="#AEAEAE"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/time_start_admin_create_promotions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="11dp"
+                android:layout_marginRight="12dp"
+                android:background="@null"
+                android:inputType="none"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/line3_admin_create_promotions"
+            android:layout_width="411dp"
+            android:layout_height="0.5dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="76dp"
+            android:background="@drawable/line_profile" />
+
+        <RelativeLayout
+            android:id="@+id/rectangle_time_end_admin_create_promotions"
+            android:layout_width="411dp"
+            android:layout_height="38dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="77dp"
+            android:background="@drawable/rectangle_setup_time_admin_create_voucher">
+
+            <TextView
+                android:id="@+id/text_time_end_admin_create_promotions"
+                android:layout_width="107dp"
+                android:layout_height="18dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="11dp"
+                android:text="Thời gian kết thúc"
+                android:textColor="#AEAEAE"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/time_end_admin_create_promotions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="11dp"
+                android:layout_marginRight="12dp"
+                android:background="@null"
+                android:inputType="none"
+                android:textSize="12sp" />
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rectangle_mark_down_create_promotions"
+        android:layout_width="411dp"
+        android:layout_height="43dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="390dp"
+        android:background="@drawable/rectangle_setup_time_admin_create_voucher">
+
+        <TextView
+            android:id="@+id/text_code_mark_down_create_promotions"
+            android:layout_width="76dp"
+            android:layout_height="18dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="14dp"
+            android:gravity="top"
+            android:text="Mã giảm giá"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/rectangle_code_mark_down_create_promotions"
+            android:layout_width="87dp"
+            android:layout_height="23dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="312dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rectangle_code_mark_down" />
+
+        <TextView
+            android:id="@+id/code_mark_down_create_promotions"
+            android:layout_width="44dp"
+            android:layout_height="16dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="334dp"
+            android:layout_marginTop="13dp"
+            android:gravity="top"
+            android:text="ABCDE"
+            android:textColor="#AEAEAE"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rectangle_add_product_create_promotions"
+        android:layout_width="411dp"
+        android:layout_height="104dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="450dp"
+        android:background="@drawable/rectangle_setup_time_admin_create_voucher" >
+
+        <RelativeLayout
+            android:id="@+id/button_add_product_create_promotions"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="26dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/button_add_product_create_promotions">
+
+            <TextView
+                android:id="@+id/text_add_product_create_promotions"
+                android:layout_width="49dp"
+                android:layout_height="30dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="25dp"
+                android:gravity="center_horizontal|top"
+                android:text="Thêm sản phẩm"
+                android:textColor="#F9A826"
+                android:textSize="10sp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/list_product_create_promotions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="129dp"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView_product_create_promotions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scrollbars="horizontal" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/footer_admin_create_promotions"
+        android:layout_width="411dp"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/footer_change_password"
+        android:elevation="4dp">
+
+        <Button
+            android:id="@+id/btn_admin_create_promotions"
+            android:layout_width="361dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginBottom="9dp"
+            android:background="@drawable/record_btn_save_profile"
+            android:gravity="center"
+            android:text="Xác nhận"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
