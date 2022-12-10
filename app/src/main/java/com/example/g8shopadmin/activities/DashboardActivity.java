@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.g8shopadmin.R;
@@ -18,7 +19,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.HashMap;
 
-public class DashboardActivity extends activity_base {
+public class DashboardActivity extends activity_base implements View.OnClickListener {
 
     private ActivityDashboardBinding binding;
     private PreferenceManager preferenceManager;
@@ -29,7 +30,7 @@ public class DashboardActivity extends activity_base {
         binding = ActivityDashboardBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         preferenceManager =  new PreferenceManager(getApplicationContext());
-        //setContentView(R.layout.activity_dashboard);
+
         setListeners();
         getToken();
     }
@@ -40,6 +41,21 @@ public class DashboardActivity extends activity_base {
         binding.iconChat.setOnClickListener(view ->{
             startActivity(new Intent(getApplicationContext(), activity_dashboard_chat.class));
         });
+
+        binding.adminWaitConfirm.setOnClickListener(this);
+        binding.voucherAdmin.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(view.getId() == binding.adminWaitConfirm.getId()) {
+
+        }
+
+        if(view.getId() == binding.voucherAdmin.getId()) {
+            Intent intent = new Intent(getApplicationContext(), activity_admin_manage_voucher.class);
+            startActivity(intent);
+        }
     }
 
     // Hàm show các thông báo

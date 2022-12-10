@@ -10,17 +10,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.g8shopadmin.R;
+import com.example.g8shopadmin.models.Voucher;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-public class AdminCustomManageVoucherListViewAdapter extends ArrayAdapter<AdminManageVoucher> {
+public class AdminCustomManageVoucherListViewAdapter extends ArrayAdapter<Voucher> {
 
-    ArrayList<AdminManageVoucher> voucher = new ArrayList<AdminManageVoucher>();
+    ArrayList<Voucher> vouchers = new ArrayList<Voucher>();
 
 
-    public AdminCustomManageVoucherListViewAdapter(Context context, int resource, ArrayList<AdminManageVoucher> objects) {
+    public AdminCustomManageVoucherListViewAdapter(Context context, int resource, ArrayList<Voucher> objects) {
         super(context, resource, objects);
-        this.voucher = objects;
+        this.vouchers = objects;
     }
 
 
@@ -45,14 +47,15 @@ public class AdminCustomManageVoucherListViewAdapter extends ArrayAdapter<AdminM
         TextView text_so_luong = (TextView) v.findViewById(R.id.admin_custom_listview_manage_voucher_so_luong);
         Button btn1 = (Button) v.findViewById(R.id.admin_custom_listview_manage_voucher_btn_01);
 
-        time.setText(voucher.get(position).getTime());
-        cost_sale.setText(voucher.get(position).getCost_sale());
-        min_cost.setText(voucher.get(position).getMin_cost());
-        text_da_su_dung.setText(voucher.get(position).getText_da_su_dung());
-        text_so_luong.setText(voucher.get(position).getText_so_luong());
-        btn1.setText(voucher.get(position).getBtn1());
+        SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy");
 
-        image.setImageResource(voucher.get(position).getImage());
+        time.setText("Từ " + formatDate.format(vouchers.get(position).getStartedAt()) + " đến " + formatDate.format(vouchers.get(position).getFinishedAt()));
+        cost_sale.setText("Số tiền giảm: đ" + vouchers.get(position).getMoneyDeals().toString());
+        min_cost.setText("Đơn tối thiểu: đ" + vouchers.get(position).getMinimumCost().toString());
+        text_da_su_dung.setText("Đã sử dung: " + vouchers.get(position).getAmount().toString());
+        text_so_luong.setText("Còn lại: " + vouchers.get(position).getAmount().toString());
+
+//        image.setImageResource(vouchers.get(position).getImage());
 
         return v;
 

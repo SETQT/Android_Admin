@@ -52,7 +52,14 @@
             android:exported="true"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".activities.MainActivity" />
-
+        <activity
+            android:name=".activities.activity_admin_manage_voucher"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activities.activity_admin_create_voucher"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize" />
         <service
             android:name=".firebase.MessagingService"
             android:exported="false">

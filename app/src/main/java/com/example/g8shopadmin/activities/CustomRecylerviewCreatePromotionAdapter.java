@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.g8shopadmin.R;
+
 import java.util.ArrayList;
 
 public class CustomRecylerviewCreatePromotionAdapter extends RecyclerView.Adapter<CustomRecylerviewCreatePromotionAdapter.MyHolder>  {

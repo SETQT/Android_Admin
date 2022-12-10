@@ -1,5 +1,6 @@
 package com.example.g8shopadmin.activities.managevoucher;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,19 +9,35 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.g8shopadmin.FragmentCallbacks;
 import com.example.g8shopadmin.MainCallbacks;
 import com.example.g8shopadmin.R;
 import com.example.g8shopadmin.activities.activity_admin_manage_voucher;
+import com.example.g8shopadmin.models.Voucher;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class AdminManageVoucherFragmentSecond extends Fragment implements FragmentCallbacks {
     activity_admin_manage_voucher main;
-    ListView listVoucher;
+    ListView listViewVoucher;
     ArrayList<AdminManageVoucher> Voucher = new ArrayList<AdminManageVoucher>();
+
+    // firestore
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    CollectionReference vouchersRef = db.collection("vouchers");
+
+    // biến xử lý
+    ArrayList<Voucher> listVoucher = new ArrayList<>();
 
     ArrayList<Integer> image = new ArrayList<>();
     ArrayList<String> time = new ArrayList<>();
@@ -51,89 +68,98 @@ public class AdminManageVoucherFragmentSecond extends Fragment implements Fragme
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         LinearLayout layout_second = (LinearLayout) inflater.inflate(R.layout.admin_custom_manage_voucher_fragment_second, null);
 
-        listVoucher = (ListView) layout_second.findViewById(R.id.admin_manage_voucher_listview);
+        listViewVoucher = (ListView) layout_second.findViewById(R.id.admin_manage_voucher_listview);
 
-        image.add(R.drawable.ma_giam_gia);image.add(R.drawable.ma_giam_gia);image.add(R.drawable.ma_giam_gia);
-        time.add("20/11/2022 - 30/11/2022");time.add("22/11/2022 - 30/11/2022");time.add("25/11/2022 - 2/12/2022");
-        cost_sale.add("đ50.000");cost_sale.add("đ100.000");cost_sale.add("đ70.000");
-        min_cost.add("Đơn tối thiểu: đ300.000");min_cost.add("Đơn tối thiểu: đ500.000"); min_cost.add("Đơn tối thiểu: đ400.000");
-        text_da_su_dung.add("Đã sử dụng: 10");text_da_su_dung.add("Đã sử dụng: 0");text_da_su_dung.add("Đã sử dụng: 0");
-        text_so_luong.add("Số lượng: 50");text_so_luong.add("Số lượng: 20");text_so_luong.add("Số lượng: 30");
-        btn1.add("Sửa");btn1.add("Sửa");btn1.add("Sửa");
+//        AdminCustomManageVoucherListViewAdapter myAdapter = new AdminCustomManageVoucherListViewAdapter(getActivity(), R.layout.admin_custom_listview_manage_voucher, Voucher);
+//        listVoucher.setAdapter(myAdapter);
 
-        for (int i = 0; i < image.size(); i++) {
-            Voucher.add(new AdminManageVoucher(image.get(i), time.get(i), cost_sale.get(i), min_cost.get(i), text_da_su_dung.get(i), text_so_luong.get(i), btn1.get(i)));
-        }
-
-        AdminCustomManageVoucherListViewAdapter myAdapter = new AdminCustomManageVoucherListViewAdapter(getActivity(), R.layout.admin_custom_listview_manage_voucher, Voucher);
-        listVoucher.setAdapter(myAdapter);
-
+        manage_voucher_asynctask mv_at = new manage_voucher_asynctask("1");
+        mv_at.execute();
 
         return layout_second;
     }
 
     @Override
     public void onMsgFromMainToFragment(String strValue) {
-
-        Log.i("TAG", "onMsgFromMainToFragment: " + strValue);
-
-        if (strValue == "Dang hoat dong") {
-            image.clear();time.clear();cost_sale.clear();min_cost.clear();
-            text_so_luong.clear();text_da_su_dung.clear();btn1.clear();
-
-            image.add(R.drawable.ma_giam_gia);image.add(R.drawable.ma_giam_gia);image.add(R.drawable.ma_giam_gia);
-            time.add("20/11/2022 - 30/11/2022");time.add("22/11/2022 - 30/11/2022");time.add("25/11/2022 - 2/12/2022");
-            cost_sale.add("đ50.000");cost_sale.add("đ100.000");cost_sale.add("đ70.000");
-            min_cost.add("Đơn tối thiểu: đ300.000");min_cost.add("Đơn tối thiểu: đ500.000"); min_cost.add("Đơn tối thiểu: đ400.000");
-            text_da_su_dung.add("Đã sử dụng: 10");text_da_su_dung.add("Đã sử dụng: 0");text_da_su_dung.add("Đã sử dụng: 0");
-            text_so_luong.add("Số lượng: 50");text_so_luong.add("Số lượng: 20");text_so_luong.add("Số lượng: 30");
-            btn1.add("Xóa");btn1.add("Xóa");btn1.add("Xóa");
-            Voucher.clear();
-
-            for (int i = 0; i < image.size(); i++) {
-                Voucher.add(new AdminManageVoucher(image.get(i), time.get(i), cost_sale.get(i), min_cost.get(i), text_da_su_dung.get(i), text_so_luong.get(i), btn1.get(i)));
-            }
-        }
-
-        if (strValue == "Sap dien ra") {
-            image.clear();time.clear();cost_sale.clear();min_cost.clear();
-            text_so_luong.clear();text_da_su_dung.clear();btn1.clear();
-
-            image.add(R.drawable.ma_giam_gia);image.add(R.drawable.ma_giam_gia);
-            time.add("20/11/2022 - 30/11/2022");time.add("22/11/2022 - 30/11/2022");
-            cost_sale.add("đ50.000");cost_sale.add("đ100.000");
-            min_cost.add("Đơn tối thiểu: đ300.000");min_cost.add("Đơn tối thiểu: đ500.000");
-            text_da_su_dung.add("Đã sử dụng: 10");text_da_su_dung.add("Đã sử dụng: 0");
-            text_so_luong.add("Số lượng: 50");text_so_luong.add("Số lượng: 20");
-            btn1.add("Sửa");btn1.add("Sửa");
-            Voucher.clear();
-
-            for (int i = 0; i < image.size(); i++) {
-                Voucher.add(new AdminManageVoucher(image.get(i), time.get(i), cost_sale.get(i), min_cost.get(i), text_da_su_dung.get(i), text_so_luong.get(i), btn1.get(i)));
-            }
-        }
-
-        if (strValue == "Da ket thuc") {
-            image.clear();time.clear();cost_sale.clear();min_cost.clear();
-            text_so_luong.clear();text_da_su_dung.clear();btn1.clear();
-
-            image.add(R.drawable.ma_giam_gia);image.add(R.drawable.ma_giam_gia);
-            time.add("14/11/2022 - 19/11/2022");time.add("10/11/2022 - 18/11/2022");
-            cost_sale.add("đ50.000");cost_sale.add("đ200.000");
-            min_cost.add("Đơn tối thiểu: đ300.000");min_cost.add("Đơn tối thiểu: đ1.000.000");
-            text_da_su_dung.add("Đã sử dụng: 10");text_da_su_dung.add("Đã sử dụng: 10");
-            text_so_luong.add("Số lượng: 10");text_so_luong.add("Số lượng: 10");
-            btn1.add("Xem");btn1.add("Xem");
-            Voucher.clear();
-
-            for (int i = 0; i < image.size(); i++) {
-                Voucher.add(new AdminManageVoucher(image.get(i), time.get(i), cost_sale.get(i), min_cost.get(i), text_da_su_dung.get(i), text_so_luong.get(i), btn1.get(i)));
-            }
-        }
-
-        AdminCustomManageVoucherListViewAdapter myAdapter = new AdminCustomManageVoucherListViewAdapter(getActivity(), R.layout.admin_custom_listview_manage_voucher, Voucher);
-        listVoucher.setAdapter(myAdapter);
+        manage_voucher_asynctask mv_at = new manage_voucher_asynctask(strValue);
+        mv_at.execute();
     }
 
+    private class manage_voucher_asynctask extends AsyncTask<Void, Voucher, Voucher> {
+        Date curDate;
+        String state;
+
+        manage_voucher_asynctask(String state) {
+            this.curDate = new Date();
+            this.state = state;
+        }
+
+        @Override
+        protected Voucher doInBackground(Void... voids) {
+            try {
+                vouchersRef
+                        .get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                boolean isHave = false;
+
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Voucher voucher = document.toObject(Voucher.class);
+
+                                    isHave = true;
+
+                                    switch (state) {
+                                        case "1":
+                                            if (curDate.after(voucher.getStartedAt()) && curDate.before(voucher.getFinishedAt())) {
+                                                publishProgress(voucher);
+                                            } else {
+                                                isHave = false;
+                                            }
+                                            break;
+                                        case "2":
+                                            if (curDate.before(voucher.getStartedAt())) {
+                                                publishProgress(voucher);
+                                            } else {
+                                                isHave = false;
+                                            }
+                                            break;
+                                        case "3":
+                                            if (curDate.after(voucher.getFinishedAt())) {
+                                                publishProgress(voucher);
+                                            } else {
+                                                isHave = false;
+                                            }
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                }
+
+                                if (!isHave) {
+                                    onProgressUpdate();
+                                }
+                            }
+                        });
+            } catch (Exception error) {
+                Log.e("ERROR", "AdminMangerVoucherFragmentSecond doInBackground: ", error);
+            }
+            return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(Voucher... vouchers) {
+            super.onProgressUpdate(vouchers);
+
+            if (vouchers.length == 0) {
+                listVoucher.clear();
+            } else {
+                listVoucher.add(vouchers[0]);
+            }
+
+            AdminCustomManageVoucherListViewAdapter myAdapter = new AdminCustomManageVoucherListViewAdapter(getActivity(), R.layout.admin_custom_listview_manage_voucher, listVoucher);
+            listViewVoucher.setAdapter(myAdapter);
+        }
+    }
 
 }

@@ -11,14 +11,15 @@ import androidx.fragment.app.Fragment;
 
 import com.example.g8shopadmin.R;
 import com.example.g8shopadmin.activities.activity_admin_manage_voucher;
+import com.example.g8shopadmin.databinding.ActivityAdminManageVoucherBinding;
+import com.example.g8shopadmin.utilities.PreferenceManager;
 
-public class AdminManageVoucherFragmentFirst extends Fragment{
+public class AdminManageVoucherFragmentFirst extends Fragment {
     // this fragment shows a ListView
     activity_admin_manage_voucher main;
     TextView admin_custom_manage_voucher_option_dang_hoat_dong, admin_custom_manage_voucher_option_da_ket_thuc;
     TextView admin_custom_manage_voucher_option_sap_dien_ra;
 
-    // convenient constructor(accept arguments, copy them to a bundle, binds bundle to fragment)
     public static AdminManageVoucherFragmentFirst newInstance(String strArg) {
         AdminManageVoucherFragmentFirst fragment = new AdminManageVoucherFragmentFirst();
         Bundle args = new Bundle();
@@ -29,6 +30,7 @@ public class AdminManageVoucherFragmentFirst extends Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         try {
             main = (activity_admin_manage_voucher) getActivity();
         }
@@ -43,7 +45,6 @@ public class AdminManageVoucherFragmentFirst extends Fragment{
         admin_custom_manage_voucher_option_dang_hoat_dong  = (TextView) layout_first.findViewById(R.id.admin_custom_manage_voucher_option_dang_hoat_dong);
         admin_custom_manage_voucher_option_da_ket_thuc  = (TextView) layout_first.findViewById(R.id.admin_custom_manage_voucher_option_da_ket_thuc);
         admin_custom_manage_voucher_option_sap_dien_ra = (TextView) layout_first.findViewById(R.id.admin_custom_manage_voucher_option_sap_dien_ra);
-
         admin_custom_manage_voucher_option_dang_hoat_dong.setTextAppearance(getActivity(), R.style.setTextAfterClick);
 
         admin_custom_manage_voucher_option_dang_hoat_dong.setOnClickListener(new View.OnClickListener() {
@@ -52,7 +53,7 @@ public class AdminManageVoucherFragmentFirst extends Fragment{
                 admin_custom_manage_voucher_option_dang_hoat_dong.setTextAppearance(getActivity(), R.style.setTextAfterClick);
                 admin_custom_manage_voucher_option_da_ket_thuc.setTextAppearance(getActivity(), R.style.setTextNotClick);
                 admin_custom_manage_voucher_option_sap_dien_ra.setTextAppearance(getActivity(), R.style.setTextNotClick);
-                String dataSend = "Dang hoat dong";
+                String dataSend = "1";
                 main.onMsgFromFragToMain("BLUE-FRAG", dataSend);
             }});
 
@@ -62,7 +63,7 @@ public class AdminManageVoucherFragmentFirst extends Fragment{
                 admin_custom_manage_voucher_option_dang_hoat_dong.setTextAppearance(getActivity(), R.style.setTextNotClick);
                 admin_custom_manage_voucher_option_da_ket_thuc.setTextAppearance(getActivity(), R.style.setTextNotClick);
                 admin_custom_manage_voucher_option_sap_dien_ra.setTextAppearance(getActivity(), R.style.setTextAfterClick);
-                String dataSend = "Sap dien ra";
+                String dataSend = "2";
                 main.onMsgFromFragToMain("BLUE-FRAG", dataSend);
             }});
 
@@ -72,7 +73,7 @@ public class AdminManageVoucherFragmentFirst extends Fragment{
                 admin_custom_manage_voucher_option_dang_hoat_dong.setTextAppearance(getActivity(), R.style.setTextNotClick);
                 admin_custom_manage_voucher_option_da_ket_thuc.setTextAppearance(getActivity(), R.style.setTextAfterClick);
                 admin_custom_manage_voucher_option_sap_dien_ra.setTextAppearance(getActivity(), R.style.setTextNotClick);
-                String dataSend = "Da ket thuc";
+                String dataSend = "3";
                 main.onMsgFromFragToMain("BLUE-FRAG", dataSend);
             }});
 
@@ -82,6 +83,5 @@ public class AdminManageVoucherFragmentFirst extends Fragment{
     public void onMsgFromMainToFragment(String strValue) {
         String dataSend = strValue;
         main.onMsgFromFragToMain("BLUE-FRAG", dataSend);
-
     }
 }// class

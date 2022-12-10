@@ -5,8 +5,7 @@
     android:layout_height="wrap_content"
     android:id="@+id/admin_create_voucher"
     android:background="@drawable/login"
-    android:clipToOutline="true"
-    tools:context=".activity_admin_create_voucher">
+    android:clipToOutline="true">
 
     <RelativeLayout
         android:id="@+id/rectangle_header_admin_create_voucher"
@@ -31,6 +30,7 @@
             android:gravity="top"
             android:textStyle="bold"
             />
+
         <View
             android:id="@+id/ic_back_admin_create_voucher"
             android:layout_width="21dp"
@@ -39,7 +39,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="58dp"
-            android:background="@drawable/ic_back_payment"/>
+            android:background="@drawable/ic_back_payment" />
     </RelativeLayout>
 
     <RelativeLayout

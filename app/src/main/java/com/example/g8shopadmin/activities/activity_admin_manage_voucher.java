@@ -1,27 +1,27 @@
 package com.example.g8shopadmin.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
-
 import com.example.g8shopadmin.MainCallbacks;
 import com.example.g8shopadmin.R;
 import com.example.g8shopadmin.activities.managevoucher.AdminManageVoucherFragmentFirst;
 import com.example.g8shopadmin.activities.managevoucher.AdminManageVoucherFragmentSecond;
+import com.example.g8shopadmin.databinding.ActivityAdminManageVoucherBinding;
 
-public class activity_admin_manage_voucher extends FragmentActivity implements MainCallbacks {
-    // khai báo biến UI
-    View icon_back;
-
+public class activity_admin_manage_voucher extends FragmentActivity implements MainCallbacks, View.OnClickListener {
     FragmentTransaction ft; AdminManageVoucherFragmentFirst firstFrag; AdminManageVoucherFragmentSecond secondFrag;
+
+    private ActivityAdminManageVoucherBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_manage_voucher);
+        binding = ActivityAdminManageVoucherBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         ft = getSupportFragmentManager().beginTransaction();
         firstFrag = AdminManageVoucherFragmentFirst.newInstance("first-frag");
@@ -33,22 +33,25 @@ public class activity_admin_manage_voucher extends FragmentActivity implements M
         ft.replace(R.id.admin_manage_voucher_fragment_second, secondFrag);
         ft.commit();
 
+        binding.iconBack.setOnClickListener(this);
+        binding.adminManageVoucherButton.setOnClickListener(this);
+    }
 
-        icon_back = (View) findViewById(R.id.icon_back);
+    @Override
+    public void onClick(View view) {
+        if(view.getId() == binding.iconBack.getId()) {
+            Intent moveActivity = new Intent(getApplicationContext(), DashboardActivity.class);
+            startActivity(moveActivity);
+        }
 
-        icon_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Intent moveActivity = new Intent(getApplicationContext(), activity_dashboard.class);
-//                startActivity(moveActivity);
-            }
-        });
-
+        if(view.getId() == binding.adminManageVoucherButton.getId()) {
+            Intent moveActivity = new Intent(getApplicationContext(), activity_admin_create_voucher.class);
+            startActivity(moveActivity);
+        }
     }
 
     @Override
     public void onMsgFromFragToMain(String sender, String strValue) {
-//        Toast.makeText(getApplication(), " MAIN GOT>> " + sender + "\n" + strValue, Toast.LENGTH_LONG).show();
         if (sender.equals("RED-FRAG")) {
             try { // forward blue-data to redFragment using its callback method
                 firstFrag.onMsgFromMainToFragment( strValue);

@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 
+import com.example.g8shopadmin.R;
+
 import java.util.ArrayList;
 
 public class activity_admin_create_product extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
