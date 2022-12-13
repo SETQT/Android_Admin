@@ -26,6 +26,10 @@
             android:exported="true"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:name=".activities.activity_admin_create_product"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
             android:name=".activities.SignUpActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize" />

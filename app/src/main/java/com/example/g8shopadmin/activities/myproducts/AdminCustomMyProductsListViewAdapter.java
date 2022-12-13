@@ -9,17 +9,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.g8shopadmin.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class AdminCustomMyProductsListViewAdapter extends ArrayAdapter<AdminMyProducts> {
+public class AdminCustomMyProductsListViewAdapter extends ArrayAdapter<Product> {
 
-    ArrayList<AdminMyProducts> myProducts = new ArrayList<AdminMyProducts>();
+    ArrayList<Product> myProducts = new ArrayList<Product>();
+    Context curContext;
 
-
-    public AdminCustomMyProductsListViewAdapter(Context context, int resource, ArrayList<AdminMyProducts> objects) {
+    public AdminCustomMyProductsListViewAdapter(Context context, int resource, ArrayList<Product> objects) {
         super(context, resource, objects);
         this.myProducts = objects;
+        this.curContext=context;
     }
 
 
@@ -45,13 +47,16 @@ public class AdminCustomMyProductsListViewAdapter extends ArrayAdapter<AdminMyPr
         ImageView img = (ImageView) v.findViewById(R.id.admin_custom_listview_my_products_picture) ;
 
         name.setText(myProducts.get(position).getName());
-        cost.setText(myProducts.get(position).getCost());
-        text_kho_hang.setText(myProducts.get(position).getText_kho_hang());
-        text_da_ban.setText(myProducts.get(position).getText_da_ban());
-        text_thich.setText(myProducts.get(position).getText_thich());
-        text_luot_xem.setText(myProducts.get(position).getText_luot_xem());
+        cost.setText(myProducts.get(position).getPrice().toString());
+        text_kho_hang.setText(myProducts.get(position).getAmount().toString());
+        text_da_ban.setText(myProducts.get(position).getAmountOfSold().toString());
+//        text_thich.setText(myProducts.get(position).getText_thich());
+        text_thich.setText("0###");
+//        text_luot_xem.setText(myProducts.get(position).getText_luot_xem());
+        text_luot_xem.setText("0###");
 
-        img.setImageResource(myProducts.get(position).getPicture());
+//        img.setImageResource(myProducts.get(position).getPicture());
+        Picasso.with(curContext).load(myProducts.get(position).getImage()).into(img);
 
         return v;
 

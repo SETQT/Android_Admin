@@ -49,7 +49,7 @@ public class AdminMyProductsFragmentFirst extends Fragment{
             public void onClick(View view) {
                 admin_custom_my_products_option_con_hang.setTextAppearance(getActivity(), R.style.setTextAfterClick);
                 admin_custom_my_products_option_het_hang.setTextAppearance(getActivity(), R.style.setTextNotClick);
-                String dataSend = "Con hang";
+                String dataSend = "0";
                 main.onMsgFromFragToMain("BLUE-FRAG", dataSend);
             }});
 
@@ -58,7 +58,7 @@ public class AdminMyProductsFragmentFirst extends Fragment{
             public void onClick(View view) {
                 admin_custom_my_products_option_con_hang.setTextAppearance(getActivity(), R.style.setTextNotClick);
                 admin_custom_my_products_option_het_hang.setTextAppearance(getActivity(), R.style.setTextAfterClick);
-                String dataSend = "Het hang";
+                String dataSend = "1";
                 main.onMsgFromFragToMain("BLUE-FRAG", dataSend);
             }});
 
