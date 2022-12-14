@@ -16,6 +16,7 @@ import com.example.g8shopadmin.R;
 import com.example.g8shopadmin.models.Voucher;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -62,10 +63,9 @@ public class AdminCustomManageVoucherListViewAdapter extends ArrayAdapter<Vouche
         time.setText("Từ " + formatDate.format(vouchers.get(position).getStartedAt()) + " đến " + formatDate.format(vouchers.get(position).getFinishedAt()));
         cost_sale.setText("Số tiền giảm: đ" + vouchers.get(position).getMoneyDeals().toString());
         min_cost.setText("Đơn tối thiểu: đ" + vouchers.get(position).getMinimumCost().toString());
-        text_da_su_dung.setText("Đã sử dung: " + vouchers.get(position).getAmount().toString());
+        text_da_su_dung.setText("Đã sử dung: " + vouchers.get(position).getAmoutOfUsed().toString());
         text_so_luong.setText("Còn lại: " + vouchers.get(position).getAmount().toString());
-
-//        image.setImageResource(vouchers.get(position).getImage());
+        Picasso.with(curContext).load(vouchers.get(position).getImage()).into(image);
 
         admin_custom_listview_manage_voucher_button_xoa.setOnClickListener(new View.OnClickListener() {
             @Override

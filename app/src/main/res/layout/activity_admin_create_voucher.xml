@@ -449,7 +449,6 @@
 
 
             <ImageView
-                android:scaleType="centerCrop"
                 android:id="@+id/image_voucher_create_voucher"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
@@ -457,7 +456,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="120dp"
                 android:layout_marginTop="10dp"
-                />
+                android:scaleType="centerCrop" />
         </RelativeLayout>
     </LinearLayout>
     </ScrollView>

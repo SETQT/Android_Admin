@@ -18,12 +18,12 @@
     <ImageView
         android:id="@+id/logo_ma_giam_gia"
         android:layout_width="67dp"
-        android:layout_height="35dp"
+        android:layout_height="67dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="35dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/ma_giam_gia" />
+         />
 
     <TextView
         android:id="@+id/admin_custom_listview_manage_voucher_title"
