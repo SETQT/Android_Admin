@@ -10,6 +10,8 @@ import android.widget.LinearLayout;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.g8shopadmin.R;
+
 
 public class selectProductFragmentFirst extends Fragment implements View.OnClickListener {
     // this fragment shows a ListView
