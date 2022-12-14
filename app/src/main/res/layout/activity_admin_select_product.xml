@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/activity_admin_select_product"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="#E5E5E5"
+android:orientation="vertical">
+
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+
+    <View
+        android:id="@+id/rectangle_header_seclect_product"
+        android:layout_width="wrap_content"
+        android:layout_height="81dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="0dp"
+        android:background="@drawable/rectangle_payment" />
+
+    <View
+        android:id="@+id/icon_back_select_product"
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/ic_back_payment"
+        android:backgroundTint="#FFFFFF"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/text_title_select_product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="124dp"
+        android:layout_marginTop="29dp"
+        android:gravity="top"
+        android:text="Thêm sản phẩm"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+</RelativeLayout>
+
+<FrameLayout android:id="@+id/select_product_fragment_first"
+    android:layout_width="411dp"
+    android:layout_height="80dp"
+    android:orientation="vertical" />
+
+<FrameLayout android:id="@+id/select_product_fragment_second"
+    android:layout_width="411dp"
+    android:layout_height="match_parent"
+    android:layout_weight="2"
+    android:orientation="vertical"
+    android:layout_marginTop="15dp"
+    android:layout_marginBottom="5dp" />
+<RelativeLayout
+    android:id="@+id/footer_admin_select_product"
+    android:layout_width="411dp"
+    android:layout_height="60dp"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentBottom="true"
+    android:background="@drawable/footer_change_password"
+    android:elevation="4dp">
+    <TextView
+        android:id="@+id/quantity_selected_admin_select_product"
+        android:layout_width="wrap_content"
+        android:layout_height="21dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="49dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:text="0"
+        android:textSize="16sp"
+        android:textColor="#F9A826"
+        android:gravity="top"
+        />
+    <TextView
+        android:id="@+id/text_selected_admin_select_product"
+        android:layout_width="wrap_content"
+        android:layout_height="21dp"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/quantity_selected_admin_select_product"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:text="đã chọn"
+        android:textSize="16sp"
+        android:textColor="#AEAEAE"
+        android:gravity="top"
+        />
+
+    <Button
+        android:id="@+id/btn_admin_select_product"
+        android:layout_width="115dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="9dp"
+        android:background="@drawable/record_btn_save_profile"
+        android:gravity="center"
+        android:text="Thêm"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp" />
+</RelativeLayout>
+
+</LinearLayout>
