@@ -14,10 +14,11 @@ public class Voucher implements Serializable {
     private Date finishedAt;
     private Integer moneyDeals; // số tiền được khuyến mãi trong voucher này
     private String type; // loại voucher là freeship hay
+    private String idDoc; // id document của voucher
 
     public Voucher() {}
 
-    public Voucher(String id, String image, String title, Integer minimumCost, Integer amount, Date startedAt, Date finishedAt, Integer moneyDeals, String type) {
+    public Voucher(String id, String image, String title, Integer minimumCost, Integer amount, Date startedAt, Date finishedAt, Integer moneyDeals, String type, String idDoc) {
         this.id = id;
         this.image = image;
         this.title = title;
@@ -27,6 +28,7 @@ public class Voucher implements Serializable {
         this.finishedAt = finishedAt;
         this.moneyDeals = moneyDeals;
         this.type = type;
+        this.idDoc = idDoc;
     }
 
     public String getId() {
@@ -99,6 +101,14 @@ public class Voucher implements Serializable {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getIdDoc() {
+        return idDoc;
+    }
+
+    public void setIdDoc(String idDoc) {
+        this.idDoc = idDoc;
     }
 
     @Override
