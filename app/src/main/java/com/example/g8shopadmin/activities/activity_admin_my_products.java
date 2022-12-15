@@ -18,7 +18,7 @@ public class activity_admin_my_products extends FragmentActivity implements Main
     // khai báo biến UI
     View icon_back, icon_chat;
     Button add;
-//    private  activity_admin_my_products  binding;
+
 
     FragmentTransaction ft;
     AdminMyProductsFragmentFirst firstFrag;
@@ -58,16 +58,15 @@ public class activity_admin_my_products extends FragmentActivity implements Main
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent moveActivity = new Intent(getApplicationContext(), activity_admin_create_product.class);
-//                startActivity(moveActivity);
+
                 startActivity(new Intent(getApplicationContext(), activity_admin_create_product.class));
             }
         });
         icon_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent moveActivity = new Intent(getApplicationContext(), activity_dashboard.class);
-//                startActivity(moveActivity);
+                Intent moveActivity = new Intent(getApplicationContext(), DashboardActivity.class);
+                startActivity(moveActivity);
             }
         });
 
@@ -75,7 +74,7 @@ public class activity_admin_my_products extends FragmentActivity implements Main
 
     @Override
     public void onMsgFromFragToMain(String sender, String strValue) {
-//        Toast.makeText(getApplication(), " MAIN GOT>> " + sender + "\n" + strValue, Toast.LENGTH_LONG).show();
+
         if (sender.equals("RED-FRAG")) {
             try { // forward blue-data to redFragment using its callback method
                 firstFrag.onMsgFromMainToFragment(strValue);

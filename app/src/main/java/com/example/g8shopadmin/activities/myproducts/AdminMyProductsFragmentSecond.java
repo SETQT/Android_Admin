@@ -113,6 +113,7 @@ public class AdminMyProductsFragmentSecond extends Fragment implements FragmentC
 
                                 for (QueryDocumentSnapshot document : task.getResult()) {
                                     Product product = document.toObject(Product.class);
+                                    product.setIdDoc(document.getId());
 //                                    isHave = true;
                                     if (state.equals("0")) {
 //                                        Log.d("ASd", "onComplete: " + "con");

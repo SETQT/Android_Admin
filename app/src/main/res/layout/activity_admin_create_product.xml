@@ -49,7 +49,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="81dp"
-        android:background="@drawable/rectangle_setup_time_admin_create_voucher" >
+        android:background="@drawable/rectangle_setup_time_admin_create_voucher">
 
         <RelativeLayout
             android:id="@+id/button_add_image_create_product"
@@ -85,10 +85,10 @@
             android:layout_marginTop="15dp"
             android:orientation="vertical">
 
-            <androidx.recyclerview.widget.RecyclerView
+            <ImageView
                 android:id="@+id/recyclerView_product_create_product"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:scrollbars="horizontal" />
         </LinearLayout>
     </RelativeLayout>
@@ -246,13 +246,12 @@
             android:layout_alignParentTop="true"
             android:layout_marginLeft="250dp"
             android:layout_marginTop="11dp"
-            android:hint="Nhập màu sắc của sản phẩm"
-            android:textColorHint="#AEAEAE"
-            android:textSize="11sp"
             android:background="@null"
-            android:textColor="#000000"
             android:gravity="top"
-            />
+            android:hint="Nhập màu sắc của sản phẩm"
+            android:textColor="#000000"
+            android:textColorHint="#AEAEAE"
+            android:textSize="11sp" />
 
     </RelativeLayout>
 
@@ -288,13 +287,12 @@
             android:layout_alignParentTop="true"
             android:layout_marginLeft="250dp"
             android:layout_marginTop="11dp"
-            android:hint="Nhập kích cỡ của sản phẩm"
-            android:textColorHint="#AEAEAE"
-            android:textSize="11sp"
             android:background="@null"
-            android:textColor="#000000"
             android:gravity="top"
-            />
+            android:hint="Nhập kích cỡ của sản phẩm"
+            android:textColor="#000000"
+            android:textColorHint="#AEAEAE"
+            android:textSize="11sp" />
 
     </RelativeLayout>
 

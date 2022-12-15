@@ -135,7 +135,7 @@
         android:layout_height="27dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="245dp"
+        android:layout_marginLeft="247dp"
         android:layout_marginTop="139dp"
         android:background="@drawable/custom_listview_my_products_button"
         android:text="Xóa"
