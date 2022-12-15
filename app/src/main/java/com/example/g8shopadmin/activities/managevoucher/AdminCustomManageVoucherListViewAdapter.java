@@ -3,6 +3,7 @@ package com.example.g8shopadmin.activities.managevoucher;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.g8shopadmin.R;
+import com.example.g8shopadmin.activities.activity_admin_create_voucher;
 import com.example.g8shopadmin.models.Voucher;
+import com.example.g8shopadmin.utilities.Constants;
+import com.example.g8shopadmin.utilities.PreferenceManager;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
@@ -22,7 +26,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class AdminCustomManageVoucherListViewAdapter extends ArrayAdapter<Voucher> {
-
     ArrayList<Voucher> vouchers = new ArrayList<Voucher>();
     Context curContext;
 
@@ -44,7 +47,6 @@ public class AdminCustomManageVoucherListViewAdapter extends ArrayAdapter<Vouche
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        // TODO Auto-generated method stub
         View v = convertView;
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         v = inflater.inflate(R.layout.admin_custom_listview_manage_voucher, null);
@@ -57,6 +59,7 @@ public class AdminCustomManageVoucherListViewAdapter extends ArrayAdapter<Vouche
         TextView text_so_luong = (TextView) v.findViewById(R.id.admin_custom_listview_manage_voucher_so_luong);
         Button btn1 = (Button) v.findViewById(R.id.admin_custom_listview_manage_voucher_btn_01);
         Button admin_custom_listview_manage_voucher_button_xoa = (Button) v.findViewById(R.id.admin_custom_listview_manage_voucher_button_xoa);
+        Button admin_custom_listview_manage_voucher_btn_01 = (Button) v.findViewById(R.id.admin_custom_listview_manage_voucher_btn_01);
 
         SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -77,6 +80,9 @@ public class AdminCustomManageVoucherListViewAdapter extends ArrayAdapter<Vouche
                             public void onClick(DialogInterface dialog, int id) {
                                 vouchersRef.document(vouchers.get(position).getIdDoc()).delete();
                                 Toast.makeText(curContext, "Đã xóa voucher thành công!", Toast.LENGTH_LONG).show();
+
+                                vouchers.remove(position);
+                                notifyDataSetChanged();
                             }
                         })
                         .setNegativeButton("Không", null)
@@ -84,8 +90,16 @@ public class AdminCustomManageVoucherListViewAdapter extends ArrayAdapter<Vouche
             }
         });
 
-        return v;
+        admin_custom_listview_manage_voucher_btn_01.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent moveActivity = new Intent(curContext, activity_admin_create_voucher.class);
+                moveActivity.putExtra(Constants.IDDOC_VOUCHER_TO_CREATE_VOUCHER, vouchers.get(position).getIdDoc());
+                curContext.startActivity(moveActivity);
+            }
+        });
 
+        return v;
     }
 }
 

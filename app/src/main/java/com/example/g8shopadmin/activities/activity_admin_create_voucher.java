@@ -6,6 +6,7 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.text.InputType;
 import android.util.Log;
@@ -16,39 +17,38 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.g8shopadmin.R;
 import com.example.g8shopadmin.databinding.ActivityAdminCreateVoucherBinding;
 import com.example.g8shopadmin.models.Voucher;
+import com.example.g8shopadmin.utilities.Constants;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-
+import com.squareup.picasso.Picasso;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class activity_admin_create_voucher extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
 
     private ActivityAdminCreateVoucherBinding binding;
-
     private final int GALLERY_REQ_CODE = 1000;
 
     String[] typeVouchers = {"Freeship", "Discount"};
     String typeSelected;
     Date timeCreatedAt, timeFinishedAt;
     Uri pathImageVoucher;
+    String idDocVoucher;
+    Voucher curVoucher;
 
     // firestore
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -71,6 +71,46 @@ public class activity_admin_create_voucher extends AppCompatActivity implements 
         binding.icBackAdminCreateVoucher.setOnClickListener(this);
         binding.buttonAddImageCreateVoucher.setOnClickListener(this);
         binding.btnAdminCreateVoucher.setOnClickListener(this);
+
+        Intent intent = getIntent();
+        if (intent.hasExtra(Constants.IDDOC_VOUCHER_TO_CREATE_VOUCHER)) {
+            idDocVoucher = intent.getStringExtra(Constants.IDDOC_VOUCHER_TO_CREATE_VOUCHER);
+
+            vouchersRef.document(idDocVoucher).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        curVoucher = task.getResult().toObject(Voucher.class);
+
+                        binding.adminNameVoucherCreateVoucher.setText(curVoucher.getTitle());
+                        binding.valueReductionRateAdminCreateVoucher.setText(curVoucher.getMoneyDeals().toString());
+                        binding.valueMinOrderAdminCreateVoucher.setText(curVoucher.getMinimumCost().toString());
+                        binding.valueNumberCodeAdminCreateVoucher.setText(curVoucher.getAmount().toString());
+
+                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+
+                        timeCreatedAt = curVoucher.getStartedAt();
+                        timeFinishedAt = curVoucher.getFinishedAt();
+
+                        binding.timeStartAdminCreateVoucher.setText(simpleDateFormat.format(curVoucher.getStartedAt()));
+                        binding.timeEndAdminCreateVoucher.setText(simpleDateFormat.format(curVoucher.getFinishedAt()));
+                        binding.codeMarkDownCreateVoucher.setText(curVoucher.getId());
+                        Picasso.with(getApplicationContext()).load(curVoucher.getImage()).into(binding.imageVoucherCreateVoucher);
+                        switch (curVoucher.getType()) {
+                            case "freeship":
+                                binding.spinerCreateVoucher.setSelection(0);
+                                break;
+                            case "discount":
+                                binding.spinerCreateVoucher.setSelection(1);
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+            });
+
+        }
     }
 
     @Override
@@ -102,11 +142,11 @@ public class activity_admin_create_voucher extends AppCompatActivity implements 
                     binding.valueMinOrderAdminCreateVoucher.getText() == null ||
                     binding.valueNumberCodeAdminCreateVoucher.getText() == null ||
                     timeCreatedAt == null ||
-                    timeFinishedAt == null) {
+                    timeFinishedAt == null ||
+                    (pathImageVoucher == null && idDocVoucher == null)) {
                 new AlertDialog.Builder(activity_admin_create_voucher.this)
                         .setMessage("Vui lòng điền đầy đủ thông tin!")
                         .setCancelable(true)
-                        .setPositiveButton("OKE", null)
                         .show();
             } else {
                 // lấy thông tin voucher
@@ -124,18 +164,30 @@ public class activity_admin_create_voucher extends AppCompatActivity implements 
                 binding.codeMarkDownCreateVoucher.setText(newVoucher.getId());
 
                 try {
-                    new Timer().schedule(new TimerTask() {
-                        @Override
+                    if (pathImageVoucher != null) {
+                        uploadFileAndPostToDB(newVoucher, pathImageVoucher);
+                    } else {
+                        newVoucher.setImage(curVoucher.getImage());
+
+                        // cập nhật lên db
+                        vouchersRef.document(idDocVoucher).set(newVoucher);
+                    }
+
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
                         public void run() {
-                            uploadFileAndPostToDB(newVoucher, pathImageVoucher);
+                            if (idDocVoucher != null) {
+                                Toast.makeText(activity_admin_create_voucher.this, "Thêm voucher thành công!", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(activity_admin_create_voucher.this, "Cập nhật voucher thành công!", Toast.LENGTH_SHORT).show();
+                            }
+
+                            Intent moveActivity = new Intent(activity_admin_create_voucher.this, activity_admin_manage_voucher.class);
+                            activity_admin_create_voucher.this.startActivity(moveActivity);
+                            activity_admin_create_voucher.this.finish();
                         }
-                    }, 5000);
-
-                    Toast.makeText(activity_admin_create_voucher.this, "Thêm voucher thành công!", Toast.LENGTH_SHORT).show();
-
-                    Intent moveActivity = new Intent(getApplicationContext(), activity_admin_manage_voucher.class);
-                    startActivity(moveActivity);
-                }catch (Exception error) {
+                    }, 3000);
+                } catch (Exception error) {
                     Log.e("ERROR", "activity_admin_create_voucher onClick: ", error);
                 }
             }
@@ -225,8 +277,11 @@ public class activity_admin_create_voucher extends AppCompatActivity implements 
                     String urlImageVoucher = downloadUri.toString();
 
                     newVoucher.setImage(urlImageVoucher);
-
-                    vouchersRef.add(newVoucher);
+                    if (idDocVoucher == null) {
+                        vouchersRef.add(newVoucher);
+                    } else {
+                        vouchersRef.document(idDocVoucher).set(newVoucher);
+                    }
                 } else {
                     return;
                 }
