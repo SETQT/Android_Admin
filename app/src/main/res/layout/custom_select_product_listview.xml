@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <CheckBox
+        android:id="@+id/custom_select_product_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="21dp"
+        android:layout_marginTop="32dp"/>
+    <View
+        android:id="@+id/custom_select_product_image_product"
+        android:layout_width="63dp"
+        android:layout_height="65dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="59dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginBottom="5dp"
+         />
+
+    <RelativeLayout
+        android:layout_width="251dp"
+        android:layout_height="70dp"
+        android:layout_marginLeft="142dp"
+        android:layout_marginTop="13dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/custom_select_product_name_product"
+            android:layout_width="230dp"
+            android:layout_height="22dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="1dp"
+            android:gravity="top"
+            android:text="Tất cả hình thức thanh toán"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/custom_select_product_cost_product"
+            android:layout_width="wrap_content"
+            android:layout_height="18dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="27dp"
+            android:gravity="center"
+            android:text="đ100.000"
+            android:textColor="#AEAEAE"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/custom_select_product_quantity_product"
+            android:layout_width="wrap_content"
+            android:layout_height="18dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="50dp"
+            android:gravity="top"
+            android:text="Số lượng: 10"
+            android:textColor="#AEAEAE"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

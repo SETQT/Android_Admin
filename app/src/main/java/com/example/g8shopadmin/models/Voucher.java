@@ -1,8 +1,13 @@
 package com.example.g8shopadmin.models;
 
+import com.example.g8shopadmin.utilities.Handle;
+
 import java.io.Serializable;
+import java.text.Normalizer;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 public class Voucher implements Serializable {
     private String id;
@@ -14,8 +19,24 @@ public class Voucher implements Serializable {
     private Date finishedAt;
     private Integer moneyDeals; // số tiền được khuyến mãi trong voucher này
     private String type; // loại voucher là freeship hay
+    private String idDoc; // id document của voucher
+    private Integer amoutOfUsed;
 
-    public Voucher() {}
+    public Voucher() {
+        this.amoutOfUsed = 0;
+    }
+
+
+    public Voucher(String title, Integer minimumCost, Integer amount, Date startedAt, Date finishedAt, Integer moneyDeals, String type) {
+        this.title = title;
+        this.minimumCost = minimumCost;
+        this.amount = amount;
+        this.startedAt = startedAt;
+        this.finishedAt = finishedAt;
+        this.moneyDeals = moneyDeals;
+        this.type = type;
+        this.amoutOfUsed = 0;
+    }
 
     public Voucher(String id, String image, String title, Integer minimumCost, Integer amount, Date startedAt, Date finishedAt, Integer moneyDeals, String type) {
         this.id = id;
@@ -27,6 +48,7 @@ public class Voucher implements Serializable {
         this.finishedAt = finishedAt;
         this.moneyDeals = moneyDeals;
         this.type = type;
+        this.amoutOfUsed = 0;
     }
 
     public String getId() {
@@ -99,6 +121,50 @@ public class Voucher implements Serializable {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getIdDoc() {
+        return idDoc;
+    }
+
+    public void setIdDoc(String idDoc) {
+        this.idDoc = idDoc;
+    }
+
+    public Integer getAmoutOfUsed() {
+        return amoutOfUsed;
+    }
+
+    public void setAmoutOfUsed(Integer amoutOfUsed) {
+        this.amoutOfUsed = amoutOfUsed;
+    }
+
+    public String generateSlugVoucher() {
+        String titleWithDate = title + new Date().toString();
+        String temp = Normalizer.normalize(titleWithDate.toLowerCase(), Normalizer.Form.NFD);
+        Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+        String result = pattern.matcher(temp).replaceAll("").toLowerCase().replaceAll(" ", "_").replaceAll("đ", "d");
+
+        return result;
+    }
+
+    // tạo id cho voucher
+    public void generateID() {
+        String result = "";
+
+        if(type.equals("freeship"))  {
+            result += "G8SHOPFRS";
+        }else {
+            result += "G8SHOP";
+        }
+
+        result += Handle.kFortmatter(moneyDeals.toString());
+
+        String curDate = new SimpleDateFormat("ddMMyyyy").format(new Date());
+        result += curDate;
+        result = result.toUpperCase();
+
+        this.id = result;
     }
 
     @Override
