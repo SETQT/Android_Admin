@@ -70,9 +70,6 @@ public class AdminManageVoucherFragmentSecond extends Fragment implements Fragme
 
         listViewVoucher = (ListView) layout_second.findViewById(R.id.admin_manage_voucher_listview);
 
-//        AdminCustomManageVoucherListViewAdapter myAdapter = new AdminCustomManageVoucherListViewAdapter(getActivity(), R.layout.admin_custom_listview_manage_voucher, Voucher);
-//        listVoucher.setAdapter(myAdapter);
-
         manage_voucher_asynctask mv_at = new manage_voucher_asynctask("1");
         mv_at.execute();
 
@@ -97,6 +94,8 @@ public class AdminManageVoucherFragmentSecond extends Fragment implements Fragme
         @Override
         protected Voucher doInBackground(Void... voids) {
             try {
+                listVoucher.clear();
+
                 vouchersRef
                         .get()
                         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -106,29 +105,25 @@ public class AdminManageVoucherFragmentSecond extends Fragment implements Fragme
 
                                 for (QueryDocumentSnapshot document : task.getResult()) {
                                     Voucher voucher = document.toObject(Voucher.class);
-
-                                    isHave = true;
+                                    voucher.setIdDoc(document.getId());
 
                                     switch (state) {
                                         case "1":
                                             if (curDate.after(voucher.getStartedAt()) && curDate.before(voucher.getFinishedAt())) {
+                                                isHave = true;
                                                 publishProgress(voucher);
-                                            } else {
-                                                isHave = false;
                                             }
                                             break;
                                         case "2":
                                             if (curDate.before(voucher.getStartedAt())) {
+                                                isHave = true;
                                                 publishProgress(voucher);
-                                            } else {
-                                                isHave = false;
                                             }
                                             break;
                                         case "3":
                                             if (curDate.after(voucher.getFinishedAt())) {
+                                                isHave = true;
                                                 publishProgress(voucher);
-                                            } else {
-                                                isHave = false;
                                             }
                                             break;
                                         default:
