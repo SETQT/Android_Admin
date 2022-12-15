@@ -3,16 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Code java/DoAn_Admin/Android_Admin/app/src/main/res/layout/activity_admin_create_voucher.xml" value="0.5" />
-        <entry key="..\:/Code java/DoAn_Admin/Android_Admin/app/src/main/res/layout/activity_admin_manage_voucher.xml" value="0.36666666666666664" />
-        <entry key="..\:/Code java/DoAn_Admin/Android_Admin/app/src/main/res/layout/activity_admin_my_products.xml" value="0.36666666666666664" />
-        <entry key="..\:/Code java/DoAn_Admin/Android_Admin/app/src/main/res/layout/activity_admin_sale_program.xml" value="0.36666666666666664" />
-        <entry key="..\:/Code java/DoAn_Admin/Android_Admin/app/src/main/res/layout/activity_chat.xml" value="0.36666666666666664" />
-        <entry key="..\:/Code java/DoAn_Admin/Android_Admin/app/src/main/res/layout/activity_dashboard.xml" value="0.5" />
-        <entry key="..\:/Code java/DoAn_Admin/Android_Admin/app/src/main/res/layout/admin_custom_listview_manage_voucher.xml" value="0.5355555555555556" />
-        <entry key="..\:/Code java/DoAn_Admin/Android_Admin/app/src/main/res/layout/admin_custom_listview_my_products.xml" value="0.2203125" />
-        <entry key="..\:/Code java/DoAn_Admin/Android_Admin/app/src/main/res/layout/admin_custom_manage_voucher_fragment_first.xml" value="0.36666666666666664" />
-        <entry key="..\:/Code java/DoAn_Admin/Android_Admin/app/src/main/res/layout/admin_custom_manage_voucher_fragment_second.xml" value="0.2203125" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/drawable/background_chat_content_top.xml" value="0.203" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/drawable/background_chat_input.xml" value="0.203" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/drawable/background_image.xml" value="0.1755" />
@@ -35,7 +25,7 @@
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/drawable/rectangle_4.xml" value="0.177" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/drawable/rectangle_payment.xml" value="0.136" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/layout/activity_admin_list_chat.xml" value="0.176" />
-        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/layout/activity_chat.xml" value="0.264" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/layout/activity_chat.xml" value="0.2" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/layout/activity_dashboard.xml" value="0.264" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/layout/activity_dashboard_chat.xml" value="0.25" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/layout/activity_sign_in.xml" value="0.25" />
@@ -62,6 +52,10 @@
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/app/src/main/res/layout/activity_sign_in.xml" value="0.25" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
+        <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/activity_admin_manage_voucher.xml" value="0.2" />
+        <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/admin_custom_listview_manage_voucher.xml" value="0.33" />
+        <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/admin_custom_manage_voucher_fragment_first.xml" value="0.2" />
+        <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/admin_custom_manage_voucher_fragment_second.xml" value="0.2" />
       </map>
     </option>
   </component>

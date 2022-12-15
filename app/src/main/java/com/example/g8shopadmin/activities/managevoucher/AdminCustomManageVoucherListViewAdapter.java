@@ -52,7 +52,8 @@ public class AdminCustomManageVoucherListViewAdapter extends ArrayAdapter<Vouche
         v = inflater.inflate(R.layout.admin_custom_listview_manage_voucher, null);
 
         ImageView image = (ImageView) v.findViewById(R.id.logo_ma_giam_gia);
-        TextView time = (TextView) v.findViewById(R.id.admin_custom_listview_manage_voucher_title);
+        TextView time = (TextView) v.findViewById(R.id.admin_custom_listview_manage_voucher_time);
+        TextView title = (TextView) v.findViewById(R.id.admin_custom_listview_manage_voucher_title);
         TextView cost_sale = (TextView) v.findViewById(R.id.admin_custom_listview_manage_voucher_cost_sale);
         TextView min_cost = (TextView) v.findViewById(R.id.admin_custom_listview_manage_voucher_min_cost);
         TextView text_da_su_dung = (TextView) v.findViewById(R.id.admin_custom_listview_manage_voucher_da_su_dung);
@@ -63,6 +64,7 @@ public class AdminCustomManageVoucherListViewAdapter extends ArrayAdapter<Vouche
 
         SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy");
 
+        title.setText(vouchers.get(position).getTitle().toString());
         time.setText("Từ " + formatDate.format(vouchers.get(position).getStartedAt()) + " đến " + formatDate.format(vouchers.get(position).getFinishedAt()));
         cost_sale.setText("Số tiền giảm: đ" + vouchers.get(position).getMoneyDeals().toString());
         min_cost.setText("Đơn tối thiểu: đ" + vouchers.get(position).getMinimumCost().toString());

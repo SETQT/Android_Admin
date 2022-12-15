@@ -6,11 +6,11 @@
 
     <View
         android:id="@+id/rectangle_1"
-        android:layout_width="381dp"
+        android:layout_width="401dp"
         android:layout_height="160dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="5dp"
         android:background="@drawable/custom_bg_listview" />
@@ -34,24 +34,37 @@
         android:layout_marginLeft="120dp"
         android:layout_marginTop="15dp"
         android:gravity="top"
-        android:text="18-11-2022 - 24-11-2022"
+        android:text="FREE SHIP"
         android:textColor="#000000"
-        android:textSize="14sp"
+        android:textSize="12sp"
         android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/admin_custom_listview_manage_voucher_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="35dp"
+        android:gravity="top"
+        android:text="Từ 18-11-2022 đến 24-11-2022"
+        android:textColor="#000000"
+        android:textSize="10sp" />
 
 
     <TextView
         android:id="@+id/admin_custom_listview_manage_voucher_cost_sale"
         android:layout_width="wrap_content"
-        android:layout_height="21dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="120dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="54dp"
         android:gravity="top"
         android:text="đ100.000"
         android:textColor="#F9A826"
-        android:textSize="12sp" />
+        android:textSize="10sp" />
 
     <TextView
         android:id="@+id/admin_custom_listview_manage_voucher_min_cost"
@@ -60,11 +73,11 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="120dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="72dp"
         android:gravity="top"
         android:text="Đơn tối thiểu đ20.000"
         android:textColor="#AEAEAE"
-        android:textSize="12sp" />
+        android:textSize="10sp" />
 
     <View
         android:id="@+id/line_11"
@@ -73,17 +86,17 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="87dp"
+        android:layout_marginTop="92dp"
         android:background="@drawable/strikethrough" />
 
     <TextView
         android:id="@+id/admin_custom_listview_manage_voucher_da_su_dung"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="15dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="101dp"
         android:gravity="top"
         android:text="Đã sử dụng: 10"
         android:textColor="#000000"
@@ -92,11 +105,11 @@
     <TextView
         android:id="@+id/admin_custom_listview_manage_voucher_so_luong"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="15dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="263dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="101dp"
         android:gravity="top"
         android:text="Số lượng: 100"
         android:textColor="#000000"
@@ -110,7 +123,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="116dp"
+        android:layout_marginTop="121dp"
         android:background="@drawable/strikethrough" />
 
     <Button
@@ -120,8 +133,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="126dp"
+        android:layout_marginTop="128dp"
         android:background="@drawable/custom_listview_my_products_button"
+        android:gravity="center"
         android:text="Sửa"
         android:textAllCaps="false"
         android:textColor="#AEAEAE"
@@ -133,9 +147,10 @@
         android:layout_height="27dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="126dp"
+        android:layout_marginTop="128dp"
         android:layout_marginRight="60dp"
         android:background="@drawable/custom_listview_my_products_button"
+        android:gravity="center"
         android:text="Xóa"
         android:textAllCaps="false"
         android:textColor="#F92626"
