@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/admin_enter_promotions"
+    android:background="@drawable/login"
+    android:clipToOutline="true"
+    tools:context=".activity_admin_enter_promotions">
+
+    <RelativeLayout
+        android:id="@+id/rectangle_header_admin_enter_promotions"
+        android:layout_width="411dp"
+        android:layout_height="105dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="-24dp"
+        android:background="@drawable/rectangle_payment"
+        >
+        <TextView
+            android:id="@+id/text_admin_enter_promotions"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="120dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="53dp"
+            android:text="Mức khuyến mãi"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:gravity="top"
+            android:textStyle="bold"
+            />
+        <View
+            android:id="@+id/ic_back_admin_enter_promotions"
+            android:layout_width="21dp"
+            android:layout_height="25dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="58dp"
+            android:background="@drawable/ic_back_payment"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rectangle_admin_number_product_promotions"
+        android:layout_width="411dp"
+        android:layout_height="57dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/rectangle_setup_voucher">
+
+        <TextView
+            android:id="@+id/admin_number_product_promotions"
+            android:layout_width="wrap_content"
+            android:layout_height="18dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp"
+            android:gravity="top"
+            android:text="5 sản phẩm được chọn"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rectangle_value_promotions"
+        android:layout_width="411dp"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="180dp"
+        android:background="@drawable/rectangle_setup_voucher">
+        <TextView
+            android:id="@+id/text_setup_promotions"
+            android:layout_width="wrap_content"
+            android:layout_height="18dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="25dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="11dp"
+            android:text="Thiết lập giảm giá"
+            android:textSize="12sp"
+            android:textColor="#000000"
+            android:gravity="top"
+            android:textStyle="bold"
+            />
+        <View
+            android:id="@+id/line1_admin_enter_promotions"
+            android:layout_width="411dp"
+            android:layout_height="0.5dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="38dp"
+            android:background="@drawable/line_profile" />
+
+        <TextView
+            android:id="@+id/text_discount_rate_promotions"
+            android:layout_width="60dp"
+            android:layout_height="18dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="25dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="49dp"
+            android:text="Mức giảm"
+            android:textSize="12sp"
+            android:textColor="#AEAEAE"
+            android:gravity="top"
+            />
+
+        <EditText
+            android:id="@+id/value_discount_rate_promotions"
+            android:layout_width="87dp"
+            android:layout_height="23dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="305dp"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/edit_text_admin_create_voucher"
+            android:gravity="right"
+            android:hint="%"
+            android:paddingRight="5dp"
+            android:textSize="14sp" />
+
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/footer_admin_enter_promotions"
+        android:layout_width="411dp"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/footer_change_password"
+        android:elevation="4dp">
+
+        <Button
+            android:id="@+id/btn_admin_enter_promotions"
+            android:layout_width="361dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginBottom="9dp"
+            android:background="@drawable/record_btn_save_profile"
+            android:gravity="center"
+            android:text="Xác nhận"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+</RelativeLayout>
