@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/detail_order"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login"
+    android:clipToOutline="true"
+    tools:context=".activity_admin_detail_order">
+
+    <RelativeLayout
+        android:id="@+id/admin_detail_order"
+        android:layout_width="411dp"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="-24dp"
+        android:background="@drawable/rectangle_payment">
+
+        <View
+            android:id="@+id/ic_back_admin_detail_order"
+            android:layout_width="21dp"
+            android:layout_height="22dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/ic_back_payment" />
+
+        <TextView
+            android:id="@+id/text_admin_detail_order"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="140dp"
+            android:layout_marginTop="40dp"
+            android:gravity="top"
+            android:text="Chi tiết đơn hàng"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rectangle_address_detail_order"
+        android:layout_width="411dp"
+        android:layout_height="98dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/rectangle_setup_voucher">
+
+        <View
+            android:id="@+id/ic_address"
+            android:layout_width="18.75dp"
+            android:layout_height="25dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/ic_address_payment" />
+
+        <TextView
+            android:id="@+id/name_user_detail_order"
+            android:layout_width="wrap_content"
+            android:layout_height="21dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="63dp"
+            android:layout_marginTop="15dp"
+            android:gravity="top"
+            android:text="Dương Minh Hiếu"
+            android:textSize="14sp"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/line_address"
+            android:layout_width="1dp"
+            android:layout_height="12dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@+id/name_user_detail_order"
+            android:background="@drawable/line_address_payment" />
+
+        <TextView
+            android:id="@+id/some_id"
+            android:layout_width="wrap_content"
+            android:layout_height="21dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@+id/line_address"
+            android:gravity="top"
+            android:text="0812301805"
+            android:textSize="14sp"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/address_detail_order"
+            android:layout_width="281dp"
+            android:layout_height="42dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="63dp"
+            android:layout_marginTop="43dp"
+            android:gravity="top"
+            android:text="Ký túc xá khu B, Phường Đông Hòa, Thị xã Dĩ An, Bình Dương"
+            android:textSize="14sp"
+            android:textColor="#000000"/>
+
+
+    </RelativeLayout>
+
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="165dp"
+        android:layout_marginBottom="5dp"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ListView
+                android:id="@+id/listview_detail_order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:dividerHeight="-5dp"
+                />
+
+            <RelativeLayout
+                android:id="@+id/rectangle_method_payment_detail_order"
+                android:layout_width="411dp"
+                android:layout_height="73dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/rectangle_setup_voucher">
+
+                <TextView
+                    android:id="@+id/text_method_payment_detail_order"
+                    android:layout_width="wrap_content"
+                    android:layout_height="21dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="9dp"
+                    android:gravity="top"
+                    android:text="Phương thức thanh toán"
+                    android:textSize="14sp"
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
+
+
+                <View
+                    android:id="@+id/ic_method_payment_detail_order"
+                    android:layout_width="25dp"
+                    android:layout_height="17.5dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/ic_cash" />
+
+                <TextView
+                    android:id="@+id/value_method_payment_detail_order"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="62dp"
+                    android:layout_marginTop="41dp"
+                    android:gravity="top"
+                    android:text="Thanh toán tiền mặt"
+                    android:textSize="10sp"
+                    android:textColor="#AEAEAE"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/rectangle_account_customer"
+                android:layout_width="411dp"
+                android:layout_height="33dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/rectangle_setup_voucher">
+
+                <ImageView
+                    android:id="@+id/picture_account_customer"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="7dp"
+                    android:background="@drawable/avatar_profile"/>
+                <TextView
+                    android:id="@+id/username_customer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="15dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="52dp"
+                    android:layout_marginTop="9dp"
+                    android:gravity="top"
+                    android:text="duongminhhieu"
+                    android:textSize="10sp"
+                    android:textColor="#000000"
+                    />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/rectangle_detail_payment_detail_order"
+                android:layout_width="411dp"
+                android:layout_height="150dp"
+                android:background="@drawable/rectangle_setup_voucher">
+
+                <TextView
+                    android:id="@+id/text_detail_payment_detail_order"
+                    android:layout_width="142dp"
+                    android:layout_height="18dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center_vertical"
+                    android:text="Chi tiết thanh toán"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/text_total_cost_payment_detail_order"
+                    android:layout_width="112dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="46dp"
+                    android:gravity="top"
+                    android:text="Tổng tiền hàng"
+                    android:textColor="#AEAEAE"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/value_total_cost_payment_detail_order"
+                    android:layout_width="wrap_content"
+                    android:layout_height="15dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="46dp"
+                    android:layout_marginRight="25dp"
+                    android:gravity="right|top"
+                    android:text="đ200.000"
+                    android:textColor="#AEAEAE"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/text_total_cost_tranfer_detail_order"
+                    android:layout_width="112dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="67dp"
+                    android:gravity="top"
+                    android:text="Phí vận chuyển"
+                    android:textColor="#AEAEAE"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/value_cost_tranfer_detail_order"
+                    android:layout_width="wrap_content"
+                    android:layout_height="15dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="67dp"
+                    android:layout_marginRight="25dp"
+                    android:gravity="right|top"
+                    android:text="đ85.000"
+                    android:textColor="#AEAEAE"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/text_total_voucher_discount_detail_order"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="88dp"
+                    android:gravity="top"
+                    android:text="Tổng voucher giảm giá"
+                    android:textColor="#AEAEAE"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/value_total_voucher_discount_detail_order"
+                    android:layout_width="wrap_content"
+                    android:layout_height="15dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="88dp"
+                    android:layout_marginRight="25dp"
+                    android:gravity="right|top"
+                    android:text="đ200.000"
+                    android:textColor="#AEAEAE"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/text_total_money_payment_detail_order"
+                    android:layout_width="112dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="115dp"
+                    android:gravity="top"
+                    android:text="Tổng tiền"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/value_total_money_payment_detail_order"
+                    android:layout_width="wrap_content"
+                    android:layout_height="15dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="115dp"
+                    android:layout_marginRight="25dp"
+                    android:gravity="right|top"
+                    android:text="đ200.000"
+                    android:textColor="#F9A826"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rectangle_code_order_detail_order"
+                android:layout_width="411dp"
+                android:layout_height="67dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/rectangle_setup_voucher"
+                android:elevation="10dp">
+
+                <TextView
+                    android:id="@+id/text_code_order"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginTop="11dp"
+                    android:layout_marginLeft="27dp"
+                    android:gravity="top"
+                    android:text="Mã đơn hàng"
+                    android:textSize="12sp"
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/value_code_order"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="11dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="22dp"
+                    android:gravity="top"
+                    android:text="8910JQKA"
+                    android:textSize="12sp"
+                    android:textColor="#000000"
+                     />
+
+                <TextView
+                    android:id="@+id/text_time_order"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginTop="36dp"
+                    android:layout_marginLeft="27dp"
+                    android:gravity="top"
+                    android:text="Thời gian đặt hàng"
+                    android:textSize="12sp"
+                    android:textColor="#AEAEAE"
+                    />
+
+                <TextView
+                    android:id="@+id/value_time_order"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="36dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="22dp"
+                    android:gravity="top"
+                    android:text="06-12-2022 20:48"
+                    android:textSize="12sp"
+                    android:textColor="#AEAEAE"
+                    />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
