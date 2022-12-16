@@ -1,5 +1,6 @@
 package com.example.g8shopadmin.activities.myproducts;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,14 +9,25 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.g8shopadmin.FragmentCallbacks;
 import com.example.g8shopadmin.MainCallbacks;
 import com.example.g8shopadmin.R;
 import com.example.g8shopadmin.activities.activity_admin_my_products;
+import com.example.g8shopadmin.activities.managevoucher.AdminCustomManageVoucherListViewAdapter;
+import com.example.g8shopadmin.activities.managevoucher.AdminManageVoucherFragmentSecond;
+import com.example.g8shopadmin.models.Voucher;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class AdminMyProductsFragmentSecond extends Fragment implements FragmentCallbacks {
     activity_admin_my_products main;
@@ -29,6 +41,14 @@ public class AdminMyProductsFragmentSecond extends Fragment implements FragmentC
     ArrayList<String> text_da_ban = new ArrayList<>();
     ArrayList<String> text_thich = new ArrayList<>();
     ArrayList<String> text_luot_xem = new ArrayList<>();
+
+
+    ArrayList<Product> listProducts = new ArrayList<>();
+
+    // firestore
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    CollectionReference productsRef = db.collection("products");
+
 
     public static AdminMyProductsFragmentSecond newInstance(String strArg1) {
         AdminMyProductsFragmentSecond fragment = new AdminMyProductsFragmentSecond();
@@ -53,75 +73,98 @@ public class AdminMyProductsFragmentSecond extends Fragment implements FragmentC
 
         listMyProducts = (ListView) layout_second.findViewById(R.id.admin_my_products_listview);
 
-        image.add(R.drawable.mono1);image.add(R.drawable.mono1);
-        image.add(R.drawable.mono1);image.add(R.drawable.mono1);
-        name.add("Áo khoác cực chất");name.add("Áo thun");name.add("Áo khoác");name.add("Áo thun");
-        cost.add("đ100.000");cost.add("đ200.000");cost.add("đ150.000");cost.add("đ100.000");
-        text_kho_hang.add("Kho hàng: 10");text_kho_hang.add("Kho hàng: 15");
-        text_kho_hang.add("Kho hàng: 6");text_kho_hang.add("Kho hàng: 40");
-        text_da_ban.add("Đã bán: 10");text_da_ban.add("Đã bán: 10");
-        text_da_ban.add("Đã bán: 10");text_da_ban.add("Đã bán: 10");
-        text_thich.add("Thích: 100");text_thich.add("Thích: 100");
-        text_thich.add("Thích: 100");text_thich.add("Thích: 100");
-        text_luot_xem.add("Lượt xem: 120");text_luot_xem.add("Lượt xem: 120");
-        text_luot_xem.add("Lượt xem: 150");text_luot_xem.add("Lượt xem: 120");
 
-        for (int i = 0; i < image.size(); i++) {
-            MyProducts.add(new AdminMyProducts(i, image.get(i), name.get(i), cost.get(i), text_kho_hang.get(i), text_da_ban.get(i), text_thich.get(i), text_luot_xem.get(i)));
-        }
+//        AdminCustomManageVoucherListViewAdapter myAdapter = new AdminCustomManageVoucherListViewAdapter(getActivity(), R.layout.admin_custom_listview_manage_voucher, Voucher);
+//        listVoucher.setAdapter(myAdapter);
 
-        AdminCustomMyProductsListViewAdapter myAdapter = new AdminCustomMyProductsListViewAdapter(getActivity(), R.layout.admin_custom_listview_my_products, MyProducts);
-        listMyProducts.setAdapter(myAdapter);
-
+        manage_product_asynctask mv_at = new manage_product_asynctask("0");
+        mv_at.execute();
 
         return layout_second;
     }
 
     @Override
     public void onMsgFromMainToFragment(String strValue) {
+        manage_product_asynctask mv_at = new manage_product_asynctask(strValue);
+        mv_at.execute();
 
-        Log.i("TAG", "onMsgFromMainToFragment: " + strValue);
+    }
 
-        if (strValue == "Con hang") {
-            name.clear(); text_luot_xem.clear(); text_thich.clear(); text_da_ban.clear();
-            text_kho_hang.clear(); image.clear(); cost.clear();
 
-            image.add(R.drawable.mono1);image.add(R.drawable.mono1);
-            name.add("Áo khoác cực chất");name.add("Áo thun");
-            cost.add("đ100.000");cost.add("đ200.000");
-            text_kho_hang.add("Kho hàng: 10");text_kho_hang.add("Kho hàng: 15");
-            text_da_ban.add("Đã bán: 10");text_da_ban.add("Đã bán: 10");
-            text_thich.add("Thích: 100");text_thich.add("Thích: 100");
-            text_luot_xem.add("Lượt xem: 120");text_luot_xem.add("Lượt xem: 120");
+    private class manage_product_asynctask extends AsyncTask<Void, Product, Product> {
+        //        Date curDate;
+        String state;
 
-            MyProducts.clear();
-
-            for (int i = 0; i < image.size(); i++) {
-                MyProducts.add(new AdminMyProducts(i, image.get(i), name.get(i), cost.get(i), text_kho_hang.get(i), text_da_ban.get(i), text_thich.get(i), text_luot_xem.get(i)));
-            }
+        //
+        manage_product_asynctask(String state) {
+            this.state = state;
         }
 
-        if (strValue == "Het hang") {
-            name.clear(); text_luot_xem.clear(); text_thich.clear(); text_da_ban.clear();
-            text_kho_hang.clear(); image.clear(); cost.clear();
+        @Override
+        protected Product doInBackground(Void... voids) {
+            try {
+                listProducts.clear();
+                productsRef
+                        .get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                boolean isHave = false;
 
-            image.add(R.drawable.mono1);image.add(R.drawable.mono1);image.add(R.drawable.mono1);
-            name.add("Áo khoác cực chất");name.add("Áo thun");name.add("Áo thun");
-            cost.add("đ100.000");cost.add("đ200.000");cost.add("đ200.000");
-            text_kho_hang.add("Kho hàng: 10");text_kho_hang.add("Kho hàng: 15");text_kho_hang.add("Kho hàng: 15");
-            text_da_ban.add("Đã bán: 10");text_da_ban.add("Đã bán: 10");text_da_ban.add("Đã bán: 10");
-            text_thich.add("Thích: 100");text_thich.add("Thích: 100");text_thich.add("Thích: 100");
-            text_luot_xem.add("Lượt xem: 120");text_luot_xem.add("Lượt xem: 120");text_luot_xem.add("Lượt xem: 120");
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Product product = document.toObject(Product.class);
+                                    product.setIdDoc(document.getId());
+//                                    isHave = true;
+                                    if (state.equals("0")) {
+//                                        Log.d("ASd", "onComplete: " + "con");
+                                        if (product.getAmount() - product.getAmountOfSold() != 0) {
+                                            isHave = true;
+                                            publishProgress(product);
 
-            MyProducts.clear();
+                                        }
 
-            for (int i = 0; i < image.size(); i++) {
-                MyProducts.add(new AdminMyProducts(i, image.get(i), name.get(i), cost.get(i), text_kho_hang.get(i), text_da_ban.get(i), text_thich.get(i), text_luot_xem.get(i)));
+
+                                    } else {
+//                                        Log.d("num", "onComplete: "+(product.getAmount() -product.getAmountOfSold()));
+                                        if (product.getAmount() - product.getAmountOfSold() == 0) {
+                                            Log.d("ASd", "onComplete: " + "het");
+                                            isHave = true;
+
+                                            publishProgress(product);
+
+                                        }
+
+                                    }
+
+                                }
+
+
+                                if (!isHave) publishProgress();
+
+                            }
+                        });
+            } catch (Exception error) {
+                Log.e("ERROR", "AdminMangerVoucherFragmentSecond doInBackground: ", error);
             }
+            return null;
         }
-        AdminCustomMyProductsListViewAdapter myAdapter = new AdminCustomMyProductsListViewAdapter(getActivity(), R.layout.admin_custom_listview_my_products, MyProducts);
-        listMyProducts.setAdapter(myAdapter);
 
+        @Override
+        protected void onProgressUpdate(Product... products) {
+            super.onProgressUpdate(products);
+            if (products.length == 0) {
+                listProducts.clear();
+            } else {
+                listProducts.add(products[0]);
+//                Product product= products[0];
+//                MyProducts.add(new AdminMyProducts(product., image.get(i), name.get(i), cost.get(i), text_kho_hang.get(i), text_da_ban.get(i), text_thich.get(i), text_luot_xem.get(i)));
+
+            }
+
+
+            AdminCustomMyProductsListViewAdapter myAdapter = new AdminCustomMyProductsListViewAdapter(getActivity(), R.layout.admin_custom_listview_my_products, listProducts);
+            listMyProducts.setAdapter(myAdapter);
+        }
     }
 
 

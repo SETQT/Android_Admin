@@ -62,6 +62,11 @@
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/app/src/main/res/layout/activity_sign_in.xml" value="0.25" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
+        <entry key="..\:/Mobile-22/PROJECT/admin/Android_Admin/app/src/main/res/layout/activity_admin_create_product.xml" value="0.25" />
+        <entry key="..\:/Mobile-22/PROJECT/admin/Android_Admin/app/src/main/res/layout/activity_admin_my_products.xml" value="0.25" />
+        <entry key="..\:/Mobile-22/PROJECT/admin/Android_Admin/app/src/main/res/layout/activity_admin_sale_program.xml" value="0.1814814814814815" />
+        <entry key="..\:/Mobile-22/PROJECT/admin/Android_Admin/app/src/main/res/layout/activity_dashboard.xml" value="0.12447916666666667" />
+        <entry key="..\:/Mobile-22/PROJECT/admin/Android_Admin/app/src/main/res/layout/admin_custom_listview_my_products.xml" value="0.2" />
       </map>
     </option>
   </component>
