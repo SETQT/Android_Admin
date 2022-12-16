@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.example.g8shopadmin.R;
+
 public class activity_admin_select_product extends FragmentActivity implements MainCallbacks, View.OnClickListener {
     FragmentTransaction ft; selectProductFragmentFirst firstFrag; selectProductFragmentSecond secondFrag;
 
