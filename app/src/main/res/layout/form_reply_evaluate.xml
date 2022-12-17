@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rectangle_password_authentication"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Phản hồi"
+        android:textSize="14sp"
+        android:textColor="#F9A826"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="top"
+        />
+
+    <EditText
+        android:layout_marginTop="10dp"
+        android:id="@+id/text_evaluate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:textSize="14dp"
+        android:background="@drawable/border_edittext" />
+
+    <Button
+        android:id="@+id/btn_confirm"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:textColor="#FFFFFF"
+        android:text="Gửi"
+        android:layout_gravity="end"
+        android:background="#E5A433"
+        android:textAllCaps="false"
+        android:layout_marginBottom="20dp"
+        />
+
+</LinearLayout>

@@ -1,10 +1,22 @@
 package com.example.g8shopadmin.activities.evaluate;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -17,17 +29,20 @@ import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class AdminCustomEvaluateListViewAdapter extends ArrayAdapter<AdminEvaluate> {
 
+    Context curContext;
     ArrayList<AdminEvaluate> comments = new ArrayList<>();
 
     public AdminCustomEvaluateListViewAdapter(Context context, int resource, ArrayList<AdminEvaluate> comments) {
         super(context, resource, comments);
         this.comments = comments;
+        this.curContext = context;
     }
 
     @Override
@@ -52,6 +67,8 @@ public class AdminCustomEvaluateListViewAdapter extends ArrayAdapter<AdminEvalua
         TextView date_time = (TextView) v.findViewById(R.id.date_time);
         RelativeLayout reply_evaluate = (RelativeLayout)  v.findViewById(R.id.reply_evaluate);
         TextView text_reply_evaluate = (TextView) v.findViewById(R.id.text_reply_evaluate);
+        Button btn_phan_hoi = (Button) v.findViewById(R.id.btn_phan_hoi);
+
 
         // format ngày tháng năm
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -66,8 +83,10 @@ public class AdminCustomEvaluateListViewAdapter extends ArrayAdapter<AdminEvalua
 
         if (comments.get(position).getReply() == ""){
             reply_evaluate.setVisibility(View.GONE);
+            btn_phan_hoi.setVisibility(View.VISIBLE);
         } else {
             text_reply_evaluate.setText(comments.get(position).getReply());
+            btn_phan_hoi.setVisibility(View.GONE);
         }
 
         Integer count_star = comments.get(position).getCountStar();
@@ -81,7 +100,40 @@ public class AdminCustomEvaluateListViewAdapter extends ArrayAdapter<AdminEvalua
 
         Handle.setStar(star1, star2, star3, star4, star5, count_star);
 
+        btn_phan_hoi.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                showFormEvaluate(position, btn_phan_hoi);
+            }
+        });
+
         return v;
+
+    }
+
+    void showFormEvaluate(Integer position, Button btn_phan_hoi){
+        final Dialog dialog = new Dialog(curContext);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(true);
+        dialog.setContentView(R.layout.form_reply_evaluate);
+
+        EditText text_evaluate = dialog.findViewById(R.id.text_evaluate);
+        Button btn_confirm = dialog.findViewById(R.id.btn_confirm);
+
+        btn_confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Comment newComment = new Comment(orders.get(position).getId(), username, orders.get(position).getColor(), orders.get(position).getSize(), text_evaluate.getText().toString(), new Date(), count_star, "");
+                //commentsRef.add(newComment);
+                //dialog.dismiss();
+            }
+        });
+
+        //dialog.show();
+        Window window = dialog.getWindow();
+        window.setLayout(700, 650);
+
+
     }
 
 }
