@@ -1,12 +1,22 @@
 package com.example.g8shopadmin.activities;
 
 
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 
 import com.example.g8shopadmin.adapters.ChatAdapter;
 import com.example.g8shopadmin.databinding.ActivityChatBinding;
@@ -23,6 +33,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.gun0912.tedpermission.PermissionListener;
+import com.gun0912.tedpermission.normal.TedPermission;
 import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
@@ -30,6 +42,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -97,6 +113,7 @@ public class ChatActivity extends activity_base {
                     chatMessage.message = documentChange.getDocument().getString(Constants.KEY_MESSAGE);
                     chatMessage.dateTime = getReadableDateTime(documentChange.getDocument().getDate(Constants.KEY_TIMESTAMP));
                     chatMessage.dateObject = documentChange.getDocument().getDate(Constants.KEY_TIMESTAMP);
+                    chatMessage.messageImage = documentChange.getDocument().getString("messageImage");
                     chatMessages.add(chatMessage);
                 }
             }
@@ -123,8 +140,13 @@ public class ChatActivity extends activity_base {
         message.put(Constants.KEY_RECEIVER_ID, receiverUser.id);
         message.put(Constants.KEY_MESSAGE, binding.inputMessage.getText().toString());
         message.put(Constants.KEY_TIMESTAMP, new Date());
+        if(preferenceManager.getString("messageImage") != null){
+            message.put("messageImage", preferenceManager.getString("messageImage"));
+        } else {
+            message.put("messageImage" , null);
+        }
         db.collection(Constants.KEY_COLLECTION_CHAT).add(message);
-        if(conversionId != null){
+        if (conversionId != null) {
             updateConversion(binding.inputMessage.getText().toString(),
                     preferenceManager.getString(Constants.KEY_ADMIN_ID),
                     preferenceManager.getString(Constants.KEY_ADMIN_NAME),
@@ -144,7 +166,7 @@ public class ChatActivity extends activity_base {
             conversion.put(Constants.KEY_TIMESTAMP, new Date());
             addConversion(conversion);
         }
-        if(!isReceiverAvailable){
+        if (!isReceiverAvailable) {
             try {
                 JSONArray tokens = new JSONArray();
                 tokens.put(receiverUser.token);
@@ -160,11 +182,78 @@ public class ChatActivity extends activity_base {
                 body.put(Constants.REMOTE_MSG_REGISTRATION_IDS, tokens);
 
                 sendNotification(body.toString());
-            } catch (Exception exception){
+            } catch (Exception exception) {
                 showToast(exception.getMessage());
             }
         }
         binding.inputMessage.setText(null);
+        preferenceManager.putString("messageImage", null);
+    }
+
+    private void getImageChat() {
+
+        if (ContextCompat.checkSelfPermission(ChatActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) ==
+                PackageManager.PERMISSION_GRANTED) {
+            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            startActivityForResult(intent, 3);
+
+        } else {
+            requestPermission();
+            if (ContextCompat.checkSelfPermission(ChatActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) ==
+                    PackageManager.PERMISSION_GRANTED) {
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(intent, 3);
+            }
+        }
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && data != null) {
+            Uri selectImage = data.getData();
+            try {
+                InputStream inputStream = getContentResolver().openInputStream(selectImage);
+                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                String imageEncode = encodedImage(bitmap);
+                preferenceManager.putString("messageImage", imageEncode);
+                sendMessage();
+            } catch (FileNotFoundException e){
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private String encodedImage(Bitmap bitmap){
+        int previewWidth= 350;
+        int previewHeight = bitmap.getHeight() * previewWidth /bitmap.getWidth();
+        Bitmap previewBitmap= Bitmap.createScaledBitmap(bitmap, previewWidth, previewHeight, false);
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        previewBitmap.compress(Bitmap.CompressFormat.JPEG, 50, byteArrayOutputStream);
+        byte[] bytes = byteArrayOutputStream.toByteArray();
+        return Base64.encodeToString(bytes, Base64.DEFAULT);
+    }
+
+    // request permission can thiet camera,thu vien ,...
+    public void requestPermission() {
+        PermissionListener permissionlistener = new PermissionListener() {
+            @Override
+            public void onPermissionGranted() {
+                Toast.makeText(ChatActivity.this, " Cấp quyền thành công !", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onPermissionDenied(List<String> deniedPermissions) {
+                Toast.makeText(ChatActivity.this, "Đã từ chối !!", Toast.LENGTH_SHORT).show();
+            }
+        };
+
+        TedPermission.create()
+                .setPermissionListener(permissionlistener)
+                .setDeniedMessage("Không thể thực hiện do chưa cấp quyền truy cập!! \n\n Thay đổi bằng cách Setting -> Permission")
+                .setPermissions(Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE)
+                .check();
     }
 
     private void listenerMessages() {
@@ -178,34 +267,34 @@ public class ChatActivity extends activity_base {
                 .addSnapshotListener(eventListener);
     }
 
-    private void showToast(String message){
+    private void showToast(String message) {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 
-    private void sendNotification(String messageBody){
+    private void sendNotification(String messageBody) {
         ApiClient.getClient().create(ApiService.class).sendMessage(
                 Constants.getRemoteMsgHeaders(),
                 messageBody
         ).enqueue(new Callback<String>() {
             @Override
             public void onResponse(@NonNull Call<String> call, @NonNull Response<String> response) {
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
                     try {
-                        if(response.body() != null){
+                        if (response.body() != null) {
                             JSONObject responseJson = new JSONObject(response.body());
                             JSONArray results = responseJson.getJSONArray("results");
-                            if(responseJson.getInt("failure")== 1){
-                                JSONObject error = (JSONObject)  results.get(0);
+                            if (responseJson.getInt("failure") == 1) {
+                                JSONObject error = (JSONObject) results.get(0);
                                 showToast(error.getString("error"));
                                 return;
                             }
                         }
-                    } catch (JSONException e){
+                    } catch (JSONException e) {
                         e.printStackTrace();
                     }
                     //showToast("Notification sent successfully");
-                } else{
-                    showToast("Error: "+ response.code());
+                } else {
+                    showToast("Error: " + response.code());
                 }
             }
 
@@ -216,31 +305,31 @@ public class ChatActivity extends activity_base {
         });
     }
 
-    private void listenAvailabilityOfReceiver(){
+    private void listenAvailabilityOfReceiver() {
         db.collection("users").document(
                 receiverUser.id
-        ).addSnapshotListener(ChatActivity.this,(value, error) -> {
-            if(error!= null){
+        ).addSnapshotListener(ChatActivity.this, (value, error) -> {
+            if (error != null) {
                 return;
             }
-            if(value != null){
-                if(value.getLong(Constants.KEY_AVAILABILITY) != null){
+            if (value != null) {
+                if (value.getLong(Constants.KEY_AVAILABILITY) != null) {
                     int availability = Objects.requireNonNull(
                             value.getLong(Constants.KEY_AVAILABILITY)
                     ).intValue();
                     isReceiverAvailable = availability == 1;
                 }
                 receiverUser.token = value.getString(Constants.KEY_FCM_TOKEN);
-                if(receiverUser.image == null){
+                if (receiverUser.image == null) {
                     receiverUser.image = value.getString(Constants.KEY_IMAGE);
                     loadReceiverDetails();
                     chatAdapter.setReceiverProfileImage(receiverUser.image);
                     chatAdapter.notifyItemRangeChanged(0, chatMessages.size());
                 }
             }
-            if(isReceiverAvailable){
+            if (isReceiverAvailable) {
                 binding.textAvailability.setVisibility(View.VISIBLE);
-            }else{
+            } else {
                 binding.textAvailability.setVisibility(View.GONE);
             }
 
@@ -257,6 +346,7 @@ public class ChatActivity extends activity_base {
     private void setListeners() {
         binding.iconBack.setOnClickListener(v -> onBackPressed());
         binding.layoutSend.setOnClickListener(v -> sendMessage());
+        binding.uploadImageChat.setOnClickListener(v -> getImageChat());
     }
 
     private String getReadableDateTime(Date date) {
@@ -269,7 +359,7 @@ public class ChatActivity extends activity_base {
                 .addOnSuccessListener(documentReference -> conversionId = documentReference.getId());
     }
 
-    private void updateConversion(String message,String senderId, String senderName, String senderImage,String receiverId, String receiverName, String receiverImage){
+    private void updateConversion(String message, String senderId, String senderName, String senderImage, String receiverId, String receiverName, String receiverImage) {
         DocumentReference documentReference =
                 db.collection(Constants.KEY_COLLECTION_CONVERSATIONS).document(conversionId);
         documentReference.update(
@@ -286,7 +376,7 @@ public class ChatActivity extends activity_base {
 
     private void loadImage(String image, ActivityChatBinding binding) {
         try {
-            if(image != null){
+            if (image != null) {
                 Picasso.with(getApplicationContext()).load(image).into(binding.chatProfileAvatar);
             }
         } catch (Exception error) {
