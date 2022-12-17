@@ -1,4 +1,4 @@
-package com.example.androidproject08;
+package com.example.g8shopadmin.activities;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +10,9 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+
+import com.example.g8shopadmin.R;
+import com.example.g8shopadmin.activities.activity_list_customer;
 
 import java.util.ArrayList;
 

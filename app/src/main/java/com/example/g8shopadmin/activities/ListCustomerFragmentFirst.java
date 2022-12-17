@@ -1,4 +1,4 @@
-package com.example.androidproject08;
+package com.example.g8shopadmin.activities;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,6 +8,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import androidx.fragment.app.Fragment;
+
+import com.example.g8shopadmin.R;
 
 public class ListCustomerFragmentFirst extends Fragment implements View.OnClickListener {
     activity_list_customer main;

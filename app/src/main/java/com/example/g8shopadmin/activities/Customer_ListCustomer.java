@@ -1,4 +1,4 @@
-package com.example.androidproject08;
+package com.example.g8shopadmin.activities;
 
 public class Customer_ListCustomer {
     private int id;

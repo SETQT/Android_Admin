@@ -11,6 +11,8 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 
+import com.example.g8shopadmin.R;
+
 import java.util.ArrayList;
 
 public class activity_admin_detail_order extends Activity implements AdapterView.OnItemSelectedListener {

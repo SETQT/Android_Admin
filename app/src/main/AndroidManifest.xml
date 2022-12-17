@@ -28,12 +28,10 @@
         <activity
             android:name=".activities.activity_dashboard_chat"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize"
             android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".activities.ChatActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize" 
             android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".activities.activity_admin_create_product"
@@ -42,12 +40,10 @@
         <activity
             android:name=".activities.SignUpActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activities.SignInActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -58,23 +54,23 @@
         <activity
             android:name=".activities.DashboardActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize" 
             android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".activities.activity_admin_list_chat"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize" 
             android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".activities.activity_admin_my_products"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".activities.MainActivity" />
         <activity
             android:name=".activities.activity_admin_manage_voucher"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize" 
+            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".activities.activity_admin_evaluate"
+            android:exported="true"
             android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".activities.activity_admin_create_voucher"
