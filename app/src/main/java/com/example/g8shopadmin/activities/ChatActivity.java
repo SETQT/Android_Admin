@@ -136,24 +136,35 @@ public class ChatActivity extends activity_base {
 
     private void sendMessage() {
         HashMap<String, Object> message = new HashMap<>();
+        int checkSendImage = preferenceManager.getString("messageImage") != null ? 1 : 0;
         message.put(Constants.KEY_SENDER_ID, preferenceManager.getString(Constants.KEY_ADMIN_ID));
         message.put(Constants.KEY_RECEIVER_ID, receiverUser.id);
-        message.put(Constants.KEY_MESSAGE, binding.inputMessage.getText().toString());
         message.put(Constants.KEY_TIMESTAMP, new Date());
-        if(preferenceManager.getString("messageImage") != null){
+        if(checkSendImage == 1){
             message.put("messageImage", preferenceManager.getString("messageImage"));
         } else {
+            message.put(Constants.KEY_MESSAGE, binding.inputMessage.getText().toString());
             message.put("messageImage" , null);
         }
         db.collection(Constants.KEY_COLLECTION_CHAT).add(message);
         if (conversionId != null) {
-            updateConversion(binding.inputMessage.getText().toString(),
-                    preferenceManager.getString(Constants.KEY_ADMIN_ID),
-                    preferenceManager.getString(Constants.KEY_ADMIN_NAME),
-                    preferenceManager.getString(Constants.KEY_IMAGE),
-                    receiverUser.id,
-                    receiverUser.fullName,
-                    receiverUser.image);
+            if(checkSendImage == 1) {
+                updateConversion("Đã gửi hình ảnh.",
+                        preferenceManager.getString(Constants.KEY_ADMIN_ID),
+                        preferenceManager.getString(Constants.KEY_ADMIN_NAME),
+                        preferenceManager.getString(Constants.KEY_IMAGE),
+                        receiverUser.id,
+                        receiverUser.fullName,
+                        receiverUser.image);
+            } else {
+                updateConversion(binding.inputMessage.getText().toString(),
+                        preferenceManager.getString(Constants.KEY_ADMIN_ID),
+                        preferenceManager.getString(Constants.KEY_ADMIN_NAME),
+                        preferenceManager.getString(Constants.KEY_IMAGE),
+                        receiverUser.id,
+                        receiverUser.fullName,
+                        receiverUser.image);
+            };
         } else {
             HashMap<String, Object> conversion = new HashMap<>();
             conversion.put(Constants.KEY_SENDER_ID, preferenceManager.getString(Constants.KEY_ADMIN_ID));
@@ -162,7 +173,9 @@ public class ChatActivity extends activity_base {
             conversion.put(Constants.KEY_RECEIVER_ID, receiverUser.id);
             conversion.put(Constants.KEY_RECEIVER_NAME, receiverUser.fullName);
             conversion.put(Constants.KEY_RECEIVER_IMAGE, receiverUser.image);
-            conversion.put(Constants.KEY_LAST_MESSAGE, binding.inputMessage.getText().toString());
+            if(checkSendImage == 1){
+                conversion.put(Constants.KEY_LAST_MESSAGE, "Đã gửi hình ảnh.");
+            } else conversion.put(Constants.KEY_LAST_MESSAGE, binding.inputMessage.getText().toString());
             conversion.put(Constants.KEY_TIMESTAMP, new Date());
             addConversion(conversion);
         }
@@ -175,7 +188,10 @@ public class ChatActivity extends activity_base {
                 data.put(Constants.KEY_ADMIN_ID, preferenceManager.getString(Constants.KEY_ADMIN_ID));
                 data.put(Constants.KEY_ADMIN_NAME, preferenceManager.getString(Constants.KEY_ADMIN_NAME));
                 data.put(Constants.KEY_FCM_TOKEN, preferenceManager.getString(Constants.KEY_FCM_TOKEN));
-                data.put(Constants.KEY_MESSAGE, binding.inputMessage.getText().toString());
+
+                if(checkSendImage == 1){
+                    data.put(Constants.KEY_MESSAGE, "Đã gửi hình ảnh.");
+                } else data.put(Constants.KEY_MESSAGE, binding.inputMessage.getText().toString());
 
                 JSONObject body = new JSONObject();
                 body.put(Constants.REMOTE_MSG_DATA, data);
