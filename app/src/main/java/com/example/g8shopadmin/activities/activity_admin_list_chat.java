@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-
-
 import com.example.g8shopadmin.adapters.ListItemChatAdminAdapter;
 import com.example.g8shopadmin.databinding.ActivityAdminListChatBinding;
 import com.example.g8shopadmin.listeners.UserListener;

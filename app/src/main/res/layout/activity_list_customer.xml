@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_list_customer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E5E5E5"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+
+        <View
+            android:id="@+id/rectangle_header_list_customer"
+            android:layout_width="wrap_content"
+            android:layout_height="81dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="0dp"
+            android:background="@drawable/rectangle_payment" />
+
+        <View
+            android:id="@+id/icon_back_list_customer"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/ic_back_payment"
+            android:backgroundTint="#FFFFFF"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/text_title_list_customer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="124dp"
+            android:layout_marginTop="29dp"
+            android:gravity="top"
+            android:text="Danh sách khách hàng"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <FrameLayout android:id="@+id/list_customer_fragment_first"
+        android:layout_width="411dp"
+        android:layout_height="80dp"
+        android:orientation="vertical" />
+
+    <FrameLayout android:id="@+id/list_customer_fragment_second"
+        android:layout_width="411dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:orientation="vertical"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="5dp" />
+
+</LinearLayout>
