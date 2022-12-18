@@ -3,13 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android/Github/Android_Admin/app/src/main/res/drawable/border_percent_decrease.xml" value="0.245" />
         <entry key="..\:/Android/Github/Android_Admin/app/src/main/res/drawable/custom_border_list_customer.xml" value="0.195" />
+        <entry key="..\:/Android/Github/Android_Admin/app/src/main/res/drawable/record_btn_save_profile.xml" value="0.245" />
+        <entry key="..\:/Android/Github/Android_Admin/app/src/main/res/layout/activity_admin_enter_promotions.xml" value="0.2708333333333333" />
         <entry key="..\:/Android/Github/Android_Admin/app/src/main/res/layout/activity_admin_record_customer.xml" value="0.19010416666666666" />
+        <entry key="..\:/Android/Github/Android_Admin/app/src/main/res/layout/activity_admin_sale_program.xml" value="0.12715298885511653" />
+        <entry key="..\:/Android/Github/Android_Admin/app/src/main/res/layout/activity_admin_select_product.xml" value="0.2708333333333333" />
         <entry key="..\:/Android/Github/Android_Admin/app/src/main/res/layout/activity_dashboard.xml" value="0.25" />
         <entry key="..\:/Android/Github/Android_Admin/app/src/main/res/layout/activity_list_customer.xml" value="0.25" />
+        <entry key="..\:/Android/Github/Android_Admin/app/src/main/res/layout/activity_promotions.xml" value="0.32592592592592595" />
         <entry key="..\:/Android/Github/Android_Admin/app/src/main/res/layout/custom_list_customer_fragment_first.xml" value="0.1" />
         <entry key="..\:/Android/Github/Android_Admin/app/src/main/res/layout/custom_list_customer_fragment_second.xml" value="0.15324214792299898" />
         <entry key="..\:/Android/Github/Android_Admin/app/src/main/res/layout/custom_listview_list_customer.xml" value="0.23854166666666668" />
+        <entry key="..\:/Android/Github/Android_Admin/app/src/main/res/layout/custom_listview_payment.xml" value="0.2708333333333333" />
+        <entry key="..\:/Android/Github/Android_Admin/app/src/main/res/layout/custom_listview_promotions.xml" value="0.25" />
+        <entry key="..\:/Android/Github/Android_Admin/app/src/main/res/layout/custom_select_product_fragment_second.xml" value="0.2708333333333333" />
+        <entry key="..\:/Android/Github/Android_Admin/app/src/main/res/layout/custom_select_product_listview.xml" value="0.2708333333333333" />
+        <entry key="..\:/Android/Github/Android_Admin/app/src/main/res/layout/custom_spiner_create_voucher.xml" value="0.2708333333333333" />
         <entry key="..\:/Code java/DoAn_Admin/Android_Admin/app/src/main/res/layout/activity_admin_create_voucher.xml" value="0.2375" />
         <entry key="..\:/Code java/DoAn_Admin/Android_Admin/app/src/main/res/layout/activity_admin_manage_voucher.xml" value="0.36666666666666664" />
         <entry key="..\:/Code java/DoAn_Admin/Android_Admin/app/src/main/res/layout/activity_admin_my_products.xml" value="0.36666666666666664" />

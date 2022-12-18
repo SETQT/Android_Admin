@@ -47,7 +47,9 @@ public class DashboardActivity extends activity_base implements View.OnClickList
         binding.iconListCustomers.setOnClickListener(view ->{
             startActivity(new Intent(getApplicationContext(), activity_list_customer.class));
         });
-
+        binding.iconDiscountAdmin.setOnClickListener(view ->{
+            startActivity(new Intent(getApplicationContext(), activity_promotions.class));
+        });
         binding.adminWaitConfirm.setOnClickListener(this);
         binding.voucherAdmin.setOnClickListener(this);
         binding.adminWaitRate.setOnClickListener(this);
