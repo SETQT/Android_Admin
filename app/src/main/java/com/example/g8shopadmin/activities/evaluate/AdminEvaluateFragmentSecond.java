@@ -16,11 +16,8 @@ import com.example.g8shopadmin.FragmentCallbacks;
 import com.example.g8shopadmin.MainCallbacks;
 import com.example.g8shopadmin.R;
 import com.example.g8shopadmin.activities.activity_admin_evaluate;
-import com.example.g8shopadmin.activities.activity_admin_manage_voucher;
-import com.example.g8shopadmin.activities.managevoucher.AdminManageVoucherFragmentSecond;
 import com.example.g8shopadmin.activities.myproducts.Product;
 import com.example.g8shopadmin.models.Comment;
-import com.example.g8shopadmin.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
@@ -64,7 +61,7 @@ public class AdminEvaluateFragmentSecond extends Fragment implements FragmentCal
 
         admin_evaluate_listview = (ListView) layout_second.findViewById(R.id.admin_evaluate_listview);
 
-        AdminEvaluateFragmentSecond.comment_asynctask mv_at = new AdminEvaluateFragmentSecond.comment_asynctask("Tat ca");
+        AdminEvaluateFragmentSecond.comment_asynctask mv_at = new AdminEvaluateFragmentSecond.comment_asynctask("0");
         mv_at.execute();
 
         return layout_second;
@@ -78,6 +75,7 @@ public class AdminEvaluateFragmentSecond extends Fragment implements FragmentCal
 
     private class comment_asynctask extends AsyncTask<Void, AdminEvaluate, AdminEvaluate> {
         String option;
+
         comment_asynctask(String option) {
             this.option = option;
         }
@@ -89,38 +87,87 @@ public class AdminEvaluateFragmentSecond extends Fragment implements FragmentCal
         @Override
         protected AdminEvaluate doInBackground(Void... voids) {
             try {
-                commentsRef
-                        .get()
-                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                if (task.isSuccessful()) {
-                                    Boolean isHave = false;
-                                    for (QueryDocumentSnapshot document : task.getResult()) {
-                                        Comment comment = document.toObject(Comment.class);
-                                        isHave = true;
-                                        idDoc = comment.getIdProduct();
-                                        productsRef.document(idDoc).get()
-                                                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                                                    @Override
-                                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                                        if (task.isSuccessful()) {
-                                                            DocumentSnapshot document2 = task.getResult();
-                                                            Product product = document2.toObject(Product.class);
-                                                            commentEvaluate = merge(comment, product);
-                                                            publishProgress(commentEvaluate);
-                                                        }
-                                                    }
-                                                });
+                listComments.clear();
+
+                switch (option) {
+                    case "0":
+                        commentsRef
+                                .get()
+                                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                        if (task.isSuccessful()) {
+                                            Boolean isHave = false;
+
+                                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                                Comment comment = document.toObject(Comment.class);
+                                                isHave = true;
+                                                idDoc = comment.getIdProduct();
+
+                                                productsRef.document(idDoc).get()
+                                                        .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                                            @Override
+                                                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                                                if (task.isSuccessful()) {
+                                                                    DocumentSnapshot document2 = task.getResult();
+                                                                    Product product = document2.toObject(Product.class);
+                                                                    commentEvaluate = merge(comment, product);
+                                                                    publishProgress(commentEvaluate);
+                                                                }
+                                                            }
+                                                        });
+                                            }
+
+                                            if (!isHave) {
+                                                publishProgress();
+                                            }
+                                        } else {
+                                            Log.d("TAG", "Error getting documents: ", task.getException());
+                                        }
                                     }
-                                    if (!isHave) {
-                                        publishProgress();
+                                });
+                        break;
+                    case "1":
+                        commentsRef
+                                .whereEqualTo("reply", "")
+                                .get()
+                                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                        if (task.isSuccessful()) {
+                                            Boolean isHave = false;
+
+                                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                                Comment comment = document.toObject(Comment.class);
+                                                isHave = true;
+                                                idDoc = comment.getIdProduct();
+
+                                                productsRef.document(idDoc).get()
+                                                        .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                                            @Override
+                                                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                                                if (task.isSuccessful()) {
+                                                                    DocumentSnapshot document2 = task.getResult();
+                                                                    Product product = document2.toObject(Product.class);
+                                                                    commentEvaluate = merge(comment, product);
+                                                                    publishProgress(commentEvaluate);
+                                                                }
+                                                            }
+                                                        });
+                                            }
+
+                                            if (!isHave) {
+                                                publishProgress();
+                                            }
+                                        } else {
+                                            Log.d("TAG", "Error getting documents: ", task.getException());
+                                        }
                                     }
-                                } else {
-                                    Log.d("TAG", "Error getting documents: ", task.getException());
-                                }
-                            }
-                        });
+                                });
+                        break;
+                    default:
+                        break;
+                }
             } catch (Exception error) {
                 Log.e("ERROR", "activity_see_evaluate: " + error);
             }

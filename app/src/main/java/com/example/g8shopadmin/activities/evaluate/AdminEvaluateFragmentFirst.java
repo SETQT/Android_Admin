@@ -49,7 +49,7 @@ public class AdminEvaluateFragmentFirst extends Fragment {
             public void onClick(View view) {
                 admin_custom_evaluate_option_tat_ca.setTextAppearance(getActivity(), R.style.setTextAfterClick);
                 admin_custom_evaluate_option_chua_phan_hoi.setTextAppearance(getActivity(), R.style.setTextNotClick);
-                String dataSend = "Tat ca";
+                String dataSend = "0";
                 main.onMsgFromFragToMain("BLUE-FRAG", dataSend);
             }});
 
@@ -58,7 +58,7 @@ public class AdminEvaluateFragmentFirst extends Fragment {
             public void onClick(View view) {
                 admin_custom_evaluate_option_tat_ca.setTextAppearance(getActivity(), R.style.setTextNotClick);
                 admin_custom_evaluate_option_chua_phan_hoi.setTextAppearance(getActivity(), R.style.setTextAfterClick);
-                String dataSend = "Chua phan hoi";
+                String dataSend = "1";
                 main.onMsgFromFragToMain("BLUE-FRAG", dataSend);
             }});
 
