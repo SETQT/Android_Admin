@@ -38,6 +38,14 @@
             android:exported="true"
             android:windowSoftInputMode="adjustPan" />
         <activity
+            android:name=".activities.activity_list_customer"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activities.activity_admin_record_customer"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
             android:name=".activities.SignUpActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan" />

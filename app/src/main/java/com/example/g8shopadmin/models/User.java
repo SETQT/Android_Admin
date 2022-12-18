@@ -9,6 +9,7 @@ import java.util.Map;
 
 
 public class User {
+    private String idDoc;
     private String username;
     private String password;
     private String fullname;
@@ -226,5 +227,12 @@ public class User {
 
     public void setFcmToken(String fcmToken) {
         this.fcmToken = fcmToken;
+    }
+    public String getIdDoc() {
+        return idDoc;
+    }
+
+    public void setIdDoc(String idDoc) {
+        this.idDoc = idDoc;
     }
 }

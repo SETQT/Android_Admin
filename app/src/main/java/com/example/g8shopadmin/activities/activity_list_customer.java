@@ -1,11 +1,7 @@
 package com.example.g8shopadmin.activities;
 
 
-import com.example.g8shopadmin.MainCallbacks;
 import com.example.g8shopadmin.R;
-import com.example.g8shopadmin.activities.ListCustomerFragmentSecond;
-import com.example.g8shopadmin.activities.activity_admin_create_promotions;
-import com.example.g8shopadmin.activities.ListCustomerFragmentFirst;
 
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
@@ -16,8 +12,12 @@ import android.util.Log;
 import android.view.View;
 
 
+import com.example.g8shopadmin.activities.ListCustomerFragmentFirst;
+import com.example.g8shopadmin.activities.ListCustomerFragmentSecond;
+
 public class activity_list_customer extends FragmentActivity implements MainCallbacks, View.OnClickListener {
-    FragmentTransaction ft; ListCustomerFragmentFirst firstFrag; ListCustomerFragmentSecond secondFrag;
+    FragmentTransaction ft;
+    ListCustomerFragmentFirst firstFrag; ListCustomerFragmentSecond secondFrag;
     View icon_back;
 
     @Override
@@ -58,7 +58,7 @@ public class activity_list_customer extends FragmentActivity implements MainCall
     @Override
     public void onClick(View view) {
         if(view.getId() == icon_back.getId()) {
-            Intent moveActivity = new Intent(getApplicationContext(), activity_admin_create_promotions.class);
+            Intent moveActivity = new Intent(getApplicationContext(), DashboardActivity.class);
             startActivity(moveActivity);
         }
 

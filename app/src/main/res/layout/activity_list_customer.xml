@@ -9,18 +9,17 @@
     android:orientation="vertical">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="81dp"
         >
 
         <View
             android:id="@+id/rectangle_header_list_customer"
             android:layout_width="wrap_content"
-            android:layout_height="81dp"
+            android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="0dp"
-            android:background="@drawable/rectangle_payment" />
+            android:background="@drawable/rectangle_header" />
 
         <View
             android:id="@+id/icon_back_list_customer"
