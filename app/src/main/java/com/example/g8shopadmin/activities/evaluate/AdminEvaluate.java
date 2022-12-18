@@ -14,6 +14,7 @@ public class AdminEvaluate {
     private String reply;
     private String nameProduct;
     private String imgProduct;
+    private String idDoc; // id document của comment này
 
     public AdminEvaluate(){}
 
@@ -117,5 +118,13 @@ public class AdminEvaluate {
 
     public void setImgProduct(String imgProduct) {
         this.imgProduct = imgProduct;
+    }
+
+    public String getIdDoc() {
+        return idDoc;
+    }
+
+    public void setIdDoc(String idDoc) {
+        this.idDoc = idDoc;
     }
 }

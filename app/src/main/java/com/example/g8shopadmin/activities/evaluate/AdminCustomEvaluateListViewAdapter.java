@@ -3,6 +3,7 @@ package com.example.g8shopadmin.activities.evaluate;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,11 +14,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.g8shopadmin.R;
 import com.example.g8shopadmin.activities.Handle;
 import com.example.g8shopadmin.activities.activity_admin_create_voucher;
 import com.example.g8shopadmin.activities.activity_admin_evaluate;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.ms.square.android.expandabletextview.ExpandableTextView;
 import com.squareup.picasso.Picasso;
 
@@ -31,11 +35,15 @@ public class AdminCustomEvaluateListViewAdapter extends ArrayAdapter<AdminEvalua
 
     Context curContext;
     ArrayList<AdminEvaluate> comments = new ArrayList<>();
+    String option;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    CollectionReference commentsRef = db.collection("comments");
 
-    public AdminCustomEvaluateListViewAdapter(Context context, int resource, ArrayList<AdminEvaluate> comments) {
+    public AdminCustomEvaluateListViewAdapter(Context context, int resource, ArrayList<AdminEvaluate> comments, String option) {
         super(context, resource, comments);
         this.comments = comments;
         this.curContext = context;
+        this.option = option;
     }
 
     @Override
@@ -96,7 +104,7 @@ public class AdminCustomEvaluateListViewAdapter extends ArrayAdapter<AdminEvalua
         btn_phan_hoi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showFormEvaluate(position, btn_phan_hoi);
+                showFormEvaluate(position);
             }
         });
 
@@ -104,7 +112,7 @@ public class AdminCustomEvaluateListViewAdapter extends ArrayAdapter<AdminEvalua
 
     }
 
-    void showFormEvaluate(Integer position, Button btn_phan_hoi) {
+    void showFormEvaluate(Integer position) {
         Dialog dialog = new Dialog(curContext);
 
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -117,14 +125,35 @@ public class AdminCustomEvaluateListViewAdapter extends ArrayAdapter<AdminEvalua
         btn_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Comment newComment = new Comment(orders.get(position).getId(), username, orders.get(position).getColor(), orders.get(position).getSize(), text_evaluate.getText().toString(), new Date(), count_star, "");
-                //commentsRef.add(newComment);
-                dialog.dismiss();
+                if(text_evaluate.getText().toString().equals("")) {
+                    Toast.makeText(curContext, "Vui lòng nhập nhận xét trước khi bấm xác nhận!", Toast.LENGTH_SHORT).show();
+                    return;
+                }else {
+                    commentsRef.document(comments.get(position).getIdDoc()).update("reply", text_evaluate.getText().toString());
+
+                    switch (option) {
+                        case "0":
+                            // phản hồi ở trang xem tất cả
+                            comments.get(position).setReply(text_evaluate.getText().toString());
+                            break;
+                        case "1":
+                            // vì sau khi rep thì sản phẩm này không còn nằm trong mục chưa phản hồi nữa nên loại khỏi
+                            int positionNeedRemove = position.intValue();
+                            comments.remove(positionNeedRemove);
+
+                            break;
+                        default:
+                            break;
+                    }
+
+                    notifyDataSetChanged();
+
+                    dialog.dismiss();
+                }
             }
         });
 
         dialog.show();
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
     }
-
 }

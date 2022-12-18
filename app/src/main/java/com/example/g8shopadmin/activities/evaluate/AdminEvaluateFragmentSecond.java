@@ -101,6 +101,7 @@ public class AdminEvaluateFragmentSecond extends Fragment implements FragmentCal
 
                                             for (QueryDocumentSnapshot document : task.getResult()) {
                                                 Comment comment = document.toObject(Comment.class);
+                                                comment.setIdDoc(document.getId());
                                                 isHave = true;
                                                 idDoc = comment.getIdProduct();
 
@@ -139,6 +140,7 @@ public class AdminEvaluateFragmentSecond extends Fragment implements FragmentCal
 
                                             for (QueryDocumentSnapshot document : task.getResult()) {
                                                 Comment comment = document.toObject(Comment.class);
+                                                comment.setIdDoc(document.getId());
                                                 isHave = true;
                                                 idDoc = comment.getIdProduct();
 
@@ -183,7 +185,7 @@ public class AdminEvaluateFragmentSecond extends Fragment implements FragmentCal
                 listComments.add(comments[0]);
             }
             try {
-                AdminCustomEvaluateListViewAdapter myAdapter = new AdminCustomEvaluateListViewAdapter(getActivity(), R.layout.admin_custom_listview_evaluate, listComments);
+                AdminCustomEvaluateListViewAdapter myAdapter = new AdminCustomEvaluateListViewAdapter(getActivity(), R.layout.admin_custom_listview_evaluate, listComments, option);
                 admin_evaluate_listview.setAdapter(myAdapter);
             } catch (Exception error) {
                 Log.e("ERROR", "activity_see_evaluate: ", error);
@@ -205,6 +207,7 @@ public class AdminEvaluateFragmentSecond extends Fragment implements FragmentCal
         commentEvaluate.setSizeProduct(cmt.getSizeProduct());
         commentEvaluate.setReply(cmt.getReply());
         commentEvaluate.setUser(cmt.getUser());
+        commentEvaluate.setIdDoc(cmt.getIdDoc());
 
         return commentEvaluate;
     }
