@@ -143,6 +143,9 @@ public class ChatActivity extends activity_base {
         if(checkSendImage == 1){
             message.put("messageImage", preferenceManager.getString("messageImage"));
         } else {
+            if(binding.inputMessage.getText().toString().isEmpty()){
+                return;
+            }
             message.put(Constants.KEY_MESSAGE, binding.inputMessage.getText().toString());
             message.put("messageImage" , null);
         }
