@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:id="@+id/rectangle_custom_admin_list_customer"
+        android:layout_width="411dp"
+        android:layout_height="83dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/rectangle_custom_admin_list_chat"
+        >
+        <ImageView
+            android:id="@+id/custom_picture_admin_list_customer"
+            android:layout_width="63dp"
+            android:layout_height="65dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="9dp" />
+        <TextView
+            android:id="@+id/username_admin_list_customer"
+            android:layout_width="98dp"
+            android:layout_height="24dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="108dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="27dp"
+            android:text="hao123"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:gravity="top"
+            />
+
+    </RelativeLayout>
+
+</RelativeLayout>
