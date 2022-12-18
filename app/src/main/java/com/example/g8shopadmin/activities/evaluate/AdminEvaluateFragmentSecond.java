@@ -129,13 +129,14 @@ public class AdminEvaluateFragmentSecond extends Fragment implements FragmentCal
 
         protected void onProgressUpdate(AdminEvaluate... comments) {
             super.onProgressUpdate(comments);
+
             if (comments.length == 0) {
                 listComments.clear();
             } else {
                 listComments.add(comments[0]);
             }
             try {
-                AdminCustomEvaluateListViewAdapter myAdapter = new AdminCustomEvaluateListViewAdapter(main.getApplicationContext(), R.layout.admin_custom_listview_evaluate, listComments);
+                AdminCustomEvaluateListViewAdapter myAdapter = new AdminCustomEvaluateListViewAdapter(getActivity(), R.layout.admin_custom_listview_evaluate, listComments);
                 admin_evaluate_listview.setAdapter(myAdapter);
             } catch (Exception error) {
                 Log.e("ERROR", "activity_see_evaluate: ", error);
@@ -160,6 +161,4 @@ public class AdminEvaluateFragmentSecond extends Fragment implements FragmentCal
 
         return commentEvaluate;
     }
-
-
 }
