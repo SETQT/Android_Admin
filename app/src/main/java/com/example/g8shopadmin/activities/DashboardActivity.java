@@ -48,6 +48,7 @@ public class DashboardActivity extends activity_base implements View.OnClickList
         binding.voucherAdmin.setOnClickListener(this);
         binding.adminWaitRate.setOnClickListener(this);
         binding.historyOrder.setOnClickListener(this);
+        binding.revenueAdmin.setOnClickListener(this);
     }
 
     @Override
@@ -66,6 +67,10 @@ public class DashboardActivity extends activity_base implements View.OnClickList
         }
         if(view.getId() == binding.historyOrder.getId()) {
             Intent intent = new Intent(getApplicationContext(), activity_admin_order.class);
+            startActivity(intent);
+        }
+        if(view.getId() == binding.revenueAdmin.getId()) {
+            Intent intent = new Intent(getApplicationContext(), activity_admin_revenue.class);
             startActivity(intent);
         }
     }

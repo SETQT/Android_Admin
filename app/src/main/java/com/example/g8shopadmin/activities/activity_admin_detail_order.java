@@ -122,7 +122,7 @@ public class activity_admin_detail_order extends Activity implements AdapterView
                             }
 
 
-                            CustomMyListViewPaymentAdapter myAdapter = new CustomMyListViewPaymentAdapter(getApplicationContext(), R.layout.dialog_listview_all_order_products, myorders);
+                            CustomMyListViewPaymentAdapter myAdapter = new CustomMyListViewPaymentAdapter(getApplicationContext(), R.id.listview_detail_order, myorders);
                             listOrder.setAdapter(myAdapter);
                             setListViewHeightBasedOnChildren(listOrder);
 

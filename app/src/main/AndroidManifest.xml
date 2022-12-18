@@ -81,6 +81,10 @@
             android:exported="true"
             android:windowSoftInputMode="adjustPan"/>
         <activity
+            android:name=".activities.activity_admin_revenue"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity
             android:name=".activities.activity_admin_create_voucher"
             android:exported="true"
             android:windowSoftInputMode="adjustPan"/>
