@@ -1,35 +1,32 @@
 package com.example.g8shopadmin.activities.evaluate;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
-import android.os.Bundle;
 import android.util.Log;
-import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.g8shopadmin.R;
 import com.example.g8shopadmin.activities.Handle;
-import com.example.g8shopadmin.models.Voucher;
+import com.example.g8shopadmin.activities.activity_admin_create_voucher;
+import com.example.g8shopadmin.activities.activity_admin_evaluate;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.ms.square.android.expandabletextview.ExpandableTextView;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -38,11 +35,15 @@ public class AdminCustomEvaluateListViewAdapter extends ArrayAdapter<AdminEvalua
 
     Context curContext;
     ArrayList<AdminEvaluate> comments = new ArrayList<>();
+    String option;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    CollectionReference commentsRef = db.collection("comments");
 
-    public AdminCustomEvaluateListViewAdapter(Context context, int resource, ArrayList<AdminEvaluate> comments) {
+    public AdminCustomEvaluateListViewAdapter(Context context, int resource, ArrayList<AdminEvaluate> comments, String option) {
         super(context, resource, comments);
         this.comments = comments;
         this.curContext = context;
+        this.option = option;
     }
 
     @Override
@@ -65,7 +66,7 @@ public class AdminCustomEvaluateListViewAdapter extends ArrayAdapter<AdminEvalua
         TextView name_product = (TextView) v.findViewById(R.id.name_product);
         TextView size_color_product = (TextView) v.findViewById(R.id.size_color_product);
         TextView date_time = (TextView) v.findViewById(R.id.date_time);
-        RelativeLayout reply_evaluate = (RelativeLayout)  v.findViewById(R.id.reply_evaluate);
+        RelativeLayout reply_evaluate = (RelativeLayout) v.findViewById(R.id.reply_evaluate);
         TextView text_reply_evaluate = (TextView) v.findViewById(R.id.text_reply_evaluate);
         Button btn_phan_hoi = (Button) v.findViewById(R.id.btn_phan_hoi);
 
@@ -81,7 +82,7 @@ public class AdminCustomEvaluateListViewAdapter extends ArrayAdapter<AdminEvalua
         text_evaluate.setText(comments.get(position).getContent());
         date_time.setText(simpleDateFormat.format(comments.get(position).getCreatedAt()));
 
-        if (comments.get(position).getReply() == ""){
+        if (comments.get(position).getReply() == "") {
             reply_evaluate.setVisibility(View.GONE);
             btn_phan_hoi.setVisibility(View.VISIBLE);
         } else {
@@ -100,10 +101,10 @@ public class AdminCustomEvaluateListViewAdapter extends ArrayAdapter<AdminEvalua
 
         Handle.setStar(star1, star2, star3, star4, star5, count_star);
 
-        btn_phan_hoi.setOnClickListener(new View.OnClickListener(){
+        btn_phan_hoi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showFormEvaluate(position, btn_phan_hoi);
+                showFormEvaluate(position);
             }
         });
 
@@ -111,8 +112,9 @@ public class AdminCustomEvaluateListViewAdapter extends ArrayAdapter<AdminEvalua
 
     }
 
-    void showFormEvaluate(Integer position, Button btn_phan_hoi){
-        final Dialog dialog = new Dialog(curContext);
+    void showFormEvaluate(Integer position) {
+        Dialog dialog = new Dialog(curContext);
+
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(true);
         dialog.setContentView(R.layout.form_reply_evaluate);
@@ -123,17 +125,35 @@ public class AdminCustomEvaluateListViewAdapter extends ArrayAdapter<AdminEvalua
         btn_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Comment newComment = new Comment(orders.get(position).getId(), username, orders.get(position).getColor(), orders.get(position).getSize(), text_evaluate.getText().toString(), new Date(), count_star, "");
-                //commentsRef.add(newComment);
-                //dialog.dismiss();
+                if(text_evaluate.getText().toString().equals("")) {
+                    Toast.makeText(curContext, "Vui lòng nhập nhận xét trước khi bấm xác nhận!", Toast.LENGTH_SHORT).show();
+                    return;
+                }else {
+                    commentsRef.document(comments.get(position).getIdDoc()).update("reply", text_evaluate.getText().toString());
+
+                    switch (option) {
+                        case "0":
+                            // phản hồi ở trang xem tất cả
+                            comments.get(position).setReply(text_evaluate.getText().toString());
+                            break;
+                        case "1":
+                            // vì sau khi rep thì sản phẩm này không còn nằm trong mục chưa phản hồi nữa nên loại khỏi
+                            int positionNeedRemove = position.intValue();
+                            comments.remove(positionNeedRemove);
+
+                            break;
+                        default:
+                            break;
+                    }
+
+                    notifyDataSetChanged();
+
+                    dialog.dismiss();
+                }
             }
         });
 
-        //dialog.show();
-        Window window = dialog.getWindow();
-        window.setLayout(700, 650);
-
-
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
     }
-
 }

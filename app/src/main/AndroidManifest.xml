@@ -69,7 +69,15 @@
             android:exported="true"
             android:windowSoftInputMode="adjustPan"/>
         <activity
+            android:name=".activities.activity_admin_detail_order"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity
             android:name=".activities.activity_admin_evaluate"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".activities.activity_admin_order"
             android:exported="true"
             android:windowSoftInputMode="adjustPan"/>
         <activity

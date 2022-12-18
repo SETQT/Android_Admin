@@ -11,6 +11,7 @@ public class Comment {
     private Date createdAt;
     private Integer countStar;
     private String reply;
+    private String idDoc; // id doc của comment này
 
     public Comment() {
 
@@ -89,5 +90,13 @@ public class Comment {
 
     public void setReply(String reply) {
         this.reply = reply;
+    }
+
+    public String getIdDoc() {
+        return idDoc;
+    }
+
+    public void setIdDoc(String idDoc) {
+        this.idDoc = idDoc;
     }
 }

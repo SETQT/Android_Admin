@@ -16,7 +16,7 @@ public class AdminOrderFragmentFirst extends Fragment{
     // this fragment shows a ListView
     activity_admin_order main;
     TextView admin_order_option_cho_xac_nhan, admin_order_option_dang_giao;
-    TextView admin_order_option_da_giao, admin_order_option_da_huy;
+    TextView admin_order_option_da_giao;
 
     // convenient constructor(accept arguments, copy them to a bundle, binds bundle to fragment)
     public static AdminOrderFragmentFirst newInstance(String strArg) {
@@ -43,7 +43,6 @@ public class AdminOrderFragmentFirst extends Fragment{
         admin_order_option_cho_xac_nhan  = (TextView) layout_first.findViewById(R.id.admin_order_option_cho_xac_nhan);
         admin_order_option_dang_giao  = (TextView) layout_first.findViewById(R.id.admin_order_option_dang_giao);
         admin_order_option_da_giao  = (TextView) layout_first.findViewById(R.id.admin_order_option_da_giao);
-        admin_order_option_da_huy  = (TextView) layout_first.findViewById(R.id.admin_order_option_da_huy);
 
         admin_order_option_cho_xac_nhan.setTextAppearance(getActivity(), R.style.setTextAfterClick);
 
@@ -53,8 +52,7 @@ public class AdminOrderFragmentFirst extends Fragment{
                 admin_order_option_cho_xac_nhan.setTextAppearance(getActivity(), R.style.setTextAfterClick);
                 admin_order_option_dang_giao.setTextAppearance(getActivity(), R.style.setTextNotClick);
                 admin_order_option_da_giao.setTextAppearance(getActivity(), R.style.setTextNotClick);
-                admin_order_option_da_huy.setTextAppearance(getActivity(), R.style.setTextNotClick);
-                String dataSend = "Cho xac nhan";
+                String dataSend = "1";
                 main.onMsgFromFragToMain("BLUE-FRAG", dataSend);
             }});
 
@@ -66,8 +64,7 @@ public class AdminOrderFragmentFirst extends Fragment{
                 admin_order_option_cho_xac_nhan.setTextAppearance(getActivity(), R.style.setTextNotClick);
                 admin_order_option_dang_giao.setTextAppearance(getActivity(), R.style.setTextAfterClick);
                 admin_order_option_da_giao.setTextAppearance(getActivity(), R.style.setTextNotClick);
-                admin_order_option_da_huy.setTextAppearance(getActivity(), R.style.setTextNotClick);
-                String dataSend = "Dang giao";
+                String dataSend = "2";
                 main.onMsgFromFragToMain("BLUE-FRAG", dataSend);
             }});
 
@@ -77,21 +74,10 @@ public class AdminOrderFragmentFirst extends Fragment{
                 admin_order_option_cho_xac_nhan.setTextAppearance(getActivity(), R.style.setTextNotClick);
                 admin_order_option_dang_giao.setTextAppearance(getActivity(), R.style.setTextNotClick);
                 admin_order_option_da_giao.setTextAppearance(getActivity(), R.style.setTextAfterClick);
-                admin_order_option_da_huy.setTextAppearance(getActivity(), R.style.setTextNotClick);
-                String dataSend = "Da giao";
+                String dataSend = "3";
                 main.onMsgFromFragToMain("BLUE-FRAG", dataSend);
             }});
 
-        admin_order_option_da_huy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                admin_order_option_cho_xac_nhan.setTextAppearance(getActivity(), R.style.setTextNotClick);
-                admin_order_option_dang_giao.setTextAppearance(getActivity(), R.style.setTextNotClick);
-                admin_order_option_da_giao.setTextAppearance(getActivity(), R.style.setTextNotClick);
-                admin_order_option_da_huy.setTextAppearance(getActivity(), R.style.setTextAfterClick);
-                String dataSend = "Da huy";
-                main.onMsgFromFragToMain("BLUE-FRAG", dataSend);
-            }});
 
         return layout_first;
     }// onCreateView

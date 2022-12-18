@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity_admin_record_customer"
+    android:background="#E5E5E5">
+
+    <ImageView
+        android:id="@+id/admin_record_rectangle_header"
+        android:layout_width="wrap_content"
+        android:layout_height="165dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="-24dp"
+        android:background="@drawable/record_rectangle_header_profile"
+        android:scaleType="centerCrop" />
+
+    <View
+        android:id="@+id/admin_record_ic_back"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/ic_back_payment"
+        android:backgroundTint="#FFFFFF"
+        android:gravity="center" />
+
+    <View
+        android:id="@+id/admin_record_frame_avatar_profile"
+        android:layout_width="120dp"
+        android:layout_height="123dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="140dp"
+        android:layout_marginTop="68dp"
+        android:background="@drawable/record_frame_avatar_profile" />
+
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/admin_record_avatar"
+        android:layout_width="120dp"
+        android:layout_height="123dp"
+        android:layout_marginLeft="140dp"
+        android:layout_marginTop="68dp"
+        android:src="@drawable/mono1"
+        app:civ_border_color="#000000"
+        app:civ_border_width="1dp" />
+
+
+    <View
+        android:id="@+id/record_bg_custom_01"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="216dp"
+        android:background="@drawable/rectangle_setup_voucher" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="21dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="228dp"
+        android:gravity="center"
+        android:text="Tên"
+        android:textColor="#000000"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/admin_record_customer_ten"
+        android:layout_width="wrap_content"
+        android:layout_height="21dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="228dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:text="Dương Minh Hiếu"
+        android:textColor="#AEAEAE"
+        android:textSize="14sp" />
+
+
+
+    <View
+        android:id="@+id/admin_record_bg_custom_02"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="262dp"
+        android:background="@drawable/rectangle_setup_voucher" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="21dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="273dp"
+        android:gravity="center"
+        android:text="Bio"
+        android:textColor="#000000"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/admin_record_customer_bio"
+        android:layout_width="wrap_content"
+        android:layout_height="21dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="273dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:text="Đẹp trai không có tội"
+        android:textColor="#AEAEAE"
+        android:textSize="14sp" />
+
+
+    <View
+        android:id="@+id/admin_record_bg_custom_03"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="307.5dp"
+        android:background="@drawable/rectangle_setup_voucher" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="21dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="318dp"
+        android:gravity="center"
+        android:text="Giới tính"
+        android:textColor="#000000"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/admin_record_customer_sex"
+        android:layout_width="wrap_content"
+        android:layout_height="21dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="318dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:text="Nam"
+        android:textColor="#AEAEAE"
+        android:textSize="14sp" />
+
+
+
+    <View
+        android:id="@+id/admin_record_bg_custom_04"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="353dp"
+        android:background="@drawable/rectangle_setup_voucher" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="21dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="363dp"
+        android:gravity="center"
+        android:text="Ngày sinh"
+        android:textColor="#000000"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/admin_record_customer_dob"
+        android:layout_width="wrap_content"
+        android:layout_height="21dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="362dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:text="20-08-2002"
+        android:textColor="#AEAEAE"
+        android:textSize="14sp" />
+
+
+    <View
+        android:id="@+id/record_bg_custom_05"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="399dp"
+        android:background="@drawable/rectangle_setup_voucher" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="21dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="412dp"
+        android:gravity="center"
+        android:text="Email"
+        android:textColor="#000000"
+        android:textSize="14sp" />
+
+
+    <TextView
+        android:id="@+id/admin_record_customer_email"
+        android:layout_width="wrap_content"
+        android:layout_height="21dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="410dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:text="baobaobao@gmail.com"
+        android:textColor="#AEAEAE"
+        android:textSize="14sp" />
+    <View
+        android:id="@+id/admin_record_bg_custom_06"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="445dp"
+        android:background="@drawable/rectangle_setup_voucher" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="21dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="456dp"
+        android:gravity="center"
+        android:text="Số điện thoại"
+        android:textColor="#000000"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/record_id_profile_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="21dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="456dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:text="0912308208"
+        android:textColor="#AEAEAE"
+        android:textSize="14sp" />
+
+
+
+    <View
+        android:id="@+id/admin_record_bg_custom_07"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="490.5dp"
+        android:background="@drawable/rectangle_setup_voucher" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="21dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="501dp"
+        android:gravity="center"
+        android:text="Địa chỉ"
+        android:textColor="#000000"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/admin_record_customer_address"
+        android:layout_width="230dp"
+        android:layout_height="36dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="495dp"
+        android:layout_marginRight="20dp"
+        android:gravity="top|right"
+        android:text="KTX khu A,Linh Trung, Thủ Đức, Thành phố Hồ Chí Minh"
+        android:textColor="#AEAEAE"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/btn_admin_ban_account_customer"
+        android:layout_width="186dp"
+        android:layout_height="28dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="113dp"
+        android:layout_marginBottom="50dp"
+
+        android:background="@drawable/btn_ban_record_customer"
+        android:gravity="center"
+        android:text="Khóa tài khoản này"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp" />
+
+
+</RelativeLayout>
