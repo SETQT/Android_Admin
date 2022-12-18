@@ -1,5 +1,6 @@
 package com.example.g8shopadmin.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -49,8 +50,8 @@ public class activity_admin_order extends FragmentActivity implements MainCallba
         icon_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent moveActivity = new Intent(getApplicationContext(), activity_dashboard.class);
-//                startActivity(moveActivity);
+                Intent moveActivity = new Intent(getApplicationContext(), DashboardActivity.class);
+                startActivity(moveActivity);
             }
         });
 

@@ -1,6 +1,6 @@
 package com.example.g8shopadmin.activities;
 
-public class Order{
+public class Orders{
 
 
     private int id;
@@ -14,7 +14,7 @@ public class Order{
     private Integer image;
 
 
-    public Order(int id, String name, String old_cost, String new_cost, String number, String size,String color,String cost_final,Integer img) {
+    public Orders(int id, String name, String old_cost, String new_cost, String number, String size,String color,String cost_final,Integer img) {
         this.setId(id);
         this.setName(name);
         this.setOld_cost(old_cost);

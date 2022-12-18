@@ -1,5 +1,6 @@
 package com.example.g8shopadmin.activities.order;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,32 +9,31 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.g8shopadmin.FragmentCallbacks;
 import com.example.g8shopadmin.MainCallbacks;
 import com.example.g8shopadmin.R;
 import com.example.g8shopadmin.activities.activity_admin_order;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
 public class AdminOrderFragmentSecond extends Fragment implements FragmentCallbacks {
     activity_admin_order main;
-    ListView listOrder;
-    ArrayList<AdminOrder> orders = new ArrayList<AdminOrder>();
+    ListView listMyOrder;
 
-    ArrayList<Integer> avatar = new ArrayList<>();
-    ArrayList<String> name_customer = new ArrayList<>();
-    ArrayList<String> name_option = new ArrayList<>();
-    ArrayList<Integer> picture = new ArrayList<>();
-    ArrayList<String> name = new ArrayList<>();
-    ArrayList<String> size = new ArrayList<>();
-    ArrayList<String> count = new ArrayList<>();
-    ArrayList<String> old_cost = new ArrayList<>();
-    ArrayList<String> new_cost = new ArrayList<>();
-    ArrayList<String> total = new ArrayList<>();
-    ArrayList<String> button_option = new ArrayList<>();
-    ArrayList<String> ma_don_hang = new ArrayList<>();
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    CollectionReference ordersRef = db.collection("orders");
+
+    String stateMyOrder;
+
 
     public static AdminOrderFragmentSecond newInstance(String strArg1) {
         AdminOrderFragmentSecond fragment = new AdminOrderFragmentSecond();
@@ -56,166 +56,98 @@ public class AdminOrderFragmentSecond extends Fragment implements FragmentCallba
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         LinearLayout layout_second = (LinearLayout) inflater.inflate(R.layout.admin_custom_order_fragment_second, null);
 
-        listOrder = (ListView) layout_second.findViewById(R.id.admin_order_listview);
+        listMyOrder = (ListView) layout_second.findViewById(R.id.admin_order_listview);
 
-        avatar.add(R.drawable.avatar_profile);avatar.add(R.drawable.avatar_profile);
-        name_customer.add("duongminhhieu");name_customer.add("truongvanhao");
-        name_option.add("Chờ xác nhận"); name_option.add("Chờ xác nhận");
-        picture.add(R.drawable.mono1);picture.add(R.drawable.mono1);
-        name.add("Áo khoác cực chất");name.add("Áo thun");
-        size.add("Size L, Trắng");size.add("Size L, Đen");
-        count.add("Số lượng: 2");count.add("Số lượng: 1");
-        old_cost.add("đ400.000"); old_cost.add("đ300.000");
-        new_cost.add("đ200.000"); new_cost.add("đ200.000");
-        total.add("đ400.000"); total.add("đ200.000");
-        button_option.add("Xác nhận");button_option.add("Xác nhận");
-        ma_don_hang.add("#ADFGHJLL");ma_don_hang.add("#BGHTUYNH");
+        order_asynctask o_at = new order_asynctask(1);
+        o_at.execute();
 
-
-        for (int i = 0; i < picture.size(); i++) {
-            orders.add(new AdminOrder(i, avatar.get(i), name_customer.get(i), name_option.get(i), picture.get(i), name.get(i), size.get(i), count.get(i), old_cost.get(i), new_cost.get(i), total.get(i), button_option.get(i), ma_don_hang.get(i)));
+        try {
+            Bundle arguments = getArguments();
+        } catch (Exception e) {
+            Log.e("RED BUNDLE ERROR – ", "" + e.getMessage());
         }
 
-        AdminCustomOrderListViewAdapter myAdapter = new AdminCustomOrderListViewAdapter(getActivity(), R.layout.admin_custom_listview_order, orders);
-        listOrder.setAdapter(myAdapter);
-
+        if(stateMyOrder != null) {
+            o_at = new order_asynctask(Integer.parseInt(stateMyOrder));
+            o_at.execute();
+        }
         return layout_second;
     }
 
     @Override
     public void onMsgFromMainToFragment(String strValue) {
+        stateMyOrder = strValue;
+        order_asynctask o_at = new order_asynctask(Integer.parseInt(strValue));
+        o_at.execute();
 
-        Log.i("TAG", "onMsgFromMainToFragment: " + strValue);
 
-        if (strValue == "Cho xac nhan") {
-            avatar.clear();name_customer.clear();name_option.clear();picture.clear();
-            name.clear();size.clear();count.clear();old_cost.clear();new_cost.clear();
-            total.clear();button_option.clear();
+    }
 
-            avatar.add(R.drawable.avatar_profile);avatar.add(R.drawable.avatar_profile);
-            name_customer.add("duongminhhieu");name_customer.add("truongvanhao");
-            name_option.add("Chờ xác nhận"); name_option.add("Chờ xác nhận");
-            picture.add(R.drawable.mono1);picture.add(R.drawable.mono1);
-            name.add("Áo khoác cực chất");name.add("Áo thun");
-            size.add("Size L, Trắng");size.add("Size L, Đen");
-            count.add("Số lượng: 2");count.add("Số lượng: 1");
-            old_cost.add("đ400.000"); old_cost.add("đ300.000");
-            new_cost.add("đ200.000"); new_cost.add("đ200.000");
-            total.add("đ400.000"); total.add("đ200.000");
-            button_option.add("Xác nhận");button_option.add("Xác nhận");
-            ma_don_hang.add("#ADFGHJLL");ma_don_hang.add("#BGHTUYNH");
+    class order_asynctask extends AsyncTask<Void, Order, Order> {
+        ArrayList<Order> listOrder = new ArrayList<>();
+        Integer state;
 
-            orders.clear();
-
-            for (int i = 0; i < picture.size(); i++) {
-                orders.add(new AdminOrder(i, avatar.get(i), name_customer.get(i), name_option.get(i), picture.get(i), name.get(i), size.get(i), count.get(i), old_cost.get(i), new_cost.get(i), total.get(i), button_option.get(i), ma_don_hang.get(i)));
-            }
+        public order_asynctask() {
         }
 
-        if (strValue == "Dang giao") {
-            avatar.clear();name_customer.clear();name_option.clear();picture.clear();
-            name.clear();size.clear();count.clear();old_cost.clear();new_cost.clear();
-            total.clear();button_option.clear();
-
-            avatar.add(R.drawable.avatar_profile);avatar.add(R.drawable.avatar_profile);
-            name_customer.add("duongminhhieu");name_customer.add("truongvanhao");
-            name_option.add("Đang giao hàng"); name_option.add("Đang giao hàng");
-            picture.add(R.drawable.mono1);picture.add(R.drawable.mono1);
-            name.add("Áo khoác cực chất");name.add("Áo thun");
-            size.add("Size L, Trắng");size.add("Size L, Đen");
-            count.add("Số lượng: 2");count.add("Số lượng: 1");
-            old_cost.add("đ400.000"); old_cost.add("đ300.000");
-            new_cost.add("đ200.000"); new_cost.add("đ200.000");
-            total.add("đ400.000"); total.add("đ200.000");
-            button_option.add("Tình trạng giao");button_option.add("Tình trạng giao");
-            ma_don_hang.add("#HJKIUOLK");ma_don_hang.add("#GFRTGBGT");
-
-            orders.clear();
-
-            for (int i = 0; i < picture.size(); i++) {
-                orders.add(new AdminOrder(i, avatar.get(i), name_customer.get(i), name_option.get(i), picture.get(i), name.get(i), size.get(i), count.get(i), old_cost.get(i), new_cost.get(i), total.get(i), button_option.get(i), ma_don_hang.get(i)));
-            }
+        public order_asynctask(Integer state) {
+            this.state = state;
         }
 
-        if (strValue == "Da giao") {
-            avatar.clear();name_customer.clear();name_option.clear();picture.clear();
-            name.clear();size.clear();count.clear();old_cost.clear();new_cost.clear();
-            total.clear();button_option.clear();
+        @Override
+        protected Order doInBackground(Void... voids) {
+            try {
+                ordersRef
+                        .whereEqualTo("state", state)
+                        .get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    Boolean isHave = false;
 
-            avatar.add(R.drawable.avatar_profile);avatar.add(R.drawable.avatar_profile);
-            name_customer.add("duongminhhieu");name_customer.add("truongvanhao");
-            name_option.add("Đã giao hàng"); name_option.add("Đã giao hàng");
-            picture.add(R.drawable.mono1);picture.add(R.drawable.mono1);
-            name.add("Áo khoác cực chất");name.add("Áo thun");
-            size.add("Size L, Trắng");size.add("Size L, Đen");
-            count.add("Số lượng: 2");count.add("Số lượng: 1");
-            old_cost.add("đ400.000"); old_cost.add("đ300.000");
-            new_cost.add("đ200.000"); new_cost.add("đ200.000");
-            total.add("đ400.000"); total.add("đ200.000");
-            button_option.add("Xem đánh giá");button_option.add("Xem đánh giá");
-            ma_don_hang.add("#GFGHTYHJ");ma_don_hang.add("#BXCVFGTT");
+                                    for (QueryDocumentSnapshot document : task.getResult()) {
+                                        Order order = document.toObject(Order.class);
+                                        order.setIdDoc(document.getId());
+                                        isHave = true;
+                                        publishProgress(order);
+                                    }
 
-            avatar.add(R.drawable.avatar_profile);avatar.add(R.drawable.avatar_profile);
-            name_customer.add("duongminhhieu");name_customer.add("truongvanhao");
-            name_option.add("Đã giao hàng"); name_option.add("Đã giao hàng");
-            picture.add(R.drawable.mono1);picture.add(R.drawable.mono1);
-            name.add("Áo khoác cực chất");name.add("Áo thun");
-            size.add("Size L, Trắng");size.add("Size L, Đen");
-            count.add("Số lượng: 2");count.add("Số lượng: 1");
-            old_cost.add("đ400.000"); old_cost.add("đ300.000");
-            new_cost.add("đ200.000"); new_cost.add("đ200.000");
-            total.add("đ400.000"); total.add("đ200.000");
-            button_option.add("Xem đánh giá");button_option.add("Xem đánh giá");
-            ma_don_hang.add("#GTTGFDAS");ma_don_hang.add("#CDETRFRF");
-
-            avatar.add(R.drawable.avatar_profile);avatar.add(R.drawable.avatar_profile);
-            name_customer.add("duongminhhieu");name_customer.add("truongvanhao");
-            name_option.add("Đã giao hàng"); name_option.add("Đã giao hàng");
-            picture.add(R.drawable.mono1);picture.add(R.drawable.mono1);
-            name.add("Áo khoác cực chất");name.add("Áo thun");
-            size.add("Size L, Trắng");size.add("Size L, Đen");
-            count.add("Số lượng: 2");count.add("Số lượng: 1");
-            old_cost.add("đ400.000"); old_cost.add("đ300.000");
-            new_cost.add("đ200.000"); new_cost.add("đ200.000");
-            total.add("đ400.000"); total.add("đ200.000");
-            button_option.add("Xem đánh giá");button_option.add("Xem đánh giá");
-            ma_don_hang.add("#NMKJHYGF");ma_don_hang.add("#CXSDFRFD");
-
-            orders.clear();
-
-            for (int i = 0; i < picture.size(); i++) {
-                orders.add(new AdminOrder(i, avatar.get(i), name_customer.get(i), name_option.get(i), picture.get(i), name.get(i), size.get(i), count.get(i), old_cost.get(i), new_cost.get(i), total.get(i), button_option.get(i), ma_don_hang.get(i)));
+                                    if (!isHave) {
+                                        publishProgress();
+                                    }
+                                } else {
+                                    Log.d("TAG", "Error getting documents: ", task.getException());
+                                }
+                            }
+                        });
+            } catch (Exception error) {
+                Log.e("ERROR", "VoucherFragmentSecond doInBackground: ", error);
             }
+            return null;
         }
 
-        if (strValue == "Da huy") {
-            avatar.clear();name_customer.clear();name_option.clear();picture.clear();
-            name.clear();size.clear();count.clear();old_cost.clear();new_cost.clear();
-            total.clear();button_option.clear();
+        @Override
+        protected void onProgressUpdate(Order... orders) {
+            // Hàm thực hiện update giao diện khi có dữ liệu từ hàm doInBackground gửi xuống
+            super.onProgressUpdate(orders);
 
-            avatar.add(R.drawable.avatar_profile);
-            name_customer.add("duongminhhieu");
-            name_option.add("Đã hủy");
-            picture.add(R.drawable.mono1);
-            name.add("Áo khoác cực chất");
-            size.add("Size L, Trắng");
-            count.add("Số lượng: 2");
-            old_cost.add("đ400.000");
-            new_cost.add("đ200.000");
-            total.add("đ400.000");
-            button_option.add("Xem đơn hàng");
-            ma_don_hang.add("#MKJTFGFD");
+            if (orders.length == 0) {
+                listOrder.clear();
+            } else {
+                for (int i = 0; i < orders.length; i++) {
+                    listOrder.add(orders[0]);
+                }
+            }
 
-            orders.clear();
-
-            for (int i = 0; i < picture.size(); i++) {
-                orders.add(new AdminOrder(i, avatar.get(i), name_customer.get(i), name_option.get(i), picture.get(i), name.get(i), size.get(i), count.get(i), old_cost.get(i), new_cost.get(i), total.get(i), button_option.get(i), ma_don_hang.get(i)));
+            try {
+                AdminCustomOrderListViewAdapter myAdapter = new AdminCustomOrderListViewAdapter(getActivity(), R.layout.admin_custom_listview_order, listOrder, state);
+                listMyOrder.setAdapter(myAdapter);
+            } catch (Exception error) {
+                Log.e("ERROR", "MyorderFragmentSecond: ", error);
+                return;
             }
         }
-
-        AdminCustomOrderListViewAdapter myAdapter = new AdminCustomOrderListViewAdapter(getActivity(), R.layout.admin_custom_listview_order, orders);
-        listOrder.setAdapter(myAdapter);
-
     }
 
 

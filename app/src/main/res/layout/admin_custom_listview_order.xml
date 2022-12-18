@@ -7,29 +7,28 @@
 
     <View
         android:id="@+id/admin_order_custom_frame_bg"
-        android:layout_width="381dp"
-        android:layout_height="230dp"
+        android:layout_width="391dp"
+        android:layout_height="165dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:background="@drawable/myorder_custom_frame_bg" />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/admin_order_avatar_customer"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="35dp"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/avatar_profile" />
+        android:layout_marginTop="15dp" />
 
     <TextView
         android:id="@+id/admin_order_name_customer"
         android:layout_width="wrap_content"
-        android:layout_height="12dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="60dp"
@@ -37,111 +36,61 @@
         android:gravity="top"
         android:text="duongminhhieu"
         android:textColor="#AEAEAE"
-        android:textSize="8sp" />
+        android:textSize="10sp" />
+
 
     <TextView
-        android:id="@+id/admin_order_option"
+        android:id="@+id/admin_order_total_products"
         android:layout_width="wrap_content"
-        android:layout_height="21dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="13dp"
-        android:layout_marginRight="50dp"
-        android:gravity="center"
-        android:text="Chờ lấy hàng"
-        android:textColor="#F9A826"
-        android:textSize="12sp"
-        android:textStyle="bold" />
-
-    <ImageView
-        android:id="@+id/admin_order_picture_product"
-        android:layout_width="53dp"
-        android:layout_height="54dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
         android:layout_marginLeft="35dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="48dp"
-        android:background="@drawable/mono1"
-        />
-
-    <TextView
-        android:id="@+id/admin_order_name_product"
-        android:layout_width="168dp"
-        android:layout_height="28dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="98dp"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="50dp"
         android:gravity="top"
-        android:text="Áo khoác Mono cực chất lượng 🔥🔥🔥"
+        android:text="Số sản phẩm: 1"
         android:textColor="#000000"
         android:textSize="10sp" />
 
-    <TextView
-        android:id="@+id/admin_order_size_product"
-        android:layout_width="wrap_content"
-        android:layout_height="12dp"
+    <Button
+        android:id="@+id/admin_order_view_all_products"
+        android:layout_width="110dp"
+        android:layout_height="28dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="98dp"
-        android:layout_marginTop="80dp"
-        android:gravity="top"
-        android:text="Size M, Đen"
-        android:textColor="#AEAEAE"
-        android:textSize="8sp" />
-
-    <TextView
-        android:id="@+id/admin_order_count_product"
-        android:layout_width="wrap_content"
-        android:layout_height="15dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="64dp"
-        android:layout_marginRight="40dp"
-        android:gravity="top"
-        android:text="Số lượng: 1"
-        android:textColor="#AEAEAE"
-        android:textSize="10sp" />
-
-    <TextView
-        android:id="@+id/admin_order_old_cost_product"
-        android:layout_width="wrap_content"
-        android:layout_height="15dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="230dp"
-        android:layout_marginTop="90dp"
-        android:foreground="@drawable/strikethrough"
-        android:gravity="top"
-        android:text="đ500.000"
-        android:textColor="#AEAEAE"
-        android:textSize="10sp" />
-
-    <TextView
-        android:id="@+id/admin_order_new_cost_product"
-        android:layout_width="wrap_content"
-        android:layout_height="18dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="88dp"
-        android:layout_marginRight="40dp"
-        android:gravity="top"
-        android:text="đ100.000"
-        android:textColor="#F9A826"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/custom_order_bg_button"
+        android:text="Xem chi tiết"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
         android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/admin_order_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="40dp"
+        android:gravity="top"
+        android:text="Ngày đặt: 22/12/2022"
+        android:textColor="#000000"
+        android:textSize="11sp" />
 
     <TextView
         android:id="@+id/admin_order_text_total"
         android:layout_width="wrap_content"
-        android:layout_height="15dp"
-        android:layout_alignParentLeft="true"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="220dp"
-        android:layout_marginTop="120dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="72dp"
+        android:layout_marginRight="100dp"
         android:gravity="top"
-        android:text="Thành tiền: "
+        android:text="Tổng tiền: "
         android:textColor="#000000"
-        android:textSize="10sp" />
+        android:textSize="11sp" />
 
     <TextView
         android:id="@+id/admin_order_total_product"
@@ -149,7 +98,7 @@
         android:layout_height="18dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="118dp"
+        android:layout_marginTop="70dp"
         android:layout_marginRight="40dp"
         android:gravity="top"
         android:text="đ100.000"
@@ -162,10 +111,9 @@
         android:layout_height="28dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="154dp"
+        android:layout_marginTop="100dp"
         android:layout_marginRight="40dp"
         android:background="@drawable/custom_order_bg_button"
-        android:text="Chuẩn bị hàng"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="12sp" />
@@ -177,7 +125,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="190dp"
+        android:layout_marginTop="135dp"
         android:background="@drawable/strikethrough" />
 
 
@@ -188,11 +136,11 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="35dp"
-        android:layout_marginTop="201dp"
+        android:layout_marginTop="145dp"
         android:gravity="top"
         android:text="Mã đơn hàng:"
         android:textColor="#AEAEAE"
-        android:textSize="13sp" />
+        android:textSize="11sp" />
 
     <TextView
         android:id="@+id/admin_order_ma_don_hang"
@@ -200,12 +148,12 @@
         android:layout_height="18dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="201dp"
+        android:layout_marginTop="145dp"
         android:layout_marginRight="40dp"
         android:gravity="top"
         android:text="#EZKDJDHDLSLS"
         android:textColor="#000000"
-        android:textSize="13sp" />
+        android:textSize="11sp" />
 
 
 </RelativeLayout>

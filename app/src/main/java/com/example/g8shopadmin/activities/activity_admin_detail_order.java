@@ -1,52 +1,150 @@
 package com.example.g8shopadmin.activities;
 
-
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.example.g8shopadmin.R;
+import com.example.g8shopadmin.activities.order.Myorder;
+import com.example.g8shopadmin.activities.order.Order;
+import com.example.g8shopadmin.models.User;
+import com.example.g8shopadmin.models.Voucher;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class activity_admin_detail_order extends Activity implements AdapterView.OnItemSelectedListener {
 
     ListView listOrder;
-    ArrayList<Order> ListOrderArray =new ArrayList<Order>();
+    ArrayList<Myorder> myorders =new ArrayList<Myorder>();
+    String IdDoc;
+    String username;
+    TextView fullName, phone, address, methodPayment, user_name, transportFee, finalTotalMoney,code, date, total_order, cost_voucher;
+    ImageView avatar;
+    Integer total = 0;
+    String nameVoucher;
 
-    String[] name = {"Áo khoác Mono cực chất lượng", "Áo Liver giúp ra hang đầu mùa giải", "Áo anh 7 dự bị", "Giày độn", "Áo khoác", "Mũ lưỡi trai"};
-    String[] old_cost = {"đ500.000","đ400.000","đ300.000","đ700.000","đ100.000","đ200.000" };
-    String[] new_cost = {"đ300.000","đ200.000","đ200.000","đ500.000","đ80.000","đ150.000" };
-    String[] number = {"02","01","02","01","01","01" };
-    String[] size = {"S","M","L","XL","XXL","XXXL" };
-    String[] color = {"Đen","Đỏ","Tím","Vàng","Xanh","Hồng" };
-    String[] cost_final = {"đ500.000","đ500.000","đ500.000","đ500.000","đ500.000","đ500.000" };
+    View icon_back;
 
-
-
-
-    Integer[] image = {R.drawable.mono1, R.drawable.mono1, R.drawable.mono1, R.drawable.mono1,R.drawable.mono1,R.drawable.mono1  };
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    CollectionReference userRef = db.collection("users");
+    CollectionReference orderRef = db.collection("orders");
+    CollectionReference voucherRef = db.collection("vouchers");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_detail_order);
 
-
         listOrder = (ListView) findViewById(R.id.listview_detail_order);
 
-        for (int i=0;i<6;i++){
-            ListOrderArray.add(new Order(i, name[i],old_cost[i], new_cost[i], number[i],size[i],color[i],cost_final[i],image[i]));
-        }
-        CustomMyListViewPaymentAdapter myAdapter = new CustomMyListViewPaymentAdapter(this,R.layout.custom_listview_payment, ListOrderArray);
-        listOrder.setAdapter(myAdapter);
-        setListViewHeightBasedOnChildren(listOrder);
+        fullName = (TextView) findViewById(R.id.name_user_detail_order);
+        phone = (TextView) findViewById(R.id.phone);
+        address = (TextView) findViewById(R.id.address_detail_order);
+        methodPayment = (TextView) findViewById(R.id.value_method_payment_detail_order);
+        user_name = (TextView) findViewById(R.id.username_customer);
+        finalTotalMoney = (TextView) findViewById(R.id.value_total_money_payment_detail_order);
+        transportFee = (TextView) findViewById(R.id.value_cost_tranfer_detail_order);
+        code = (TextView) findViewById(R.id.value_code_order);
+        date = (TextView) findViewById(R.id.value_time_order);
+        total_order = (TextView) findViewById(R.id.value_total_cost_payment_detail_order);
+        cost_voucher = (TextView) findViewById(R.id.value_total_voucher_discount_detail_order);
+        avatar = (ImageView) findViewById(R.id.picture_account_customer);
+
+        icon_back = (View) findViewById(R.id.icon_back) ;
+
+        icon_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent moveActivity = new Intent(getApplicationContext(), activity_admin_order.class);
+                startActivity(moveActivity);
+            }
+        });
+
+        Intent intent = getIntent();
+        IdDoc = intent.getStringExtra("IdDoc");
+        username = intent.getStringExtra("username");
+
+        orderRef
+                .document(IdDoc).get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            Order order = document.toObject(Order.class);
+                            code.setText(order.getCode());
+                            SimpleDateFormat formatDate = new SimpleDateFormat("dd-MM-yyyy");
+                            date.setText(formatDate.format(order.getCreatedAt()).toString());
+                            methodPayment.setText(order.getPaymentMethods());
+                            transportFee.setText("đ" + order.getTransportFee().toString());
+                            finalTotalMoney.setText("đ" + order.getFinalTotalMoney().toString());
+                            myorders = order.getArrayOrder();
+                            for (int i = 0; i < myorders.size(); i++) {
+                                total = total +  myorders.get(i).getTotal();
+                            }
+                            total_order.setText("đ" + total.toString());
+                            nameVoucher = order.getVoucher();
+                            if (nameVoucher != ""){
+                                voucherRef
+                                        .whereEqualTo("id", nameVoucher)
+                                        .get()
+                                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                            @Override
+                                            public void onComplete(@androidx.annotation.NonNull Task<QuerySnapshot> task) {
+                                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                                    Voucher voucher = document.toObject(Voucher.class);
+                                                    cost_voucher.setText("-đ" + voucher.getMoneyDeals().toString());
+                                                }
+                                            }
+                                        });
+                            } else {
+                                cost_voucher.setText("đ0");
+                            }
+
+
+                            CustomMyListViewPaymentAdapter myAdapter = new CustomMyListViewPaymentAdapter(getApplicationContext(), R.layout.dialog_listview_all_order_products, myorders);
+                            listOrder.setAdapter(myAdapter);
+                            setListViewHeightBasedOnChildren(listOrder);
+
+                        }
+                    }
+                });
+        userRef
+                .whereEqualTo("username", username)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@androidx.annotation.NonNull Task<QuerySnapshot> task) {
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            User user = document.toObject(User.class);
+                            Picasso.with(getApplicationContext()).load(user.getImage()).into(avatar);
+                            address.setText("Địa chỉ: " + user.getAddress());
+                            fullName.setText(user.getFullname());
+                            phone.setText(user.getPhone());
+                            user_name.setText(user.getUsername());
+                        }
+                    }
+                });
 
 
     }

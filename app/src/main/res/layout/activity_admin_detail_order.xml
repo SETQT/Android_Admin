@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/login"
-    android:clipToOutline="true"
-    tools:context=".activity_admin_detail_order">
+    android:clipToOutline="true">
 
     <RelativeLayout
         android:id="@+id/admin_detail_order"
@@ -19,12 +18,12 @@
         android:background="@drawable/rectangle_payment">
 
         <View
-            android:id="@+id/ic_back_admin_detail_order"
+            android:id="@+id/icon_back"
             android:layout_width="21dp"
             android:layout_height="22dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="40dp"
             android:background="@drawable/ic_back_payment" />
 
@@ -42,6 +41,7 @@
             android:textColor="#FFFFFF"
             android:textStyle="bold"/>
     </RelativeLayout>
+
     <RelativeLayout
         android:id="@+id/rectangle_address_detail_order"
         android:layout_width="411dp"
@@ -70,9 +70,8 @@
             android:layout_marginLeft="63dp"
             android:layout_marginTop="15dp"
             android:gravity="top"
-            android:text="Dương Minh Hiếu"
-            android:textSize="14sp"
             android:textColor="#000000"
+            android:textSize="14sp"
             android:textStyle="bold" />
 
         <View
@@ -86,7 +85,7 @@
             android:background="@drawable/line_address_payment" />
 
         <TextView
-            android:id="@+id/some_id"
+            android:id="@+id/phone"
             android:layout_width="wrap_content"
             android:layout_height="21dp"
             android:layout_alignParentTop="true"
@@ -94,9 +93,8 @@
             android:layout_marginTop="15dp"
             android:layout_toRightOf="@+id/line_address"
             android:gravity="top"
-            android:text="0812301805"
-            android:textSize="14sp"
             android:textColor="#000000"
+            android:textSize="14sp"
             android:textStyle="bold" />
 
         <TextView
@@ -108,9 +106,8 @@
             android:layout_marginLeft="63dp"
             android:layout_marginTop="43dp"
             android:gravity="top"
-            android:text="Ký túc xá khu B, Phường Đông Hòa, Thị xã Dĩ An, Bình Dương"
-            android:textSize="14sp"
-            android:textColor="#000000"/>
+            android:textColor="#000000"
+            android:textSize="14sp" />
 
 
     </RelativeLayout>
@@ -155,8 +152,8 @@
                     android:layout_marginTop="9dp"
                     android:gravity="top"
                     android:text="Phương thức thanh toán"
-                    android:textSize="14sp"
                     android:textColor="#000000"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
 
@@ -179,7 +176,6 @@
                     android:layout_marginLeft="62dp"
                     android:layout_marginTop="41dp"
                     android:gravity="top"
-                    android:text="Thanh toán tiền mặt"
                     android:textSize="10sp"
                     android:textColor="#AEAEAE"
                     android:textStyle="bold" />
@@ -192,15 +188,14 @@
                 android:layout_marginBottom="5dp"
                 android:background="@drawable/rectangle_setup_voucher">
 
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/picture_account_customer"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginLeft="25dp"
-                    android:layout_marginTop="7dp"
-                    android:background="@drawable/avatar_profile"/>
+                    android:layout_marginTop="7dp" />
                 <TextView
                     android:id="@+id/username_customer"
                     android:layout_width="wrap_content"
@@ -210,7 +205,6 @@
                     android:layout_marginLeft="52dp"
                     android:layout_marginTop="9dp"
                     android:gravity="top"
-                    android:text="duongminhhieu"
                     android:textSize="10sp"
                     android:textColor="#000000"
                     />
@@ -260,7 +254,6 @@
                     android:layout_marginTop="46dp"
                     android:layout_marginRight="25dp"
                     android:gravity="right|top"
-                    android:text="đ200.000"
                     android:textColor="#AEAEAE"
                     android:textSize="12sp" />
 
@@ -286,7 +279,6 @@
                     android:layout_marginTop="67dp"
                     android:layout_marginRight="25dp"
                     android:gravity="right|top"
-                    android:text="đ85.000"
                     android:textColor="#AEAEAE"
                     android:textSize="12sp" />
 
@@ -312,7 +304,6 @@
                     android:layout_marginTop="88dp"
                     android:layout_marginRight="25dp"
                     android:gravity="right|top"
-                    android:text="đ200.000"
                     android:textColor="#AEAEAE"
                     android:textSize="12sp" />
 
@@ -339,7 +330,6 @@
                     android:layout_marginTop="115dp"
                     android:layout_marginRight="25dp"
                     android:gravity="right|top"
-                    android:text="đ200.000"
                     android:textColor="#F9A826"
                     android:textSize="12sp"
                     android:textStyle="bold" />
@@ -376,7 +366,6 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="22dp"
                     android:gravity="top"
-                    android:text="8910JQKA"
                     android:textSize="12sp"
                     android:textColor="#000000"
                      />
@@ -404,7 +393,6 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="22dp"
                     android:gravity="top"
-                    android:text="06-12-2022 20:48"
                     android:textSize="12sp"
                     android:textColor="#AEAEAE"
                     />

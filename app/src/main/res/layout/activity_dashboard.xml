@@ -129,6 +129,7 @@
                 android:textStyle="bold" />
             <!--  Lịch sử đơn hàng-->
             <RelativeLayout
+                android:id="@+id/history_order"
                 android:layout_width="@dimen/_125sdp"
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true">
