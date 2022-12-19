@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_promotions"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E5E5E5"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="81dp"
+        >
+
+        <View
+            android:id="@+id/rectangle_header_promotions"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/rectangle_header" />
+
+        <View
+            android:id="@+id/icon_back_promotions"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/ic_back_payment"
+            android:backgroundTint="#FFFFFF"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/text_title_promotions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="110dp"
+            android:layout_marginTop="29dp"
+            android:gravity="top"
+            android:text="Chương trình khuyến mãi"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+    <ListView
+        android:id="@+id/list_view_promotions"
+        android:layout_width="match_parent"
+        android:layout_marginTop="90dp"
+        android:layout_marginBottom="65dp"
+        android:layout_height="wrap_content"/>
+
+    <RelativeLayout
+        android:id="@+id/footer_admin_promotions"
+        android:layout_width="411dp"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/footer_change_password"
+        android:elevation="4dp">
+        <TextView
+            android:id="@+id/quantity_selected_admin_promotions"
+            android:layout_width="wrap_content"
+            android:layout_height="21dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="49dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="20dp"
+            android:text="0"
+            android:textSize="16sp"
+            android:textColor="#F9A826"
+            android:gravity="top"
+            />
+        <TextView
+            android:id="@+id/text_selected_admin_promotions"
+            android:layout_width="wrap_content"
+            android:layout_height="21dp"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/quantity_selected_admin_promotions"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="20dp"
+            android:text="đã chọn"
+            android:textSize="16sp"
+            android:textColor="#AEAEAE"
+            android:gravity="top"
+            />
+
+        <Button
+            android:id="@+id/btn_admin_add_promotion"
+            android:layout_width="170dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="90dp"
+            android:layout_marginBottom="9dp"
+            android:background="@drawable/record_btn_save_profile"
+            android:gravity="center"
+            android:text="Thêm khuyến mãi"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+        <Button
+            android:id="@+id/btn_admin_edit_promotions"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="9dp"
+            android:background="@drawable/record_btn_save_profile"
+            android:gravity="center"
+            android:text="Sửa"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+</RelativeLayout>
