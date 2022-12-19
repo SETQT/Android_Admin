@@ -3,16 +3,12 @@ package com.example.g8shopadmin.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.g8shopadmin.R;
@@ -23,7 +19,6 @@ import com.example.g8shopadmin.models.Voucher;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -35,14 +30,14 @@ import java.util.ArrayList;
 public class activity_admin_detail_order extends Activity implements AdapterView.OnItemSelectedListener {
 
     ListView listOrder;
-    ArrayList<Myorder> myorders =new ArrayList<Myorder>();
+    ArrayList<Myorder> myorders = new ArrayList<Myorder>();
     String IdDoc;
     String username;
-    TextView fullName, phone, address, methodPayment, user_name, transportFee, finalTotalMoney,code, date, total_order, cost_voucher;
+    TextView fullName, phone, address, methodPayment, user_name, transportFee, finalTotalMoney, code, date, total_order, cost_voucher;
     ImageView avatar;
     Integer total = 0;
     String nameVoucher;
-
+    Order curOder;
     View icon_back;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -70,7 +65,7 @@ public class activity_admin_detail_order extends Activity implements AdapterView
         cost_voucher = (TextView) findViewById(R.id.value_total_voucher_discount_detail_order);
         avatar = (ImageView) findViewById(R.id.picture_account_customer);
 
-        icon_back = (View) findViewById(R.id.icon_back) ;
+        icon_back = (View) findViewById(R.id.icon_back);
 
         icon_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,54 +76,42 @@ public class activity_admin_detail_order extends Activity implements AdapterView
         });
 
         Intent intent = getIntent();
-        IdDoc = intent.getStringExtra("IdDoc");
+        curOder = (Order) intent.getExtras().getSerializable("order");
         username = intent.getStringExtra("username");
 
-        orderRef
-                .document(IdDoc).get()
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()) {
-                            DocumentSnapshot document = task.getResult();
-                            Order order = document.toObject(Order.class);
-                            code.setText(order.getCode());
-                            SimpleDateFormat formatDate = new SimpleDateFormat("dd-MM-yyyy");
-                            date.setText(formatDate.format(order.getCreatedAt()).toString());
-                            methodPayment.setText(order.getPaymentMethods());
-                            transportFee.setText("đ" + order.getTransportFee().toString());
-                            finalTotalMoney.setText("đ" + order.getFinalTotalMoney().toString());
-                            myorders = order.getArrayOrder();
-                            for (int i = 0; i < myorders.size(); i++) {
-                                total = total +  myorders.get(i).getTotal();
+        code.setText(curOder.getIdDoc().toUpperCase());
+        SimpleDateFormat formatDate = new SimpleDateFormat("dd-MM-yyyy");
+        date.setText(formatDate.format(curOder.getCreatedAt()).toString());
+        methodPayment.setText(curOder.getPaymentMethods());
+        transportFee.setText("đ" + curOder.getTransportFee().toString());
+        finalTotalMoney.setText("đ" + curOder.getFinalTotalMoney().toString());
+        myorders = curOder.getArrayOrder();
+        for (int i = 0; i < myorders.size(); i++) {
+            total = total + myorders.get(i).getTotal();
+        }
+        total_order.setText("đ" + total.toString());
+        nameVoucher = curOder.getVoucher();
+        if (nameVoucher != "") {
+            voucherRef
+                    .whereEqualTo("id", nameVoucher)
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@androidx.annotation.NonNull Task<QuerySnapshot> task) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Voucher voucher = document.toObject(Voucher.class);
+                                cost_voucher.setText("-đ" + voucher.getMoneyDeals().toString());
                             }
-                            total_order.setText("đ" + total.toString());
-                            nameVoucher = order.getVoucher();
-                            if (nameVoucher != ""){
-                                voucherRef
-                                        .whereEqualTo("id", nameVoucher)
-                                        .get()
-                                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                                            @Override
-                                            public void onComplete(@androidx.annotation.NonNull Task<QuerySnapshot> task) {
-                                                for (QueryDocumentSnapshot document : task.getResult()) {
-                                                    Voucher voucher = document.toObject(Voucher.class);
-                                                    cost_voucher.setText("-đ" + voucher.getMoneyDeals().toString());
-                                                }
-                                            }
-                                        });
-                            } else {
-                                cost_voucher.setText("đ0");
-                            }
-
-
-                            CustomMyListViewPaymentAdapter myAdapter = new CustomMyListViewPaymentAdapter(getApplicationContext(), R.layout.dialog_listview_all_order_products, myorders);
-                            listOrder.setAdapter(myAdapter);
-                            setListViewHeightBasedOnChildren(listOrder);
-
                         }
-                    }
-                });
+                    });
+        } else {
+            cost_voucher.setText("đ0");
+        }
+
+        CustomMyListViewPaymentAdapter myAdapter = new CustomMyListViewPaymentAdapter(getApplicationContext(), R.id.listview_detail_order, myorders);
+        listOrder.setAdapter(myAdapter);
+        setListViewHeightBasedOnChildren(listOrder);
+
         userRef
                 .whereEqualTo("username", username)
                 .get()
@@ -145,10 +128,7 @@ public class activity_admin_detail_order extends Activity implements AdapterView
                         }
                     }
                 });
-
-
     }
-
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -159,8 +139,10 @@ public class activity_admin_detail_order extends Activity implements AdapterView
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
+
     public static void setListViewHeightBasedOnChildren(ListView listView) {
         ListAdapter listAdapter = listView.getAdapter();
+
         if (listAdapter == null) {
             return;
         }

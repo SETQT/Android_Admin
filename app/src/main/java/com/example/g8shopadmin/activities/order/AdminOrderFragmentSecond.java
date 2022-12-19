@@ -97,6 +97,8 @@ public class AdminOrderFragmentSecond extends Fragment implements FragmentCallba
         @Override
         protected Order doInBackground(Void... voids) {
             try {
+                listOrder.clear();
+
                 ordersRef
                         .whereEqualTo("state", state)
                         .get()
