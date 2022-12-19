@@ -113,7 +113,7 @@ public class AdminCustomOrderListViewAdapter extends ArrayAdapter<Order> {
             button_option.setText("Tình trạng giao");
         }
         if (orders.get(position).getState() == 3) {
-            button_option.setText("Xem đánh giá");
+            button_option.setVisibility(View.GONE);
         }
 
         view_all_products.setOnClickListener(new View.OnClickListener() {
