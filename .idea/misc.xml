@@ -82,10 +82,16 @@
         <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/dialog_listview_all_order_products.xml" value="0.14479166666666668" />
         <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/form_reply_evaluate.xml" value="0.17760416666666667" />
         <entry key="..\:/Mobile-22/PROJECT/admin/Android_Admin/app/src/main/res/layout/activity_admin_create_product.xml" value="0.25" />
+        <entry key="..\:/Mobile-22/PROJECT/admin/Android_Admin/app/src/main/res/layout/activity_admin_create_promotions.xml" value="0.25" />
+        <entry key="..\:/Mobile-22/PROJECT/admin/Android_Admin/app/src/main/res/layout/activity_admin_detail_order.xml" value="0.25" />
+        <entry key="..\:/Mobile-22/PROJECT/admin/Android_Admin/app/src/main/res/layout/activity_admin_enter_promotions.xml" value="0.25" />
         <entry key="..\:/Mobile-22/PROJECT/admin/Android_Admin/app/src/main/res/layout/activity_admin_my_products.xml" value="0.25" />
         <entry key="..\:/Mobile-22/PROJECT/admin/Android_Admin/app/src/main/res/layout/activity_admin_sale_program.xml" value="0.1814814814814815" />
+        <entry key="..\:/Mobile-22/PROJECT/admin/Android_Admin/app/src/main/res/layout/activity_admin_select_product.xml" value="0.18802083333333333" />
         <entry key="..\:/Mobile-22/PROJECT/admin/Android_Admin/app/src/main/res/layout/activity_dashboard.xml" value="0.12447916666666667" />
         <entry key="..\:/Mobile-22/PROJECT/admin/Android_Admin/app/src/main/res/layout/admin_custom_listview_my_products.xml" value="0.2" />
+        <entry key="..\:/Mobile-22/PROJECT/admin/Android_Admin/app/src/main/res/layout/admin_custom_manage_voucher_fragment_first.xml" value="0.25" />
+        <entry key="..\:/Mobile-22/PROJECT/admin/Android_Admin/app/src/main/res/layout/custom_select_product_fragment_second.xml" value="0.18802083333333333" />
       </map>
     </option>
   </component>
