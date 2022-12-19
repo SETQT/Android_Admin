@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/admin_custom_revenue_fragment_second"
+    android:orientation="vertical"
+    android:background="#E5E5E5">
+
+    <TextView
+        android:id="@+id/total_cost"
+        android:layout_width="391dp"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:textSize="20sp"
+        android:textColor="#F9A826"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:background="@drawable/custom_rectangle_footer"
+        />
+
+
+    <ListView
+        android:id="@+id/admin_revenue_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"/>
+</LinearLayout>

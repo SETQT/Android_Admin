@@ -102,7 +102,7 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         } else if(getItemViewType(position) == VIEW_TYPE_RECEIVED_IMG){
             ((ReceiverMessageImageViewHolder) holder).setData(chatMessages.get(position), receiverProfileImage);
         } else {
-            ((ReceivedProductViewHolder) holder).setData(chatMessages.get(position));
+            ((ReceivedProductViewHolder) holder).setData(chatMessages.get(position), receiverProfileImage);
         }
     }
 
@@ -138,15 +138,25 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             binding = itemContainerReceivedProductBinding;
         }
 
-        void setData(ChatMessage chatMessage) {
+        void setData(ChatMessage chatMessage,String receiverProfileImage) {
             Log.d("TAG", "setData: " + chatMessage.message);
             binding.textMessage.setText(chatMessage.message);
             binding.textDateTime.setText(chatMessage.dateTime);
             loadImage(chatMessage.messageImage, binding);
+            if(receiverProfileImage != null){
+                loadImageProfile(receiverProfileImage, binding);
+            }
         }
         private void loadImage(String image, ItemContainerReceivedProductBinding binding) {
             try {
                 Picasso.with(itemView.getContext()).load(image).into(binding.imageMessage);
+            } catch (Exception error) {
+                Log.e("ERROR", "activity_profile loadImage: ", error);
+            }
+        }
+        private void loadImageProfile(String image, ItemContainerReceivedProductBinding binding) {
+            try {
+                Picasso.with(itemView.getContext()).load(image).into(binding.imageProfile);
             } catch (Exception error) {
                 Log.e("ERROR", "activity_profile loadImage: ", error);
             }
