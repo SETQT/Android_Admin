@@ -50,10 +50,6 @@
             android:exported="true"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".activities.SignUpActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
             android:name=".activities.SignInActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan">
