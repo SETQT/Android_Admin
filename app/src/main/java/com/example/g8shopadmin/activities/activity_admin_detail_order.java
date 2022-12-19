@@ -42,7 +42,6 @@ public class activity_admin_detail_order extends Activity implements AdapterView
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference userRef = db.collection("users");
-    CollectionReference orderRef = db.collection("orders");
     CollectionReference voucherRef = db.collection("vouchers");
 
     @Override
@@ -79,7 +78,7 @@ public class activity_admin_detail_order extends Activity implements AdapterView
         curOder = (Order) intent.getExtras().getSerializable("order");
         username = intent.getStringExtra("username");
 
-        code.setText(curOder.getIdDoc().toUpperCase());
+        code.setText("#" + curOder.getIdDoc().toUpperCase());
         SimpleDateFormat formatDate = new SimpleDateFormat("dd-MM-yyyy");
         date.setText(formatDate.format(curOder.getCreatedAt()).toString());
         methodPayment.setText(curOder.getPaymentMethods());

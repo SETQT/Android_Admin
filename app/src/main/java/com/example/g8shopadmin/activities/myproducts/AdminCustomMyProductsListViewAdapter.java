@@ -60,7 +60,7 @@ public class AdminCustomMyProductsListViewAdapter extends ArrayAdapter<Product> 
         ImageView img = (ImageView) v.findViewById(R.id.admin_custom_listview_my_products_picture) ;
 
         name.setText(myProducts.get(position).getName());
-        cost.setText(myProducts.get(position).getPrice().toString());
+        cost.setText("đ" + myProducts.get(position).getPrice().toString());
         text_kho_hang.setText("Kho hàng: "+myProducts.get(position).getAmount().toString());
         text_da_ban.setText("Đã bán: "+myProducts.get(position).getAmountOfSold().toString());
 
@@ -78,7 +78,7 @@ public class AdminCustomMyProductsListViewAdapter extends ArrayAdapter<Product> 
             @Override
             public void onClick(View view) {
                 new AlertDialog.Builder(curContext)
-                        .setMessage("Bạn có chức muốn xóa voucher này chứ?")
+                        .setMessage("Bạn có chức muốn xóa sản phẩm này chứ?")
                         .setCancelable(false)
                         .setPositiveButton("Có", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
