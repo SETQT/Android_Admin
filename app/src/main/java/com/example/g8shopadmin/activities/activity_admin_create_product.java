@@ -41,6 +41,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -63,6 +64,11 @@ public class activity_admin_create_product extends AppCompatActivity implements 
     private Product newProduct;
     private String iddoc="";
     private String oldImage;
+
+    String[] typeProduct = {"Giày", "Mũ","Áo","Áo khoác","Quần"};
+    String typeSelected;
+
+
     private void openGallery() {
         Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
         startActivityForResult(gallery, PICK_IMAGE);
@@ -111,6 +117,12 @@ public class activity_admin_create_product extends AppCompatActivity implements 
         binding = ActivityAdminCreateProductBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+
+        //Spiner product
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.custom_spiner_create_voucher, typeProduct);
+        binding.spinerCreateProduct.setAdapter(adapter);
+        binding.spinerCreateProduct.setOnItemSelectedListener(this);
+
         super.onCreate(savedInstanceState);
         try {
             String value = getIntent().getExtras().getString("update");
@@ -152,7 +164,7 @@ public class activity_admin_create_product extends AppCompatActivity implements 
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
+            typeSelected = adapterView.getItemAtPosition(i).toString();
     }
 
     @Override
@@ -192,7 +204,8 @@ public class activity_admin_create_product extends AppCompatActivity implements 
 
 
         checkExitsImage=true;
-        binding.valueTypeProductAdminCreateProduct.setText(extras.getString("category"));
+
+        //binding.valueTypeProductAdminCreateProduct.setText(extras.getString("category"));
 
         binding.valueDescribeProductAdminCreateProduct.setText(extras.getString("descript"));
         binding.valueNameProductAdminCreateProduct.setText(extras.getString("name"));
@@ -219,7 +232,7 @@ public class activity_admin_create_product extends AppCompatActivity implements 
     }
 
     public void initData() {
-        String type = binding.valueTypeProductAdminCreateProduct.getText().toString();
+        String type = typeSelected.toLowerCase();
         String color = binding.valueColorProductAdminCreateProduct.getText().toString();
         String descript = binding.valueDescribeProductAdminCreateProduct.getText().toString();
         String name = binding.valueNameProductAdminCreateProduct.getText().toString();

@@ -196,20 +196,16 @@
             android:textSize="12sp"
             android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/value_type_product_admin_create_product"
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
+        <Spinner
+            android:id="@+id/spiner_create_product"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="250dp"
-            android:layout_marginTop="11dp"
-            android:background="@null"
-            android:gravity="top"
-            android:hint="Nhập loại hàng của sản phẩm"
-            android:textColor="#000000"
-            android:textColorHint="#AEAEAE"
-            android:textSize="11sp" />
+            android:layout_marginTop="9dp"
+            android:background="@drawable/edit_text_admin_create_voucher"
+            android:hint="Nhập loại hàng của sản phẩm" />
 
     </RelativeLayout>
 
