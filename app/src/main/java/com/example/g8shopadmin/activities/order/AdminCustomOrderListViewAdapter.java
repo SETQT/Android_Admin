@@ -110,7 +110,26 @@ public class AdminCustomOrderListViewAdapter extends ArrayAdapter<Order> {
             });
         }
         if (orders.get(position).getState() == 2) {
-            button_option.setText("Tình trạng giao");
+            button_option.setText("Xác nhận");
+            button_option.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    new AlertDialog.Builder(curContext)
+                            .setMessage("Bạn có chắc muốn xác nhận đơn hàng đã giao thành công?")
+                            .setCancelable(true)
+                            .setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    orderRef.document(orders.get(position).getIdDoc()).update("state", 3);
+
+                                    orders.remove(position);
+                                    Toast.makeText(curContext, "Xác nhận đơn hàng đã giao thành công thành công!", Toast.LENGTH_SHORT).show();
+                                    notifyDataSetChanged();
+                                }
+                            })
+                            .setNegativeButton("Không", null)
+                            .show();
+                }
+            });
         }
         if (orders.get(position).getState() == 3) {
             button_option.setVisibility(View.GONE);

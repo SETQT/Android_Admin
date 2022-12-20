@@ -170,6 +170,7 @@
                 android:layout_height="28dp"
                 android:layout_marginLeft="230dp"
                 android:layout_marginTop="50dp"
+                android:layout_marginBottom="10dp"
                 android:background="@drawable/custom_order_bg_button"
                 android:gravity="center"
                 android:text="Phản hồi"
