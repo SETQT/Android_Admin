@@ -69,12 +69,16 @@
         <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/activity_admin_create_voucher.xml" value="0.31950207468879666" />
         <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/activity_admin_detail_order.xml" value="0.23029045643153526" />
         <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/activity_admin_my_products.xml" value="0.11979166666666667" />
+        <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/activity_admin_notify.xml" value="0.18385416666666668" />
+        <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/activity_admin_order.xml" value="0.18125" />
         <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/activity_admin_record_customer.xml" value="0.42777777777777776" />
+        <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/activity_admin_select_product.xml" value="0.1" />
         <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/activity_dashboard.xml" value="0.33" />
         <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/activity_list_customer.xml" value="0.11979166666666667" />
         <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/activity_main.xml" value="0.11979166666666667" />
         <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/activity_promotions.xml" value="0.11979166666666667" />
         <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/admin_custom_listview_order.xml" value="0.4104803493449782" />
+        <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/admin_custom_notify_listview.xml" value="0.18489583333333334" />
         <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/admin_custom_order_fragment_first.xml" value="0.25" />
         <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/admin_custom_sale_program_fragment_first.xml" value="0.1" />
         <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/admin_custom_sale_program_fragment_second.xml" value="0.1" />

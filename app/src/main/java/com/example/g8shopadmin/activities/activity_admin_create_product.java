@@ -16,13 +16,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.g8shopadmin.R;
 import com.example.g8shopadmin.activities.myproducts.Product;
+import com.example.g8shopadmin.activities.promotion.CustomRecylerviewCreatePromotionAdapter;
 import com.example.g8shopadmin.databinding.ActivityAdminCreateProductBinding;
-import com.example.g8shopadmin.databinding.ActivityDashboardBinding;
 
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -36,14 +35,9 @@ import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.normal.TedPermission;
 import com.squareup.picasso.Picasso;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.Locale;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class activity_admin_create_product extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 

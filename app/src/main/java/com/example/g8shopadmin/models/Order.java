@@ -1,4 +1,4 @@
-package com.example.g8shopadmin.activities.order;
+package com.example.g8shopadmin.models;
 
 import java.io.Serializable;
 import java.util.ArrayList;

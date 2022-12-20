@@ -1,10 +1,9 @@
-package com.example.g8shopadmin.activities;
+package com.example.g8shopadmin.activities.promotion;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 

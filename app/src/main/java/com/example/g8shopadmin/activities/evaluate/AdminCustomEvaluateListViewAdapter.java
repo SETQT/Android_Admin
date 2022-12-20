@@ -20,6 +20,7 @@ import com.example.g8shopadmin.R;
 import com.example.g8shopadmin.activities.Handle;
 import com.example.g8shopadmin.activities.activity_admin_create_voucher;
 import com.example.g8shopadmin.activities.activity_admin_evaluate;
+import com.example.g8shopadmin.models.AdminEvaluate;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.ms.square.android.expandabletextview.ExpandableTextView;

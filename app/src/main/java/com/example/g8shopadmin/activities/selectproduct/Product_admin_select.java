@@ -1,4 +1,4 @@
-package com.example.g8shopadmin.activities;
+package com.example.g8shopadmin.activities.selectproduct;
 
 public class Product_admin_select {
     private String id;

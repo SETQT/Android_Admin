@@ -1,9 +1,8 @@
 package com.example.g8shopadmin.activities;
 
 
-import com.example.g8shopadmin.activities.myproducts.AdminCustomMyProductsListViewAdapter;
-import com.example.g8shopadmin.activities.myproducts.AdminMyProductsFragmentSecond;
 import com.example.g8shopadmin.activities.myproducts.Product;
+import com.example.g8shopadmin.activities.promotion.CustomPromotionAdapter;
 import com.example.g8shopadmin.databinding.ActivityPromotionsBinding;
 import android.app.Activity;
 import android.content.Intent;
@@ -36,7 +35,7 @@ public class activity_promotions extends Activity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference productsRef = db.collection("products");
 
-    ArrayList<String> listEdit = new ArrayList<String>();
+    public ArrayList<String> listEdit = new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

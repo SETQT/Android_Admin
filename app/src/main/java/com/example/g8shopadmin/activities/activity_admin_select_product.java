@@ -9,11 +9,8 @@ import android.util.Log;
 import android.view.View;
 
 import com.example.g8shopadmin.R;
-import com.example.g8shopadmin.activities.myproducts.Product;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.util.ArrayList;
+import com.example.g8shopadmin.activities.selectproduct.selectProductFragmentFirst;
+import com.example.g8shopadmin.activities.selectproduct.selectProductFragmentSecond;
 
 public class activity_admin_select_product extends FragmentActivity implements MainCallbacks, View.OnClickListener {
     FragmentTransaction ft; selectProductFragmentFirst firstFrag; selectProductFragmentSecond secondFrag;

@@ -17,6 +17,7 @@ import com.example.g8shopadmin.MainCallbacks;
 import com.example.g8shopadmin.R;
 import com.example.g8shopadmin.activities.activity_admin_evaluate;
 import com.example.g8shopadmin.activities.myproducts.Product;
+import com.example.g8shopadmin.models.AdminEvaluate;
 import com.example.g8shopadmin.models.Comment;
 import com.example.g8shopadmin.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;

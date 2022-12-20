@@ -1,18 +1,15 @@
-package com.example.g8shopadmin.activities;
+package com.example.g8shopadmin.activities.detailorder;
 
-import android.app.Activity;
-import android.content.ClipData;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.g8shopadmin.R;
-import com.example.g8shopadmin.activities.order.Myorder;
+import com.example.g8shopadmin.models.Myorder;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

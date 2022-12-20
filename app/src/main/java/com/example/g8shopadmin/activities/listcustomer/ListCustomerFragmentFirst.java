@@ -1,4 +1,4 @@
-package com.example.g8shopadmin.activities;
+package com.example.g8shopadmin.activities.listcustomer;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

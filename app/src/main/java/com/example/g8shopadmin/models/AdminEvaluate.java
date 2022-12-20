@@ -1,4 +1,4 @@
-package com.example.g8shopadmin.activities.evaluate;
+package com.example.g8shopadmin.models;
 
 import java.util.Date;
 

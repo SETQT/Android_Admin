@@ -85,6 +85,10 @@
             android:exported="true"
             android:windowSoftInputMode="adjustPan" />
         <activity
+            android:name=".activities.activity_admin_notify"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
             android:name=".activities.activity_admin_detail_order"
             android:exported="true"
             android:windowSoftInputMode="adjustPan" />

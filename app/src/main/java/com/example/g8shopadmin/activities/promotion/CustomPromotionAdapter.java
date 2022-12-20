@@ -1,4 +1,4 @@
-package com.example.g8shopadmin.activities;
+package com.example.g8shopadmin.activities.promotion;
 
 import android.content.Context;
 
@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.g8shopadmin.R;
 
+import com.example.g8shopadmin.activities.activity_promotions;
 import com.example.g8shopadmin.activities.myproducts.Product;
 import com.squareup.picasso.Picasso;
 
