@@ -38,6 +38,14 @@
             android:exported="true"
             android:windowSoftInputMode="adjustPan" />
         <activity
+            android:name=".activities.activity_admin_enter_promotions"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activities.activity_admin_select_product"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
             android:name=".activities.activity_admin_create_product"
             android:exported="true"
             android:windowSoftInputMode="adjustPan" />

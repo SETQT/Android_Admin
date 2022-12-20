@@ -1,16 +1,29 @@
 package com.example.g8shopadmin.activities;
 
 
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.g8shopadmin.R;
+import com.example.g8shopadmin.activities.myproducts.AdminCustomMyProductsListViewAdapter;
+import com.example.g8shopadmin.activities.myproducts.Product;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
 
 
 public class selectProductFragmentFirst extends Fragment implements View.OnClickListener {
@@ -34,7 +47,7 @@ public class selectProductFragmentFirst extends Fragment implements View.OnClick
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         try {
-            main = (activity_admin_select_product)getActivity();
+            main = (activity_admin_select_product) getActivity();
         } catch (IllegalStateException e) {
             throw new IllegalStateException("MainActivity must implement callbacks");
         }
@@ -56,7 +69,6 @@ public class selectProductFragmentFirst extends Fragment implements View.OnClick
         });
 
 
-
         return layout_first;
     }// onCreateView
 
@@ -70,4 +82,6 @@ public class selectProductFragmentFirst extends Fragment implements View.OnClick
 
 //
     }
+
+
 }

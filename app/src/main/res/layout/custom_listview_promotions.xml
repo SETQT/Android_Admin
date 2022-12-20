@@ -14,12 +14,12 @@
         android:background="@drawable/custom_border_list_customer"
         >
 
-    <CheckBox
-        android:id="@+id/custom_promotions_checkbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="21dp"
-        android:layout_marginTop="18dp"/>
+        <CheckBox
+            android:id="@+id/custom_promotions_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="21dp"
+            android:layout_marginTop="18dp" />
 
     <ImageView
         android:id="@+id/custom_promotions_image_product"
@@ -77,20 +77,20 @@
             android:text="Số lượng: 10"
             android:textColor="#AEAEAE"
             android:textSize="12sp" />
+
         <TextView
             android:id="@+id/custom_promotions_percent_decrease"
             android:layout_width="30dp"
             android:layout_height="15dp"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="200dp"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="5dp"
+            android:layout_marginLeft="198dp"
+            android:layout_marginTop="43dp"
+            android:background="@drawable/border_percent_decrease"
             android:gravity="center"
             android:text="-80%"
-            android:textSize="10sp"
             android:textColor="#F92626"
-            android:background="@drawable/border_percent_decrease"
-            />
+            android:textSize="10sp" />
 
     </RelativeLayout>
     </RelativeLayout>
