@@ -67,6 +67,7 @@ import com.squareup.picasso.Picasso;
                                 Intent mIntent = new Intent(getContext(), activity_admin_record_customer.class);
                 //                Log.d("data", "onClick: "myProducts.get(position).getName().toString());
                                         mIntent.putExtra("username",customers.get(position).getUsername());
+                                        mIntent.putExtra("idDoc",customers.get(position).getIdDoc());
                                 curContext.startActivity(mIntent);
                             }
 
