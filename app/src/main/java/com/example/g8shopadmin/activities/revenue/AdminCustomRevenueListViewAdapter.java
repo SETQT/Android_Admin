@@ -64,7 +64,7 @@ public class AdminCustomRevenueListViewAdapter extends ArrayAdapter<Order> {
         SimpleDateFormat formatDate = new SimpleDateFormat("dd-MM-yyyy");
         date.setText("Ngày mua: " + formatDate.format(orders.get(position).getCreatedAt()).toString());
         total.setText("đ" + orders.get(position).getFinalTotalMoney());
-        code.setText("#" + orders.get(position).getCode());
+        code.setText("#" + orders.get(position).getIdDoc().toUpperCase());
         username.setText(orders.get(position).getOwnOrder());
         count.setText(orders.get(position).getArrayOrder().size() + " sản phẩm");
 

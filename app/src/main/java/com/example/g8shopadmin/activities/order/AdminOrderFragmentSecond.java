@@ -58,9 +58,6 @@ public class AdminOrderFragmentSecond extends Fragment implements FragmentCallba
 
         listMyOrder = (ListView) layout_second.findViewById(R.id.admin_order_listview);
 
-        order_asynctask o_at = new order_asynctask(1);
-        o_at.execute();
-
         try {
             Bundle arguments = getArguments();
         } catch (Exception e) {
@@ -68,7 +65,11 @@ public class AdminOrderFragmentSecond extends Fragment implements FragmentCallba
         }
 
         if(stateMyOrder != null) {
-            o_at = new order_asynctask(Integer.parseInt(stateMyOrder));
+            order_asynctask o_at1 = new order_asynctask(Integer.parseInt(stateMyOrder));
+            o_at1.execute();
+        }
+        else {
+            order_asynctask o_at = new order_asynctask(1);
             o_at.execute();
         }
         return layout_second;
@@ -97,6 +98,8 @@ public class AdminOrderFragmentSecond extends Fragment implements FragmentCallba
         @Override
         protected Order doInBackground(Void... voids) {
             try {
+                listOrder.clear();
+
                 ordersRef
                         .whereEqualTo("state", state)
                         .get()

@@ -5,8 +5,7 @@
     android:layout_height="wrap_content"
     android:id="@+id/admin_create_voucher"
     android:background="@drawable/login"
-    android:clipToOutline="true"
-    tools:context=".activity_admin_create_voucher">
+    android:clipToOutline="true">
 
     <RelativeLayout
         android:id="@+id/rectangle_header_admin_create_voucher"
@@ -17,20 +16,20 @@
         android:layout_marginTop="-24dp"
         android:background="@drawable/rectangle_payment"
         >
+
         <TextView
             android:id="@+id/text_admin_create_voucher"
-            android:layout_width="170dp"
+            android:layout_width="211dp"
             android:layout_height="30dp"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="121dp"
             android:layout_alignParentTop="true"
+            android:layout_marginLeft="100dp"
             android:layout_marginTop="53dp"
+            android:gravity="center"
             android:text="Tạo voucher mới"
-            android:textSize="20sp"
             android:textColor="#FFFFFF"
-            android:gravity="top"
-            android:textStyle="bold"
-            />
+            android:textSize="20sp"
+            android:textStyle="bold" />
         <View
             android:id="@+id/ic_back_admin_create_voucher"
             android:layout_width="21dp"

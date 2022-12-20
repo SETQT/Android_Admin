@@ -15,7 +15,7 @@ import com.example.g8shopadmin.activities.order.AdminOrderFragmentSecond;
 
 public class activity_admin_order extends FragmentActivity implements MainCallbacks {
     // khai báo biến UI
-    View icon_back, icon_chat;
+    View icon_back;
 
     FragmentTransaction ft; AdminOrderFragmentFirst firstFrag; AdminOrderFragmentSecond secondFrag;
 
@@ -34,18 +34,16 @@ public class activity_admin_order extends FragmentActivity implements MainCallba
         ft.replace(R.id.admin_order_fragment_second, secondFrag);
         ft.commit();
 
+        Intent intent = getIntent();
+
+        if(intent.hasExtra("state")) {
+            String stateMyOrder = intent.getStringExtra("state");
+            firstFrag.onMsgFromMainToFragment(stateMyOrder);
+            secondFrag.onMsgFromMainToFragment(stateMyOrder);
+        }
+
 
         icon_back = (View) findViewById(R.id.icon_back);
-        icon_chat = (View) findViewById(R.id.icon_chat);
-
-        icon_chat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Intent moveActivity = new Intent(getApplicationContext(), activity_mycart.class);
-//                moveActivity.putExtra("name_activity", "activity_dashboard");
-//                startActivity(moveActivity);
-            }
-        });
 
         icon_back.setOnClickListener(new View.OnClickListener() {
             @Override

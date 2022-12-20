@@ -17,20 +17,20 @@
         android:layout_marginTop="-24dp"
         android:background="@drawable/rectangle_payment"
         >
+
         <TextView
             android:id="@+id/text_admin_enter_promotions"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="120dp"
             android:layout_alignParentTop="true"
+            android:layout_marginLeft="120dp"
             android:layout_marginTop="53dp"
-            android:text="Mức khuyến mãi"
-            android:textSize="20sp"
-            android:textColor="#FFFFFF"
             android:gravity="top"
-            android:textStyle="bold"
-            />
+            android:text="Mức khuyến mãi"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
         <View
             android:id="@+id/ic_back_admin_enter_promotions"
             android:layout_width="21dp"
