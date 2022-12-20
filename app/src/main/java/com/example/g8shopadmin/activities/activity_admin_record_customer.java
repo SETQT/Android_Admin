@@ -31,18 +31,40 @@ import java.text.SimpleDateFormat;
 public class activity_admin_record_customer extends Activity implements View.OnClickListener {
     private ActivityAdminRecordCustomerBinding binding;
     View icon_back;
-    Button ban_account;
+    Button ban_account,banned;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference userRef = db.collection("users");
     String username;
     String idDoc;
+    Integer ban;
+    User user;
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         binding = ActivityAdminRecordCustomerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+
+        Intent myCallerIntent = getIntent();
+        Bundle myBundle = myCallerIntent.getExtras();
+        username = myBundle.getString("username");
+        idDoc = myBundle.getString("idDoc");
+        ban=myBundle.getInt("ban");
+        ban_account = (Button) findViewById(R.id.btn_admin_ban_account_customer);
+        banned = (Button) findViewById(R.id.btn_admin_banned_account_customer);
+
+        if(ban==1)
+        {
+            ban_account.setVisibility(View.GONE);
+            banned.setVisibility(View.VISIBLE);
+        }
+        else{
+            banned.setVisibility(View.GONE);
+            ban_account.setVisibility(View.VISIBLE);
+        }
 
         TextView name = (TextView) findViewById(R.id.admin_record_customer_ten);
         TextView bio = (TextView) findViewById(R.id.admin_record_customer_bio);
@@ -53,10 +75,6 @@ public class activity_admin_record_customer extends Activity implements View.OnC
         TextView address = (TextView) findViewById(R.id.admin_record_customer_address);
         ImageView avatar = (ImageView) findViewById(R.id.admin_record_avatar);
 
-        Intent myCallerIntent = getIntent();
-        Bundle myBundle = myCallerIntent.getExtras();
-        username = myBundle.getString("username");
-        idDoc = myBundle.getString("idDoc");
 
 
         userRef.whereEqualTo("username", username)
@@ -66,7 +84,7 @@ public class activity_admin_record_customer extends Activity implements View.OnC
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                User user = document.toObject(User.class);
+                                user = document.toObject(User.class);
                                 name.setText(user.getFullname());
                                 bio.setText(user.getBio());
                                 sex.setText(user.getGender());
@@ -75,6 +93,7 @@ public class activity_admin_record_customer extends Activity implements View.OnC
                                 } else {
                                     dob.setText("");
                                 }
+
                                 email.setText(user.getEmail());
                                 phone.setText(user.getPhone());
                                 address.setText(user.getAddress());
@@ -90,8 +109,8 @@ public class activity_admin_record_customer extends Activity implements View.OnC
 
         icon_back = (View) findViewById(R.id.admin_record_ic_back);
         icon_back.setOnClickListener(this);
-        ban_account = (Button) findViewById(R.id.btn_admin_ban_account_customer);
         ban_account.setOnClickListener(this);
+        banned.setOnClickListener(this);
 
     }
 
@@ -103,19 +122,36 @@ public class activity_admin_record_customer extends Activity implements View.OnC
             startActivity(moveActivity);
         }
         if (view.getId() == ban_account.getId()) {
+                new AlertDialog.Builder(this)
+                        .setMessage("Bạn có chắc muốn khóa tài khoản này không?")
+                        .setCancelable(true)
+                        .setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                userRef.document(idDoc).update("status", 1);
+                                Toast.makeText(getApplicationContext(), "Khóa tài khoản thành công!", Toast.LENGTH_SHORT).show();
+                                Intent moveActivity = new Intent(getApplicationContext(), activity_list_customer.class);
+                                startActivity(moveActivity);
+                            }
+                        })
+                        .setNegativeButton("Không", null)
+                        .show();
+
+        }
+        if (view.getId() == banned.getId()) {
             new AlertDialog.Builder(this)
-                    .setMessage("Bạn có chắc muốn khóa tài khoản này không?")
+                    .setMessage("Bạn có muốn mở khóa tài khoản này không?")
                     .setCancelable(true)
                     .setPositiveButton("Có", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            userRef.document(idDoc).update("status", 1);
-                            Toast.makeText(getApplicationContext(), "Khóa tài khoản thành công!", Toast.LENGTH_SHORT).show();
+                            userRef.document(idDoc).update("status", 0);
+                            Toast.makeText(getApplicationContext(), "Mở khóa tài khoản thành công!", Toast.LENGTH_SHORT).show();
                             Intent moveActivity = new Intent(getApplicationContext(), activity_list_customer.class);
                             startActivity(moveActivity);
                         }
                     })
                     .setNegativeButton("Không", null)
                     .show();
+
         }
     }
 }

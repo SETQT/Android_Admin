@@ -308,6 +308,21 @@
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="14sp" />
+    <Button
+        android:id="@+id/btn_admin_banned_account_customer"
+        android:layout_width="186dp"
+        android:layout_height="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="113dp"
+        android:layout_marginTop="560dp"
+        android:visibility="gone"
+        android:background="@drawable/btn_ban_record_customer"
+        android:gravity="center"
+        android:text="Tài khoản này đã bị khóa"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp" />
 
 
 </RelativeLayout>

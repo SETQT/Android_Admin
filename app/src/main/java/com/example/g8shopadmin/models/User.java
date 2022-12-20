@@ -9,6 +9,7 @@ import java.util.Map;
 
 
 public class User {
+
     private String idDoc;
     private String username;
     private String password;
@@ -24,7 +25,7 @@ public class User {
     private String image;
     private String imageBg;
     private String fcmToken;
-    private String status;
+    private Integer status;
 
     public User() {
     }
@@ -235,5 +236,12 @@ public class User {
 
     public void setIdDoc(String idDoc) {
         this.idDoc = idDoc;
+    }
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

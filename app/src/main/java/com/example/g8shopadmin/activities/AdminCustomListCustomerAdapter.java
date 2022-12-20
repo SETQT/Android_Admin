@@ -68,6 +68,7 @@ import com.squareup.picasso.Picasso;
                 //                Log.d("data", "onClick: "myProducts.get(position).getName().toString());
                                         mIntent.putExtra("username",customers.get(position).getUsername());
                                         mIntent.putExtra("idDoc",customers.get(position).getIdDoc());
+                                        mIntent.putExtra("ban",customers.get(position).getStatus());
                                 curContext.startActivity(mIntent);
                             }
 
