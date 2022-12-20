@@ -349,6 +349,8 @@
                     android:id="@+id/productAdmin"
                     android:layout_width="wrap_content"
                     android:layout_height="47dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
                     android:layout_marginLeft="26dp"
                     android:layout_marginTop="14dp">
 

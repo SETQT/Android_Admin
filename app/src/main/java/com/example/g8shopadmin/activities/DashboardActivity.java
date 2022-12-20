@@ -102,13 +102,13 @@ public class DashboardActivity extends activity_base implements View.OnClickList
         binding.iconChat.setOnClickListener(view -> {
             startActivity(new Intent(getApplicationContext(), activity_dashboard_chat.class));
         });
-        binding.iconProductAdmin.setOnClickListener(view -> {
+        binding.productAdmin.setOnClickListener(view -> {
             startActivity(new Intent(getApplicationContext(), activity_admin_my_products.class));
         });
-        binding.iconListCustomers.setOnClickListener(view -> {
+        binding.listCustomerAdmin.setOnClickListener(view -> {
             startActivity(new Intent(getApplicationContext(), activity_list_customer.class));
         });
-        binding.iconDiscountAdmin.setOnClickListener(view -> {
+        binding.discountAdmin.setOnClickListener(view -> {
             startActivity(new Intent(getApplicationContext(), activity_promotions.class));
         });
 

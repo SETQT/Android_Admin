@@ -84,7 +84,6 @@
         android:textSize="14sp" />
 
 
-
     <View
         android:id="@+id/admin_record_bg_custom_02"
         android:layout_width="wrap_content"
@@ -126,7 +125,7 @@
         android:layout_height="45dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="307.5dp"
+        android:layout_marginTop="308dp"
         android:background="@drawable/rectangle_setup_voucher" />
 
     <TextView
@@ -155,14 +154,13 @@
         android:textSize="14sp" />
 
 
-
     <View
         android:id="@+id/admin_record_bg_custom_04"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="353dp"
+        android:layout_marginTop="354dp"
         android:background="@drawable/rectangle_setup_voucher" />
 
     <TextView
@@ -197,7 +195,7 @@
         android:layout_height="45dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="399dp"
+        android:layout_marginTop="400dp"
         android:background="@drawable/rectangle_setup_voucher" />
 
     <TextView
@@ -225,13 +223,14 @@
         android:text=""
         android:textColor="#AEAEAE"
         android:textSize="14sp" />
+
     <View
         android:id="@+id/admin_record_bg_custom_06"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="445dp"
+        android:layout_marginTop="446dp"
         android:background="@drawable/rectangle_setup_voucher" />
 
     <TextView
@@ -260,14 +259,13 @@
         android:textSize="14sp" />
 
 
-
     <View
         android:id="@+id/admin_record_bg_custom_07"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="490.5dp"
+        android:layout_marginTop="492dp"
         android:background="@drawable/rectangle_setup_voucher" />
 
     <TextView
@@ -298,11 +296,11 @@
     <Button
         android:id="@+id/btn_admin_ban_account_customer"
         android:layout_width="186dp"
-        android:layout_height="28dp"
+        android:layout_height="35dp"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
         android:layout_marginLeft="113dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginTop="560dp"
 
         android:background="@drawable/btn_ban_record_customer"
         android:gravity="center"

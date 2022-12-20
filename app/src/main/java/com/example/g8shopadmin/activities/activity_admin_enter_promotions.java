@@ -79,7 +79,7 @@ public class activity_admin_enter_promotions extends Activity {
                     }
 
                 }
-                Toast.makeText(getApplicationContext(), "Tạo khuyễn mãi thành công !", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Tạo khuyến mãi thành công !", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getApplicationContext(),activity_promotions.class));
 
 

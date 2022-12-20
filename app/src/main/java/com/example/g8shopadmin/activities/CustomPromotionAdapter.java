@@ -54,9 +54,9 @@ public class CustomPromotionAdapter extends ArrayAdapter<Product> {
         ImageView img = (ImageView) v.findViewById(R.id.custom_promotions_image_product);
 
         name.setText(myProducts.get(position).getName());
-        cost.setText(myProducts.get(position).getPrice().toString());
+        cost.setText("đ" + myProducts.get(position).getPrice().toString());
         quantity.setText("Số lượng: " + myProducts.get(position).getAmount().toString());
-        percent.setText("-"+myProducts.get(position).getSale().toString()+" %");
+        percent.setText("-"+myProducts.get(position).getSale().toString()+"%");
 
 
         Picasso.with(curContext).load(myProducts.get(position).getImage()).into(img);

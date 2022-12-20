@@ -1,6 +1,8 @@
 package com.example.g8shopadmin.activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -10,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.g8shopadmin.R;
 import com.example.g8shopadmin.activities.myproducts.Product;
@@ -41,23 +44,19 @@ public class activity_admin_record_customer extends Activity implements View.OnC
         binding = ActivityAdminRecordCustomerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        TextView name=(TextView)findViewById(R.id.admin_record_customer_ten);
-        TextView bio=(TextView)findViewById(R.id.admin_record_customer_bio);
-        TextView sex=(TextView)findViewById(R.id.admin_record_customer_sex);
-        TextView dob=(TextView)findViewById(R.id.admin_record_customer_dob);
-        TextView email=(TextView)findViewById(R.id.admin_record_customer_email);
-        TextView phone=(TextView)findViewById(R.id.admin_record_customer_phone);
-        TextView address=(TextView)findViewById(R.id.admin_record_customer_address);
+        TextView name = (TextView) findViewById(R.id.admin_record_customer_ten);
+        TextView bio = (TextView) findViewById(R.id.admin_record_customer_bio);
+        TextView sex = (TextView) findViewById(R.id.admin_record_customer_sex);
+        TextView dob = (TextView) findViewById(R.id.admin_record_customer_dob);
+        TextView email = (TextView) findViewById(R.id.admin_record_customer_email);
+        TextView phone = (TextView) findViewById(R.id.admin_record_customer_phone);
+        TextView address = (TextView) findViewById(R.id.admin_record_customer_address);
         ImageView avatar = (ImageView) findViewById(R.id.admin_record_avatar);
 
         Intent myCallerIntent = getIntent();
         Bundle myBundle = myCallerIntent.getExtras();
-        username=myBundle.getString("username");
-        idDoc=myBundle.getString("idDoc");
-
-
-
-
+        username = myBundle.getString("username");
+        idDoc = myBundle.getString("idDoc");
 
 
         userRef.whereEqualTo("username", username)
@@ -71,31 +70,27 @@ public class activity_admin_record_customer extends Activity implements View.OnC
                                 name.setText(user.getFullname());
                                 bio.setText(user.getBio());
                                 sex.setText(user.getGender());
-                                if(user.getBirthdate() != null) {
+                                if (user.getBirthdate() != null) {
                                     dob.setText(simpleDateFormat.format(user.getBirthdate()));
-                                }
-                                else{
+                                } else {
                                     dob.setText("");
                                 }
                                 email.setText(user.getEmail());
                                 phone.setText(user.getPhone());
                                 address.setText(user.getAddress());
-                                if(user.getImage() != null) {
+                                if (user.getImage() != null) {
                                     Picasso.with(getApplicationContext()).load(user.getImage()).into(avatar);
                                 }
 
                                 break;
                             }
                         }
-                    }});
-
-
-        Log.d("ASd", "onComplete: " + username);
-        Log.d("ASd", "onComplete: " + idDoc);
+                    }
+                });
 
         icon_back = (View) findViewById(R.id.admin_record_ic_back);
         icon_back.setOnClickListener(this);
-        ban_account=(Button) findViewById(R.id.btn_admin_ban_account_customer);
+        ban_account = (Button) findViewById(R.id.btn_admin_ban_account_customer);
         ban_account.setOnClickListener(this);
 
     }
@@ -107,11 +102,20 @@ public class activity_admin_record_customer extends Activity implements View.OnC
             Intent moveActivity = new Intent(getApplicationContext(), activity_list_customer.class);
             startActivity(moveActivity);
         }
-        if(view.getId() == ban_account.getId())
-        {
-            userRef.document(idDoc).update("status", 1);
-            Intent moveActivity = new Intent(getApplicationContext(), activity_list_customer.class);
-            startActivity(moveActivity);
+        if (view.getId() == ban_account.getId()) {
+            new AlertDialog.Builder(this)
+                    .setMessage("Bạn có chắc muốn khóa tài khoản này không?")
+                    .setCancelable(true)
+                    .setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            userRef.document(idDoc).update("status", 1);
+                            Toast.makeText(getApplicationContext(), "Khóa tài khoản thành công!", Toast.LENGTH_SHORT).show();
+                            Intent moveActivity = new Intent(getApplicationContext(), activity_list_customer.class);
+                            startActivity(moveActivity);
+                        }
+                    })
+                    .setNegativeButton("Không", null)
+                    .show();
         }
     }
 }
