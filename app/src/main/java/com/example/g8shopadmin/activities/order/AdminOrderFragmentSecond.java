@@ -25,6 +25,8 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class AdminOrderFragmentSecond extends Fragment implements FragmentCallbacks {
     activity_admin_order main;
@@ -144,6 +146,8 @@ public class AdminOrderFragmentSecond extends Fragment implements FragmentCallba
                 }
             }
 
+            SortArrayList(listOrder);
+
             try {
                 AdminCustomOrderListViewAdapter myAdapter = new AdminCustomOrderListViewAdapter(main, R.layout.admin_custom_listview_order, listOrder, state);
                 listMyOrder.setAdapter(myAdapter);
@@ -152,6 +156,16 @@ public class AdminOrderFragmentSecond extends Fragment implements FragmentCallba
                 return;
             }
         }
+    }
+
+    class sortCompare implements Comparator<Order> {
+        public int compare(Order s1, Order s2) {
+            return s2.getCreatedAt().compareTo(s1.getCreatedAt());
+        }
+    }
+
+    public void SortArrayList(ArrayList<Order> order){
+        Collections.sort(order, new sortCompare());
     }
 
 

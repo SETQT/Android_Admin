@@ -128,6 +128,14 @@ public class AdminCustomOrderListViewAdapter extends ArrayAdapter<Order> {
                                 public void onClick(DialogInterface dialog, int id) {
                                     orderRef.document(orders.get(position).getIdDoc()).update("state", 3);
 
+                                    String title = "Giao hàng thành công!";
+                                    String content = "Đơn hàng #" + orders.get(position).getIdDoc().toUpperCase() + " đã được giao thành công đến bạn!";
+                                    String receiver = orders.get(position).getOwnOrder().toString();
+
+                                    // thông báo đến cho người dùng
+                                    Notification newNotification = new Notification("https://firebasestorage.googleapis.com/v0/b/androidgroup8.appspot.com/o/logo%2FGroup%2010.png?alt=media&token=bc59d0df-9e04-4c66-a95d-78fbd0eef751", title, content, receiver, "delivery");
+                                    notifyRef.add(newNotification);
+
                                     orders.remove(position);
                                     Toast.makeText(curContext, "Xác nhận đơn hàng đã giao thành công thành công!", Toast.LENGTH_SHORT).show();
                                     notifyDataSetChanged();

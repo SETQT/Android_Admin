@@ -29,6 +29,8 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class AdminEvaluateFragmentSecond extends Fragment implements FragmentCallbacks {
     activity_admin_evaluate main;
@@ -213,6 +215,8 @@ public class AdminEvaluateFragmentSecond extends Fragment implements FragmentCal
             } else {
                 listComments.add(comments[0]);
             }
+
+            SortArrayList(listComments);
             try {
                 AdminCustomEvaluateListViewAdapter myAdapter = new AdminCustomEvaluateListViewAdapter(getActivity(), R.layout.admin_custom_listview_evaluate, listComments, option);
                 admin_evaluate_listview.setAdapter(myAdapter);
@@ -240,5 +244,15 @@ public class AdminEvaluateFragmentSecond extends Fragment implements FragmentCal
         commentEvaluate.setAvatar(u.getImage());
 
         return commentEvaluate;
+    }
+
+    class sortCompare implements Comparator<AdminEvaluate> {
+        public int compare(AdminEvaluate s1, AdminEvaluate s2) {
+            return s2.getCreatedAt().compareTo(s1.getCreatedAt());
+        }
+    }
+
+    public void SortArrayList(ArrayList<AdminEvaluate> cmt){
+        Collections.sort(cmt, new sortCompare());
     }
 }
