@@ -68,12 +68,12 @@ public class activity_admin_create_product extends AppCompatActivity implements 
         PermissionListener permissionlistener = new PermissionListener() {
             @Override
             public void onPermissionGranted() {
-                Toast.makeText(activity_admin_create_product.this, " Cấp quyền thành công !", Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity_admin_create_product.this, " Cấp quyền thành công!", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onPermissionDenied(List<String> deniedPermissions) {
-                Toast.makeText(activity_admin_create_product.this, "Đã từ chối !!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity_admin_create_product.this, "Đã từ chối!!", Toast.LENGTH_SHORT).show();
             }
         };
 
@@ -89,7 +89,6 @@ public class activity_admin_create_product extends AppCompatActivity implements 
         super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode == RESULT_OK && requestCode == PICK_IMAGE) {
-
             Uri imageUri = data.getData();
 
             binding.recyclerViewProductCreateProduct.setImageURI(imageUri);
@@ -208,7 +207,7 @@ public class activity_admin_create_product extends AppCompatActivity implements 
     }
 
     public void initData() {
-        String type = typeSelected.toLowerCase();
+        String type = typeSelected;
         String color = binding.valueColorProductAdminCreateProduct.getText().toString();
         String descript = binding.valueDescribeProductAdminCreateProduct.getText().toString();
         String name = binding.valueNameProductAdminCreateProduct.getText().toString();
