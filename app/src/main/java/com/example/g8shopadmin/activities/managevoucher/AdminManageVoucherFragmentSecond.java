@@ -30,7 +30,6 @@ import java.util.Date;
 public class AdminManageVoucherFragmentSecond extends Fragment implements FragmentCallbacks {
     activity_admin_manage_voucher main;
     ListView listViewVoucher;
-    ArrayList<AdminManageVoucher> Voucher = new ArrayList<AdminManageVoucher>();
 
     // firestore
     FirebaseFirestore db = FirebaseFirestore.getInstance();

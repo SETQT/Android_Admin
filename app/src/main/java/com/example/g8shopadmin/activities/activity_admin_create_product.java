@@ -16,13 +16,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.g8shopadmin.R;
 import com.example.g8shopadmin.activities.myproducts.Product;
+import com.example.g8shopadmin.activities.promotion.CustomRecylerviewCreatePromotionAdapter;
 import com.example.g8shopadmin.databinding.ActivityAdminCreateProductBinding;
-import com.example.g8shopadmin.databinding.ActivityDashboardBinding;
 
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -36,13 +35,9 @@ import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.normal.TedPermission;
 import com.squareup.picasso.Picasso;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class activity_admin_create_product extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -63,6 +58,11 @@ public class activity_admin_create_product extends AppCompatActivity implements 
     private Product newProduct;
     private String iddoc="";
     private String oldImage;
+
+    String[] typeProduct = {"Giày", "Mũ","Áo","Áo khoác","Quần"};
+    String typeSelected;
+
+
     private void openGallery() {
         Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
         startActivityForResult(gallery, PICK_IMAGE);
@@ -111,6 +111,12 @@ public class activity_admin_create_product extends AppCompatActivity implements 
         binding = ActivityAdminCreateProductBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+
+        //Spiner product
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.custom_spiner_create_voucher, typeProduct);
+        binding.spinerCreateProduct.setAdapter(adapter);
+        binding.spinerCreateProduct.setOnItemSelectedListener(this);
+
         super.onCreate(savedInstanceState);
         try {
             String value = getIntent().getExtras().getString("update");
@@ -152,7 +158,7 @@ public class activity_admin_create_product extends AppCompatActivity implements 
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
+            typeSelected = adapterView.getItemAtPosition(i).toString();
     }
 
     @Override
@@ -192,7 +198,8 @@ public class activity_admin_create_product extends AppCompatActivity implements 
 
 
         checkExitsImage=true;
-        binding.valueTypeProductAdminCreateProduct.setText(extras.getString("category"));
+
+        //binding.valueTypeProductAdminCreateProduct.setText(extras.getString("category"));
 
         binding.valueDescribeProductAdminCreateProduct.setText(extras.getString("descript"));
         binding.valueNameProductAdminCreateProduct.setText(extras.getString("name"));
@@ -219,7 +226,7 @@ public class activity_admin_create_product extends AppCompatActivity implements 
     }
 
     public void initData() {
-        String type = binding.valueTypeProductAdminCreateProduct.getText().toString();
+        String type = typeSelected.toLowerCase();
         String color = binding.valueColorProductAdminCreateProduct.getText().toString();
         String descript = binding.valueDescribeProductAdminCreateProduct.getText().toString();
         String name = binding.valueNameProductAdminCreateProduct.getText().toString();

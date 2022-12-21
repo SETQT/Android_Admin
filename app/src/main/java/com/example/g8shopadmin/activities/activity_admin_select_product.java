@@ -9,11 +9,15 @@ import android.util.Log;
 import android.view.View;
 
 import com.example.g8shopadmin.R;
+import com.example.g8shopadmin.activities.selectproduct.selectProductFragmentFirst;
+import com.example.g8shopadmin.activities.selectproduct.selectProductFragmentSecond;
 
 public class activity_admin_select_product extends FragmentActivity implements MainCallbacks, View.OnClickListener {
     FragmentTransaction ft; selectProductFragmentFirst firstFrag; selectProductFragmentSecond secondFrag;
 
     View icon_back;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +57,10 @@ public class activity_admin_select_product extends FragmentActivity implements M
     @Override
     public void onClick(View view) {
         if(view.getId() == icon_back.getId()) {
-            Intent moveActivity = new Intent(getApplicationContext(), activity_admin_create_promotions.class);
+            Intent moveActivity = new Intent(getApplicationContext(), activity_promotions.class);
             startActivity(moveActivity);
         }
 
     }
+
 }

@@ -12,8 +12,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.g8shopadmin.R;
-import com.example.g8shopadmin.activities.order.Myorder;
-import com.example.g8shopadmin.activities.order.Order;
+import com.example.g8shopadmin.activities.detailorder.CustomMyListViewPaymentAdapter;
+import com.example.g8shopadmin.models.Myorder;
+import com.example.g8shopadmin.models.Order;
 import com.example.g8shopadmin.models.User;
 import com.example.g8shopadmin.models.Voucher;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -42,7 +43,6 @@ public class activity_admin_detail_order extends Activity implements AdapterView
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference userRef = db.collection("users");
-    CollectionReference orderRef = db.collection("orders");
     CollectionReference voucherRef = db.collection("vouchers");
 
     @Override
@@ -79,7 +79,7 @@ public class activity_admin_detail_order extends Activity implements AdapterView
         curOder = (Order) intent.getExtras().getSerializable("order");
         username = intent.getStringExtra("username");
 
-        code.setText(curOder.getIdDoc().toUpperCase());
+        code.setText("#" + curOder.getIdDoc().toUpperCase());
         SimpleDateFormat formatDate = new SimpleDateFormat("dd-MM-yyyy");
         date.setText(formatDate.format(curOder.getCreatedAt()).toString());
         methodPayment.setText(curOder.getPaymentMethods());

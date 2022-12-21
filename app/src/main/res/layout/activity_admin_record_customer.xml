@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity_admin_record_customer"
+    tools:context=".activities.activity_admin_record_customer"
     android:background="#E5E5E5">
 
     <ImageView
@@ -79,10 +79,9 @@
         android:layout_marginTop="228dp"
         android:layout_marginRight="20dp"
         android:gravity="center"
-        android:text="Dương Minh Hiếu"
+        android:text=""
         android:textColor="#AEAEAE"
         android:textSize="14sp" />
-
 
 
     <View
@@ -115,7 +114,7 @@
         android:layout_marginTop="273dp"
         android:layout_marginRight="20dp"
         android:gravity="center"
-        android:text="Đẹp trai không có tội"
+        android:text=""
         android:textColor="#AEAEAE"
         android:textSize="14sp" />
 
@@ -126,7 +125,7 @@
         android:layout_height="45dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="307.5dp"
+        android:layout_marginTop="308dp"
         android:background="@drawable/rectangle_setup_voucher" />
 
     <TextView
@@ -150,10 +149,9 @@
         android:layout_marginTop="318dp"
         android:layout_marginRight="20dp"
         android:gravity="center"
-        android:text="Nam"
+        android:text=""
         android:textColor="#AEAEAE"
         android:textSize="14sp" />
-
 
 
     <View
@@ -162,7 +160,7 @@
         android:layout_height="45dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="353dp"
+        android:layout_marginTop="354dp"
         android:background="@drawable/rectangle_setup_voucher" />
 
     <TextView
@@ -186,7 +184,7 @@
         android:layout_marginTop="362dp"
         android:layout_marginRight="20dp"
         android:gravity="center"
-        android:text="20-08-2002"
+        android:text=""
         android:textColor="#AEAEAE"
         android:textSize="14sp" />
 
@@ -197,7 +195,7 @@
         android:layout_height="45dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="399dp"
+        android:layout_marginTop="400dp"
         android:background="@drawable/rectangle_setup_voucher" />
 
     <TextView
@@ -222,16 +220,17 @@
         android:layout_marginTop="410dp"
         android:layout_marginRight="20dp"
         android:gravity="center"
-        android:text="baobaobao@gmail.com"
+        android:text=""
         android:textColor="#AEAEAE"
         android:textSize="14sp" />
+
     <View
         android:id="@+id/admin_record_bg_custom_06"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="445dp"
+        android:layout_marginTop="446dp"
         android:background="@drawable/rectangle_setup_voucher" />
 
     <TextView
@@ -247,7 +246,7 @@
         android:textSize="14sp" />
 
     <TextView
-        android:id="@+id/record_id_profile_phone"
+        android:id="@+id/admin_record_customer_phone"
         android:layout_width="wrap_content"
         android:layout_height="21dp"
         android:layout_alignParentTop="true"
@@ -255,10 +254,9 @@
         android:layout_marginTop="456dp"
         android:layout_marginRight="20dp"
         android:gravity="center"
-        android:text="0912308208"
+        android:text=""
         android:textColor="#AEAEAE"
         android:textSize="14sp" />
-
 
 
     <View
@@ -267,7 +265,7 @@
         android:layout_height="45dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="490.5dp"
+        android:layout_marginTop="492dp"
         android:background="@drawable/rectangle_setup_voucher" />
 
     <TextView
@@ -291,22 +289,37 @@
         android:layout_marginTop="495dp"
         android:layout_marginRight="20dp"
         android:gravity="top|right"
-        android:text="KTX khu A,Linh Trung, Thủ Đức, Thành phố Hồ Chí Minh"
+        android:text=""
         android:textColor="#AEAEAE"
         android:textSize="14sp" />
 
     <Button
         android:id="@+id/btn_admin_ban_account_customer"
         android:layout_width="186dp"
-        android:layout_height="28dp"
+        android:layout_height="35dp"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
         android:layout_marginLeft="113dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginTop="560dp"
 
         android:background="@drawable/btn_ban_record_customer"
         android:gravity="center"
         android:text="Khóa tài khoản này"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp" />
+    <Button
+        android:id="@+id/btn_admin_banned_account_customer"
+        android:layout_width="186dp"
+        android:layout_height="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="113dp"
+        android:layout_marginTop="560dp"
+        android:visibility="gone"
+        android:background="@drawable/btn_ban_record_customer"
+        android:gravity="center"
+        android:text="Tài khoản này đã bị khóa"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="14sp" />

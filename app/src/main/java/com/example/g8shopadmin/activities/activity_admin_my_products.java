@@ -16,7 +16,7 @@ import com.example.g8shopadmin.activities.myproducts.AdminMyProductsFragmentSeco
 
 public class activity_admin_my_products extends FragmentActivity implements MainCallbacks {
     // khai báo biến UI
-    View icon_back, icon_chat;
+    View icon_back;
     Button add;
 
 
@@ -44,16 +44,6 @@ public class activity_admin_my_products extends FragmentActivity implements Main
 
 
         icon_back = (View) findViewById(R.id.icon_back);
-        icon_chat = (View) findViewById(R.id.icon_chat);
-
-        icon_chat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Intent moveActivity = new Intent(getApplicationContext(), activity_mycart.class);
-//                moveActivity.putExtra("name_activity", "activity_dashboard");
-//                startActivity(moveActivity);
-            }
-        });
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override

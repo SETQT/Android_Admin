@@ -3,24 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Android/Github/Android_Admin/app/src/main/res/drawable/border_percent_decrease.xml" value="0.245" />
-        <entry key="..\:/Android/Github/Android_Admin/app/src/main/res/drawable/custom_border_list_customer.xml" value="0.195" />
-        <entry key="..\:/Android/Github/Android_Admin/app/src/main/res/drawable/record_btn_save_profile.xml" value="0.245" />
-        <entry key="..\:/Android/Github/Android_Admin/app/src/main/res/layout/activity_admin_enter_promotions.xml" value="0.2708333333333333" />
-        <entry key="..\:/Android/Github/Android_Admin/app/src/main/res/layout/activity_admin_record_customer.xml" value="0.19010416666666666" />
-        <entry key="..\:/Android/Github/Android_Admin/app/src/main/res/layout/activity_admin_sale_program.xml" value="0.12715298885511653" />
-        <entry key="..\:/Android/Github/Android_Admin/app/src/main/res/layout/activity_admin_select_product.xml" value="0.2708333333333333" />
-        <entry key="..\:/Android/Github/Android_Admin/app/src/main/res/layout/activity_dashboard.xml" value="0.25" />
-        <entry key="..\:/Android/Github/Android_Admin/app/src/main/res/layout/activity_list_customer.xml" value="0.25" />
-        <entry key="..\:/Android/Github/Android_Admin/app/src/main/res/layout/activity_promotions.xml" value="0.32592592592592595" />
-        <entry key="..\:/Android/Github/Android_Admin/app/src/main/res/layout/custom_list_customer_fragment_first.xml" value="0.1" />
-        <entry key="..\:/Android/Github/Android_Admin/app/src/main/res/layout/custom_list_customer_fragment_second.xml" value="0.15324214792299898" />
-        <entry key="..\:/Android/Github/Android_Admin/app/src/main/res/layout/custom_listview_list_customer.xml" value="0.23854166666666668" />
-        <entry key="..\:/Android/Github/Android_Admin/app/src/main/res/layout/custom_listview_payment.xml" value="0.2708333333333333" />
-        <entry key="..\:/Android/Github/Android_Admin/app/src/main/res/layout/custom_listview_promotions.xml" value="0.25" />
-        <entry key="..\:/Android/Github/Android_Admin/app/src/main/res/layout/custom_select_product_fragment_second.xml" value="0.2708333333333333" />
-        <entry key="..\:/Android/Github/Android_Admin/app/src/main/res/layout/custom_select_product_listview.xml" value="0.2708333333333333" />
-        <entry key="..\:/Android/Github/Android_Admin/app/src/main/res/layout/custom_spiner_create_voucher.xml" value="0.2708333333333333" />
         <entry key="..\:/Code java/DoAn_Admin/Android_Admin/app/src/main/res/layout/activity_admin_create_voucher.xml" value="0.2375" />
         <entry key="..\:/Code java/DoAn_Admin/Android_Admin/app/src/main/res/layout/activity_admin_manage_voucher.xml" value="0.36666666666666664" />
         <entry key="..\:/Code java/DoAn_Admin/Android_Admin/app/src/main/res/layout/activity_admin_my_products.xml" value="0.36666666666666664" />
@@ -57,11 +39,13 @@
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/layout/activity_chat.xml" value="0.264" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/layout/activity_dashboard.xml" value="0.264" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/layout/activity_dashboard_chat.xml" value="0.25" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/layout/activity_list_customer.xml" value="0.25" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/layout/activity_sign_in.xml" value="0.25" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/layout/admin_custom_manage_voucher_fragment_first.xml" value="0.25" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/layout/custom_list_view_admin_chat.xml" value="0.25" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/layout/item_container_received_message.xml" value="0.25" />
+        <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/layout/item_container_received_product.xml" value="0.25" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/layout/item_container_recent_conversion_.xml" value="0.25" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/AdminApp/app/src/main/res/layout/item_container_sent_message.xml" value="0.1" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/app/src/main/res/drawable/background_login.xml" value="0.177" />
@@ -81,11 +65,51 @@
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/app/src/main/res/layout/activity_sign_in.xml" value="0.25" />
         <entry key="..\:/Document/DAIHOC/Nam 3/Mobile/Project/Source/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
+        <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/drawable/rectangle_option.xml" value="0.1" />
+        <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/activity_admin_create_voucher.xml" value="0.31950207468879666" />
+        <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/activity_admin_detail_order.xml" value="0.23029045643153526" />
+        <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/activity_admin_my_products.xml" value="0.11979166666666667" />
+        <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/activity_admin_notify.xml" value="0.18385416666666668" />
+        <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/activity_admin_order.xml" value="0.18125" />
+        <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/activity_admin_record_customer.xml" value="0.42777777777777776" />
+        <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/activity_admin_select_product.xml" value="0.1" />
+        <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/activity_dashboard.xml" value="0.33" />
+        <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/activity_list_customer.xml" value="0.11979166666666667" />
+        <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/activity_main.xml" value="0.11979166666666667" />
+        <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/activity_promotions.xml" value="0.11979166666666667" />
+        <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/admin_custom_listview_order.xml" value="0.4104803493449782" />
+        <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/admin_custom_notify_listview.xml" value="0.18489583333333334" />
+        <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/admin_custom_order_fragment_first.xml" value="0.25" />
+        <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/admin_custom_sale_program_fragment_first.xml" value="0.1" />
+        <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/admin_custom_sale_program_fragment_second.xml" value="0.1" />
+        <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/content_test.xml" value="0.1" />
+        <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/custom_dialog_view_all_products.xml" value="0.33" />
+        <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/custom_list_customer_fragment_first.xml" value="0.1" />
+        <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/custom_list_customer_fragment_second.xml" value="0.14583333333333334" />
+        <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/custom_listview_list_customer.xml" value="0.22" />
+        <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/custom_listview_payment.xml" value="0.25" />
+        <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/custom_listview_promotions.xml" value="0.33" />
+        <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/custom_recycle_create_promotions.xml" value="0.1" />
+        <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/custom_select_product_fragment_first.xml" value="0.1" />
+        <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/custom_select_product_listview.xml" value="0.1" />
+        <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/dialog_listview_all_order_products.xml" value="0.14479166666666668" />
+        <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/form_reply_evaluate.xml" value="0.17760416666666667" />
+        <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/fragment_first.xml" value="0.18" />
+        <entry key="..\:/HCMUS/GitHub/Android_Admin/app/src/main/res/layout/fragment_second.xml" value="0.1" />
         <entry key="..\:/Mobile-22/PROJECT/admin/Android_Admin/app/src/main/res/layout/activity_admin_create_product.xml" value="0.25" />
+        <entry key="..\:/Mobile-22/PROJECT/admin/Android_Admin/app/src/main/res/layout/activity_admin_create_promotions.xml" value="0.25" />
+        <entry key="..\:/Mobile-22/PROJECT/admin/Android_Admin/app/src/main/res/layout/activity_admin_detail_order.xml" value="0.25" />
+        <entry key="..\:/Mobile-22/PROJECT/admin/Android_Admin/app/src/main/res/layout/activity_admin_enter_promotions.xml" value="0.25" />
         <entry key="..\:/Mobile-22/PROJECT/admin/Android_Admin/app/src/main/res/layout/activity_admin_my_products.xml" value="0.25" />
         <entry key="..\:/Mobile-22/PROJECT/admin/Android_Admin/app/src/main/res/layout/activity_admin_sale_program.xml" value="0.1814814814814815" />
+        <entry key="..\:/Mobile-22/PROJECT/admin/Android_Admin/app/src/main/res/layout/activity_admin_select_product.xml" value="0.18802083333333333" />
         <entry key="..\:/Mobile-22/PROJECT/admin/Android_Admin/app/src/main/res/layout/activity_dashboard.xml" value="0.12447916666666667" />
+        <entry key="..\:/Mobile-22/PROJECT/admin/Android_Admin/app/src/main/res/layout/activity_promotion.xml" value="0.12916666666666668" />
+        <entry key="..\:/Mobile-22/PROJECT/admin/Android_Admin/app/src/main/res/layout/activity_promotions.xml" value="0.5" />
         <entry key="..\:/Mobile-22/PROJECT/admin/Android_Admin/app/src/main/res/layout/admin_custom_listview_my_products.xml" value="0.2" />
+        <entry key="..\:/Mobile-22/PROJECT/admin/Android_Admin/app/src/main/res/layout/admin_custom_manage_voucher_fragment_first.xml" value="0.25" />
+        <entry key="..\:/Mobile-22/PROJECT/admin/Android_Admin/app/src/main/res/layout/custom_listview_promotions.xml" value="0.67" />
+        <entry key="..\:/Mobile-22/PROJECT/admin/Android_Admin/app/src/main/res/layout/custom_select_product_fragment_second.xml" value="0.18802083333333333" />
       </map>
     </option>
   </component>

@@ -1,21 +1,17 @@
 package com.example.g8shopadmin.activities.revenue;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.example.g8shopadmin.R;
-import com.example.g8shopadmin.activities.activity_admin_detail_order;
-import com.example.g8shopadmin.activities.order.Order;
+import com.example.g8shopadmin.models.Order;
 import com.example.g8shopadmin.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -64,7 +60,7 @@ public class AdminCustomRevenueListViewAdapter extends ArrayAdapter<Order> {
         SimpleDateFormat formatDate = new SimpleDateFormat("dd-MM-yyyy");
         date.setText("Ngày mua: " + formatDate.format(orders.get(position).getCreatedAt()).toString());
         total.setText("đ" + orders.get(position).getFinalTotalMoney());
-        code.setText("#" + orders.get(position).getCode());
+        code.setText("#" + orders.get(position).getIdDoc().toUpperCase());
         username.setText(orders.get(position).getOwnOrder());
         count.setText(orders.get(position).getArrayOrder().size() + " sản phẩm");
 

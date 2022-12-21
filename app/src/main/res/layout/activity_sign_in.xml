@@ -26,36 +26,12 @@
         android:translationY="-250dp" />
 
     <View
-        android:id="@+id/rectangle_4"
-        android:layout_width="149dp"
-        android:layout_height="36dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="194dp"
-        android:layout_marginTop="150dp"
-        android:background="@drawable/rectangle_4" />
-
-
-    <TextView
-        android:id="@+id/dangki"
-        android:layout_width="68dp"
-        android:layout_height="18dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="251dp"
-        android:layout_marginTop="159dp"
-        android:gravity="center_horizontal|center_vertical"
-        android:text="Đăng ký"
-        android:textColor="#F9A826"
-        android:textSize="12sp"/>
-
-    <View
         android:id="@+id/rectangle_3"
-        android:layout_width="149dp"
+        android:layout_width="189dp"
         android:layout_height="36dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="90dp"
+        android:layout_marginLeft="111dp"
         android:layout_marginTop="150dp"
         android:background="@drawable/rectangle_3" />
 
@@ -65,12 +41,12 @@
         android:layout_height="18dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="131dp"
+        android:layout_marginLeft="172dp"
         android:layout_marginTop="159dp"
         android:gravity="center_horizontal|center_vertical"
         android:text="Đăng nhập"
         android:textColor="#FFFFFF"
-        android:textSize="12sp"/>
+        android:textSize="12sp" />
 
     <EditText
         android:id="@+id/inputAdminName"
@@ -114,7 +90,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="55dp"
-        android:layout_marginTop="285dp"
+        android:layout_marginTop="288dp"
         android:background="@drawable/ic_lock"/>
 
     <View
@@ -126,19 +102,6 @@
         android:layout_marginLeft="335dp"
         android:layout_marginTop="285dp"
         android:background="@drawable/ic_eye" />
-
-    <TextView
-        android:id="@+id/quenmatkhau"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="340dp"
-        android:layout_marginRight="50dp"
-        android:gravity="center_vertical"
-        android:text="Quên mật khẩu"
-        android:textColor="#AEAEAE"
-        android:textSize="13sp" />
 
 
     <FrameLayout

@@ -5,8 +5,7 @@
     android:layout_height="wrap_content"
     android:id="@+id/admin_create_voucher"
     android:background="@drawable/login"
-    android:clipToOutline="true"
-    tools:context=".activity_admin_create_voucher">
+    android:clipToOutline="true">
 
     <RelativeLayout
         android:id="@+id/rectangle_header_admin_create_voucher"
@@ -17,20 +16,20 @@
         android:layout_marginTop="-24dp"
         android:background="@drawable/rectangle_payment"
         >
+
         <TextView
             android:id="@+id/text_admin_create_voucher"
-            android:layout_width="170dp"
+            android:layout_width="211dp"
             android:layout_height="30dp"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="121dp"
             android:layout_alignParentTop="true"
+            android:layout_marginLeft="100dp"
             android:layout_marginTop="53dp"
+            android:gravity="center"
             android:text="Tạo voucher mới"
-            android:textSize="20sp"
             android:textColor="#FFFFFF"
-            android:gravity="top"
-            android:textStyle="bold"
-            />
+            android:textSize="20sp"
+            android:textStyle="bold" />
         <View
             android:id="@+id/ic_back_admin_create_voucher"
             android:layout_width="21dp"
@@ -194,7 +193,7 @@
 
         <TextView
             android:id="@+id/text_min_order_admin_create_voucher"
-            android:layout_width="75dp"
+            android:layout_width="wrap_content"
             android:layout_height="18dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
@@ -341,7 +340,7 @@
 
             <TextView
                 android:id="@+id/text_time_end_admin_create_voucher"
-                android:layout_width="107dp"
+                android:layout_width="wrap_content"
                 android:layout_height="18dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
@@ -391,25 +390,16 @@
             android:textSize="12sp"
             android:textStyle="bold" />
 
-        <View
-            android:id="@+id/rectangle_code_mark_down_create_voucher"
-            android:layout_width="87dp"
-            android:layout_height="23dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="312dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/rectangle_code_mark_down" />
-
         <TextView
             android:id="@+id/code_mark_down_create_voucher"
-            android:layout_width="44dp"
-            android:layout_height="16dp"
-            android:layout_alignParentLeft="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="334dp"
+            android:layout_alignParentRight="true"
             android:layout_marginTop="13dp"
-            android:gravity="top"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/rectangle_code_mark_down"
+            android:gravity="center"
             android:text="ABCDE"
             android:textColor="#AEAEAE"
             android:textSize="12sp" />

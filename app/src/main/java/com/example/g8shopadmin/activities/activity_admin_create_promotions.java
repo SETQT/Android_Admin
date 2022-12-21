@@ -1,6 +1,5 @@
 package com.example.g8shopadmin.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 
 import com.example.g8shopadmin.R;
+import com.example.g8shopadmin.activities.promotion.CustomRecylerviewCreatePromotionAdapter;
 
 import java.util.ArrayList;
 

@@ -19,9 +19,9 @@ import java.util.Map;
 
 public class SendNotification {
     private static String BASE_URL = "https://fcm.googleapis.com/fcm/send";
-    private static String SERVER_KEY = "AAAAsbTcvC4:APA91bHieZVJ9DgmGkYsRp9a_qDj1_UwpY7AW-mZqIY04366RRObK-_fhD1OEpk9L1BdKiEqgwQCwQo55KRfUNLuzjfEMsqzXCkWTn-U_fSq2t_tnb4GcwJh2OV3ZqgJrPCPsZVH2rdw";
+    private static String SERVER_KEY = "key=AAAAsbTcvC4:APA91bHieZVJ9DgmGkYsRp9a_qDj1_UwpY7AW-mZqIY04366RRObK-_fhD1OEpk9L1BdKiEqgwQCwQo55KRfUNLuzjfEMsqzXCkWTn-U_fSq2t_tnb4GcwJh2OV3ZqgJrPCPsZVH2rdw";
 
-    public static void pushNotifcication(Context context, String token, String title, String message) {
+    public static void pushNotifcication(Context context, String token, String title, String message, String tag) {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
@@ -33,12 +33,13 @@ public class SendNotification {
             JSONObject notification = new JSONObject();
             notification.put("title", title);
             notification.put("body", message);
+            notification.put("tag", tag);
             json.put("notification", notification);
 
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, BASE_URL, json, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
-                    System.out.println("FCM" + response);
+
                 }
             }, new Response.ErrorListener() {
                 @Override
@@ -49,9 +50,9 @@ public class SendNotification {
                 @Override
                 public Map<String, String> getHeaders() throws AuthFailureError {
                     Map<String, String> params = new HashMap<>();
-                    params.put("Content-type", "application/json");
+                    params.put("Content-Type", "application/json");
                     params.put("Authorization", SERVER_KEY);
-                    return super.getHeaders();
+                    return params;
                 }
             };
 

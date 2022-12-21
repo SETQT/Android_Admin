@@ -28,10 +28,10 @@
             android:layout_height="47dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="40dp"
+            android:layout_marginLeft="50dp"
             android:layout_marginTop="3dp"
             android:gravity="center"
-            android:text="Còn hàng (0)"
+            android:text="Còn hàng"
             android:textColor="#FFFFFF"
             android:textSize="14sp" />
 
@@ -41,10 +41,10 @@
             android:layout_height="47dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="90dp"
+            android:layout_marginLeft="80dp"
             android:layout_marginTop="3dp"
             android:gravity="center"
-            android:text="Hết hàng (1)"
+            android:text="Hết hàng"
             android:textColor="#FFFFFF"
             android:textSize="14sp" />
 

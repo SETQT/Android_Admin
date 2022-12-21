@@ -12,8 +12,8 @@ import android.util.Log;
 import android.view.View;
 
 
-import com.example.g8shopadmin.activities.ListCustomerFragmentFirst;
-import com.example.g8shopadmin.activities.ListCustomerFragmentSecond;
+import com.example.g8shopadmin.activities.listcustomer.ListCustomerFragmentFirst;
+import com.example.g8shopadmin.activities.listcustomer.ListCustomerFragmentSecond;
 
 public class activity_list_customer extends FragmentActivity implements MainCallbacks, View.OnClickListener {
     FragmentTransaction ft;

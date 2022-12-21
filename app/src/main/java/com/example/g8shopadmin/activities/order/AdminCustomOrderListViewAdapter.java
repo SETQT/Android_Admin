@@ -16,8 +16,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.example.g8shopadmin.R;
+import com.example.g8shopadmin.Services.SendNotification;
 import com.example.g8shopadmin.activities.activity_admin_detail_order;
 import com.example.g8shopadmin.models.Notification;
+import com.example.g8shopadmin.models.Order;
 import com.example.g8shopadmin.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -47,7 +49,6 @@ public class AdminCustomOrderListViewAdapter extends ArrayAdapter<Order> {
         this.curContext = context;
         this.state = state;
     }
-
 
     @Override
     public int getCount() {
@@ -94,7 +95,7 @@ public class AdminCustomOrderListViewAdapter extends ArrayAdapter<Order> {
 
 
                                     String title = "Thông báo xác nhận đơn hàng!";
-                                    String content = "Đơn hàng " + orders.get(position).getIdDoc().toUpperCase() + " đã được xác nhận. Cảm ơn quý khách đã ủng hộ shop!";
+                                    String content = "Đơn hàng #" + orders.get(position).getIdDoc().toUpperCase() + " đã được xác nhận. Cảm ơn quý khách đã ủng hộ shop!";
                                     String receiver = orders.get(position).getOwnOrder().toString();
 
                                     // thông báo đến cho người dùng
@@ -102,6 +103,9 @@ public class AdminCustomOrderListViewAdapter extends ArrayAdapter<Order> {
                                     notifyRef.add(newNotification);
 
                                     orders.remove(position);
+
+                                    SendNotification.pushNotifcication(curContext, curUser.getFcmToken(), title, content, "SERVER_ORDER");
+
                                     Toast.makeText(curContext, "Xác nhận thành công!", Toast.LENGTH_SHORT).show();
                                     notifyDataSetChanged();
                                 }
@@ -111,11 +115,31 @@ public class AdminCustomOrderListViewAdapter extends ArrayAdapter<Order> {
                 }
             });
         }
+
         if (orders.get(position).getState() == 2) {
-            button_option.setText("Tình trạng giao");
+            button_option.setText("Xác nhận");
+            button_option.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    new AlertDialog.Builder(curContext)
+                            .setMessage("Bạn có chắc muốn xác nhận đơn hàng đã giao thành công?")
+                            .setCancelable(true)
+                            .setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    orderRef.document(orders.get(position).getIdDoc()).update("state", 3);
+
+                                    orders.remove(position);
+                                    Toast.makeText(curContext, "Xác nhận đơn hàng đã giao thành công thành công!", Toast.LENGTH_SHORT).show();
+                                    notifyDataSetChanged();
+                                }
+                            })
+                            .setNegativeButton("Không", null)
+                            .show();
+                }
+            });
         }
         if (orders.get(position).getState() == 3) {
-            button_option.setText("Xem đánh giá");
+            button_option.setVisibility(View.GONE);
         }
 
         view_all_products.setOnClickListener(new View.OnClickListener() {

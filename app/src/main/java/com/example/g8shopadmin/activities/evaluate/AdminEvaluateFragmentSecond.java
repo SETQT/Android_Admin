@@ -17,7 +17,9 @@ import com.example.g8shopadmin.MainCallbacks;
 import com.example.g8shopadmin.R;
 import com.example.g8shopadmin.activities.activity_admin_evaluate;
 import com.example.g8shopadmin.activities.myproducts.Product;
+import com.example.g8shopadmin.models.AdminEvaluate;
 import com.example.g8shopadmin.models.Comment;
+import com.example.g8shopadmin.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
@@ -112,8 +114,22 @@ public class AdminEvaluateFragmentSecond extends Fragment implements FragmentCal
                                                                 if (task.isSuccessful()) {
                                                                     DocumentSnapshot document2 = task.getResult();
                                                                     Product product = document2.toObject(Product.class);
-                                                                    commentEvaluate = merge(comment, product);
-                                                                    publishProgress(commentEvaluate);
+
+                                                                    usersRef
+                                                                            .whereEqualTo("username", comment.getUser())
+                                                                            .get()
+                                                                            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                                                                @Override
+                                                                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                                                    for (QueryDocumentSnapshot document3 : task.getResult()) {
+
+                                                                                        User user = document3.toObject(User.class);
+                                                                                        commentEvaluate = merge(comment, product, user);
+                                                                                        publishProgress(commentEvaluate);
+
+                                                                                    }
+                                                                                }
+                                                                            });
                                                                 }
                                                             }
                                                         });
@@ -151,8 +167,21 @@ public class AdminEvaluateFragmentSecond extends Fragment implements FragmentCal
                                                                 if (task.isSuccessful()) {
                                                                     DocumentSnapshot document2 = task.getResult();
                                                                     Product product = document2.toObject(Product.class);
-                                                                    commentEvaluate = merge(comment, product);
-                                                                    publishProgress(commentEvaluate);
+                                                                    usersRef
+                                                                            .whereEqualTo("username", comment.getUser())
+                                                                            .get()
+                                                                            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                                                                @Override
+                                                                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                                                    for (QueryDocumentSnapshot document3 : task.getResult()) {
+
+                                                                                        User user = document3.toObject(User.class);
+                                                                                        commentEvaluate = merge(comment, product, user);
+                                                                                        publishProgress(commentEvaluate);
+
+                                                                                    }
+                                                                                }
+                                                                            });
                                                                 }
                                                             }
                                                         });
@@ -194,7 +223,7 @@ public class AdminEvaluateFragmentSecond extends Fragment implements FragmentCal
         }
     }
 
-    public AdminEvaluate merge(Comment cmt, Product pro) {
+    public AdminEvaluate merge(Comment cmt, Product pro, User u) {
         AdminEvaluate commentEvaluate = new AdminEvaluate();
 
         commentEvaluate.setNameProduct(pro.getName());
@@ -208,6 +237,7 @@ public class AdminEvaluateFragmentSecond extends Fragment implements FragmentCal
         commentEvaluate.setReply(cmt.getReply());
         commentEvaluate.setUser(cmt.getUser());
         commentEvaluate.setIdDoc(cmt.getIdDoc());
+        commentEvaluate.setAvatar(u.getImage());
 
         return commentEvaluate;
     }

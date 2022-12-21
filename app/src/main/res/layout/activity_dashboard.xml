@@ -45,12 +45,12 @@
 
         <View
             android:id="@+id/icon_chat"
-            android:layout_width="23.62dp"
-            android:layout_height="19.96dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="320dp"
-            android:layout_marginTop="35.92dp"
+            android:layout_marginLeft="322dp"
+            android:layout_marginTop="34dp"
             android:background="@drawable/icon_chat"
             android:backgroundTint="#FFFFFF" />
 
@@ -73,20 +73,6 @@
             android:layout_marginLeft="335dp"
             android:layout_marginTop="28dp">
 
-            <View
-                android:id="@+id/circle_red_chat_profile"
-                android:layout_width="17.57dp"
-                android:layout_height="17.57dp"
-                android:background="@drawable/cycle_red" />
-
-            <TextView
-                android:id="@+id/id_cycle_red_admin"
-                android:layout_width="17dp"
-                android:layout_height="18dp"
-                android:gravity="center"
-                android:text="5"
-                android:textColor="#FFFFFF"
-                android:textSize="10sp" />
         </RelativeLayout>
 
 
@@ -177,12 +163,11 @@
 
                 <TextView
                     android:id="@+id/number_confirm"
-                    android:layout_width="6dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="21dp"
                     android:layout_centerHorizontal="true"
-                    android:gravity="top"
+                    android:gravity="center"
                     android:lineHeight="24px"
-                    android:text="1"
                     android:textColor="#000000"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -198,51 +183,20 @@
                     android:textSize="10sp" />
             </RelativeLayout>
 
-            <!-- Chờ lấy hàng -->
-            <RelativeLayout
-                android:id="@+id/admin_wait_goods"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginLeft="100dp">
-
-                <TextView
-                    android:id="@+id/number_goods"
-                    android:layout_width="6dp"
-                    android:layout_height="21dp"
-                    android:layout_centerHorizontal="true"
-                    android:gravity="top"
-                    android:lineHeight="24px"
-                    android:text="1"
-                    android:textColor="#000000"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="15dp"
-                    android:layout_alignParentBottom="true"
-                    android:gravity="center"
-                    android:lineHeight="15sp"
-                    android:text="Chờ lấy hàng"
-                    android:textColor="#000000"
-                    android:textSize="10sp" />
-            </RelativeLayout>
-
             <!-- Chờ giao hàng -->
             <RelativeLayout
                 android:id="@+id/admin_wait_delivery"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:layout_marginLeft="200dp">
+                android:layout_marginLeft="100dp">
 
                 <TextView
-                    android:id="@+id/number_delivery"
-                    android:layout_width="6dp"
+                    android:id="@+id/number_wait_delivery"
+                    android:layout_width="wrap_content"
                     android:layout_height="21dp"
                     android:layout_centerHorizontal="true"
-                    android:gravity="top"
+                    android:gravity="center"
                     android:lineHeight="24px"
-                    android:text="1"
                     android:textColor="#000000"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -258,6 +212,35 @@
                     android:textSize="10sp" />
             </RelativeLayout>
 
+            <!-- Đã giao hàng -->
+            <RelativeLayout
+                android:id="@+id/admin_delivered"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginLeft="200dp">
+
+                <TextView
+                    android:id="@+id/number_delivered"
+                    android:layout_width="wrap_content"
+                    android:layout_height="21dp"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:lineHeight="24px"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="15dp"
+                    android:layout_alignParentBottom="true"
+                    android:gravity="center"
+                    android:lineHeight="15sp"
+                    android:text="Đã giao hàng"
+                    android:textColor="#000000"
+                    android:textSize="10sp" />
+            </RelativeLayout>
+
             <!-- Đánh giá -->
             <RelativeLayout
                 android:id="@+id/admin_wait_rate"
@@ -267,12 +250,11 @@
 
                 <TextView
                     android:id="@+id/number_rate"
-                    android:layout_width="6dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="21dp"
                     android:layout_centerHorizontal="true"
-                    android:gravity="top"
+                    android:gravity="center"
                     android:lineHeight="24px"
-                    android:text="1"
                     android:textColor="#000000"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -353,6 +335,8 @@
                     android:id="@+id/productAdmin"
                     android:layout_width="wrap_content"
                     android:layout_height="47dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
                     android:layout_marginLeft="26dp"
                     android:layout_marginTop="14dp">
 
@@ -495,7 +479,7 @@
                 <RelativeLayout
                     android:id="@+id/listCustomerAdmin"
                     android:layout_width="60dp"
-                    android:layout_height="58dp"
+                    android:layout_height="48dp"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginLeft="304dp"

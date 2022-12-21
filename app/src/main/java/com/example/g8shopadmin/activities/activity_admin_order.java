@@ -15,9 +15,11 @@ import com.example.g8shopadmin.activities.order.AdminOrderFragmentSecond;
 
 public class activity_admin_order extends FragmentActivity implements MainCallbacks {
     // khai báo biến UI
-    View icon_back, icon_chat;
+    View icon_back;
 
-    FragmentTransaction ft; AdminOrderFragmentFirst firstFrag; AdminOrderFragmentSecond secondFrag;
+    FragmentTransaction ft;
+    AdminOrderFragmentFirst firstFrag;
+    AdminOrderFragmentSecond secondFrag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,18 +36,21 @@ public class activity_admin_order extends FragmentActivity implements MainCallba
         ft.replace(R.id.admin_order_fragment_second, secondFrag);
         ft.commit();
 
+        Intent intent = getIntent();
+
+        if (intent.hasExtra("state")) {
+            String stateMyOrder = intent.getStringExtra("state");
+            if (stateMyOrder == null) {
+                firstFrag.onMsgFromMainToFragment("1");
+                secondFrag.onMsgFromMainToFragment("1");
+            } else {
+                firstFrag.onMsgFromMainToFragment(stateMyOrder);
+                secondFrag.onMsgFromMainToFragment(stateMyOrder);
+            }
+        }
+
 
         icon_back = (View) findViewById(R.id.icon_back);
-        icon_chat = (View) findViewById(R.id.icon_chat);
-
-        icon_chat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Intent moveActivity = new Intent(getApplicationContext(), activity_mycart.class);
-//                moveActivity.putExtra("name_activity", "activity_dashboard");
-//                startActivity(moveActivity);
-            }
-        });
 
         icon_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,15 +67,17 @@ public class activity_admin_order extends FragmentActivity implements MainCallba
 //        Toast.makeText(getApplication(), " MAIN GOT>> " + sender + "\n" + strValue, Toast.LENGTH_LONG).show();
         if (sender.equals("RED-FRAG")) {
             try { // forward blue-data to redFragment using its callback method
-                firstFrag.onMsgFromMainToFragment( strValue);
+                firstFrag.onMsgFromMainToFragment(strValue);
+            } catch (Exception e) {
+                Log.e("ERROR", "onStrFromFragToMain " + e.getMessage());
             }
-            catch (Exception e) { Log.e("ERROR", "onStrFromFragToMain " + e.getMessage()); }
         }
         if (sender.equals("BLUE-FRAG")) {
             try { // forward blue-data to redFragment using its callback method
-                secondFrag.onMsgFromMainToFragment( strValue);
+                secondFrag.onMsgFromMainToFragment(strValue);
+            } catch (Exception e) {
+                Log.e("ERROR", "onStrFromFragToMain " + e.getMessage());
             }
-            catch (Exception e) { Log.e("ERROR", "onStrFromFragToMain " + e.getMessage()); }
         }
     }
 }
