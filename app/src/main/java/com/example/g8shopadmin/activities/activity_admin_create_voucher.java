@@ -17,11 +17,15 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.g8shopadmin.R;
+import com.example.g8shopadmin.Services.SendNotification;
 import com.example.g8shopadmin.databinding.ActivityAdminCreateVoucherBinding;
+import com.example.g8shopadmin.models.User;
 import com.example.g8shopadmin.models.Voucher;
 import com.example.g8shopadmin.utilities.Constants;
 import com.google.android.gms.tasks.Continuation;
@@ -30,10 +34,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -53,6 +59,7 @@ public class activity_admin_create_voucher extends AppCompatActivity implements 
     // firestore
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference vouchersRef = db.collection("vouchers");
+    CollectionReference usersRef = db.collection("users");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -279,6 +286,22 @@ public class activity_admin_create_voucher extends AppCompatActivity implements 
                     newVoucher.setImage(urlImageVoucher);
                     if (idDocVoucher == null) {
                         vouchersRef.add(newVoucher);
+
+                        String title = "Shop vừa có thêm voucher mới đó!";
+                        String content = "Voucher mới " + newVoucher.getTitle() + " vừa được bắt đầu trên G8Shop. Ghé xem ngay!";
+
+                        // thông báo đến toàn bộ người dùng là sản phẩm mới được đăng lên
+                        usersRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    for (DocumentSnapshot document : task.getResult()) {
+                                        User user = document.toObject(User.class);
+                                        SendNotification.pushNotifcication(activity_admin_create_voucher.this, user.getFcmToken(), title, content, "SERVER_VOUCHER");
+                                    }
+                                }
+                            }
+                        });
                     } else {
                         vouchersRef.document(idDocVoucher).set(newVoucher);
                     }

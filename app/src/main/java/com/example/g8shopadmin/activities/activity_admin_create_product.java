@@ -1,33 +1,33 @@
 package com.example.g8shopadmin.activities;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.Manifest;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
-import com.example.g8shopadmin.R;
-import com.example.g8shopadmin.activities.myproducts.Product;
-import com.example.g8shopadmin.activities.promotion.CustomRecylerviewCreatePromotionAdapter;
-import com.example.g8shopadmin.databinding.ActivityAdminCreateProductBinding;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import com.example.g8shopadmin.R;
+import com.example.g8shopadmin.Services.SendNotification;
+import com.example.g8shopadmin.activities.myproducts.Product;
+import com.example.g8shopadmin.databinding.ActivityAdminCreateProductBinding;
+import com.example.g8shopadmin.models.User;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -40,26 +40,20 @@ import java.util.Collections;
 import java.util.List;
 
 public class activity_admin_create_product extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-
-    RecyclerView rv;
-    ArrayList<String> dataSource;
-    LinearLayoutManager linearLayoutManager;
-    CustomRecylerviewCreatePromotionAdapter myPromotionAdapter;
-    //    activity_admin_create_product binding;
-    String urlAvatar = "";
     // kết nối firestore
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
     Uri newImage;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference prodsRef = db.collection("products");
+    CollectionReference usersRef = db.collection("users");
 
     private ActivityAdminCreateProductBinding binding;
     private static final int PICK_IMAGE = 100;
     private boolean checkExitsImage = false;
     private Product newProduct;
-    private String iddoc="";
+    private String iddoc = "";
     private String oldImage;
 
-    String[] typeProduct = {"Giày", "Mũ","Áo","Áo khoác","Quần"};
+    String[] typeProduct = {"Giày", "Mũ", "Áo", "Áo khoác", "Quần"};
     String typeSelected;
 
 
@@ -121,10 +115,8 @@ public class activity_admin_create_product extends AppCompatActivity implements 
         try {
             String value = getIntent().getExtras().getString("update");
             if (value != null) {
-                iddoc=value;
+                iddoc = value;
                 updateData(getIntent().getExtras());
-//                return;
-
             }
         } catch (Exception e) {
 
@@ -133,24 +125,20 @@ public class activity_admin_create_product extends AppCompatActivity implements 
         binding.icBackAdminCreatePromotions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),activity_admin_my_products.class);
+                Intent intent = new Intent(getApplicationContext(), activity_admin_my_products.class);
                 startActivity(intent);
             }
         });
         binding.buttonAddImageCreateProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 changeImage();
-
             }
         });
         binding.btnAdminCreateProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 initData();
-
             }
         });
     }
@@ -158,7 +146,7 @@ public class activity_admin_create_product extends AppCompatActivity implements 
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-            typeSelected = adapterView.getItemAtPosition(i).toString();
+        typeSelected = adapterView.getItemAtPosition(i).toString();
     }
 
     @Override
@@ -195,34 +183,28 @@ public class activity_admin_create_product extends AppCompatActivity implements 
     }
 
     public void updateData(Bundle extras) {
-
-
-        checkExitsImage=true;
-
-        //binding.valueTypeProductAdminCreateProduct.setText(extras.getString("category"));
+        checkExitsImage = true;
 
         binding.valueDescribeProductAdminCreateProduct.setText(extras.getString("descript"));
         binding.valueNameProductAdminCreateProduct.setText(extras.getString("name"));
 
-        ArrayList<String> color =extras.getStringArrayList("color");
-        String textColor=color.toString().replace("[", "");
-        textColor=textColor.replace("]", "");
+        ArrayList<String> color = extras.getStringArrayList("color");
+        String textColor = color.toString().replace("[", "");
+        textColor = textColor.replace("]", "");
         binding.valueColorProductAdminCreateProduct.setText(textColor);
 
-        ArrayList<String> size =extras.getStringArrayList("size");
-        String textSize=size.toString().replace("[", "");
-        textSize=textSize.replace("]", "");
+        ArrayList<String> size = extras.getStringArrayList("size");
+        String textSize = size.toString().replace("[", "");
+        textSize = textSize.replace("]", "");
         binding.valueSizeProductAdminCreateProduct.setText(textSize);
 
-        Integer price=extras.getInt("price");
+        Integer price = extras.getInt("price");
         binding.valuePriceProductAdminCreateProduct.setText(price.toString());
-        Integer amount=extras.getInt("amount");
+        Integer amount = extras.getInt("amount");
         binding.valueQuantityProductAdminCreateProduct.setText(amount.toString());
 
-         oldImage= extras.getString("image");
-        Picasso.with(getApplicationContext()).load(oldImage).into( binding.recyclerViewProductCreateProduct);
-
-
+        oldImage = extras.getString("image");
+        Picasso.with(getApplicationContext()).load(oldImage).into(binding.recyclerViewProductCreateProduct);
     }
 
     public void initData() {
@@ -236,38 +218,46 @@ public class activity_admin_create_product extends AppCompatActivity implements 
 
 
         if (!checkExitsImage) {
-            Toast.makeText(activity_admin_create_product.this, "Thiếu ảnh sản phẩm", Toast.LENGTH_SHORT).show();
+            new AlertDialog.Builder(activity_admin_create_product.this)
+                    .setMessage("Thiếu ảnh sản phẩm!")
+                    .setCancelable(true)
+                    .show();
             return;
         }
         if (!checkData(type, color, descript, name, size, price, quantity)) {
-            Toast.makeText(activity_admin_create_product.this, "Nhập thiếu thông tin sản phẩm", Toast.LENGTH_SHORT).show();
+            new AlertDialog.Builder(activity_admin_create_product.this)
+                    .setMessage("Nhập thiếu thông tin sản phẩm!")
+                    .setCancelable(true)
+                    .show();
             return;
         }
+
         Integer prices;
         Integer amount;
 
         try {
-
             prices = Integer.parseInt(price);
         } catch (Exception e) {
             prices = 0;
-            Toast.makeText(getApplicationContext(), "Giá không hợp lệ", Toast.LENGTH_SHORT).show();
-
+            new AlertDialog.Builder(activity_admin_create_product.this)
+                    .setMessage("Giá không hợp lệ!")
+                    .setCancelable(true)
+                    .show();
         }
         try {
-
             amount = Integer.parseInt(quantity);
         } catch (Exception e) {
             amount = 0;
-            Toast.makeText(getApplicationContext(), "Số lượng tin không hợp lệ", Toast.LENGTH_SHORT).show();
-
+            new AlertDialog.Builder(activity_admin_create_product.this)
+                    .setMessage("Số lượng tin không hợp lệ!")
+                    .setCancelable(true)
+                    .show();
         }
 
         if (prices == 0 || amount == 0) {
-//            Toast.makeText(getApplicationContext(), "Thông tin không hợp lệ", Toast.LENGTH_SHORT).show();
             return;
         }
-        Log.d("TAG", "initData: " + prices);
+
         String[] arrayColor = color.split(",");
         String[] arraySize = size.split(",");
         ArrayList<String> list1 = new ArrayList<String>();
@@ -277,10 +267,8 @@ public class activity_admin_create_product extends AppCompatActivity implements 
 
         newProduct = new Product(type, name, prices, amount, 0, "", descript, 0, list1, list2);
         try {
-
             uploadFile();
         } catch (Exception e) {
-
         }
     }
 
@@ -290,19 +278,20 @@ public class activity_admin_create_product extends AppCompatActivity implements 
 
         StorageReference refImage = storageRef.child("image/" + newProduct.getName());
 
-        if (newImage==null){
+        if (newImage == null) {
             newProduct.setImage(oldImage);
-//            prodsRef.add(newProduct);
             prodsRef.document(iddoc).set(newProduct);
 
-            Toast.makeText(getApplicationContext(), "Cập nhật sản phẩm thành công !", Toast.LENGTH_SHORT).show();
+            new AlertDialog.Builder(activity_admin_create_product.this)
+                    .setMessage("Cập nhật sản phẩm thành công!")
+                    .setCancelable(true)
+                    .show();
+
             startActivity(new Intent(getApplicationContext(), activity_admin_my_products.class));
-
-            return ;
+            return;
         }
+
         UploadTask uploadTask = refImage.putFile(newImage);
-
-
 
         uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
             @Override
@@ -323,18 +312,32 @@ public class activity_admin_create_product extends AppCompatActivity implements 
                     newProduct.setImage(urlImageProduct);
 
 
-                    if(!iddoc.equals("")){
+                    if (!iddoc.equals("")) {
                         prodsRef.document(iddoc).set(newProduct);
                         Toast.makeText(getApplicationContext(), "Cập nhật sản phẩm thành công !", Toast.LENGTH_SHORT).show();
-
-                    }else{
-
+                    } else {
                         prodsRef.add(newProduct);
-                    Toast.makeText(getApplicationContext(), "Thêm sản phẩm thành công !", Toast.LENGTH_SHORT).show();
+
+                        String title = "Shop vừa cập nhật thêm mẫu mới đó!";
+                        String content = "Mẫu mới: " + newProduct.getName() + " vừa được cập nhật trên G8Shop. Ghé xem ngay!";
+
+                        // thông báo đến toàn bộ người dùng là sản phẩm mới được đăng lên
+                        usersRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    for (DocumentSnapshot document : task.getResult()) {
+                                        User user = document.toObject(User.class);
+                                        SendNotification.pushNotifcication(activity_admin_create_product.this, user.getFcmToken(), title, content, "SERVER_PRODUCT");
+                                    }
+                                }
+                            }
+                        });
+
+                        Toast.makeText(getApplicationContext(), "Thêm sản phẩm thành công !", Toast.LENGTH_SHORT).show();
                     }
 
                     startActivity(new Intent(getApplicationContext(), activity_admin_my_products.class));
-
                 } else {
                     return;
                 }
