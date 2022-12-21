@@ -35,6 +35,7 @@ public class AdminCustomOrderListViewAdapter extends ArrayAdapter<Order> {
     Context curContext;
     ArrayList<Order> orders = new ArrayList<>();
     Integer state;
+    User curUser;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference userRef = db.collection("users");
     CollectionReference orderRef = db.collection("orders");
@@ -95,6 +96,7 @@ public class AdminCustomOrderListViewAdapter extends ArrayAdapter<Order> {
                                     String title = "Thông báo xác nhận đơn hàng!";
                                     String content = "Đơn hàng " + orders.get(position).getIdDoc().toUpperCase() + " đã được xác nhận. Cảm ơn quý khách đã ủng hộ shop!";
                                     String receiver = orders.get(position).getOwnOrder().toString();
+
                                     // thông báo đến cho người dùng
                                     Notification newNotification = new Notification("https://firebasestorage.googleapis.com/v0/b/androidgroup8.appspot.com/o/logo%2FGroup%2010.png?alt=media&token=bc59d0df-9e04-4c66-a95d-78fbd0eef751", title, content, receiver, "order");
                                     notifyRef.add(newNotification);
@@ -139,6 +141,7 @@ public class AdminCustomOrderListViewAdapter extends ArrayAdapter<Order> {
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             User user = document.toObject(User.class);
                             user.setUserId(document.getId());
+                            curUser = user;
 
                             Picasso.with(curContext).load(user.getImage()).into(avatar);
                         }
