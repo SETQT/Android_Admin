@@ -97,7 +97,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginRight="90dp"
             android:layout_marginBottom="9dp"
-            android:background="@drawable/record_btn_save_profile"
+            android:background="@drawable/custom_button_footer"
             android:gravity="center"
             android:text="Thêm khuyến mãi"
             android:textAllCaps="false"
