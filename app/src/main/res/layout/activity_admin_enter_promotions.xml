@@ -6,7 +6,7 @@
     android:id="@+id/admin_enter_promotions"
     android:background="@drawable/login"
     android:clipToOutline="true"
-    tools:context=".activity_admin_enter_promotions">
+    tools:context=".activities.activity_admin_enter_promotions">
 
     <RelativeLayout
         android:id="@+id/rectangle_header_admin_enter_promotions"
@@ -145,7 +145,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginLeft="25dp"
             android:layout_marginBottom="9dp"
-            android:background="@drawable/record_btn_save_profile"
+            android:background="@drawable/custom_button_footer"
             android:gravity="center"
             android:text="Xác nhận"
             android:textAllCaps="false"
