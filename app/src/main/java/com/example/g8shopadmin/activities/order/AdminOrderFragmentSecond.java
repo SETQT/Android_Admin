@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.g8shopadmin.FragmentCallbacks;
@@ -20,7 +21,10 @@ import com.example.g8shopadmin.models.Order;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -67,13 +71,66 @@ public class AdminOrderFragmentSecond extends Fragment implements FragmentCallba
             Log.e("RED BUNDLE ERROR – ", "" + e.getMessage());
         }
 
-        if(stateMyOrder != null) {
+        if (stateMyOrder != null) {
             order_asynctask o_at1 = new order_asynctask(Integer.parseInt(stateMyOrder));
             o_at1.execute();
-        }
-        else {
+
+            ordersRef
+                    .whereEqualTo("state", Integer.parseInt(stateMyOrder))
+                    .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                        @Override
+                        public void onEvent(@Nullable QuerySnapshot snapshots,
+                                            @Nullable FirebaseFirestoreException e) {
+                            if (e != null) {
+                                return;
+                            }
+                            order_asynctask o_at1 = null;
+                            for (DocumentChange dc : snapshots.getDocumentChanges()) {
+                                switch (dc.getType()) {
+                                    case ADDED:
+                                        o_at1 = new order_asynctask(Integer.parseInt(stateMyOrder));
+                                        o_at1.execute();
+                                        break;
+                                    case REMOVED:
+                                        o_at1 = new order_asynctask(Integer.parseInt(stateMyOrder));
+                                        o_at1.execute();
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                        }
+                    });
+        } else {
             order_asynctask o_at = new order_asynctask(1);
             o_at.execute();
+
+            ordersRef
+                    .whereEqualTo("state", 1)
+                    .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                        @Override
+                        public void onEvent(@Nullable QuerySnapshot snapshots,
+                                            @Nullable FirebaseFirestoreException e) {
+                            if (e != null) {
+                                return;
+                            }
+                            order_asynctask o_at = null;
+                            for (DocumentChange dc : snapshots.getDocumentChanges()) {
+                                switch (dc.getType()) {
+                                    case ADDED:
+                                        o_at = new order_asynctask(1);
+                                        o_at.execute();
+                                        break;
+                                    case REMOVED:
+                                        o_at = new order_asynctask(1);
+                                        o_at.execute();
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                        }
+                    });
         }
         return layout_second;
     }
@@ -84,7 +141,32 @@ public class AdminOrderFragmentSecond extends Fragment implements FragmentCallba
         order_asynctask o_at = new order_asynctask(Integer.parseInt(strValue));
         o_at.execute();
 
-
+        ordersRef
+                .whereEqualTo("state", Integer.parseInt(strValue))
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot snapshots,
+                                        @Nullable FirebaseFirestoreException e) {
+                        if (e != null) {
+                            return;
+                        }
+                        order_asynctask o_at = null;
+                        for (DocumentChange dc : snapshots.getDocumentChanges()) {
+                            switch (dc.getType()) {
+                                case ADDED:
+                                    o_at = new order_asynctask(Integer.parseInt(strValue));
+                                    o_at.execute();
+                                    break;
+                                case REMOVED:
+                                    o_at = new order_asynctask(Integer.parseInt(strValue));
+                                    o_at.execute();
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                    }
+                });
     }
 
     class order_asynctask extends AsyncTask<Void, Order, Order> {
@@ -164,7 +246,7 @@ public class AdminOrderFragmentSecond extends Fragment implements FragmentCallba
         }
     }
 
-    public void SortArrayList(ArrayList<Order> order){
+    public void SortArrayList(ArrayList<Order> order) {
         Collections.sort(order, new sortCompare());
     }
 
