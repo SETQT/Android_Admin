@@ -25,7 +25,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class AdminRevenueFragmentSecond extends Fragment implements FragmentCallbacks {
     activity_admin_revenue main;
@@ -34,8 +37,6 @@ public class AdminRevenueFragmentSecond extends Fragment implements FragmentCall
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference ordersRef = db.collection("orders");
-
-    String stateMyOrder;
 
     public static AdminRevenueFragmentSecond newInstance(String strArg1) {
         AdminRevenueFragmentSecond fragment = new AdminRevenueFragmentSecond();
@@ -61,9 +62,8 @@ public class AdminRevenueFragmentSecond extends Fragment implements FragmentCall
         admin_revenue_listview = (ListView) layout_second.findViewById(R.id.admin_revenue_listview);
         total_cost = (TextView)  layout_second.findViewById(R.id.total_cost);
 
-        ArrayList<Integer> state = new ArrayList<>();
-        state.add(3);
-        AdminRevenueFragmentSecond.order_asynctask o_at = new AdminRevenueFragmentSecond.order_asynctask(state);
+
+        AdminRevenueFragmentSecond.order_asynctask o_at = new AdminRevenueFragmentSecond.order_asynctask();
         o_at.execute();
 
         try {
@@ -77,53 +77,54 @@ public class AdminRevenueFragmentSecond extends Fragment implements FragmentCall
 
     @Override
     public void onMsgFromMainToFragment(String strValue) {
-        if (strValue == "da"){
-            ArrayList<Integer> state = new ArrayList<>();
-            state.add(3);
-            AdminRevenueFragmentSecond.order_asynctask o_at = new AdminRevenueFragmentSecond.order_asynctask(state);
-            o_at.execute();
-        }
-        if (strValue == "chua"){
-            ArrayList<Integer> state = new ArrayList<>();
-            state.add(1);
-            state.add(2);
-            AdminRevenueFragmentSecond.order_asynctask o_at = new AdminRevenueFragmentSecond.order_asynctask(state);
-            o_at.execute();
-        }
+        String[] parts = strValue.split(",");
+        String month_send = parts[0];
+        String year_send = parts[1];
+        AdminRevenueFragmentSecond.order_asynctask o_at = new AdminRevenueFragmentSecond.order_asynctask(month_send, year_send);
+        o_at.execute();
 
     }
 
     class order_asynctask extends AsyncTask<Void, Order, Order> {
         ArrayList<Order> listOrder = new ArrayList<>();
-        ArrayList<Integer> state = new ArrayList<>();
-        Integer total = 0;
+        String month, year;
 
         public order_asynctask() {
         }
 
-        public order_asynctask(ArrayList<Integer> state) {
-            this.state = state;
+        public order_asynctask(String month, String year) {
+            this.month = month;
+            this.year = year;
         }
 
         @Override
         protected Order doInBackground(Void... voids) {
             try {
                 ordersRef
-                        .whereIn("state", state)
+                        .whereEqualTo("state", 3)
                         .get()
                         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                             @Override
                             public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                Integer total = 0;
                                 if (task.isSuccessful()) {
                                     Boolean isHave = false;
 
                                     for (QueryDocumentSnapshot document : task.getResult()) {
                                         Order order = document.toObject(Order.class);
-                                        total = total + order.getFinalTotalMoney();
+                                        SimpleDateFormat formatDate = new SimpleDateFormat("dd-MM-yyyy");
+                                        String date = formatDate.format(order.getCreatedAt()).toString();
+                                        String[] splits = date.split("-");
+                                        String month_val = splits[1]; // 004
+                                        String year_val = splits[2];
+                                        if (month_val.equals(month) & year_val.equals(year)){
+                                            total = total + order.getFinalTotalMoney();
+                                            order.setIdDoc(document.getId());
+                                            isHave = true;
+                                            publishProgress(order);
+                                        }
                                         total_cost.setText("đ"+ total.toString());
-                                        order.setIdDoc(document.getId());
-                                        isHave = true;
-                                        publishProgress(order);
+
                                     }
 
                                     if (!isHave) {
@@ -151,6 +152,7 @@ public class AdminRevenueFragmentSecond extends Fragment implements FragmentCall
                     listOrder.add(orders[0]);
                 }
             }
+            SortArrayList(listOrder);
             try {
                 AdminCustomRevenueListViewAdapter myAdapter = new AdminCustomRevenueListViewAdapter(getActivity(), R.layout.admin_custom_listview_revenue, listOrder);
                 admin_revenue_listview.setAdapter(myAdapter);
@@ -159,5 +161,15 @@ public class AdminRevenueFragmentSecond extends Fragment implements FragmentCall
                 return;
             }
         }
+    }
+
+    class sortCompare implements Comparator<Order> {
+        public int compare(Order s1, Order s2) {
+            return s2.getCreatedAt().compareTo(s1.getCreatedAt());
+        }
+    }
+
+    public void SortArrayList(ArrayList<Order> order){
+        Collections.sort(order, new sortCompare());
     }
 }

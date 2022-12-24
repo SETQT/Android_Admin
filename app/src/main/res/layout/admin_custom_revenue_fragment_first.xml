@@ -11,43 +11,71 @@
     <View
         android:id="@+id/admin_revenue_bg_option"
         android:layout_width="411dp"
-        android:layout_height="50dp"
+        android:layout_height="80dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:background="@drawable/rectangle_option" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:orientation="horizontal"
-            android:layout_marginTop="-50dp">
+    <RelativeLayout
+        android:layout_width="411dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="-80dp"
+        android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/admin_revenue_option_chua_thanh_toan"
-                android:layout_width="170dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="13dp"
-                android:gravity="center"
-                android:text="Chưa thanh toán"
-                android:textColor="#FFFFFF"
-                android:textSize="13sp" />
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:text="Chọn tháng"
+            android:textSize="13sp"
+            android:textColor="#FFFFFF"/>
+
+        <Spinner
+            android:id="@+id/spinner_month"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/edit_text_admin_create_voucher"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="160dp"
+            android:layout_marginTop="10dp"
+            android:text="Chọn năm"
+            android:textSize="13sp"
+            android:textColor="#FFFFFF"/>
 
 
-            <TextView
-                android:id="@+id/admin_revenue_option_da_thanh_toan"
-                android:layout_width="170dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="13dp"
-                android:gravity="center"
-                android:text="Đã thanh toán"
-                android:textColor="#FFFFFF"
-                android:textSize="13sp" />
+        <Spinner
+            android:id="@+id/spinner_year"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="160dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/edit_text_admin_create_voucher"
+            android:gravity="center" />
 
-        </LinearLayout>
+        <Button
+            android:id="@+id/btn_confirm"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/custom_button_footer"
+            android:text="Xác nhận"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
 </LinearLayout>
