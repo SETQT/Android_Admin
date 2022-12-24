@@ -25,6 +25,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.g8shopadmin.R;
 import com.example.g8shopadmin.Services.SendNotification;
 import com.example.g8shopadmin.databinding.ActivityAdminCreateVoucherBinding;
+import com.example.g8shopadmin.models.Notification;
 import com.example.g8shopadmin.models.User;
 import com.example.g8shopadmin.models.Voucher;
 import com.example.g8shopadmin.utilities.Constants;
@@ -188,6 +189,8 @@ public class activity_admin_create_voucher extends AppCompatActivity implements 
                             } else {
                                 Toast.makeText(activity_admin_create_voucher.this, "Cập nhật voucher thành công!", Toast.LENGTH_SHORT).show();
                             }
+                            // thông báo đến cho người dùng
+
 
                             Intent moveActivity = new Intent(activity_admin_create_voucher.this, activity_admin_manage_voucher.class);
                             activity_admin_create_voucher.this.startActivity(moveActivity);
