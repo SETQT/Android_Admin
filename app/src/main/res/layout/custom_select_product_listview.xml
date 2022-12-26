@@ -37,7 +37,6 @@
             android:layout_marginLeft="1dp"
             android:layout_marginTop="1dp"
             android:gravity="top"
-            android:text="Tất cả hình thức thanh toán"
             android:textColor="#000000"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -51,7 +50,6 @@
             android:layout_marginLeft="1dp"
             android:layout_marginTop="27dp"
             android:gravity="center"
-            android:text="đ100.000"
             android:textColor="#AEAEAE"
             android:textSize="12sp" />
 
@@ -64,7 +62,6 @@
             android:layout_marginLeft="1dp"
             android:layout_marginTop="50dp"
             android:gravity="top"
-            android:text="Số lượng: 10"
             android:textColor="#AEAEAE"
             android:textSize="12sp" />
 

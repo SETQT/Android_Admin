@@ -23,8 +23,7 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/avatar"
                 android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/mono1" />
+                android:layout_height="20dp" />
 
             <TextView
                 android:id="@+id/username"
@@ -35,7 +34,6 @@
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="5dp"
                 android:gravity="top"
-                android:text="that123"
                 android:textColor="#AEAEAE"
                 android:textSize="8sp" />
 

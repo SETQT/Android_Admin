@@ -55,19 +55,12 @@ public class AdminCustomMyProductsListViewAdapter extends ArrayAdapter<Product> 
         TextView cost = (TextView) v.findViewById(R.id.admin_custom_listview_my_products_cost);
         TextView text_kho_hang = (TextView) v.findViewById(R.id.text_kho_hang);
         TextView text_da_ban = (TextView) v.findViewById(R.id.text_da_ban);
-        TextView text_thich = (TextView) v.findViewById(R.id.text_thich);
-        TextView text_luot_xem = (TextView) v.findViewById(R.id.text_luot_xem);
         ImageView img = (ImageView) v.findViewById(R.id.admin_custom_listview_my_products_picture) ;
 
         name.setText(myProducts.get(position).getName());
         cost.setText("đ" + myProducts.get(position).getPrice().toString());
         text_kho_hang.setText("Kho hàng: "+myProducts.get(position).getAmount().toString());
         text_da_ban.setText("Đã bán: "+myProducts.get(position).getAmountOfSold().toString());
-
-        text_thich.setText("Thích: 0");
-
-        text_luot_xem.setText("Lượt xem: 0");
-
 
         Picasso.with(curContext).load(myProducts.get(position).getImage()).into(img);
 
