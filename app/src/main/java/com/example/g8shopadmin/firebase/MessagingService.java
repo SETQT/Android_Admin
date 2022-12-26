@@ -45,7 +45,6 @@ public class MessagingService extends FirebaseMessagingService {
 
             Intent intent = new Intent(this, activity_admin_order.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-//            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             intent.putExtra(Constants.STATE_ORDER, "1");
             pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
         } else {

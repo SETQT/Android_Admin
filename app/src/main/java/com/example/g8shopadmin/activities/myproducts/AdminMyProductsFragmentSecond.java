@@ -40,10 +40,6 @@ public class AdminMyProductsFragmentSecond extends Fragment implements FragmentC
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference productsRef = db.collection("products");
 
-//    AdminMyProductsFragmentFirst first;
-//    FragmentManager fm = getFragmentManager();
-//    AdminMyProductsFragmentFirst first;
-//fragm.otherList();
     public static AdminMyProductsFragmentSecond newInstance(String strArg1) {
         AdminMyProductsFragmentSecond fragment = new AdminMyProductsFragmentSecond();
         Bundle bundle = new Bundle();
@@ -59,9 +55,6 @@ public class AdminMyProductsFragmentSecond extends Fragment implements FragmentC
             throw new IllegalStateException("Activity must implement MainCallbacks");
         }
         main = (activity_admin_my_products) getActivity();
-//        first = (AdminMyProductsFragmentFirst)fm.findFragmentById(R.id.admin_my_products_fragment_first);
-
-//        first = (AdminMyProductsFragmentFirst)getFragmentManager();
     }
 
     @Override
@@ -69,10 +62,6 @@ public class AdminMyProductsFragmentSecond extends Fragment implements FragmentC
         LinearLayout layout_second = (LinearLayout) inflater.inflate(R.layout.admin_custom_my_products_fragment_second, null);
 
         listMyProducts = (ListView) layout_second.findViewById(R.id.admin_my_products_listview);
-
-
-//        AdminCustomManageVoucherListViewAdapter myAdapter = new AdminCustomManageVoucherListViewAdapter(getActivity(), R.layout.admin_custom_listview_manage_voucher, Voucher);
-//        listVoucher.setAdapter(myAdapter);
 
         manage_product_asynctask mv_at = new manage_product_asynctask("0");
         mv_at.execute();
@@ -89,10 +78,8 @@ public class AdminMyProductsFragmentSecond extends Fragment implements FragmentC
 
 
     private class manage_product_asynctask extends AsyncTask<Void, Product, Product> {
-        //        Date curDate;
         String state;
 
-        //
         manage_product_asynctask(String state) {
             this.state = state;
         }
@@ -111,24 +98,17 @@ public class AdminMyProductsFragmentSecond extends Fragment implements FragmentC
                                 for (QueryDocumentSnapshot document : task.getResult()) {
                                     Product product = document.toObject(Product.class);
                                     product.setIdDoc(document.getId());
-//                                    isHave = true;
                                     if (state.equals("0")) {
-//                                        Log.d("ASd", "onComplete: " + "con");
                                         if (product.getAmount() - product.getAmountOfSold() != 0) {
                                             isHave = true;
                                             publishProgress(product);
 
                                         }
-
-
                                     } else {
-//                                        Log.d("num", "onComplete: "+(product.getAmount() -product.getAmountOfSold()));
                                         if (product.getAmount() - product.getAmountOfSold() == 0) {
-                                            Log.d("ASd", "onComplete: " + "het");
                                             isHave = true;
 
                                             publishProgress(product);
-
                                         }
 
                                     }
@@ -155,7 +135,6 @@ public class AdminMyProductsFragmentSecond extends Fragment implements FragmentC
                 listProducts.add(products[0]);
 
             }
-
 
             AdminCustomMyProductsListViewAdapter myAdapter = new AdminCustomMyProductsListViewAdapter(getActivity(), R.layout.admin_custom_listview_my_products, listProducts);
             listMyProducts.setAdapter(myAdapter);
