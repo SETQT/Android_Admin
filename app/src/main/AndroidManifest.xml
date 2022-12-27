@@ -42,6 +42,10 @@
             android:exported="true"
             android:windowSoftInputMode="adjustPan" />
         <activity
+            android:name=".activities.activity_qrcode"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
             android:name=".activities.activity_admin_select_product"
             android:exported="true"
             android:windowSoftInputMode="adjustPan" />
@@ -79,7 +83,6 @@
             android:name=".activities.activity_admin_my_products"
             android:exported="true"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".activities.MainActivity" />
         <activity
             android:name=".activities.activity_admin_manage_voucher"
             android:exported="true"

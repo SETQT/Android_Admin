@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/admin_create_product"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login"
+    android:clipToOutline="true">
+
+    <RelativeLayout
+        android:layout_width="411dp"
+        android:layout_height="105dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="-24dp"
+        android:background="@drawable/rectangle_payment">
+
+        <TextView
+            android:layout_width="211dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="53dp"
+            android:gravity="center"
+            android:text="QR thanh toán"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/icon_back"
+            android:layout_width="21dp"
+            android:layout_height="25dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="58dp"
+            android:background="@drawable/ic_back_payment" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="411dp"
+        android:layout_height="38dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="90dp"
+        android:background="@drawable/rectangle_setup_time_admin_create_voucher">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="8dp"
+            android:gravity="top"
+            android:text="Phương thức"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/spinner_option"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="152dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/edit_text_admin_create_voucher" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="411dp"
+        android:layout_height="38dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="135dp"
+        android:background="@drawable/rectangle_setup_time_admin_create_voucher">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="8dp"
+            android:gravity="top"
+            android:text="Số tài khoản"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/value_account_number"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="8dp"
+            android:background="@null"
+            android:gravity="top"
+            android:hint="Nhập số tài khoản"
+            android:textColor="#000000"
+            android:textColorHint="#AEAEAE"
+            android:textSize="11sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="411dp"
+        android:layout_height="38dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="180dp"
+        android:background="@drawable/rectangle_setup_time_admin_create_voucher">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="8dp"
+            android:gravity="top"
+            android:text="Tên tài khoản"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/value_name"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="8dp"
+            android:background="@null"
+            android:gravity="top"
+            android:hint="Nhập tên tài khoản"
+            android:textColor="#000000"
+            android:textColorHint="#AEAEAE"
+            android:textSize="11sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="411dp"
+        android:layout_height="160dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="225dp"
+        android:background="@drawable/rectangle_setup_time_admin_create_voucher">
+
+        <RelativeLayout
+            android:id="@+id/button_add_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/button_add_product_create_promotions">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="34dp"
+                android:gravity="center_horizontal|top"
+                android:text="Thêm ảnh"
+                android:textColor="#F9A826"
+                android:textSize="10sp" />
+        </RelativeLayout>
+
+
+        <ImageView
+            android:id="@+id/image_qrcode"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="10dp"
+            android:scaleType="centerCrop" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="411dp"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/footer_change_password"
+        android:elevation="4dp">
+
+        <Button
+            android:id="@+id/btn_confirm"
+            android:layout_width="361dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginBottom="9dp"
+            android:background="@drawable/custom_button_footer"
+            android:gravity="center"
+            android:text="Lưu"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+</RelativeLayout>

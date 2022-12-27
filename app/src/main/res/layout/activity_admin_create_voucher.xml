@@ -413,6 +413,7 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/rectangle_setup_time_admin_create_voucher">
 
+
             <RelativeLayout
                 android:id="@+id/button_add_image_create_voucher"
                 android:layout_width="80dp"
@@ -420,7 +421,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="26dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="11dp"
                 android:background="@drawable/button_add_product_create_promotions">
 
                 <TextView
@@ -436,7 +437,6 @@
                     android:textColor="#F9A826"
                     android:textSize="10sp" />
             </RelativeLayout>
-
 
             <ImageView
                 android:id="@+id/image_voucher_create_voucher"

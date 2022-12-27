@@ -106,6 +106,9 @@ public class DashboardActivity extends activity_base implements View.OnClickList
         binding.discountAdmin.setOnClickListener(view -> {
             startActivity(new Intent(getApplicationContext(), activity_promotions.class));
         });
+        binding.qrcodeAdmin.setOnClickListener(view -> {
+            startActivity(new Intent(getApplicationContext(), activity_qrcode.class));
+        });
 
 
         binding.adminWaitConfirm.setOnClickListener(this);
