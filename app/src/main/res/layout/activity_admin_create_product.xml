@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:id="@+id/admin_create_product"
     android:background="@drawable/login"
     android:clipToOutline="true">
@@ -41,13 +41,24 @@
             android:background="@drawable/ic_back_payment" />
     </RelativeLayout>
 
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="81dp"
+        android:orientation="vertical">
     <RelativeLayout
         android:id="@+id/rectangle_add_image_create_product"
         android:layout_width="411dp"
         android:layout_height="104dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="81dp"
+        android:layout_marginTop="0dp"
         android:background="@drawable/rectangle_setup_time_admin_create_voucher">
 
         <RelativeLayout
@@ -98,7 +109,7 @@
         android:layout_height="60dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/rectangle_setup_time_admin_create_voucher"
         >
         <TextView
@@ -132,44 +143,44 @@
             />
 
     </RelativeLayout>
+
     <RelativeLayout
         android:id="@+id/rectangle_describe_product_admin_create_product"
         android:layout_width="411dp"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="275dp"
-        android:background="@drawable/rectangle_setup_time_admin_create_voucher"
-        >
+        android:layout_marginTop="15dp"
+        android:background="@drawable/rectangle_setup_time_admin_create_voucher">
+
         <TextView
             android:id="@+id/text_describe_product_admin_create_product"
             android:layout_width="wrap_content"
             android:layout_height="15dp"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="25dp"
             android:layout_alignParentTop="true"
+            android:layout_marginLeft="25dp"
             android:layout_marginTop="8dp"
-            android:text="Mô tả sản phẩm"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            android:textColor="#000000"
             android:gravity="top"
-            />
+            android:text="Mô tả sản phẩm"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
         <EditText
             android:id="@+id/value_describe_product_admin_create_product"
             android:layout_width="wrap_content"
-            android:layout_height="20dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="25dp"
             android:layout_marginTop="30dp"
-            android:hint="Nhập mô tả sản phẩm"
-            android:textColorHint="#AEAEAE"
-            android:textSize="11sp"
             android:background="@null"
-            android:textColor="#000000"
             android:gravity="top"
-            />
+            android:hint="Nhập mô tả sản phẩm"
+            android:textColor="#000000"
+            android:textColorHint="#AEAEAE"
+            android:textSize="11sp" />
 
     </RelativeLayout>
 
@@ -179,7 +190,7 @@
         android:layout_height="38dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="350dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/rectangle_setup_time_admin_create_voucher">
 
         <TextView
@@ -215,7 +226,7 @@
         android:layout_height="38dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="389dp"
+        android:layout_marginTop="0.5dp"
         android:background="@drawable/rectangle_setup_time_admin_create_voucher"
         >
         <TextView
@@ -256,7 +267,7 @@
         android:layout_height="38dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="428dp"
+        android:layout_marginTop="0.5dp"
         android:background="@drawable/rectangle_setup_time_admin_create_voucher"
         >
         <TextView
@@ -291,45 +302,45 @@
 
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/rectangle_price_product_admin_create_product"
-        android:layout_width="411dp"
-        android:layout_height="38dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="467dp"
-        android:background="@drawable/rectangle_setup_time_admin_create_voucher">
-
-        <TextView
-            android:id="@+id/text_price_product"
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
+        <RelativeLayout
+            android:id="@+id/rectangle_price_product_admin_create_product"
+            android:layout_width="411dp"
+            android:layout_height="38dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="11dp"
-            android:gravity="top"
-            android:text="Giá"
-            android:textColor="#000000"
-            android:textSize="12sp"
-            android:textStyle="bold" />
+            android:layout_marginTop="0.5dp"
+            android:background="@drawable/rectangle_setup_time_admin_create_voucher">
 
-        <EditText
-            android:id="@+id/value_price_product_admin_create_product"
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="250dp"
-            android:layout_marginTop="11dp"
-            android:background="@null"
-            android:gravity="top"
-            android:hint="Nhập giá của sản phẩm"
-            android:textColor="#000000"
-            android:textColorHint="#AEAEAE"
-            android:textSize="11sp" />
+            <TextView
+                android:id="@+id/text_price_product"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="11dp"
+                android:gravity="top"
+                android:text="Giá"
+                android:textColor="#000000"
+                android:textSize="12sp"
+                android:textStyle="bold" />
 
-    </RelativeLayout>
+            <EditText
+                android:id="@+id/value_price_product_admin_create_product"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="250dp"
+                android:layout_marginTop="11dp"
+                android:background="@null"
+                android:gravity="top"
+                android:hint="Nhập giá của sản phẩm"
+                android:textColor="#000000"
+                android:textColorHint="#AEAEAE"
+                android:textSize="11sp" />
+
+        </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/rectangle_quantity_product_admin_create_product"
@@ -337,7 +348,7 @@
         android:layout_height="38dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="506dp"
+        android:layout_marginTop="0.5dp"
         android:background="@drawable/rectangle_setup_time_admin_create_voucher">
 
         <TextView
@@ -370,6 +381,9 @@
             android:textSize="11sp" />
 
     </RelativeLayout>
+    </LinearLayout>
+    </ScrollView>
+
     <RelativeLayout
         android:id="@+id/footer_admin_create_product"
         android:layout_width="411dp"

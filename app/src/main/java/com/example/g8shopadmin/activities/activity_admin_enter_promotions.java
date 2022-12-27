@@ -61,10 +61,13 @@ public class activity_admin_enter_promotions extends Activity {
                 }
 
                     Integer rate = checkValidRate(text);
-                    if (rate==0) {
+                    if (rate==-1||rate<0) {
                         Toast.makeText(getApplicationContext(), "Mức giảm giá không hợp lệ !", Toast.LENGTH_SHORT).show();
                         return;
                     }
+
+
+
 
                 for (int i = 0; i < listEdit.size(); i++) {
                     String id=listEdit.get(i).toString();
@@ -92,7 +95,7 @@ public class activity_admin_enter_promotions extends Activity {
             Integer rate = Integer.parseInt(text);
             return rate;
         } catch (Exception e) {
-           return  0;
+           return  -1;
         }
     }
 
