@@ -20,6 +20,8 @@ import com.example.g8shopadmin.R;
 import com.example.g8shopadmin.activities.Handle;
 import com.example.g8shopadmin.activities.activity_admin_create_voucher;
 import com.example.g8shopadmin.activities.activity_admin_evaluate;
+import com.example.g8shopadmin.models.AdminEvaluate;
+import com.example.g8shopadmin.models.Notification;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.ms.square.android.expandabletextview.ExpandableTextView;
@@ -38,6 +40,7 @@ public class AdminCustomEvaluateListViewAdapter extends ArrayAdapter<AdminEvalua
     String option;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference commentsRef = db.collection("comments");
+    CollectionReference notifyRef = db.collection("notifications");
 
     public AdminCustomEvaluateListViewAdapter(Context context, int resource, ArrayList<AdminEvaluate> comments, String option) {
         super(context, resource, comments);
@@ -145,6 +148,14 @@ public class AdminCustomEvaluateListViewAdapter extends ArrayAdapter<AdminEvalua
                         default:
                             break;
                     }
+
+                    String title = "Phản hồi đánh giá!";
+                    String content = "G8 Shop vừa phản hồi đánh giá của bạn cho sản phẩm " + comments.get(position).getNameProduct();
+                    String receiver = comments.get(position).getUser();
+
+                    // thông báo đến cho người dùng
+                    Notification newNotification = new Notification("https://firebasestorage.googleapis.com/v0/b/androidgroup8.appspot.com/o/logo%2FGroup%2010.png?alt=media&token=bc59d0df-9e04-4c66-a95d-78fbd0eef751", title, content, receiver, "evaluate");
+                    notifyRef.add(newNotification);
 
                     notifyDataSetChanged();
 

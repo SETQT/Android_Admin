@@ -17,7 +17,9 @@ public class activity_admin_order extends FragmentActivity implements MainCallba
     // khai báo biến UI
     View icon_back;
 
-    FragmentTransaction ft; AdminOrderFragmentFirst firstFrag; AdminOrderFragmentSecond secondFrag;
+    FragmentTransaction ft;
+    AdminOrderFragmentFirst firstFrag;
+    AdminOrderFragmentSecond secondFrag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +38,15 @@ public class activity_admin_order extends FragmentActivity implements MainCallba
 
         Intent intent = getIntent();
 
-        if(intent.hasExtra("state")) {
+        if (intent.hasExtra("state")) {
             String stateMyOrder = intent.getStringExtra("state");
-            firstFrag.onMsgFromMainToFragment(stateMyOrder);
-            secondFrag.onMsgFromMainToFragment(stateMyOrder);
+            if (stateMyOrder == null) {
+                firstFrag.onMsgFromMainToFragment("1");
+                secondFrag.onMsgFromMainToFragment("1");
+            } else {
+                firstFrag.onMsgFromMainToFragment(stateMyOrder);
+                secondFrag.onMsgFromMainToFragment(stateMyOrder);
+            }
         }
 
 
@@ -60,15 +67,17 @@ public class activity_admin_order extends FragmentActivity implements MainCallba
 //        Toast.makeText(getApplication(), " MAIN GOT>> " + sender + "\n" + strValue, Toast.LENGTH_LONG).show();
         if (sender.equals("RED-FRAG")) {
             try { // forward blue-data to redFragment using its callback method
-                firstFrag.onMsgFromMainToFragment( strValue);
+                firstFrag.onMsgFromMainToFragment(strValue);
+            } catch (Exception e) {
+                Log.e("ERROR", "onStrFromFragToMain " + e.getMessage());
             }
-            catch (Exception e) { Log.e("ERROR", "onStrFromFragToMain " + e.getMessage()); }
         }
         if (sender.equals("BLUE-FRAG")) {
             try { // forward blue-data to redFragment using its callback method
-                secondFrag.onMsgFromMainToFragment( strValue);
+                secondFrag.onMsgFromMainToFragment(strValue);
+            } catch (Exception e) {
+                Log.e("ERROR", "onStrFromFragToMain " + e.getMessage());
             }
-            catch (Exception e) { Log.e("ERROR", "onStrFromFragToMain " + e.getMessage()); }
         }
     }
 }

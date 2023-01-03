@@ -22,8 +22,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/mono1" />
+        android:layout_marginTop="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -46,7 +45,6 @@
         android:layout_marginLeft="178dp"
         android:layout_marginTop="20dp"
         android:gravity="top"
-        android:text="ezkdjdhdlsl"
         android:textColor="#000000"
         android:textSize="12sp"
         android:textStyle="bold" />
@@ -72,7 +70,6 @@
         android:layout_marginLeft="178dp"
         android:layout_marginTop="44dp"
         android:gravity="top"
-        android:text="duongminhhieu"
         android:textColor="#000000"
         android:textSize="12sp"
         android:textStyle="bold" />
@@ -99,7 +96,6 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="100dp"
         android:gravity="top"
-        android:text="1 sản phẩm"
         android:textColor="#000000"
         android:textSize="10sp" />
 
@@ -124,7 +120,6 @@
         android:layout_marginLeft="310dp"
         android:layout_marginTop="99dp"
         android:gravity="top"
-        android:text="đ100000"
         android:textColor="#F9A826"
         android:textSize="12sp" />
 

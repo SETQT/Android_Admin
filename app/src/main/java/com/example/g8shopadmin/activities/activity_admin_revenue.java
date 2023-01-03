@@ -51,7 +51,7 @@ public class activity_admin_revenue extends FragmentActivity implements MainCall
 //        Toast.makeText(getApplication(), " MAIN GOT>> " + sender + "\n" + strValue, Toast.LENGTH_LONG).show();
         if (sender.equals("RED-FRAG")) {
             try { // forward blue-data to redFragment using its callback method
-                firstFrag.onMsgFromMainToFragment( strValue);
+                firstFrag.onMsgFromMainToFragment(strValue);
             }
             catch (Exception e) { Log.e("ERROR", "onStrFromFragToMain " + e.getMessage()); }
         }

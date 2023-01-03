@@ -30,6 +30,7 @@ public class Constants {
     public static final String REMOTE_MSG_DATA = "data";
     public static final String REMOTE_MSG_REGISTRATION_IDS = "registration_ids";
     public static final String IDDOC_VOUCHER_TO_CREATE_VOUCHER = "idVoucher";
+    public static final String STATE_ORDER = "state";
 
     public static HashMap<String, String> remoteMsgHeaders = null;
     public static HashMap<String, String> getRemoteMsgHeaders(){

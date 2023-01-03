@@ -12,7 +12,8 @@ import com.example.g8shopadmin.MainCallbacks;
 import com.example.g8shopadmin.R;
 import com.example.g8shopadmin.activities.evaluate.AdminEvaluateFragmentFirst;
 import com.example.g8shopadmin.activities.evaluate.AdminEvaluateFragmentSecond;
-public class activity_admin_evaluate extends FragmentActivity implements MainCallbacks {
+
+public class activity_admin_evaluate extends FragmentActivity implements MainCallbacks, View.OnClickListener {
 
     View icon_back;
     FragmentTransaction ft;
@@ -33,16 +34,20 @@ public class activity_admin_evaluate extends FragmentActivity implements MainCal
         secondFrag = AdminEvaluateFragmentSecond.newInstance("");
         ft.replace(R.id.admin_evaluate_fragment_second, secondFrag);
         ft.commit();
-
         icon_back = (View) findViewById(R.id.icon_back);
+        icon_back.setOnClickListener(this);
 
-        icon_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent moveActivity = new Intent(getApplicationContext(), DashboardActivity.class);
-                startActivity(moveActivity);
+        Intent intent = getIntent();
+        if (intent.hasExtra("state")) {
+            String stateMyOrder = intent.getStringExtra("state");
+            if (stateMyOrder == null) {
+                firstFrag.onMsgFromMainToFragment("0");
+                secondFrag.onMsgFromMainToFragment("0");
+            } else {
+                firstFrag.onMsgFromMainToFragment(stateMyOrder);
+                secondFrag.onMsgFromMainToFragment(stateMyOrder);
             }
-        });
+        }
     }
 
     @Override
@@ -64,4 +69,11 @@ public class activity_admin_evaluate extends FragmentActivity implements MainCal
         }
     }
 
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == icon_back.getId()) {
+            Intent moveActivity = new Intent(getApplicationContext(), DashboardActivity.class);
+            startActivity(moveActivity);
+        }
+    }
 }

@@ -7,7 +7,7 @@
     <View
         android:id="@+id/rectangle_1"
         android:layout_width="381dp"
-        android:layout_height="170dp"
+        android:layout_height="155dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="15dp"
@@ -35,7 +35,6 @@
         android:layout_marginLeft="120dp"
         android:layout_marginTop="15dp"
         android:gravity="top"
-        android:text="Áo khoác mono cực chất lượng 🔥🔥🔥"
         android:textColor="#000000"
         android:textSize="12sp" />
 
@@ -48,7 +47,6 @@
         android:layout_marginLeft="120dp"
         android:layout_marginTop="55dp"
         android:gravity="top"
-        android:text="đ100.000"
         android:textColor="#F9A826"
         android:textSize="12sp" />
 
@@ -61,7 +59,6 @@
         android:layout_marginLeft="40dp"
         android:layout_marginTop="95dp"
         android:gravity="top"
-        android:text="Kho hàng: 10"
         android:textColor="#000000"
         android:textSize="8sp" />
 
@@ -74,35 +71,9 @@
         android:layout_marginLeft="220dp"
         android:layout_marginTop="95dp"
         android:gravity="top"
-        android:text="Đã bán: 10"
         android:textColor="#000000"
         android:textSize="8sp" />
 
-    <TextView
-        android:id="@+id/text_thich"
-        android:layout_width="wrap_content"
-        android:layout_height="12dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="111dp"
-        android:gravity="top"
-        android:text="Thích: 10"
-        android:textColor="#000000"
-        android:textSize="8sp" />
-
-    <TextView
-        android:id="@+id/text_luot_xem"
-        android:layout_width="wrap_content"
-        android:layout_height="12dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="220dp"
-        android:layout_marginTop="111dp"
-        android:gravity="top"
-        android:text="Lượt xem: 10"
-        android:textColor="#000000"
-        android:textSize="8sp" />
 
     <View
         android:id="@+id/line_12"
@@ -111,7 +82,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="35dp"
-        android:layout_marginTop="130dp"
+        android:layout_marginTop="115dp"
         android:background="@drawable/strikethrough" />
 
     <Button
@@ -121,7 +92,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="80dp"
-        android:layout_marginTop="139dp"
+        android:layout_marginTop="125dp"
         android:background="@drawable/custom_listview_my_products_button"
         android:text="Sửa"
         android:textAllCaps="false"
@@ -136,7 +107,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="247dp"
-        android:layout_marginTop="139dp"
+        android:layout_marginTop="125dp"
         android:background="@drawable/custom_listview_my_products_button"
         android:text="Xóa"
         android:textAllCaps="false"

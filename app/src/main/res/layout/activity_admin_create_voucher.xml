@@ -193,7 +193,7 @@
 
         <TextView
             android:id="@+id/text_min_order_admin_create_voucher"
-            android:layout_width="75dp"
+            android:layout_width="wrap_content"
             android:layout_height="18dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
@@ -340,7 +340,7 @@
 
             <TextView
                 android:id="@+id/text_time_end_admin_create_voucher"
-                android:layout_width="107dp"
+                android:layout_width="wrap_content"
                 android:layout_height="18dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
@@ -390,25 +390,16 @@
             android:textSize="12sp"
             android:textStyle="bold" />
 
-        <View
-            android:id="@+id/rectangle_code_mark_down_create_voucher"
-            android:layout_width="87dp"
-            android:layout_height="23dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="312dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/rectangle_code_mark_down" />
-
         <TextView
             android:id="@+id/code_mark_down_create_voucher"
-            android:layout_width="44dp"
-            android:layout_height="16dp"
-            android:layout_alignParentLeft="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="334dp"
+            android:layout_alignParentRight="true"
             android:layout_marginTop="13dp"
-            android:gravity="top"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/rectangle_code_mark_down"
+            android:gravity="center"
             android:text="ABCDE"
             android:textColor="#AEAEAE"
             android:textSize="12sp" />
@@ -422,6 +413,7 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/rectangle_setup_time_admin_create_voucher">
 
+
             <RelativeLayout
                 android:id="@+id/button_add_image_create_voucher"
                 android:layout_width="80dp"
@@ -429,7 +421,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="26dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="11dp"
                 android:background="@drawable/button_add_product_create_promotions">
 
                 <TextView
@@ -445,7 +437,6 @@
                     android:textColor="#F9A826"
                     android:textSize="10sp" />
             </RelativeLayout>
-
 
             <ImageView
                 android:id="@+id/image_voucher_create_voucher"
@@ -477,7 +468,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginLeft="25dp"
             android:layout_marginBottom="9dp"
-            android:background="@drawable/record_btn_save_profile"
+            android:background="@drawable/custom_button_footer"
             android:gravity="center"
             android:text="Xác nhận"
             android:textAllCaps="false"

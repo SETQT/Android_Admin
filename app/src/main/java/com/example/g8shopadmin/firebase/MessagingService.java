@@ -1,6 +1,5 @@
 package com.example.g8shopadmin.firebase;
 
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -14,6 +13,7 @@ import androidx.core.app.NotificationManagerCompat;
 
 import com.example.g8shopadmin.R;
 import com.example.g8shopadmin.activities.ChatActivity;
+import com.example.g8shopadmin.activities.activity_admin_order;
 import com.example.g8shopadmin.models.UserChat;
 import com.example.g8shopadmin.utilities.Constants;
 import com.google.firebase.messaging.FirebaseMessagingService;
@@ -23,42 +23,65 @@ import java.util.Random;
 
 public class MessagingService extends FirebaseMessagingService {
 
-
     @Override
     public void onNewToken(@NonNull String token) {
         super.onNewToken(token);
-        Log.d("FCM", "token: " +token);
+        Log.d("FCM", "token: " + token);
     }
 
     @Override
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
-        UserChat user = new UserChat();
-        user.id = remoteMessage.getData().get(Constants.KEY_USER_ID);
-        user.fullName = remoteMessage.getData().get("name");
-        user.token = remoteMessage.getData().get(Constants.KEY_FCM_TOKEN);
 
+        String channelId = "", title = "", body = "";
         int notificationId = new Random().nextInt();
-        String channelId = "chat_message";
+        PendingIntent pendingIntent = null;
 
-        Intent intent = new Intent(this, ChatActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        intent.putExtra(Constants.KEY_USER, user);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this,0, intent, 0);
+        String typeNotification = "";
+        try {
+            typeNotification = remoteMessage.getNotification().getTag();
+        } catch (Exception error) {
+
+        }
+
+        if (typeNotification.equals("USER_ORDER")) {
+            channelId = "notification_user_to_admin";
+            title = remoteMessage.getNotification().getTitle();
+            body = remoteMessage.getNotification().getBody();
+
+            Intent intent = new Intent(this, activity_admin_order.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            intent.putExtra(Constants.STATE_ORDER, "1");
+            pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+        } else {
+            UserChat user = new UserChat();
+            user.id = remoteMessage.getData().get(Constants.KEY_USER_ID);
+            user.fullName = remoteMessage.getData().get("name");
+            user.token = remoteMessage.getData().get(Constants.KEY_FCM_TOKEN);
+
+            title = user.fullName;
+            body = remoteMessage.getData().get(Constants.KEY_MESSAGE);
+            channelId = "chat_message";
+
+            Intent intent = new Intent(this, ChatActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            intent.putExtra(Constants.KEY_USER, user);
+            pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+        }
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, channelId);
         builder.setSmallIcon(R.mipmap.ic_launcher);
-        builder.setContentTitle(user.fullName);
+        builder.setContentTitle(title);
         builder.setContentText(remoteMessage.getData().get(Constants.KEY_MESSAGE));
         builder.setStyle(new NotificationCompat.BigTextStyle().bigText(
-                remoteMessage.getData().get(Constants.KEY_MESSAGE)
+                body
         ));
         builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
         builder.setContentIntent(pendingIntent);
         builder.setAutoCancel(true);
 
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            CharSequence channelName = "ChatMessage";
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence channelName = channelId;
             String channelDescription = "This notification channel is used for chat message notifications";
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
             NotificationChannel channel = new NotificationChannel(channelId, channelName, importance);

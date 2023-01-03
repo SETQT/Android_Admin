@@ -27,22 +27,22 @@
             android:layout_height="33dp"
             android:layout_marginLeft="25dp"
             android:layout_marginTop="25dp"
-            android:background="@drawable/ic_back_payment"
+            android:background="@drawable/icon_back"
             android:backgroundTint="#FFFFFF"
             android:gravity="center" />
 
         <TextView
             android:id="@+id/text_title_list_customer"
-            android:layout_width="wrap_content"
+            android:layout_width="311dp"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="124dp"
+            android:layout_marginLeft="60dp"
             android:layout_marginTop="29dp"
-            android:gravity="top"
+            android:gravity="center"
             android:text="Danh sách khách hàng"
             android:textColor="#FFFFFF"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
     </RelativeLayout>
 

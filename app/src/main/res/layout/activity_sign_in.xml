@@ -25,29 +25,6 @@
         android:translationX="-40dp"
         android:translationY="-250dp" />
 
-    <View
-        android:id="@+id/rectangle_3"
-        android:layout_width="189dp"
-        android:layout_height="36dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="111dp"
-        android:layout_marginTop="150dp"
-        android:background="@drawable/rectangle_3" />
-
-    <TextView
-        android:id="@+id/dangnhap"
-        android:layout_width="68dp"
-        android:layout_height="18dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="172dp"
-        android:layout_marginTop="159dp"
-        android:gravity="center_horizontal|center_vertical"
-        android:text="Đăng nhập"
-        android:textColor="#FFFFFF"
-        android:textSize="12sp" />
-
     <EditText
         android:id="@+id/inputAdminName"
         android:layout_width="320dp"

@@ -12,8 +12,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.g8shopadmin.R;
-import com.example.g8shopadmin.activities.order.Myorder;
-import com.example.g8shopadmin.activities.order.Order;
+import com.example.g8shopadmin.activities.detailorder.CustomMyListViewPaymentAdapter;
+import com.example.g8shopadmin.models.Myorder;
+import com.example.g8shopadmin.models.Order;
 import com.example.g8shopadmin.models.User;
 import com.example.g8shopadmin.models.Voucher;
 import com.google.android.gms.tasks.OnCompleteListener;

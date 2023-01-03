@@ -11,6 +11,7 @@ import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.example.g8shopadmin.FragmentCallbacks;
 import com.example.g8shopadmin.MainCallbacks;
@@ -32,23 +33,12 @@ import java.util.Date;
 public class AdminMyProductsFragmentSecond extends Fragment implements FragmentCallbacks {
     activity_admin_my_products main;
     ListView listMyProducts;
-    ArrayList<AdminMyProducts> MyProducts = new ArrayList<AdminMyProducts>();
-
-    ArrayList<Integer> image = new ArrayList<>();
-    ArrayList<String> name = new ArrayList<>();
-    ArrayList<String> cost = new ArrayList<>();
-    ArrayList<String> text_kho_hang = new ArrayList<>();
-    ArrayList<String> text_da_ban = new ArrayList<>();
-    ArrayList<String> text_thich = new ArrayList<>();
-    ArrayList<String> text_luot_xem = new ArrayList<>();
-
 
     ArrayList<Product> listProducts = new ArrayList<>();
 
     // firestore
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference productsRef = db.collection("products");
-
 
     public static AdminMyProductsFragmentSecond newInstance(String strArg1) {
         AdminMyProductsFragmentSecond fragment = new AdminMyProductsFragmentSecond();
@@ -73,10 +63,6 @@ public class AdminMyProductsFragmentSecond extends Fragment implements FragmentC
 
         listMyProducts = (ListView) layout_second.findViewById(R.id.admin_my_products_listview);
 
-
-//        AdminCustomManageVoucherListViewAdapter myAdapter = new AdminCustomManageVoucherListViewAdapter(getActivity(), R.layout.admin_custom_listview_manage_voucher, Voucher);
-//        listVoucher.setAdapter(myAdapter);
-
         manage_product_asynctask mv_at = new manage_product_asynctask("0");
         mv_at.execute();
 
@@ -92,10 +78,8 @@ public class AdminMyProductsFragmentSecond extends Fragment implements FragmentC
 
 
     private class manage_product_asynctask extends AsyncTask<Void, Product, Product> {
-        //        Date curDate;
         String state;
 
-        //
         manage_product_asynctask(String state) {
             this.state = state;
         }
@@ -114,24 +98,17 @@ public class AdminMyProductsFragmentSecond extends Fragment implements FragmentC
                                 for (QueryDocumentSnapshot document : task.getResult()) {
                                     Product product = document.toObject(Product.class);
                                     product.setIdDoc(document.getId());
-//                                    isHave = true;
                                     if (state.equals("0")) {
-//                                        Log.d("ASd", "onComplete: " + "con");
                                         if (product.getAmount() - product.getAmountOfSold() != 0) {
                                             isHave = true;
                                             publishProgress(product);
 
                                         }
-
-
                                     } else {
-//                                        Log.d("num", "onComplete: "+(product.getAmount() -product.getAmountOfSold()));
                                         if (product.getAmount() - product.getAmountOfSold() == 0) {
-                                            Log.d("ASd", "onComplete: " + "het");
                                             isHave = true;
 
                                             publishProgress(product);
-
                                         }
 
                                     }
@@ -156,11 +133,8 @@ public class AdminMyProductsFragmentSecond extends Fragment implements FragmentC
                 listProducts.clear();
             } else {
                 listProducts.add(products[0]);
-//                Product product= products[0];
-//                MyProducts.add(new AdminMyProducts(product., image.get(i), name.get(i), cost.get(i), text_kho_hang.get(i), text_da_ban.get(i), text_thich.get(i), text_luot_xem.get(i)));
 
             }
-
 
             AdminCustomMyProductsListViewAdapter myAdapter = new AdminCustomMyProductsListViewAdapter(getActivity(), R.layout.admin_custom_listview_my_products, listProducts);
             listMyProducts.setAdapter(myAdapter);

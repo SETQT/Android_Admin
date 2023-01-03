@@ -1,21 +1,17 @@
 package com.example.g8shopadmin.activities;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
 import com.example.g8shopadmin.R;
-import com.example.g8shopadmin.activities.order.Order;
+import com.example.g8shopadmin.Services.SendNotification;
 import com.example.g8shopadmin.databinding.ActivityDashboardBinding;
-import com.example.g8shopadmin.databinding.ActivitySignInBinding;
-import com.example.g8shopadmin.models.Comment;
-import com.example.g8shopadmin.models.User;
+import com.example.g8shopadmin.models.Order;
 import com.example.g8shopadmin.utilities.Constants;
 import com.example.g8shopadmin.utilities.PreferenceManager;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,7 +23,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.messaging.FirebaseMessaging;
-import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 
@@ -102,15 +97,20 @@ public class DashboardActivity extends activity_base implements View.OnClickList
         binding.iconChat.setOnClickListener(view -> {
             startActivity(new Intent(getApplicationContext(), activity_dashboard_chat.class));
         });
-        binding.iconProductAdmin.setOnClickListener(view -> {
+        binding.productAdmin.setOnClickListener(view -> {
             startActivity(new Intent(getApplicationContext(), activity_admin_my_products.class));
         });
-        binding.iconListCustomers.setOnClickListener(view -> {
+        binding.listCustomerAdmin.setOnClickListener(view -> {
             startActivity(new Intent(getApplicationContext(), activity_list_customer.class));
         });
-        binding.iconDiscountAdmin.setOnClickListener(view -> {
+        binding.discountAdmin.setOnClickListener(view -> {
             startActivity(new Intent(getApplicationContext(), activity_promotions.class));
         });
+        binding.qrcodeAdmin.setOnClickListener(view -> {
+            startActivity(new Intent(getApplicationContext(), activity_qrcode.class));
+        });
+
+
         binding.adminWaitConfirm.setOnClickListener(this);
         binding.voucherAdmin.setOnClickListener(this);
         binding.adminWaitRate.setOnClickListener(this);
@@ -119,10 +119,16 @@ public class DashboardActivity extends activity_base implements View.OnClickList
         binding.adminWaitConfirm.setOnClickListener(this);
         binding.adminWaitDelivery.setOnClickListener(this);
         binding.adminDelivered.setOnClickListener(this);
+        binding.notifyAdmin.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
+        if (view.getId() == binding.notifyAdmin.getId()) {
+            Intent moveActivity = new Intent(getApplicationContext(), activity_admin_notify.class);
+            startActivity(moveActivity);
+        }
+
         if (view.getId() == binding.adminWaitConfirm.getId()) {
             Intent moveActivity = new Intent(getApplicationContext(), activity_admin_order.class);
             moveActivity.putExtra("state", "1");
