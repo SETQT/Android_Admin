@@ -1,4 +1,4 @@
-# G8Shop
+# G8Shop Admin
 Subject project of mobile software development group 8 - HCMUS.
 <br/>
 Lecturer: Doc. Trương Toàn Thịnh
